@@ -1,0 +1,104 @@
+{
+  "name": "dev",
+  "version": "0.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "ulr": ""
+  },
+  "bugs": "",
+  "author": "",
+  "contributors": [],
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "clean": "npx rimraf main src/.next src/out",
+    "license-check": "npx rimraf CREDIT && npx license -o CREDIT --returnError -exclude caniuse-lite",
+    "test": "npx next lint src",
+    "build-package": "npx rimraf react-addon && npx tsc -p tsconfig.json",
+    "server": "npm run clean && npm run build-package && npx tsc -p src-server/tsconfig.json && node main/src-server/index.js -dev",
+    "build": "npm run license-check && npm run clean && npx tsc -p src-server/tsconfig.json && npx minifier main && npx next build src",
+    "start": "node main/src-server/index.js",
+    "desktop": "npm run clean && npm run build-package && npx tsc -p src-desktop/tsconfig.json && npx electron main/src-desktop/index.js",
+    "_pack": "npm run license-check && npm run clean && npx rimraf build && npx tsc -p src-desktop/tsconfig.json && npx minifier main && set APP_BASE_PATH= && npx next build src && npx next export src && electron-builder --dir",
+    "pack:win": "npm run _pack -- --win"
+  },
+  "dependencies": {
+    "@bizhermit/basic-utils": "^2.0.0-rc.2",
+    "@bizhermit/time": "^2.0.0-rc.0",
+    "electron-is-dev": "^2.0.0",
+    "electron-next": "^3.1.5",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "fs-extra": "^10.1.0",
+    "helmet": "^5.1.1",
+    "next": "^12.2.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@bizhermit/license": "^2.0.0-rc.2",
+    "@bizhermit/minifier": "^2.0.0-rc.1",
+    "@types/express": "^4.17.13",
+    "@types/express-session": "^1.17.5",
+    "@types/fs-extra": "^9.0.13",
+    "@types/node": "^18.0.6",
+    "@types/react": "18.0.15",
+    "@types/react-dom": "18.0.6",
+    "electron": "^19.0.9",
+    "electron-builder": "^23.1.0",
+    "eslint": "8.20.0",
+    "eslint-config-next": "^12.2.3",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.7.4"
+  },
+  "build": {
+    "appId": "com.bizhermit.dev",
+    "productName": "dev",
+    "asar": true,
+    "extends": null,
+    "extraMetadata": {
+      "main": "main/src-desktop/index.js"
+    },
+    "files": [
+      "main",
+      "src/out",
+      "src/public"
+    ],
+    "extraFiles": [
+      {
+        "from": "LICENSE",
+        "to": "LICENSE"
+      },
+      {
+        "from": "CREDIT",
+        "to": "CREDIT"
+      }
+    ],
+    "directories": {
+      "output": "build"
+    },
+    "win": {
+      "icon": "src/public/favicon.ico",
+      "target": {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    },
+    "mac": {
+      "icon": "src/public/favicon.ico",
+      "target": "dmg"
+    },
+    "linux": {},
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "browser": {
+    "fs": false,
+    "path": false
+  }
+}

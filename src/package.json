@@ -1,0 +1,49 @@
+{
+  "name": "@bizhermit/react-addon",
+  "version": "18.0.0-rc.0",
+  "description": "React Add-on",
+  "keywords": [
+    "bizhermit",
+    "react",
+    "react-addon",
+    "ui",
+    "elements",
+    "component",
+    "popups",
+    "message",
+    "hooks"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bizhermit/react-addon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bizhermit/react-addon/issues"
+  },
+  "author": "Senda Ryoichi <rsenda@bizhermit.com> (https://bizhermit.com)",
+  "homepage": "https://bizhermit.com",
+  "license": "MIT",
+  "types": "index.d.ts",
+  "files": [
+    "dist",
+    "CREDIT",
+    "index.d.ts"
+  ],
+  "dependencies": {
+    "@bizhermit/basic-utils": "^2.0.0-rc.2",
+    "@bizhermit/time": "^2.0.0-rc.0",
+    "styled-jsx": "5.X"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.45",
+    "@types/react": "18.X",
+    "@types/react-dom": "18.X",
+    "react": "18.X",
+    "react-dom": "18.X",
+    "typescript": "^4.7.4"
+  },
+  "peerDependencies": {
+    "react": "18.X",
+    "react-dom": "18.X"
+  }
+}

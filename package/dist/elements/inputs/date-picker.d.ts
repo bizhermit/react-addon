@@ -1,0 +1,45 @@
+import React, { Dispatch, HTMLAttributes, ReactNode } from "react";
+import { InputAttributesWithoutDispatch } from "../../hooks/value";
+import { InputBorder } from "../../styles/input-style";
+import { InputHook } from "../../utils/input";
+export declare type DatePickerHook = InputHook<string | number | Date> & {
+    scrollToCurrent: () => void;
+};
+export declare type DatePickerAttributes = HTMLAttributes<HTMLDivElement> & InputAttributesWithoutDispatch<string | number | Date> & {
+    $hook?: DatePickerHook;
+    $dataType?: "string" | "number" | "date";
+    $mode?: "ymd" | "ym" | "y";
+    $uiType?: "list" | "calendar";
+    $monthTexts?: "en" | "en-s" | "ja" | "num" | Array<string>;
+    $weekTexts?: "en" | "ja" | Array<string>;
+    $startWeek?: number;
+    $rangeFrom?: string | number | Date;
+    $rangeTo?: string | number | Date;
+    $border?: Omit<InputBorder, "under">;
+    $dispatch?: Dispatch<string> | Dispatch<number> | Dispatch<Date> | Dispatch<string | number> | Dispatch<string | Date> | Dispatch<number | Date> | Dispatch<string | number | Date>;
+    $clickPositive?: (date: string | number | Date) => void | Promise<void>;
+    $positiveButtonLabel?: ReactNode;
+    $clickNegative?: () => void | Promise<void>;
+    $negativeButtonLabel?: ReactNode;
+    $changing?: (date: Date) => void;
+};
+declare const DatePicker: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & InputAttributesWithoutDispatch<string | number | Date, {}> & {
+    $hook?: DatePickerHook;
+    $dataType?: "string" | "number" | "date";
+    $mode?: "ymd" | "ym" | "y";
+    $uiType?: "list" | "calendar";
+    $monthTexts?: "en" | "en-s" | "ja" | "num" | Array<string>;
+    $weekTexts?: "en" | "ja" | Array<string>;
+    $startWeek?: number;
+    $rangeFrom?: string | number | Date;
+    $rangeTo?: string | number | Date;
+    $border?: Omit<InputBorder, "under">;
+    $dispatch?: Dispatch<string> | Dispatch<number> | Dispatch<Date> | Dispatch<string | number> | Dispatch<string | Date> | Dispatch<number | Date> | Dispatch<string | number | Date>;
+    $clickPositive?: (date: string | number | Date) => void | Promise<void>;
+    $positiveButtonLabel?: ReactNode;
+    $clickNegative?: () => void | Promise<void>;
+    $negativeButtonLabel?: ReactNode;
+    $changing?: (date: Date) => void;
+} & React.RefAttributes<HTMLDivElement>>;
+export declare const useDatePicker: () => DatePickerHook;
+export default DatePicker;

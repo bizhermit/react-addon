@@ -1,0 +1,35 @@
+import React, { HTMLAttributes } from "react";
+import { InputAttributes } from "../../hooks/value";
+import { InputBorder } from "../../styles/input-style";
+import { InputHook } from "../../utils/input";
+export declare type TextBoxHook = InputHook<string>;
+export declare type TextBoxAttributes = HTMLAttributes<HTMLDivElement> & InputAttributes<string> & {
+    $hook?: TextBoxHook;
+    $type?: "text" | "email" | "tel" | "url" | "search" | "password";
+    $autoComplete?: string;
+    $pattern?: string;
+    $maxLength?: number;
+    $minLength?: number;
+    $required?: boolean;
+    $resize?: boolean;
+    $textAlign?: "left" | "center" | "right";
+    $border?: InputBorder;
+    $round?: boolean;
+    $changing?: (value: string) => boolean | void;
+};
+declare const TextBox: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & InputAttributes<string, {}> & {
+    $hook?: TextBoxHook;
+    $type?: "text" | "email" | "tel" | "url" | "search" | "password";
+    $autoComplete?: string;
+    $pattern?: string;
+    $maxLength?: number;
+    $minLength?: number;
+    $required?: boolean;
+    $resize?: boolean;
+    $textAlign?: "left" | "center" | "right";
+    $border?: InputBorder;
+    $round?: boolean;
+    $changing?: (value: string) => boolean | void;
+} & React.RefAttributes<HTMLDivElement>>;
+export declare const useTextBox: () => TextBoxHook;
+export default TextBox;

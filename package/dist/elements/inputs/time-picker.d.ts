@@ -1,0 +1,41 @@
+import React, { Dispatch, HTMLAttributes, ReactNode } from "react";
+import { InputAttributesWithoutDispatch } from "../../hooks/value";
+import { InputBorder } from "../../styles/input-style";
+import { InputHook } from "../../utils/input";
+export declare type TimePickerHook = InputHook<number | string> & {
+    scrollToCurrent: () => void;
+};
+export declare type TimePickerAttributes = HTMLAttributes<HTMLDivElement> & InputAttributesWithoutDispatch<number | string> & {
+    $hook?: TimePickerHook;
+    $mode?: "hms" | "hm" | "h" | "ms";
+    $dataType?: "number" | "string";
+    $unit?: "hour" | "minute" | "second" | "millisecond";
+    $hourInterval?: number;
+    $minuteInterval?: number;
+    $secondInterval?: number;
+    $border?: Omit<InputBorder, "under">;
+    $dispatch?: Dispatch<number> | Dispatch<string> | Dispatch<number | string>;
+    $clickPositive?: (value: string | number) => void | Promise<void>;
+    $positiveButtonLabel?: ReactNode;
+    $clickNegative?: () => void | Promise<void>;
+    $negativeButtonLabel?: ReactNode;
+    $changing?: (value: string | number) => void;
+};
+declare const TimePicker: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & InputAttributesWithoutDispatch<string | number, {}> & {
+    $hook?: TimePickerHook;
+    $mode?: "hms" | "hm" | "h" | "ms";
+    $dataType?: "number" | "string";
+    $unit?: "hour" | "minute" | "second" | "millisecond";
+    $hourInterval?: number;
+    $minuteInterval?: number;
+    $secondInterval?: number;
+    $border?: Omit<InputBorder, "under">;
+    $dispatch?: Dispatch<number> | Dispatch<string> | Dispatch<number | string>;
+    $clickPositive?: (value: string | number) => void | Promise<void>;
+    $positiveButtonLabel?: ReactNode;
+    $clickNegative?: () => void | Promise<void>;
+    $negativeButtonLabel?: ReactNode;
+    $changing?: (value: string | number) => void;
+} & React.RefAttributes<HTMLDivElement>>;
+export declare const useTimePicker: () => TimePickerHook;
+export default TimePicker;
