@@ -25,9 +25,9 @@ const Component: FC = () => {
 
   useEffect(() => {
     msg.append([
-      { title: "test info", messageTexts: "test info message", type: "info" },
-      { title: "test warning", messageTexts: "test warn message", type: "warning" },
-      { title: "test error", messageTexts: "test err message", type: "error" },
+      { title: "test info", body: "test info message", type: "info" },
+      { title: "test warning", body: "test warn message", type: "warning" },
+      { title: "test error", body: "test err message", type: "error" },
     ]);
   }, [msg]);
 
@@ -46,9 +46,9 @@ const Component: FC = () => {
     </Row>
     <Button $click={() => {
       msg.append([
-        { messageTexts: "test info message", type: "info" },
-        { title: "test warning", messageTexts: "test warn message", type: "warning" },
-        { title: "test error", messageTexts: "test err message", type: "error" },
+        { body: "test info message", type: "info" },
+        { title: "test warning", body: "test warn message", type: "warning" },
+        { title: "test error", body: "test err message", type: "error" },
       ]);
     }}>info</Button>
     <Button $click={() => {
