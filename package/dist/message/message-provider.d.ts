@@ -16,15 +16,15 @@ export declare type MessageContextProps = {
     getCounts: () => MessageCounts;
 };
 export declare const MessageContext: React.Context<MessageContextProps>;
-declare type MessageType = Signal | "info" | "error" | "";
-declare type Message = {
+export declare type MessageType = Signal | "info" | "error" | "";
+export declare type Message = {
     title?: string;
-    messageTexts?: string | Array<string>;
+    body?: string | Array<string>;
     type?: MessageType;
 };
 declare type _Message = {
     title?: string;
-    messageTexts: Array<string>;
+    body: Array<string>;
     type?: MessageType;
     verified: boolean;
     popuped: boolean;
@@ -33,7 +33,7 @@ declare type _Message = {
 };
 declare type ErrorMessage = {
     title: string;
-    messageTexts: string;
+    body: string;
 };
 export declare const MessageProvider: FC<{
     id?: string;
