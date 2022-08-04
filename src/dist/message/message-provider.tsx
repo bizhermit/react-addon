@@ -38,15 +38,15 @@ export const MessageContext = createContext<MessageContextProps>({
   }
 });
 
-type MessageType = Signal | "info" | "error" | "";
-type Message = {
+export type MessageType = Signal | "info" | "error" | "";
+export type Message = {
   title?: string;
-  messageTexts?: string | Array<string>;
+  body?: string | Array<string>;
   type?: MessageType;
 };
 type _Message = {
   title?: string;
-  messageTexts: Array<string>;
+  body: Array<string>;
   type?: MessageType;
   verified: boolean;
   popuped: boolean;
@@ -61,7 +61,7 @@ type MessageHistoryDispatch = {
 
 type ErrorMessage = {
   title: string;
-  messageTexts: string;
+  body: string;
 };
 
 export const MessageProvider: FC<{
@@ -89,7 +89,7 @@ export const MessageProvider: FC<{
     msgs.forEach(msg => {
       messages.current.push({
         title: msg.title,
-        messageTexts: StringUtils.isString(msg.messageTexts) ? [msg.messageTexts] : msg.messageTexts,
+        body: StringUtils.isString(msg.body) ? [msg.body] : msg.body,
         type: msg.type ?? "info",
         popuped: false,
         timestamp,
@@ -150,7 +150,7 @@ export const MessageProvider: FC<{
           } else {
             errMsg = props.errorMessage ?? {
               title: "システムエラー",
-              messageTexts: "システムエラーが発生しました",
+              body: "システムエラーが発生しました",
             };
           }
           append([{ ...errMsg, type: "error" }]);
@@ -390,7 +390,7 @@ const MessageHistory: FC<{
               {getTimeText(msg.timestamp)}
             </div>
             <pre className={`${cn}-hist_item_texts`}>
-              {msg.messageTexts.join("\n")}
+              {msg.body.join("\n")}
             </pre>
           </div>
         </div>
@@ -439,7 +439,7 @@ const MessageHistory: FC<{
         >
           <Icon $image={icon} $signal={signal}/>
           <pre className={`${cn}-popup_item_texts`}>
-            {msg.title ?? msg.messageTexts.join(" ")}
+            {msg.title ?? msg.body.join(" ")}
           </pre>
         </div>
       );
