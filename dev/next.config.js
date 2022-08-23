@@ -1,13 +1,13 @@
 /** @type {import('next').NextConfig} */
-const basePath = process.env.APP_BASE_PATH?.trim() ?? "/react-addon";
 const nextConfig = {
   reactStrictMode: true,
-  basePath,
+  swcMinify: true,
+  basePath: process.env.BASE_PATH,
   env: {
-    APP_BASE_PATH: basePath,
-    NEXT_PUBLIC_APP_BASE_PATH: basePath,
-    APP_PORT: 3003,
-  },
-};
+    BASE_PATH: process.env.BASE_PATH,
+    PORT: process.env.PORT,
+    API_BASE_PATH: process.env.BASE_PATH,
+  }
+}
 
 module.exports = nextConfig

@@ -1,65 +1,90 @@
 # Developer usage
 
-A development environment for dynamic web and desktop applications. Powered by [Next.js](https://nextjs.org/), [Express](https://expressjs.com/), [Electron](https://www.electronjs.org/) and others.  
+A development environment for web & desktop application. Powered by [Next.js](https://nextjs.org/), [Express](https://expressjs.com/), [Electron](https://www.electronjs.org/) and others.  
 
 The `./src/pages` directory is mapped **Page** URL.  
-The `./src/pages/signin.tsx` file is page of [http://localhost:8000/signin](http://localhost:8000/signin).  
-For desktop applications, it acts as the logic of the renderer process.  
-
 The `./src/pages/api` directory is mapped **API** URL.  
-The `./src/pages/api/signin.ts` is [http://localhost:8000/api/signin](http://localhost:8000/signin).  
-For desktop applications, it acts as the logic of the main process. Access it using `electron-accessor`.  
-
-When customizing environment variables, edit `./next.config.js`.  
-
-
-```js
-const basePath = "/myapp";
-const nextConfig = {
-  basePath,
-  env: {
-    APP_BASE_PATH: basePath,
-    NEXT_PUBLIC_APP_BASE_PATH: basePath,
-    APP_PORT: 3000,
-    ...(add more)
-  },
-};
-```
 
 lean more: [Next.js](https://nextjs.org/)  
 
-## Server
+---
 
-### debug
+## Next.js Server
+
+### Commands
+
+#### dev
 
 ```bash
-npm run server
+npm run dev
 ```
 
-### build
+#### prod
 
-```
+##### build
+
+```bash
 npm run build
 ```
 
-### start
+##### build & start
+
+```bash
+npm run next
+```
+
+#### export static
+
+```bash
+npm run export
+```
+---
+
+## Web Server
+
+### Commands
+
+#### dev
+
+```bash
+npm run nexpress
+```
+
+#### prod
 
 ```bash
 npm run start
 ```
+---
 
-## Desktop
+## Desktop Application
 
-### debug
+### Commands
+
+#### dev
 
 ```bash
-npm run desktop
+npm run nextron
 ```
 
-### generate installer
+#### build executable file
 
-#### for Windows
-
+```bash
+npm run pack
 ```
-npm run pack:win
+
+#### build installer
+
+```bash
+# for current work OS
+npm run dist
+
+# for Linux
+npm run dist:linux
+
+# for Windows
+npm run dist:win
+
+# for Mac
+npm run dist:mac
 ```

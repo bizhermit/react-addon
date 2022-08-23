@@ -18,13 +18,17 @@
     "strictNullChecks": false,
     "strict": true,
     "target": "esnext",
-    "outDir": "../main"
+    "rootDir": "../",
+    "outDir": "../.main"
   },
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules",
+    "../src/components",
+    "../src/hooks",
+    "../src/styles"
+  ],
   "include": [
     "**/*.ts",
-    "**/*.tsx",
-    "../src/**/*.ts",
-    "**/*.js"
+    "../src/**/*.ts"
   ]
 }

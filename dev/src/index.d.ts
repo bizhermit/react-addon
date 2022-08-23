@@ -1,19 +1,15 @@
-type Struct = { [key: string]: any };
+type Struct<T = any> = { [key: string]: T };
 type VoidFunc = () => void;
-type MessageType = "info" | "warn" | "err";
 type Message = {
-    type: MessageType;
-    title?: string;
-    message: string;
+  title?: string;
+  body: string | Array<string>;
+  type: MessageType;
 };
-type ArgMessageProps = {
-    message: string;
-    title?: string;
-};
+type MessageType = "info" | "error" | "warning" | "default" | "primary" | "secondary" | "deprecated";
 type FetchApiResponse<T = Struct> = {
-    data: T;
-    messages: Array<Message>;
-    hasInformation: () => boolean;
-    hasWarning: () => boolean;
-    hasError: () => boolean;
+  data: T;
+  messages: Array<Message>;
+  hasInformation: () => boolean;
+  hasWarning: () => boolean;
+  hasError: () => boolean;
 };

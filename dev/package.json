@@ -4,53 +4,66 @@
   "description": "",
   "repository": {
     "type": "git",
-    "ulr": ""
+    "url": ""
   },
-  "bugs": "",
   "author": "",
   "contributors": [],
-  "license": "MIT",
   "private": true,
   "scripts": {
-    "clean": "npx rimraf main src/.next src/out",
-    "license-check": "npx rimraf CREDIT && npx license -o CREDIT --returnError -exclude caniuse-lite",
-    "test": "npx next lint src",
-    "build-package": "npx rimraf react-addon && npx tsc -p tsconfig.json",
-    "server": "npm run clean && npm run build-package && npx tsc -p src-server/tsconfig.json && node main/src-server/index.js -dev",
-    "build": "npm run license-check && npm run clean && npx tsc -p src-server/tsconfig.json && npx minifier main && npx next build src",
-    "start": "node main/src-server/index.js",
-    "desktop": "npm run clean && npm run build-package && npx tsc -p src-desktop/tsconfig.json && npx electron main/src-desktop/index.js",
-    "_pack": "npm run license-check && npm run clean && npx rimraf build && npx tsc -p src-desktop/tsconfig.json && npx minifier main && set APP_BASE_PATH= && npx next build src && npx next export src && electron-builder --dir",
-    "pack:win": "npm run _pack -- --win"
+    "build-package": "npx rimraf src/libs/react-addon && npx tsc -p tsconfig.src.json",
+    "clean": "npx rimraf dist .nexpress .main .renderer .next node_modules",
+    "dev": "npx next dev -p 3000",
+    "build": "npx next build",
+    "next": "npm run build && npx next start -p 80",
+    "export": "npx rimraf dist/next && npm run build && npx next export -o dist/next",
+    "nexpress": "npx rimraf .next && npm run prestart && node .nexpress/main.js -d",
+    "prestart": "npx rimraf .nexpress && npx tsc -p nexpress/tsconfig.json && npm run build-package",
+    "start": "npm run build && node .nexpress/main.js",
+    "clean:nextron": "npx rimraf .main .renderer",
+    "nextron": "npx rimraf .next && npm run predist && npx electron .main/nextron/main.js",
+    "predist": "npm run clean:nextron -- dist/pack && npx tsc -p nextron/tsconfig.json",
+    "dist": "npm run build && npx next export -o .renderer && npx minifier .main && npx minifier .renderer && npx electron-builder",
+    "dist:linux": "npm run dist -- --linux & npm run clean:nextron",
+    "dist:win": "npm run dist -- --win & npm run clean:nextron",
+    "dist:mac": "npm run dist -- --mac & npm run clean:nextron",
+    "pack": "npm run dist -- --dir --win & npm run clean:nextron"
   },
   "dependencies": {
     "@bizhermit/basic-utils": "^2.0.0-rc.2",
     "@bizhermit/time": "^2.0.0-rc.0",
+    "cookie-parser": "^1.4.6",
+    "cookies-next": "^2.1.1",
+    "cors": "^2.8.5",
+    "csurf": "^1.11.0",
+    "dotenv": "^16.0.1",
     "electron-is-dev": "^2.0.0",
     "electron-next": "^3.1.5",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
     "fs-extra": "^10.1.0",
     "helmet": "^5.1.1",
-    "next": "^12.2.3",
+    "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@bizhermit/license": "^2.0.0-rc.2",
     "@bizhermit/minifier": "^2.0.0-rc.1",
+    "@types/cookie-parser": "^1.4.3",
+    "@types/cors": "^2.8.12",
+    "@types/csurf": "^1.11.2",
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
     "@types/express-session": "^1.17.5",
     "@types/fs-extra": "^9.0.13",
-    "@types/node": "^18.0.6",
-    "@types/react": "18.0.15",
+    "@types/node": "18.7.11",
+    "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
-    "electron": "^19.0.9",
-    "electron-builder": "^23.1.0",
-    "eslint": "8.20.0",
-    "eslint-config-next": "^12.2.3",
+    "electron": "^20.0.3",
+    "electron-builder": "^23.3.3",
+    "eslint": "8.22.0",
+    "eslint-config-next": "12.2.5",
     "rimraf": "^3.0.2",
-    "typescript": "^4.7.4"
+    "typescript": "4.7.4"
   },
   "build": {
     "appId": "com.bizhermit.dev",
@@ -58,14 +71,25 @@
     "asar": true,
     "extends": null,
     "extraMetadata": {
-      "main": "main/src-desktop/index.js"
+      "main": ".main/nextron/main.js"
     },
     "files": [
-      "main",
-      "src/out",
+      "!src",
+      "!nextron",
+      "!nexpress",
+      ".main/**/*",
+      ".renderer/**/*",
       "src/public"
     ],
     "extraFiles": [
+      {
+        "from": "resources",
+        "to": "resources",
+        "filter": [
+          "**/*",
+          "!config.json"
+        ]
+      },
       {
         "from": "LICENSE",
         "to": "LICENSE"
@@ -76,7 +100,7 @@
       }
     ],
     "directories": {
-      "output": "build"
+      "output": "dist/pack"
     },
     "win": {
       "icon": "src/public/favicon.ico",
@@ -91,10 +115,21 @@
       "icon": "src/public/favicon.ico",
       "target": "dmg"
     },
-    "linux": {},
+    "linux": {
+      "icon": "src/public/favicon.ico",
+      "target": [
+        "deb",
+        "rpm",
+        "snap",
+        "AppImage"
+      ],
+      "category": "Development"
+    },
     "nsis": {
       "oneClick": false,
-      "allowToChangeInstallationDirectory": true
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "src/public/favicon.ico",
+      "installerHeaderIcon": "src/public/favicon.ico"
     }
   },
   "browser": {
