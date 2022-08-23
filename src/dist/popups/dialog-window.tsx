@@ -426,6 +426,8 @@ const DialogWindowWrapper: FC<{
               >
                 <Icon $image="minus" />
               </div>
+            </>}
+            {attrs.$hideCloseButton ? <></> : <>
               <div
                 className={`${cn}-close`}
                 onClick={() => { con.close() }}
@@ -434,7 +436,6 @@ const DialogWindowWrapper: FC<{
                 <Icon $image="cross" />
               </div>
             </>}
-            {attrs.$hideCloseButton ? <></> : <></>}
           </div>
         }
         <MaskContainer
