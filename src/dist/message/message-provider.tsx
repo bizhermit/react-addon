@@ -404,10 +404,15 @@ const MessageHistory: FC<{
     };
   }, [histRev]);
 
-  const popupNodes = useMemo(() => {
+  const { popupNodes, popupMessages } = useMemo(() => {
     const nodes = [];
     const msgs = props.messages.filter(msg => !msg.popuped);
-    if (msgs.length === 0) return nodes;
+    if (msgs.length === 0) {
+      return {
+        popupNodes: nodes,
+        popupMessages: msgs,
+      };
+    }
     for (let i = 0, il = msgs.length; i < il; i++) {
       const msg = msgs[i];
       let signal: Signal;
@@ -443,9 +448,11 @@ const MessageHistory: FC<{
           </pre>
         </div>
       );
-      msg.popuped = true;
     };
-    return nodes;
+    return {
+      popupNodes: nodes,
+      popupMessages: msgs,
+    }
   }, [popupRev]);
 
   const clickPopup = () => {
@@ -466,6 +473,7 @@ const MessageHistory: FC<{
     if (popupNodes.length === 0) return;
     let actKey = true;
     setTimeout(() => {
+      popupMessages.forEach(msg => msg.popuped = true);
       if (!actKey) return;
       popupRef?.current.style.removeProperty("display");
       let rate = 100;
