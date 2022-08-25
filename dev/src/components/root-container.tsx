@@ -64,6 +64,7 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
       { id: "lst", label: "List", defaultOpened: true, pid: "el" },
       toMenuItem("listView", "ListView", "lst"),
       toMenuItem("pageableListView", "PageableListView", "lst"),
+      toMenuItem("listViewIconColumn", "IconColumn", "listView"),
       toMenuItem("listViewGroupColumn", "GroupColumn", "listView"),
       toMenuItem("listViewMultiStageColumn", "MultiStageColumn", "listView"),
       toMenuItem("listViewButtonColumn", "ButtonColumn", "listView"),

@@ -39,6 +39,7 @@ export type IconAttributes = HTMLAttributes<HTMLDivElement> & {
   $image?: IconImage;
   $spinR?: boolean;
   $spinL?: boolean;
+  $transition?: boolean;
 };
 
 const singleDivImages = ["users", "save-as", "sync", "graph-border", "history", "code", "calendar", "location", "clip", "lock", "unlock", "folder-check", "folder-add", "guard", "c-cross", "c-add", "document"];
@@ -57,6 +58,7 @@ const Icon = React.forwardRef<HTMLDivElement, IconAttributes>((attrs, ref) => {
       ref={ref}
       data-color={attrs.$color}
       data-spin={attrs.$spinR ? "r" : attrs.$spinL ? "l" : undefined}
+      data-transition={attrs.$transition}
     >
       {ArrayUtils.generateArray(iconChildCount(attrs.$image), i => <div key={i} className={cnc} />)}
       {IconStyle}
@@ -89,9 +91,16 @@ export const IconStyle = <JsxStyle id={cn}>{() => `
   width: 100%;
   cursor: inherit;
 }
-.${cn}::before, .${cn}::after,
-.${cnc}::before, .${cnc}::after {
+.${cn}::before, 
+.${cn}::after,
+.${cn} > .${cnc}::before,
+.${cn} > .${cnc}::after {
   ${CssPV.ba}
+}
+.${cn}[data-transition="true"]::before, 
+.${cn}[data-transition="true"]::after,
+.${cn}[data-transition="true"] > .${cnc}::before,
+.${cn}[data-transition="true"] > .${cnc}::after {
   transition: background 0.1s, border-color 0.1s;
 }
 .${cn}[data-spin="r"] {
