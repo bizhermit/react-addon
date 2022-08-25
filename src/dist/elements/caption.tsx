@@ -1,6 +1,6 @@
 import StringUtils from "@bizhermit/basic-utils/dist/string-utils";
 import React, { FC, HTMLAttributes, ReactNode } from "react";
-import CssVar, { CssPV, Signal, signalIterator } from "../styles/css-var";
+import CssVar, { CssPV, Color, colorIterator } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributesWithoutChildren } from "../utils/attributes";
 import Label from "./label";
@@ -8,7 +8,7 @@ import Label from "./label";
 const cn = "bh-cap";
 
 const Caption: FC<HTMLAttributes<HTMLDivElement> & {
-  $signal?: Signal;
+  $color?: Color;
   $label?: ReactNode;
   $width?: number | string;
   $flow?: "row" | "column";
@@ -17,7 +17,7 @@ const Caption: FC<HTMLAttributes<HTMLDivElement> & {
   return (
     <div
       {...attributesWithoutChildren(attrs, cn)}
-      data-signal={attrs.$signal}
+      data-color={attrs.$color}
       data-flow={attrs.$flow ?? "row"}
       data-border={attrs.$border}
     >
@@ -71,7 +71,7 @@ const Style = <JsxStyle id={cn}>{() => `
 .${cn}[data-border="true"] {
   border: 1px solid ${CssVar.bdc};
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-lbl {
   color: ${v.fc};
 }

@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { createRef, useState } from "react";
-import { Signal, signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { Color, colorIterator } from "../../../react-addon/dist/styles/css-var";
 import Button from "../../../react-addon/dist/elements/button";
 import Caption from "../../../react-addon/dist/elements/caption";
 import FlexBox from "../../../react-addon/dist/elements/flex-box";
@@ -14,7 +14,7 @@ import TabContainer, { TabContentFC, TabContentWrapper, useTabContainer } from "
 const TabContainerPage: NextPage = () => {
   const [count, setCount] = useState(0);
   const [calcTabWidth, setCalcTabWidth] = useState(false);
-  const [signal, setSignal] = useState<Signal>();
+  const [color, setColor] = useState<Color>();
   const [nav, setNav] = useState(false);
   const tabContainerHook = useTabContainer();
   const ref = createRef<HTMLDivElement>();
@@ -49,15 +49,15 @@ const TabContainerPage: NextPage = () => {
           $source={[{
             value: null,
             label: `unset`,
-          }, ...(signalIterator(s => {
+          }, ...(colorIterator(s => {
             return {
               value: s,
               label: s,
-              signal: s,
+              color: s,
             }
           }))]}
-          $value={signal}
-          $dispatch={setSignal}
+          $value={color}
+          $dispatch={setColor}
         />
       </Row>
       <TabContainer
@@ -65,7 +65,7 @@ const TabContainerPage: NextPage = () => {
         $fto="fy"
         $hook={tabContainerHook}
         $calcTabWidth={calcTabWidth}
-        $signal={signal}
+        $color={color}
         $navigationBackgroundColor={nav}
       >
         <div key={1} title="タブ１">
@@ -90,7 +90,7 @@ const TabContainerPage: NextPage = () => {
               <Label $type="h4">Lock</Label>
             </FlexBox>
           }
-          $signal="secondary"
+          $color="secondary"
         >
           <h1>hoge</h1>
           <h2>fuga</h2>
@@ -101,7 +101,7 @@ const TabContainerPage: NextPage = () => {
             <Icon $image="heart" />
             <Label $type="h4">WISH</Label>
           </>}
-          $signal="primary"
+          $color="primary"
         >
           hoge
           hoge
@@ -110,9 +110,9 @@ const TabContainerPage: NextPage = () => {
         <TabContent
           key={5}
           title={<>
-            <Icon $image="gear" $spinR $signal="danger" />
+            <Icon $image="gear" $spinR $color="danger" />
           </>}
-          // $signal="danger"
+          // $color="danger"
           callback={() => {
             console.log("callback");
           }}

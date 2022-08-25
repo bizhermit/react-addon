@@ -1,7 +1,7 @@
 import ArrayUtils from "@bizhermit/basic-utils/dist/array-utils";
 import { NextPage } from "next";
 import { createRef } from "react";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 import Label from "../../../react-addon/dist/elements/label";
 
 const LabelPage: NextPage = () => {
@@ -9,7 +9,7 @@ const LabelPage: NextPage = () => {
 
   return (
     <>
-      {/* <ExtraLabel bold wrap type="h1" signal="warning"> */}
+      {/* <ExtraLabel bold wrap type="h1" color="warning"> */}
       <Label $nowrap ref={eref} onClick={() => {
         console.log("click", eref.current);
       }} onMouseEnter={() => {
@@ -18,8 +18,8 @@ const LabelPage: NextPage = () => {
         console.log("leave", eref.current);
       }}>hoge</Label>
       {/* </ExtraLabel> */}
-      {signalIterator((s) => {
-        return <Label key={s} $signal={s}>{`label ${s}`}</Label>;
+      {colorIterator((s) => {
+        return <Label key={s} $color={s}>{`label ${s}`}</Label>;
       })}
       <Label $bold>Bold</Label>
       <Label $type="a">Link</Label>

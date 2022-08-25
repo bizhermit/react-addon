@@ -1,7 +1,7 @@
 import React from "react";
 import DatetimeUtils from "@bizhermit/basic-utils/dist/datetime-utils";
 import StringUtils from "@bizhermit/basic-utils/dist/string-utils";
-import CssVar, { CssPV, Signal, signalIterator } from "../../../styles/css-var";
+import CssVar, { CssPV, Color, colorIterator } from "../../../styles/css-var";
 import { ListViewClass, listViewCn, ListViewColumnFunction } from "../list-view";
 import JsxStyle from "../../../styles/jsx-style";
 import { cloneDomElement, getDomEventManager } from "../../../utils/dom";
@@ -17,7 +17,7 @@ type GanttChartColumnData = {
   rateDataName?: string;
   barClassName?: string;
   disabled?: boolean;
-  defaultSignal?: Signal;
+  defaultColor?: Color;
 };
 
 type GanttChartUnit = "day" | "week" | "month";
@@ -40,7 +40,7 @@ type GanttChartStruct = {
   barLabel: string;
   diff: number;
   title: string;
-  signal: Signal;
+  color: Color;
 };
 
 const ListViewGanttChartColumn: ListViewColumnFunction<{
@@ -57,11 +57,11 @@ const ListViewGanttChartColumn: ListViewColumnFunction<{
   progressLine?: boolean;
   unit?: GanttChartUnit;
   barTitleFormat?: (params: { from: Date; to: Date; length: number; }) => string;
-  defaultSignal?: Signal;
+  defaultColor?: Color;
 }> = (props) => {
   const dcWidth = props.dateCellWidth ?? 30;
   const unit = props.unit ?? "day";
-  const defaultSignal = props.defaultSignal ?? "default";
+  const defaultColor = props.defaultColor ?? "default";
   const showProgressLine = props.progressLine !== false;
   const termFrom = DatetimeUtils.removeTime(DatetimeUtils.copy(props.term.from)), termTo = DatetimeUtils.removeTime(DatetimeUtils.copy(props.term.to));
   let barTitleFormat = props.barTitleFormat, disabled = props.disabled === true;
@@ -158,7 +158,7 @@ const ListViewGanttChartColumn: ListViewColumnFunction<{
       barLabel: dn.barLabelDataName == null ? "" : (data[dn.barLabelDataName] ?? ""),
       diff,
       title,
-      signal: dn.defaultSignal ?? defaultSignal,
+      color: dn.defaultColor ?? defaultColor,
     } as GanttChartStruct;
   };
   const convertDateToData = (date: Date) => {
@@ -338,7 +338,7 @@ const ListViewGanttChartColumn: ListViewColumnFunction<{
           elem.style.visibility = "hidden";
           elem.classList.add(`${cn}-bar_wrap`);
           elem.setAttribute("data-name", "bar");
-          elem.setAttribute("data-signal", defaultSignal);
+          elem.setAttribute("data-color", defaultColor);
           elem.appendChild(cloneDomElement(div, elem => elem.classList.add(`${cn}-bar`)));
         }),
         barLabelElement: cloneDomElement(div, (elem) => elem.classList.add(`${cn}-bar_lbl`)),
@@ -555,7 +555,7 @@ const ListViewGanttChartColumn: ListViewColumnFunction<{
         if (notSameTitle) belem.title = d.title;
         if (cell.cache[dn].active !== a) belem.setAttribute("data-active", String(cell.cache[dn].active = a));
         if (cell.cache[dn].label !== d.barLabel) cell.contentElements[i * 5 + 3].textContent = cell.cache[dn].label = d.barLabel;
-        if (cell.cache[dn].signal !== d.signal) belem.setAttribute("data-signal", cell.cache[dn].signal = d.signal);
+        if (cell.cache[dn].color !== d.color) belem.setAttribute("data-color", cell.cache[dn].color = d.color);
         if (showProgressLine) {
           const plelem = cell.contentElements[i * 5 + 4];
           if (cell.cache[dn].diff !== d.diff) {
@@ -919,7 +919,7 @@ ${design ? `
 .${cn}-bar_wrap[data-active="true"] > .${cn}-bar {
   filter: drop-shadow(0 0 1px ${CssVar.sdw.c});
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}-bar_wrap${qs} > .${cn}-bar,
 .${cn}-bar_wrap${qs} > .${cn}-bar::before,
 .${cn}-bar_wrap${qs} > .${cn}-bar::after {

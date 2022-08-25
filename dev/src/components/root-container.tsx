@@ -100,7 +100,7 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
     <>
     <NavigationContainer $fto="fy" $hook={navHook}>
       <Navigation
-        $signal="default"
+        $color="default"
         $mode={layout.screenSize > ScreenSize.medium ? "visible" : "manual"}
         $edgeSize={60}
         style={{ alignItems: "flex-start" }}
@@ -115,7 +115,7 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
       <Row $fill style={{ background: CssVar.default.nav.bgc, color: CssVar.default.nav.fc }}>
           {layout.screenSize > ScreenSize.medium ? <></> : 
             <Button
-              $signal="default"
+              $color="default"
               $borderless
               $icon={opened ? "cross" : "hamburger"}
               $click={() => {

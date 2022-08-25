@@ -1,6 +1,6 @@
 import StringUtils from "@bizhermit/basic-utils/dist/string-utils";
 import React, { createContext, FC, ReactNode, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import CssVar, { CssPV, Signal, signalIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, Color, colorIterator, switchDesign } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import Button from "../elements/button";
 import Icon from "../elements/icon";
@@ -38,7 +38,7 @@ export const MessageContext = createContext<MessageContextProps>({
   }
 });
 
-export type MessageType = Signal | "info" | "error" | "";
+export type MessageType = Color | "info" | "error" | "";
 export type Message = {
   title?: string;
   body?: string | Array<string>;
@@ -338,27 +338,27 @@ const MessageHistory: FC<{
     const nodes = [];
     for (let i = msgs.length - 1; i >= 0; i--) {
       const msg = msgs[i];
-      let signal: Signal;
+      let color: Color;
       let icon: "information" | "error" | "warning";
       switch (msg.type) {
         case "danger":
         case "error":
-          signal = "danger";
+          color = "danger";
           icon = "error";
           err++;
           break;
         case "warning":
-          signal = "warning";
+          color = "warning";
           icon = "warning";
           warn++;
           break;
         case "info":
-          signal = "default";
+          color = "default";
           icon = "information";
           info++;
           break;
         default:
-          signal = msg.type || "default";
+          color = msg.type || "default";
           icon = "information";
           info++;
           break;
@@ -367,18 +367,18 @@ const MessageHistory: FC<{
         <div
           key={msg.key}
           className={`${cn}-hist_item`}
-          data-signal={signal}
+          data-color={color}
           data-verified={msg.verified}
         >
           <div className={`${cn}-hist_item_header`}>
-            <Icon $image={icon} $signal={signal} />
+            <Icon $image={icon} $color={color} />
             <div className={`${cn}-hist_item_title`}>
               <Label $bold $type="h3">{msg.title}</Label>
             </div>
             <Button
               $transparent
               $icon="delete"
-              $signal="danger"
+              $color="danger"
               $click={() => {
                 props.messages.splice(i, 1);
                 setHistRev(c => c+1);
@@ -415,24 +415,24 @@ const MessageHistory: FC<{
     }
     for (let i = 0, il = msgs.length; i < il; i++) {
       const msg = msgs[i];
-      let signal: Signal;
+      let color: Color;
       let icon: "information" | "error" | "warning";
       switch (msg.type) {
         case "danger":
         case "error":
-          signal = "danger";
+          color = "danger";
           icon = "error";
           break;
         case "warning":
-          signal = "warning";
+          color = "warning";
           icon = "warning";
           break;
         case "info":
-          signal = "default";
+          color = "default";
           icon = "information";
           break;
         default:
-          signal = msg.type || "default";
+          color = msg.type || "default";
           icon = "information";
           break;
       }
@@ -440,9 +440,9 @@ const MessageHistory: FC<{
         <div
           key={msg.key}
           className={`${cn}-popup_item`}
-          data-signal={signal}
+          data-color={color}
         >
-          <Icon $image={icon} $signal={signal}/>
+          <Icon $image={icon} $color={color}/>
           <pre className={`${cn}-popup_item_texts`}>
             {msg.title ?? msg.body.join(" ")}
           </pre>
@@ -525,13 +525,13 @@ const MessageHistory: FC<{
             }
             {ctx.warn > 0 ?
               <>
-                <Icon $image="warning" $signal="warning" />
+                <Icon $image="warning" $color="warning" />
                 <Label>{ctx.warn}</Label>
               </> : <></>
             }
             {ctx.err > 0 ?
               <>
-                <Icon $image="error" $signal="danger" />
+                <Icon $image="error" $color="danger" />
                 <Label>{ctx.err}</Label>
               </> : <></>
             }
@@ -540,7 +540,7 @@ const MessageHistory: FC<{
             <Button
               $icon="delete"
               $transparent
-              $signal="danger"
+              $color="danger"
               $click={() => {
                 props.messages.splice(0, props.messages.length);
                 setHistRev(c => c+1);
@@ -733,7 +733,7 @@ neumorphism: `box-shadow: ${CssPV.cvxSdS};`,
 }
 ${switchDesign(design, {
 c: `
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}-hist_item${qs} {
   border-color: ${v.bdc};
   background: ${CssVar.bgc};

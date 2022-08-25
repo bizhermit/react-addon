@@ -1,6 +1,6 @@
 import React, {ForwardedRef, FunctionComponent, HTMLAttributes, ReactElement, useCallback, useEffect, useRef } from "react";
 import useValue, { equalValue, InputAttributes } from "../../hooks/value";
-import CssVar, { CssPV, signalIterator, switchDesign } from "../../styles/css-var";
+import CssVar, { CssPV, colorIterator, switchDesign } from "../../styles/css-var";
 import InputStyle, { inputCn } from "../../styles/input-style";
 import JsxStyle from "../../styles/jsx-style";
 import { pressPositiveKey } from "../../utils/dom";
@@ -177,7 +177,7 @@ fm: `
   border-width: 2px;
   border-style: solid;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body::before {
   border-color: ${v.ipt.bdc};
 }
@@ -222,7 +222,7 @@ neumorphism: `
 .${cn}[data-m="d"] .${cn}-body > .${cn}-switch::before {
   box-shadow: ${CssPV.cvxSdS};
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body[data-checked="true"]::before {
   background: ${v.ipt.on};
 }`).join("")}`})}

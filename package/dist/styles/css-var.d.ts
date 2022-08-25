@@ -86,7 +86,7 @@ declare const CssVar: {
     secondary: CssSignalVar;
     warning: CssSignalVar;
     danger: CssSignalVar;
-    deprecated: CssSignalVar;
+    disabled: CssSignalVar;
     week: {
         sun: {
             fc: string;

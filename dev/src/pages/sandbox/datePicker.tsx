@@ -7,7 +7,7 @@ import ToggleBox from "../../../react-addon/dist/elements/inputs/toggle-box";
 import Label from "../../../react-addon/dist/elements/label";
 import Row from "../../../react-addon/dist/elements/row";
 import RadioButtons from "../../../react-addon/dist/elements/inputs/radio-buttons";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 import { InputBorder } from "../../../react-addon/dist/styles/input-style";
 
 const DatePickerPage: NextPage = () => {
@@ -98,11 +98,11 @@ const DatePickerPage: NextPage = () => {
       <Label>{value}</Label>
     </Caption>
     <Row $fill>
-      {signalIterator(s => {
+      {colorIterator(s => {
         return (
           <DatePicker
             key={s}
-            $signal={s}
+            $color={s}
             $readOnly={readOnly}
             $disabled={disabled}
             $border={border}

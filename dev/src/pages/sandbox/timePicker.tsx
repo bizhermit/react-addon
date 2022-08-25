@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { createRef, useState } from "react";
 import TimePicker, { useTimePicker } from "../../../react-addon/dist/elements/inputs/time-picker";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 import Button from "../../../react-addon/dist/elements/button";
 import Caption from "../../../react-addon/dist/elements/caption";
 import ToggleBox from "../../../react-addon/dist/elements/inputs/toggle-box";
@@ -98,11 +98,11 @@ const TimePickerPage: NextPage = () => {
       <Label>{value}</Label>
     </Caption>
     <Row $fill>
-      {signalIterator(s => {
+      {colorIterator(s => {
         return (
           <TimePicker
             key={s}
-            $signal={s}
+            $color={s}
             $readOnly={readOnly}
             $disabled={disabled}
             $border={border}

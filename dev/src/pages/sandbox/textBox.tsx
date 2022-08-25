@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { createRef, useState } from "react";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 import Button from "../../../react-addon/dist/elements/button";
 import Caption from "../../../react-addon/dist/elements/caption";
 import FlexBox from "../../../react-addon/dist/elements/flex-box";
@@ -137,7 +137,7 @@ const TextBoxPage: NextPage = () => {
             placeholder="placeholder"
             $round
           >
-            <Button $icon="signin" $round $signal="default" $click={() => {
+            <Button $icon="signin" $round $color="default" $click={() => {
               console.log(ref.current);
               console.log("TextBox addin Button", eref.current);
             }} />
@@ -148,30 +148,30 @@ const TextBoxPage: NextPage = () => {
         <Label>{value}</Label>
       </Caption>
       <FlexBox>
-        {signalIterator((s) => {
+        {colorIterator((s) => {
           return (
             <FlexBox $row key={s}>
               {/* <Label>{s}</Label> */}
               <Row>
                 <TextBox
-                  $signal={s}
+                  $color={s}
                   $disabled={disabled}
                   $readOnly={readOnly}
                   $border={border}
                   // placeholder={s.toUpperCase()}
                   $placeholder={s}
                 >
-                  <Button $signal={s} $icon="signin" />
+                  <Button $color={s} $icon="signin" />
                 </TextBox>
                 <TextBox
-                  $signal={s}
+                  $color={s}
                   $disabled={disabled}
                   $readOnly={readOnly}
                   // $value={s}
                   $border={border}
                   placeholder={s}
                 >
-                  <Button $signal={s} $transparent $icon="signin"></Button>
+                  <Button $color={s} $transparent $icon="signin"></Button>
                 </TextBox>
               </Row>
             </FlexBox>

@@ -13,7 +13,7 @@ export const inputAttributes = (attrs: { [key: string]: any }, ...cns: Array<str
     delete retAttrs["tabIndex"];
   }
   retAttrs.className = `${inputCn} ${retAttrs.className ?? ""}`;
-  retAttrs["data-signal"] = attrs.$signal ?? "default";
+  retAttrs["data-color"] = attrs.$color ?? "default";
   retAttrs["data-m"] = inputMode(attrs);
   if (attrs.$placeholder) retAttrs["data-placeholder"] = attrs.$placeholder;
   return retAttrs;

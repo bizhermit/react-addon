@@ -6,7 +6,7 @@ import Caption from "../../../react-addon/dist/elements/caption";
 import ToggleBox from "../../../react-addon/dist/elements/inputs/toggle-box";
 import Row from "../../../react-addon/dist/elements/row";
 import Label from "../../../react-addon/dist/elements/label";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 
 const SliderPage: NextPage = () => {
   const ref = createRef<HTMLDivElement>();
@@ -77,8 +77,8 @@ const SliderPage: NextPage = () => {
       <Label>{String(value)}</Label>
     </Caption>
     <Row>
-      {signalIterator(s => {
-        return <Slider key={s} $signal={s} $defaultValue={50} $disabled={disabled} $readOnly={readOnly} $resize={resize} />
+      {colorIterator(s => {
+        return <Slider key={s} $color={s} $defaultValue={50} $disabled={disabled} $readOnly={readOnly} $resize={resize} />
       })}
     </Row>
     </>

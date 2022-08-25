@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { createRef, useState } from "react";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 import Button from "../../../react-addon/dist/elements/button";
 import Caption from "../../../react-addon/dist/elements/caption";
 import ToggleBox, { useToggleBox } from "../../../react-addon/dist/elements/inputs/toggle-box";
@@ -69,11 +69,11 @@ const ToggleBoxPage: NextPage = () => {
       <Label>{String(value)}</Label>
     </Caption>
     <Row>
-      {signalIterator(s => {
+      {colorIterator(s => {
         return (
           <ToggleBox
             key={s}
-            $signal={s}
+            $color={s}
             $disabled={disabled}
             $readOnly={readOnly}
           />

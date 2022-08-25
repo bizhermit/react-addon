@@ -4,7 +4,7 @@ import { createRef, CSSProperties } from "react";
 import FlexBox from "../../../react-addon/dist/elements/flex-box";
 import Label from "../../../react-addon/dist/elements/label";
 import Row from "../../../react-addon/dist/elements/row";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 
 const FlexBoxPage: NextPage = () => {
   const commonStyle: CSSProperties = {
@@ -123,13 +123,13 @@ const FlexBoxPage: NextPage = () => {
         </FlexBox>
       </FlexBox>
       <FlexBox style={{ marginLeft: 5 }}>
-        <Label $type="h2">Signal-Color</Label>
-        {signalIterator(s => {
+        <Label $type="h2">Color-Color</Label>
+        {colorIterator(s => {
           return (
             <FlexBox key={s}>
               <Label $type="h3">{s}</Label>
               <Row>
-                <FlexBox style={{...commonStyle, marginLeft: 5 }} $signal={s} $padding>{s}</FlexBox>
+                <FlexBox style={{...commonStyle, marginLeft: 5 }} $color={s} $padding>{s}</FlexBox>
                 <FlexBox style={{...commonStyle, marginLeft: 5 }} $color={s}>{s}</FlexBox>
                 <FlexBox style={{...commonStyle, marginLeft: 5 }} $border={s}>{s}</FlexBox>
               </Row>

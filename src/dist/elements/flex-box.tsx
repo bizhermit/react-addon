@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from "react";
 import { sbCn } from "../styles/core-style";
-import CssVar, { CssPV, FitToOuter, Signal, signalIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, FitToOuter, Color, colorIterator, switchDesign } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributes, dBool, dPosX, dPosY, ftoCn } from "../utils/attributes";
 
@@ -21,9 +21,8 @@ export type FlexBoxAttributes = HTMLAttributes<HTMLDivElement> & {
   $radius?: boolean;
   $scroll?: boolean;
   $padding?: boolean;
-  $signal?: Signal;
-  $border?: boolean | Signal;
-  $color?: Signal;
+  $border?: boolean | Color;
+  $color?: Color;
 };
 
 const FlexBox = React.forwardRef<HTMLDivElement, FlexBoxAttributes>((attrs, ref) => {
@@ -36,8 +35,8 @@ const FlexBox = React.forwardRef<HTMLDivElement, FlexBoxAttributes>((attrs, ref)
         data-wrap={dBool(attrs.$wrap)}
         data-posx={dPosX(attrs.$left, attrs.$center, attrs.$right) ?? "l"}
         data-posy={dPosY(attrs.$top, attrs.$middle, attrs.$bottom) ?? "t"}
-        data-border={attrs.$border ?? attrs.$signal}
-        data-color={attrs.$color ?? attrs.$signal}
+        data-border={attrs.$border ?? attrs.$color}
+        data-color={attrs.$color ?? attrs.$color}
         data-shadow={attrs.$shadow}
         data-radius={attrs.$radius}
         data-padding={attrs.$padding}
@@ -105,7 +104,7 @@ neumorphism: `box-shadow: ${CssPV.cvxSd};`,
 .${cn}[data-padding="true"] {
   padding: ${CssVar.pdy} ${CssVar.pdx};
 }
-${signalIterator((s, v) => `
+${colorIterator((s, v) => `
 .${cn}[data-border="${s}"] {
   border: 1px solid ${v.bdc};
 }

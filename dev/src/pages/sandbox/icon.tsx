@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { createRef, useEffect, useMemo, useState } from "react";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 import Button from "../../../react-addon/dist/elements/button";
 import Caption from "../../../react-addon/dist/elements/caption";
 import FlexBox from "../../../react-addon/dist/elements/flex-box";
@@ -153,13 +153,13 @@ const IconPage: NextPage = () => {
           return (
             <Caption key={icon} $label={icon} $width={150}>
               <Icon $image={icon} />
-              {signalIterator(s => {
-                return <Icon key={s} $image={icon} $signal={s} />;
+              {colorIterator(s => {
+                return <Icon key={s} $image={icon} $color={s} />;
               })}
               <Button $icon={{ $image: icon }} />
               <Button $transparent $icon={{ $image: icon }} />
-              <Button $transparent $icon={{ $image: icon }} $signal="primary" />
-              <Button $icon={{ $image: icon, $signal: "danger" }} $fillLabel style={{ width: 200 }}>ボタン</Button>
+              <Button $transparent $icon={{ $image: icon }} $color="primary" />
+              <Button $icon={{ $image: icon, $color: "danger" }} $fillLabel style={{ width: 200 }}>ボタン</Button>
               <Icon $image={icon} $spinR />
               <Icon $image={icon} $spinL />
             </Caption>

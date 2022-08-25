@@ -2,7 +2,7 @@ import Time, { TimeUtils } from "@bizhermit/time";
 import React, { Dispatch, HTMLAttributes, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import useValue, { InputAttributesWithoutDispatch } from "../../hooks/value";
 import { sbCn } from "../../styles/core-style";
-import CssVar, { CssPV, signalIterator, switchDesign } from "../../styles/css-var";
+import CssVar, { CssPV, colorIterator, switchDesign } from "../../styles/css-var";
 import InputStyle, { InputBorder, inputCn } from "../../styles/input-style";
 import JsxStyle from "../../styles/jsx-style";
 import { _HookSetter } from "../../utils/hook";
@@ -402,7 +402,7 @@ fm: `
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body {
   color: ${v.ipt.fc};
 }
@@ -428,7 +428,7 @@ neumorphism: `
 .${cn}[data-m="d"] .${cn}-cell[data-selected="true"] {
   box-shadow: ${CssPV.ccvSdS};
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body {
   color: ${v.ipt.fc};
 }

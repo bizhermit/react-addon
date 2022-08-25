@@ -1,7 +1,7 @@
 import React from "react";
 import { buttonCn } from "../elements/button";
 import { iconCn } from "../elements/icon";
-import CssVar, { CssPV, signalIterator, switchDesign } from "./css-var";
+import CssVar, { CssPV, colorIterator, switchDesign } from "./css-var";
 import JsxStyle from "./jsx-style";
 
 export const inputCn = "bh-ipt";
@@ -131,7 +131,7 @@ c: `height: calc(100% - ${CssVar.pdy} * 2 - ${CssVar.phsize});`,
 .${inputCn} textarea[data-align="right"] {
   text-align: right;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${inputCn}${qs}::after {
   color: ${v.fc};
 }
@@ -148,7 +148,7 @@ fm: `
 .${inputCn}[data-t="f"][data-border="round"]::before {
   border-radius: ${CssVar.bdr};
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${inputCn}${qs}[data-t="f"][data-border="under"]::before {
   border-bottom: 1px solid ${v.ipt.bdc};
   border-right: 1px solid transparent !important;
@@ -240,7 +240,7 @@ material: `box-shadow: 0px 3px 4px -2px ${CssVar.sdw.c};`,
 }
 ${switchDesign(design, {
 fm: `
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${inputCn}${qs} .${inputCn}_btn {
   color: ${v.fc};
 }
@@ -296,7 +296,7 @@ neumorphism: `
 .${inputCn} .${buttonCn}:hover > .${buttonCn}-body {
   background: ${CssVar.bgc} !important;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${inputCn}${qs} .${inputCn}_btn {
   color: ${v.fc};
   background: ${v.ipt.bgc};

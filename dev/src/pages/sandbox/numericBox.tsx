@@ -7,7 +7,7 @@ import FlexBox from "../../../react-addon/dist/elements/flex-box";
 import ToggleBox from "../../../react-addon/dist/elements/inputs/toggle-box";
 import Row from "../../../react-addon/dist/elements/row";
 import Label from "../../../react-addon/dist/elements/label";
-import { CssPV, signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { CssPV, colorIterator } from "../../../react-addon/dist/styles/css-var";
 import { InputBorder } from "../../../react-addon/dist/styles/input-style";
 import RadioButtons from "../../../react-addon/dist/elements/inputs/radio-buttons";
 
@@ -115,11 +115,11 @@ const NumericBoxPage: NextPage = () => {
         <Label>{value}</Label>
       </Caption>
       <FlexBox>
-        {signalIterator((s) => {
+        {colorIterator((s) => {
           return (
             <FlexBox $row key={s}>
               <NumericBox
-                $signal={s}
+                $color={s}
                 $disabled={disabled}
                 $readOnly={readOnly}
                 $border={border}

@@ -1,6 +1,6 @@
 import React, { ForwardedRef, FunctionComponent, HTMLAttributes, ReactElement, useCallback, useEffect, useRef } from "react";
 import useValue, { equalValue, InputAttributes } from "../../hooks/value";
-import CssVar, { CssPV, signalIterator, switchDesign } from "../../styles/css-var";
+import CssVar, { CssPV, colorIterator, switchDesign } from "../../styles/css-var";
 import InputStyle from "../../styles/input-style";
 import JsxStyle from "../../styles/jsx-style";
 import { pressPositiveKey } from "../../utils/dom";
@@ -132,7 +132,7 @@ neumorphism: `
 .${cn}[data-m="e"] > .${cn}-body:hover > .${checkBoxCn}::before {
   box-shadow: ${CssPV.ccvSdD};
 }`})}
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 ${switchDesign(design, {
 fm: `
 .${cn}${qs} > .${cn}-body > .${checkBoxCn}::before {

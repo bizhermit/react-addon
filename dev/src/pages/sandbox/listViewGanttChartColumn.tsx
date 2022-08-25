@@ -141,14 +141,14 @@ const Page: NextPage = () => {
         barLabelDataName: "label",
         disabled: true,
         rateDataName: "slider",
-        defaultSignal: "secondary",
+        defaultColor: "secondary",
       }, {
         dataName: "resultDate",
         fromDataName: "resultFrom",
         toDataName: "resultTo",
         barClassName: "chart-bar-result",
         barLabelDataName: "slider_label",
-        defaultSignal: "primary",
+        defaultColor: "primary",
       }],
     }));
     return cols;

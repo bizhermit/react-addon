@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { createRef, useState } from "react";
 import SelectBox, { useSelectBox } from "../../../react-addon/dist/elements/inputs/select-box";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 import Button from "../../../react-addon/dist/elements/button";
 import Caption from "../../../react-addon/dist/elements/caption";
 import ToggleBox from "../../../react-addon/dist/elements/inputs/toggle-box";
@@ -123,11 +123,11 @@ const SelectBoxPage: NextPage = () => {
     <Caption $label="Value" $width={100}>
       <Label>{value}</Label>
     </Caption>
-    {signalIterator(s => {
+    {colorIterator(s => {
       return (
         <Row key={s}>
           <SelectBox
-            $signal={s}
+            $color={s}
             $disabled={disabled}
             $readOnly={readOnly}
             $border={border}

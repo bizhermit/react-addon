@@ -1,6 +1,6 @@
 import ArrayUtils from "@bizhermit/basic-utils/dist/array-utils";
 import React, { HTMLAttributes } from "react";
-import CssVar, { CssPV, Signal, signalIterator } from "../styles/css-var";
+import CssVar, { CssPV, Color, colorIterator } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributes } from "../utils/attributes";
 
@@ -35,7 +35,7 @@ export type IconImage = "" | "favicon"
   ;
 
 export type IconAttributes = HTMLAttributes<HTMLDivElement> & {
-  $signal?: Signal;
+  $color?: Color;
   $image?: IconImage;
   $spinR?: boolean;
   $spinL?: boolean;
@@ -55,7 +55,7 @@ const Icon = React.forwardRef<HTMLDivElement, IconAttributes>((attrs, ref) => {
     <div
       {...attributes(attrs, cn, `${cn}-${attrs.$image}`)}
       ref={ref}
-      data-signal={attrs.$signal}
+      data-color={attrs.$color}
       data-spin={attrs.$spinR ? "r" : attrs.$spinL ? "l" : undefined}
     >
       {ArrayUtils.generateArray(iconChildCount(attrs.$image), i => <div key={i} className={cnc} />)}
@@ -106,7 +106,7 @@ export const IconStyle = <JsxStyle id={cn}>{() => `
   0% { transform: rotate(0deg); }
   100% { transform: rotate(-360deg); }
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} {
   --bh-icon-fc: ${v.fc} !important;
 }`).join("")}

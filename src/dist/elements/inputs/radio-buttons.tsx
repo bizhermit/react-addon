@@ -2,7 +2,7 @@ import StringUtils from "@bizhermit/basic-utils/dist/string-utils";
 import React, { HTMLAttributes, ReactNode, useRef, useEffect, KeyboardEvent, useMemo, ForwardedRef, FunctionComponent, ReactElement, useCallback, useImperativeHandle } from "react";
 import useSource, { SourceArray } from "../../hooks/source";
 import useValue, { equalValue, InputAttributes } from "../../hooks/value";
-import CssVar, { CssPV, Signal, signalIterator, switchDesign } from "../../styles/css-var";
+import CssVar, { CssPV, Color, colorIterator, switchDesign } from "../../styles/css-var";
 import InputStyle, { inputCn } from "../../styles/input-style";
 import JsxStyle from "../../styles/jsx-style";
 import { pressPositiveKey } from "../../utils/dom";
@@ -26,7 +26,7 @@ export type RadioButtonsAttributes<T extends string | number = string | number, 
   $preventSourceMemo?: boolean;
   $labelDataName?: string;
   $valueDataName?: string;
-  $signalDataName?: string;
+  $colorDataName?: string;
   $hideRadioButton?: boolean;
 };
 
@@ -37,7 +37,7 @@ interface RadioButtonsFC extends FunctionComponent {
 const RadioButtons: RadioButtonsFC = React.forwardRef<HTMLDivElement, RadioButtonsAttributes<any>>(<T extends string | number = string | number, U = { [key: string]: any }>(attrs: RadioButtonsAttributes<T, U>, $ref: ForwardedRef<HTMLDivElement>) => {
   const labelDn = attrs.$labelDataName || "label";
   const valueDn = attrs.$valueDataName || "value";
-  const signalDn = attrs.$signalDataName || "signal";
+  const colorDn = attrs.$colorDataName || "color";
   const { loading, source } = useSource(attrs.$source, {
     preventSourceMemo: attrs.$preventSourceMemo,
     changeSource: (src) => {
@@ -109,7 +109,7 @@ const RadioButtons: RadioButtonsFC = React.forwardRef<HTMLDivElement, RadioButto
     const nodes = source?.map(item => {
       const l = item[labelDn] as ReactNode | string;
       const v = item[valueDn] as T;
-      const s = item[signalDn] as Signal;
+      const s = item[colorDn] as Color;
       const selected = equalValue(val, v);
       if (selected) hasSelected = true;
       return (
@@ -117,7 +117,7 @@ const RadioButtons: RadioButtonsFC = React.forwardRef<HTMLDivElement, RadioButto
           key={v ?? null}
           className={`${cn}-item`}
           data-selected={selected}
-          data-signal={s || attrs.$signal}
+          data-color={s || attrs.$color}
           tabIndex={0}
           onClick={() => { select(v) }}
           onKeyDown={(e) => {
@@ -143,7 +143,7 @@ const RadioButtons: RadioButtonsFC = React.forwardRef<HTMLDivElement, RadioButto
       }, 0);
     }
     return nodes;
-  }, [val, source, loading, m, attrs.$signal, attrs.$hideRadioButton, attrs.$disabled, attrs.$readOnly]);
+  }, [val, source, loading, m, attrs.$color, attrs.$hideRadioButton, attrs.$disabled, attrs.$readOnly]);
 
   return (
     <div
@@ -322,7 +322,7 @@ fm: `
 .${cn}[data-hrb="true"][data-flow="column"] > .${cn}-item[data-selected="true"]::before {
   box-shadow: 4px 0 0 -2px ${CssVar.default.bdc} inset;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}-item${qs} > .${radioButtonCn}::before {
   border-color: ${v.ipt.bdc};
 }
@@ -426,7 +426,7 @@ neumorphism: `
 .${cn}-item > .${radioButtonCn}[data-selected="true"]::after {
   background: ${CssVar.default.ipt.fc};
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}-item${qs} .${cn}-lbl,
 .${cn}-item${qs} .${labelCn} {
   color: ${v.fc};

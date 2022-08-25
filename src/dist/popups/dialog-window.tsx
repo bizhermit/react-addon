@@ -1,5 +1,5 @@
 import React, { cloneElement, Dispatch, FC, ReactNode, SetStateAction, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import CssVar, { CssPV, Signal, signalIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, Color, colorIterator, switchDesign } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import Icon, { iconCn } from "../elements/icon";
 import MaskContainer, { MaskHook, useMask } from "./mask";
@@ -48,7 +48,7 @@ type DialogWindowAttributes = {
   $left?: number | string;
   $height?: number | string;
   $width?: number | string;
-  $signal?: Signal;
+  $color?: Color;
   $showed?: () => void;
   $closed?: (props?: {[key: string]: any}) => void;
   $hid?: (props?: {[key: string]: any}) => void;
@@ -405,7 +405,7 @@ const DialogWindowWrapper: FC<{
         visibility: "hidden",
         zIndex: dialogWindowBaseZIndex + zIndex * dialogWindowZIndexInterval + 2
       }}
-      data-signal={attrs.$signal}
+      data-color={attrs.$color}
       data-zindex={zIndex}
     >
       <div className={`${cn}-cont`}>
@@ -750,7 +750,7 @@ neumorphism: `
 .${cn}-mask_d {
   background: transparent;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-cont > .${cn}-header {
   background: ${v.head.bgc};
   color: ${v.head.fc};

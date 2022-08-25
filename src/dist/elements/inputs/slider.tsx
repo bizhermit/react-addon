@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, KeyboardEvent, useCallback, useEffect, useRef } from "react";
 import useValue, { InputAttributes } from "../../hooks/value";
-import CssVar, { CssPV, signalIterator, switchDesign } from "../../styles/css-var";
+import CssVar, { CssPV, colorIterator, switchDesign } from "../../styles/css-var";
 import InputStyle from "../../styles/input-style";
 import JsxStyle from "../../styles/jsx-style";
 import { releaseCursor, setCursor } from "../../utils/cursor";
@@ -262,7 +262,7 @@ fm: `
   border-width: 3px;
   border-style: double;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body > .${cn}-bar {
   border-color: ${v.ipt.bdc};
   background: ${v.ipt.off};
@@ -314,7 +314,7 @@ neumorphism: `
   left: -10%;
   box-shadow: ${CssPV.cvxSdD};
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body > .${cn}-bar > .${cn}-rate {
   background: ${v.ipt.on};
 }`).join("")}

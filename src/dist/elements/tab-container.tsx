@@ -1,6 +1,6 @@
 import React, { cloneElement, FC, HTMLAttributes, ReactElement, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { sbCn } from "../styles/core-style";
-import CssVar, { CssPV, FitToOuter, Signal, signalIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, FitToOuter, Color, colorIterator, switchDesign } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributesWithoutChildren } from "../utils/attributes";
 import { _HookSetter } from "../utils/hook";
@@ -23,7 +23,7 @@ export type TabContentAttributes = {
   key: TabKey;
   title: string | ReactNode;
   $selected?: () => void;
-  $signal?: Signal;
+  $color?: Color;
   children?: ReactNode;
 };
 
@@ -43,7 +43,7 @@ export type TabContainerAttributes = HTMLAttributes<HTMLDivElement> & {
   $defaultKey?: TabKey;
   $selected?: (key: TabKey) => void;
   $calcTabWidth?: boolean;
-  $signal?: Signal;
+  $color?: Color;
   $navigationBackgroundColor?: boolean;
   children: ReactElement<TabContentAttributes> | Array<ReactElement<TabContentAttributes>>;
 };
@@ -92,7 +92,7 @@ const TabContainer = React.forwardRef<HTMLDivElement, TabContainerAttributes>((a
       $className={cn}
       $scroll={false}
     >
-      <div className={`${cn}-list`} data-calc={attrs.$calcTabWidth} data-nav={attrs.$navigationBackgroundColor} data-signal={attrs.$signal}>
+      <div className={`${cn}-list`} data-calc={attrs.$calcTabWidth} data-nav={attrs.$navigationBackgroundColor} data-color={attrs.$color}>
         {useMemo(() => {
           return (Array.isArray(attrs.children) ? attrs.children : [attrs.children]).map(cont => {
             return (
@@ -100,7 +100,7 @@ const TabContainer = React.forwardRef<HTMLDivElement, TabContainerAttributes>((a
                 key={cont.key}
                 className={`${cn}-tab`}
                 data-selected={String(key) === String(cont.key)}
-                data-signal={cont.props.$signal}
+                data-color={cont.props.$color}
                 onClick={() => setKey(cont.key)}
               >{cont.props.title ?? ""}</div>
             );
@@ -211,7 +211,7 @@ fm: `
 .${cn}-tab[data-selected="true"] {
   box-shadow: 0 -4.5px 0px -2px ${CssVar.bdc} inset;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}-tab${qs} {
   color: ${v.fc};
 }
@@ -272,7 +272,7 @@ neumorphism: `
 .${cn}-tab[data-selected="true"] {
   box-shadow: 0 -4.5px 0px -2px ${CssVar.bdc} inset;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}-tab${qs} {
   color: ${v.fc};
 }

@@ -2,8 +2,8 @@ export type _LayoutColor = "light" | "dark";
 export type LayoutColor = "system" | _LayoutColor;
 export type LayoutDesign = "flat" | "material" | "neumorphism";
 
-const signals = ["default", "primary", "secondary", "warning", "danger", "deprecated"] as const;
-export type Signal = typeof signals[number];
+const colors = ["default", "light", "dark", "primary", "secondary", "warning", "danger", "disabled"] as const;
+export type Color = typeof colors[number];
 
 export type FitToOuter = "f" | "x" | "y" | "fx" | "fy" | "none";
 
@@ -13,7 +13,7 @@ type CssVarCBDBase = {
   d: string; // dark
 };
 
-type CssSignalVar = {
+type CssColorVar = {
   fc: string;
   bgc: string;
   bdc: string;
@@ -97,7 +97,7 @@ const CssVar = {
     },
     nav: {
       fc: "var(--bh-def-nav-fc, #f2f2f2)",
-      bgc: "var(--bh-def-nav-bgc, linear-gradient(to bottom right, #303033, #37373a))",
+      bgc: "var(--bh-def-nav-bgc, #343a40)",
       anchor: "var(--bh-def-nav-anchor, #9bf)",
     },
     ipt: {
@@ -125,7 +125,87 @@ const CssVar = {
         bdc: "var(--bh-def-btn-act-bdc, #82828a)",
       },
     },
-  } as CssSignalVar,
+  } as CssColorVar,
+  light: {
+    fc: "var(--bh-def-fc, #1e1e1e)",
+    bgc: "var(--bh-def-bgc, #fbfbfd)",
+    bdc: "var(--bh-def-bdc, #787880)",
+    head: {
+      fc: "var(--bh-def-head-fc, #1e1e1e)",
+      bgc: "var(--bh-def-head-bgc, #d0d0d5)",
+      bdc: "var(--bh-def-head-bdc, #a4a4a7)",
+    },
+    nav: {
+      fc: "var(--bh-def-nav-fc, #f2f2f2)",
+      bgc: "var(--bh-def-nav-bgc, #444a50)",
+      anchor: "var(--bh-def-nav-anchor, #9bf)",
+    },
+    ipt: {
+      bgc: "var(--bh-def-ipt-bgc, #fafafa)",
+      fc: "var(--bh-def-ipt-fc, #1e1e1e)",
+      bdc: "var(--bh-def-ipt-bdc, #787880)",
+      on: "var(--bh-def-ipt-on, #c0c0c0)",
+      off: "var(--bh-def-ipt-off, #fff)",
+      knob: "var(--bh-def-ipt-knob, #fff)",
+    },
+    btn: {
+      base: {
+        bgc: "var(--bh-def-btn-base-bgc, #787880)",
+        fc: "var(--bh-def-btn-base-fc, #f2f2f2)",
+        bdc: "var(--bh-def-btn-base-bdc, #787880)",
+      },
+      hvr: {
+        bgc: "var(--bh-def-btn-hvr-bgc, #66666d)",
+        fc: "var(--bh-def-btn-hvr-fc, #f2f2f2)",
+        bdc: "var(--bh-def-btn-hvr-bdc, #66666d)",
+      },
+      act: {
+        bgc: "var(--bh-def-btn-act-bgc, #82828a)",
+        fc: "var(--bh-def-btn-act-fc, #f2f2f2)",
+        bdc: "var(--bh-def-btn-act-bdc, #82828a)",
+      },
+    },
+  } as CssColorVar,
+  dark: {
+    fc: "var(--bh-def-fc, #1e1e1e)",
+    bgc: "var(--bh-def-bgc, #fbfbfd)",
+    bdc: "var(--bh-def-bdc, #787880)",
+    head: {
+      fc: "var(--bh-def-head-fc, #1e1e1e)",
+      bgc: "var(--bh-def-head-bgc, #d0d0d5)",
+      bdc: "var(--bh-def-head-bdc, #a4a4a7)",
+    },
+    nav: {
+      fc: "var(--bh-def-nav-fc, #f2f2f2)",
+      bgc: "var(--bh-def-nav-bgc, #242a30)",
+      anchor: "var(--bh-def-nav-anchor, #9bf)",
+    },
+    ipt: {
+      bgc: "var(--bh-def-ipt-bgc, #fafafa)",
+      fc: "var(--bh-def-ipt-fc, #1e1e1e)",
+      bdc: "var(--bh-def-ipt-bdc, #787880)",
+      on: "var(--bh-def-ipt-on, #c0c0c0)",
+      off: "var(--bh-def-ipt-off, #fff)",
+      knob: "var(--bh-def-ipt-knob, #fff)",
+    },
+    btn: {
+      base: {
+        bgc: "var(--bh-def-btn-base-bgc, #787880)",
+        fc: "var(--bh-def-btn-base-fc, #f2f2f2)",
+        bdc: "var(--bh-def-btn-base-bdc, #787880)",
+      },
+      hvr: {
+        bgc: "var(--bh-def-btn-hvr-bgc, #66666d)",
+        fc: "var(--bh-def-btn-hvr-fc, #f2f2f2)",
+        bdc: "var(--bh-def-btn-hvr-bdc, #66666d)",
+      },
+      act: {
+        bgc: "var(--bh-def-btn-act-bgc, #82828a)",
+        fc: "var(--bh-def-btn-act-fc, #f2f2f2)",
+        bdc: "var(--bh-def-btn-act-bdc, #82828a)",
+      },
+    },
+  } as CssColorVar,
   primary: {
     fc: "var(--bh-pri-fc, #008000)",
     bgc: "var(--bh-pri-bgc, #f8fff8)",
@@ -165,7 +245,7 @@ const CssVar = {
         bdc: "var(--bh-pri-btn-act-bdc, #48a848)",
       },
     },
-  } as CssSignalVar,
+  } as CssColorVar,
   secondary: {
     fc: "var(--bh-sec-fc, #0000cd)",
     bgc: "var(--bh-sec-bgc, #f0f0ff)",
@@ -205,7 +285,7 @@ const CssVar = {
         bdc: "var(--bh-sec-btn-act-bdc, #4971d9)",
       },
     },
-  } as CssSignalVar,
+  } as CssColorVar,
   warning: {
     fc: "var(--bh-wrn-fc, #d0b600)",
     bgc: "var(--bh-wrn-bgc, #fffff4)",
@@ -245,7 +325,7 @@ const CssVar = {
         bdc: "var(--bh-wrn-btn-act-bdc, #d6b600)",
       },
     },
-  } as CssSignalVar,
+  } as CssColorVar,
   danger: {
     fc: "var(--bh-dng-fc, #c22222)",
     bgc: "var(--bh-dng-bgc, #fff4f4)",
@@ -285,8 +365,8 @@ const CssVar = {
         bdc: "var(--bh-dng-btn-act-bdc, #ba3f3f)",
       },
     },
-  } as CssSignalVar,
-  deprecated: {
+  } as CssColorVar,
+  disabled: {
     fc: "var(--bh-dpr-fc, #b0b0b0)",
     bgc: "var(--bh-dpr-bgc, #f8f8fb)",
     bdc: "var(--bh-dpr-bdc, #e0e0e2)",
@@ -325,7 +405,7 @@ const CssVar = {
         bdc: "var(--bh-dpr-btn-act-bdc, #e2e2e4)",
       },
     },
-  } as CssSignalVar,
+  } as CssColorVar,
   week: {
     sun: {
       fc: "var(--bh-week_sun-fc, #c22222)",
@@ -583,7 +663,7 @@ export const CssPV = {
   ccvSd: `0.5px 0.5px 1.5px ${CssVar.sdw.b}, -0.5px -0.5px 1.5px ${CssVar.sdw.d}, 1px 1px 2px ${CssVar.sdw.d} inset, -1px -1px 2px ${CssVar.sdw.b} inset`,
   ccvSdD: `0.5px 0.5px 1.5px ${CssVar.sdw.b}, -0.5px -0.5px 1.5px ${CssVar.sdw.d}, 2px 2px 4px -1px ${CssVar.sdw.d} inset, -2px -2px 3px -1px ${CssVar.sdw.b} inset`,
   ccvSdS: `1px 1px 1px ${CssVar.sdw.d} inset, -1px -1px 1px ${CssVar.sdw.b} inset`,
-  signalCn: (signal: Signal) => `[data-signal="${signal || "default"}"]`,
+  colorCn: (color: Color) => `[data-color="${color || "default"}"]`,
   textSd: (color: string) => `text-shadow:1px 1px 0 ${color},-1px -1px 0 ${color},-1px 1px 0 ${color},1px -1px 0 ${color},0px 1px 0 ${color},0 -1px 0 ${color},-1px 0 0 ${color},1px 0 0 ${color};`,
 };
 
@@ -593,11 +673,11 @@ export const switchDesign = (design: LayoutDesign, css: Partial<{[key in LayoutD
   return css._ ?? "";
 };
 
-export const signalIterator = <T=string,>(func: (signal: Signal, v: CssSignalVar, selector: string) => T, skipDefault?: boolean) => {
+export const colorIterator = <T=string,>(func: (color: Color, v: CssColorVar, selector: string) => T, skipDefault?: boolean) => {
   const rets = [];
-  for (const signal of signals) {
-    if (signal === "default" && skipDefault) continue;
-    rets.push(func(signal, CssVar[signal] as CssSignalVar, `${CssPV.signalCn(signal)}`));
+  for (const color of colors) {
+    if (color === "default" && skipDefault) continue;
+    rets.push(func(color, CssVar[color] as CssColorVar, `${CssPV.colorCn(color)}`));
   }
   return rets as Array<T>;
 };

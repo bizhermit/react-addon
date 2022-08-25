@@ -1,15 +1,15 @@
 import { NextPage } from "next";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 import FlexBox from "../../../react-addon/dist/elements/flex-box";
 import Label from "../../../react-addon/dist/elements/label";
 
 const SandBoxPage: NextPage = () => {
   return (
     <FlexBox $fto="f" $scroll $row style={{ gap: 2 }} $padding>
-      {signalIterator((s, v) => {
+      {colorIterator((s, v) => {
         return (
           <FlexBox key={s} $fto="fx" $center>
-            <Label $signal={s}>{s}</Label>
+            <Label $color={s}>{s}</Label>
             <div
               className="box"
               style={{

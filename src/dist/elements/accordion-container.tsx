@@ -1,7 +1,7 @@
 import StringUtils from "@bizhermit/basic-utils/dist/string-utils";
 import React, { HTMLAttributes, ReactNode, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { sbCn } from "../styles/core-style";
-import CssVar, { CssPV, FitToOuter, Signal, signalIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, FitToOuter, Color, colorIterator, switchDesign } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributesWithoutChildren, ftoCn } from "../utils/attributes";
 import { pressPositiveKey } from "../utils/dom";
@@ -31,7 +31,7 @@ export type AccordionContainerAttributes = HTMLAttributes<HTMLDivElement> & {
   $animationDuration?: number;
   $height?: number;
   $borderless?: boolean;
-  $signal?: Signal;
+  $color?: Color;
   $openedIconImage?: IconImage;
   $closedIconImage?: IconImage;
   $iconPosition?: "left" | "right" | "none";
@@ -151,7 +151,7 @@ const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionContainerAt
       {...attributesWithoutChildren(attrs, cn, ftoCn(attrs.$fto))}
       ref={ref}
       tabIndex={undefined}
-      data-signal={attrs.$signal}
+      data-color={attrs.$color}
       data-opened={opened}
       data-disabled={attrs.$disabled}
       data-borderless={attrs.$borderless}
@@ -273,7 +273,7 @@ flat: `
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover:active {
   background: ${CssVar.actBgc};
 }`})}
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-header {
   background: ${v.btn.base.bgc};
   color: ${v.btn.base.fc};
@@ -343,7 +343,7 @@ neumorphism: `
   box-shadow: unset;
   border-radius: unset;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-header {
   color: ${v.fc};
 }

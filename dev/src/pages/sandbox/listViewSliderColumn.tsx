@@ -51,7 +51,7 @@ const Page: NextPage = () => {
     cols.push(ListViewSliderColumn({
       name: "slider",
       headerCellLabel: "Slider",
-      signal: (val) => {
+      color: (val) => {
         if (val == null) return "danger";
         if (val >= 100) return "primary";
         if (val >= 75) return "secondary";

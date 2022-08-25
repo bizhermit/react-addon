@@ -1,6 +1,6 @@
 import NumberUtils from "@bizhermit/basic-utils/dist/number-utils";
 import React, { ChangeEvent, DragEvent, HTMLAttributes, ReactNode, useCallback, useEffect, useRef, useState } from "react";
-import CssVar, { CssPV, FitToOuter, Signal, signalIterator, switchDesign } from "../../styles/css-var";
+import CssVar, { CssPV, FitToOuter, Color, colorIterator, switchDesign } from "../../styles/css-var";
 import InputStyle, { inputCn } from "../../styles/input-style";
 import JsxStyle from "../../styles/jsx-style";
 import { attributesWithoutChildren, ftoCn } from "../../utils/attributes";
@@ -22,7 +22,7 @@ type Hook = _HookSetter<FileAreaHook>;
 export type FileAreaAttributes = HTMLAttributes<HTMLDivElement> & {
   $hook?: FileAreaHook;
   $fto?: FitToOuter;
-  $signal?: Signal;
+  $color?: Color;
   $disabled?: boolean;
   $accept?: Array<FileAccept>;
   $resize?: boolean | "x" | "y" | "xy";
@@ -124,7 +124,7 @@ const FileArea = React.forwardRef<HTMLDivElement, FileAreaAttributes>((attrs, re
   return (
     <div
       {...attributesWithoutChildren(attrs, cn, ftoCn(attrs.$fto))}
-      data-signal={attrs.$signal ?? "default"}
+      data-color={attrs.$color ?? "default"}
       data-m={inputMode(attrs)}
       data-fill={attrs.$noPadding}
       ref={ref}
@@ -234,7 +234,7 @@ c: `
 .${cn}[data-m="e"] > .${cn}-drop_area[data-active] {
   background: ${CssVar.actBgc};
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-drop_area {
   border-color: ${v.ipt.bdc};
   color: ${v.fc};

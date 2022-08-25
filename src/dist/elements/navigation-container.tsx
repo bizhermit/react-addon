@@ -1,7 +1,7 @@
 import React, { cloneElement, FunctionComponent, HTMLAttributes, ReactElement, ReactNode, useCallback, useRef, useState } from "react";
 import { useEffect } from "react";
 import { sbCn } from "../styles/core-style";
-import CssVar, { CssPV, FitToOuter, Signal, signalIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, FitToOuter, Color, colorIterator, switchDesign } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributesWithoutChildren, ftoCn } from "../utils/attributes";
 import { _HookSetter } from "../utils/hook";
@@ -21,7 +21,7 @@ type NavigationAttributes = HTMLAttributes<HTMLDivElement> & {
   children?: ReactNode;
   $position?: "left" | "top" | "right" | "bottom";
   $mode?: "visible" | "edge" | "manual";
-  $signal?: Signal;
+  $color?: Color;
   $toggled?: (opened: boolean) => void;
   $edgeSize?: number | string;
   $preventClickClose?: boolean;
@@ -305,7 +305,7 @@ const NavigationContainer = React.forwardRef<HTMLDivElement, NavigationContainer
         ref={nref}
         {...attributesWithoutChildren(navCont.props, `${cn}-nav ${sbCn}`)}
         data-opened={opened}
-        data-signal={navCont.props.$signal}
+        data-color={navCont.props.$color}
         onMouseEnter={mouseEnter}
         onMouseLeave={mouseLeave}
         onClick={(e) => { e.stopPropagation() }}
@@ -439,7 +439,7 @@ const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
 }
 ${switchDesign(design, {
 fm: `
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}-nav${qs} {
   color: ${v.nav.fc};
   background: ${v.nav.bgc};
@@ -478,7 +478,7 @@ neumorphism: `
 .${cn}[data-pos="bottom"] > .${cn}-nav {
   box-shadow: 0 -5.5px 3px -3px ${CssVar.sdw.b}, 0 2.5px 0.5px -1px ${CssVar.sdw.b} inset;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}-nav${qs} {
   color: ${v.nav.fc};
   background: ${v.nav.bgc};

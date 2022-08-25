@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { createRef, useState } from "react";
-import { Signal, signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { Color, colorIterator } from "../../../react-addon/dist/styles/css-var";
 import Button from "../../../react-addon/dist/elements/button";
 import Caption from "../../../react-addon/dist/elements/caption";
 import FlexBox from "../../../react-addon/dist/elements/flex-box";
@@ -18,7 +18,7 @@ const FileAreaPage: NextPage = () => {
   const [disabled, setDisabled] = useState(false);
   const [padding, setPadding] = useState(true);
   const [resize, setResize] = useState<"t" | "f" | "x" | "y" | "xy">();
-  const [signal, setSignal] = useState<Signal>();
+  const [color, setColor] = useState<Color>();
   const hook = useFileArea();
 
   const r = (() => {
@@ -78,15 +78,15 @@ const FileAreaPage: NextPage = () => {
           $source={[{
             value: null,
             label: `unset`,
-          }, ...(signalIterator(s => {
+          }, ...(colorIterator(s => {
             return {
               value: s,
               label: s,
-              signal: s,
+              color: s,
             }
           }))]}
-          $value={signal}
-          $dispatch={setSignal}
+          $value={color}
+          $dispatch={setColor}
         />
       </Row>
       <FlexBox $fto="fy" $padding $scroll>
@@ -98,7 +98,7 @@ const FileAreaPage: NextPage = () => {
             width: 500,
             height: 150,
           }}
-          $signal={signal}
+          $color={color}
           $resize={r}
           ref={ref}
           $changed={(ctx) => {
@@ -109,7 +109,7 @@ const FileAreaPage: NextPage = () => {
         >
           <Label>ファイルを置いていけやァ！！</Label>
           <Icon $image="heart" />
-          <Icon $image="folder-add" $signal="deprecated" />
+          <Icon $image="folder-add" $color="disabled" />
         </FileArea>
         <FlexBox $fto="x">
           {value?.map((file, idx) => {

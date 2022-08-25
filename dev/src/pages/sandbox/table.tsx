@@ -1,7 +1,7 @@
 import ArrayUtils from "@bizhermit/basic-utils/dist/array-utils";
 import { NextPage } from "next";
 import { useState } from "react";
-import { Signal, signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { Color, colorIterator } from "../../../react-addon/dist/styles/css-var";
 import Caption from "../../../react-addon/dist/elements/caption";
 import DateBox from "../../../react-addon/dist/elements/inputs/date-box";
 import NumericBox from "../../../react-addon/dist/elements/inputs/numeric-box";
@@ -17,7 +17,7 @@ const TablePage: NextPage = () => {
   const [border, setBorder] = useState(false);
   const [oddEven, setOddEven] = useState(false);
   const [hover, setHover] = useState(false);
-  const [signal, setSignal] = useState<Signal>();
+  const [color, setColor] = useState<Color>();
 
   return (
     <>
@@ -35,22 +35,22 @@ const TablePage: NextPage = () => {
         $source={[{
           value: null,
           label: `unset`,
-        }, ...(signalIterator(s => {
+        }, ...(colorIterator(s => {
           return {
             value: s,
             label: s,
-            signal: s,
+            color: s,
           }
         }))]}
-        $value={signal}
-        $dispatch={setSignal}
+        $value={color}
+        $dispatch={setColor}
       />
     </Row>
     <Table
       $border={border}
       $oddEven={oddEven}
       $hover={hover}
-      $signal={signal}
+      $color={color}
     >
       <thead>
         <tr>

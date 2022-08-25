@@ -1,6 +1,6 @@
 import StringUtils from "@bizhermit/basic-utils/dist/string-utils";
 import React, { ButtonHTMLAttributes, MouseEvent, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
-import CssVar, { CssPV, Signal, signalIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, Color, colorIterator, switchDesign } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributesWithoutChildren, dBool } from "../utils/attributes";
 import { _HookSetter } from "../utils/hook";
@@ -17,13 +17,13 @@ type Hook = _HookSetter<ButtonHook>;
 
 export type ButtonIconProps = IconImage | {
   $image: IconImage;
-  $signal?: Signal;
+  $color?: Color;
   $round?: boolean;
 };
 
 export type ButtonAttributes = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onClick"> & {
   $hook?: ButtonHook;
-  $signal?: Signal;
+  $color?: Color;
   $click?: (unlock: (preventFocus?: boolean) => void, event: MouseEvent<HTMLButtonElement>) => void;
   $round?: boolean;
   $transparent?: boolean;
@@ -77,7 +77,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonAttributes>((attrs, $re
     >
       <div
         className={`${cn}-body`}
-        data-signal={attrs.$signal}
+        data-color={attrs.$color}
         data-round={attrs.$round}
         data-content={attrs.children != null}
         data-icon={attrs.$icon != null}
@@ -198,7 +198,7 @@ flat: `
 .${cn}:hover:active > .${cn}-body {
   background: ${CssVar.actBgc};
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}-body${qs} {
   background: ${v.btn.base.bgc};
   color: ${v.btn.base.fc};
@@ -246,7 +246,7 @@ material: `
 .${cn}-body[data-trp="true"] {
   box-shadow: 0px 1px 2px ${CssVar.sdw.d}, 1px 1px 2px ${CssVar.sdw.d} inset;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}-body${qs} {
   background: ${v.btn.base.bgc};
   color: ${v.btn.base.fc};
@@ -315,7 +315,7 @@ neumorphism: `
 .${cn}:disabled > .${cn}-body[data-trp="true"] {
   box-shadow: 0 0 0px 1px ${CssVar.bdc} inset, ${CssPV.ccvSdS};
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}-body${qs}[data-bdl="true"]:not([data-trp="true"]) {
   background: ${v.btn.base.bgc};
   color: ${v.btn.base.fc};

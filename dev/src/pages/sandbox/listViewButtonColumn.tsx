@@ -10,7 +10,7 @@ import ToggleBox from "../../../react-addon/dist/elements/inputs/toggle-box";
 import ListView, { ListViewColumnProps, ListViewSelectMode, useListView } from "../../../react-addon/dist/elements/list/list-view";
 import Row from "../../../react-addon/dist/elements/row";
 import ListViewButtonColumn from "../../../react-addon/dist/elements/list/list-view-columns/button-column";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 
 const Page: NextPage = () => {
   const generageItems = (len = 10) => {
@@ -87,13 +87,13 @@ const Page: NextPage = () => {
         console.log("right", params);
       }
     }));
-    signalIterator((s) => {
+    colorIterator((s) => {
       cols.push(ListViewButtonColumn({
         name: s,
         buttonLabel: s,
         icon: {
           image: "pen",
-          signal: s,
+          color: s,
         },
         width: 140,
       }));
