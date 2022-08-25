@@ -275,9 +275,6 @@ ${colorIterator((_s, v, qs) => `
   --bh-icon-fc: ${v.btn.hvr.fc};
   --bh-icon-bc: ${v.btn.hvr.bgc};
 }`).join("")}
-.${cn}:hover:active > .${cn}-body {
-  top: 1px;
-}
 .${cn}:hover:active > .${cn}-body,
 .${cn}:disabled > .${cn}-body {
   box-shadow: none;
@@ -306,8 +303,7 @@ neumorphism: `
 }
 .${cn}:hover:active > .${cn}-body {
   box-shadow: ${CssPV.ccvSd};
-  margin-top: 1px;
-  margin-bottom: -1px;
+  
 }
 .${cn}:disabled > .${cn}-body {
   box-shadow: ${CssPV.ccvSdS};
