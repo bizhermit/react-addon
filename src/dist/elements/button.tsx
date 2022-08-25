@@ -332,7 +332,7 @@ ${colorIterator((_s, v, qs) => `
   --bh-icon-fc: ${v.fc};
 }
 .${cn}-body${qs}[data-bdl="true"]:not([data-trp="true"]):not(:hover) .${iconCn} {
-  --bh-icon-fc: ${v.bgc};
+  --bh-icon-fc: ${v.btn.base.fc};
   --bh-icon-bc: ${v.btn.base.bgc};
 }
 .${cn}-body${qs}:not([data-trp="true"]) .${iconCn} {
