@@ -280,8 +280,6 @@ material: `
   box-shadow: 0px 4px 4px -2px ${CssVar.sdw.c};
 }
 .${inputCn}_btn:hover:active {
-  margin-top: 1px;
-  margin-bottom: -1px;
   box-shadow: none;
 }`,
 neumorphism: `
@@ -289,7 +287,6 @@ neumorphism: `
   box-shadow: ${CssPV.cvxSdD};
 }
 .${inputCn}_btn:hover:active {
-  top: 1px;
   box-shadow: ${CssPV.ccvSd};
 }
 .${inputCn} .${buttonCn}-body,

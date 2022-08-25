@@ -7,7 +7,7 @@ import FlexBox from "../../../react-addon/dist/elements/flex-box";
 import ToggleBox from "../../../react-addon/dist/elements/inputs/toggle-box";
 import Row from "../../../react-addon/dist/elements/row";
 import Label from "../../../react-addon/dist/elements/label";
-import { CssPV, colorIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 import { InputBorder } from "../../../react-addon/dist/styles/input-style";
 import RadioButtons from "../../../react-addon/dist/elements/inputs/radio-buttons";
 

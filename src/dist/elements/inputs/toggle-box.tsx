@@ -204,7 +204,6 @@ material: `
   box-shadow: 0px 4px 4px -2px ${CssVar.sdw.c};
 }
 .${cn}[data-m="e"] > .${cn}-body:hover:active .${cn}-switch::before {
-  top: 3px;
   box-shadow: none;
 }`,
 neumorphism: `

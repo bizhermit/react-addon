@@ -264,9 +264,6 @@ flat: `
 material: `
 .${cn}-tab:not([data-selected="true"]):hover {
   background: ${CssVar.hvrBgc};
-}
-.${cn}-tab:not([data-selected="true"]):hover:active {
-  top: 1px;
 }`,
 neumorphism: `
 .${cn}-tab[data-selected="true"] {
@@ -286,8 +283,6 @@ ${colorIterator((_s, v, qs) => `
   box-shadow: ${CssPV.cvxSdD};
 }
 .${cn}-tab:not([data-selected="true"]):hover:active {
-  margin-top: 1px;
-  margin-bottom: -1px;
   box-shadow: ${CssPV.ccvSd};
 }`})}
 `}</JsxStyle>;

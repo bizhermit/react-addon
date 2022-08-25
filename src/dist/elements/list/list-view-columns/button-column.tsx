@@ -149,7 +149,6 @@ material: `
 }
 .${cn}-cell[data-disabled="false"] > .${cn}:hover:active {
   box-shadow: none;
-  top: 1px;
 }`,
 neumorphism: `
 .${cn}-cell[data-disabled="false"] > .${cn} {
@@ -160,8 +159,6 @@ neumorphism: `
 }
 .${cn}-cell[data-disabled="false"] > .${cn}:hover:active {
   box-shadow: ${CssPV.ccvSd};
-  margin-top: 1px;
-  margin-bottom: -1px;
 }`,
 })}
 .${cn}-cell[data-disabled="true"] > .${cn} {

@@ -364,8 +364,6 @@ material: `
 .${cn} > .${cn}-btn > .${cn}-inc:active,
 .${cn} > .${cn}-btn > .${cn}-dec:active {
   box-shadow: none;
-  margin-top: 1px;
-  margin-bottom: -1px;
   z-index: 0;
 }`,
 neumorphism: `
@@ -376,7 +374,6 @@ neumorphism: `
 .${cn}-inc:active,
 .${cn}-dec:active {
   box-shadow: ${CssPV.ccvSd};
-  top: 1px;
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-btn > .${cn}-inc::before,

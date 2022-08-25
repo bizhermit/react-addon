@@ -321,7 +321,6 @@ material: `
   box-shadow: 0px 4px 4px -2px ${CssVar.sdw.c};
 }
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover:active {
-  top: 1px;
   box-shadow: unset;
 }`,
 neumorphism: `
@@ -333,8 +332,6 @@ neumorphism: `
 }
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover:active {
   box-shadow: ${CssPV.ccvSd};
-  margin-top: 1px;
-  margin-bottom: -1px;
 }
 .${cn}[data-borderless="true"] > .${cn}-header {
   border-radius: ${CssVar.bdr};

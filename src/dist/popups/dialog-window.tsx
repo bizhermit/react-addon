@@ -622,7 +622,7 @@ neumorphism: `
   opacity: 0.8;
 ${switchDesign(design, {
 fm: `transition: background 0.1s;`,
-neumorphism: `transition: margin-top 0.1s, margin-bottom: 0.1s;`
+neumorphism: `transition: box-shadow 0.1s;`
 })}
 }
 ${switchDesign(design, {
@@ -654,8 +654,7 @@ fm: `
 .${cn}-close:hover:active > .${iconCn} {
   --bh-icon-fc: ${CssVar.danger.btn.act.fc};
   --bh-icon-bc: ${CssVar.danger.btn.act.bgc};
-}
-`,
+}`,
 neumorphism: `
 .${cn}-min:hover {
   box-shadow: ${CssPV.cvxSd};
@@ -670,8 +669,6 @@ neumorphism: `
 .${cn}-min:hover:active,
 .${cn}-close:hover:active {
   box-shadow: ${CssPV.ccvSd};
-  margin-top: 1px;
-  margin-bottom: -1px;
 }
 `})}
 .${cn}-body {

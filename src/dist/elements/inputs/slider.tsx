@@ -253,10 +253,6 @@ neumorphism: `
   cursor: col-resize;
 }
 ${switchDesign(design, {
-_: `
-.${cn}[data-m="e"] > .${cn}-body > .${cn}-handle:active {
-  top: -100%;
-}`,
 fm: `
 .${cn}[data-m="e"] > .${cn}-body:focus > .${cn}-handle::before {
   border-width: 3px;
