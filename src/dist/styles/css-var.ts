@@ -64,7 +64,7 @@ const CssVar = {
   bdr: "var(--bh-bdr, 0px)", // border radius
   pdx: "var(--bh-pdx, 0px)", // padding x
   pdy: "var(--bh-pdy, 0px)", // padding y
-  phsize: "var(--bh-phsize, 12px)", // placeholder size
+  phsize: "var(--bh-phsize, 13px)", // placeholder size
   bgc: "var(--bh-bgc, #f4f4fb)", // background color
   fc: "var(--bh-fc, #1e1e1e)", // font color
   bdc: "var(--bh-bdc, #aaaaaf)", // border color
