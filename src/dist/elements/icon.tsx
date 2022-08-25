@@ -64,8 +64,10 @@ const Icon = React.forwardRef<HTMLDivElement, IconAttributes>((attrs, ref) => {
   );
 });
 
-const iconFc = "var(--bh-icon-fc)";
-const iconBc = "var(--bh-icon-bc)";
+export const varIconFc = "--bh-icon-fc";
+const iconFc = `var(${varIconFc})`;
+export const varIconBc = "--bh-icon-bc";
+const iconBc = `var(${varIconBc})`;
 
 export const IconStyle = <JsxStyle id={cn}>{() => `
 .${cn} {
@@ -75,8 +77,8 @@ export const IconStyle = <JsxStyle id={cn}>{() => `
   height: calc(${CssVar.fs} * 1.5);
   width: calc(${CssVar.fs} * 1.5);
   flex: none;
-  --bh-icon-fc: ${CssVar.fc};
-  --bh-icon-bc: ${CssVar.bgc};
+  ${varIconFc}: ${CssVar.fc};
+  ${varIconBc}: ${CssVar.bgc};
 }
 .${cnc} {
   box-sizing: border-box;
@@ -108,7 +110,7 @@ export const IconStyle = <JsxStyle id={cn}>{() => `
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} {
-  --bh-icon-fc: ${v.fc} !important;
+  ${varIconFc}: ${v.fc} !important;
 }`).join("")}
 .${cn}-favicon::before {
   height: 80%;

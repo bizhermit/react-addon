@@ -1,6 +1,6 @@
 import StringUtils from "@bizhermit/basic-utils/dist/string-utils";
 import React, { ButtonHTMLAttributes, MouseEvent, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
-import CssVar, { CssPV, Color, colorIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, Color, colorIterator, switchDesign, Size, sizeIterator, varFontSize } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributesWithoutChildren, dBool } from "../utils/attributes";
 import { _HookSetter } from "../utils/hook";
@@ -24,6 +24,7 @@ export type ButtonIconProps = IconImage | {
 export type ButtonAttributes = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onClick"> & {
   $hook?: ButtonHook;
   $color?: Color;
+  $size?: Size;
   $click?: (unlock: (preventFocus?: boolean) => void, event: MouseEvent<HTMLButtonElement>) => void;
   $round?: boolean;
   $transparent?: boolean;
@@ -45,7 +46,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonAttributes>((attrs, $re
   const unlock = (preventFocus?: boolean) => {
     setDisabled(false);
     if (preventFocus !== true) ref.current?.focus();
-    
   };
 
   const click = (e: MouseEvent<HTMLButtonElement>) => {
@@ -74,6 +74,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonAttributes>((attrs, $re
       ref={ref}
       disabled={attrs.disabled || disabled}
       onClick={click}
+      data-size={attrs.$size ?? "m"}
     >
       <div
         className={`${cn}-body`}
@@ -106,6 +107,9 @@ export const useButton = (): ButtonHook => {
   } as Hook;
 };
 
+const varBtnSize = "--btn-size";
+const btnSize = `var(${varBtnSize})`;
+
 const ButtonStyle = <JsxStyle id={cn} depsDesign>{({ design }) => `
 .${cn},
 .${cn}-body {
@@ -120,24 +124,39 @@ const ButtonStyle = <JsxStyle id={cn} depsDesign>{({ design }) => `
   color: inherit;
   border: none;
   box-shadow: none;
-  font-size: inherit;
   cursor: pointer;
   user-select: none;
   overflow: visible;
-${switchDesign(design, {
-_: `
-  padding: 0px;
-  min-height: ${CssVar.size};
-  min-width: ${CssVar.size};
-`,
-c: `
   padding: ${CssVar.pdy} ${CssVar.pdx};
-  min-height: calc(${CssVar.size} + ${CssVar.pdy} * 2);
-  min-width: calc(${CssVar.size} + ${CssVar.pdx} * 2);
-`,
+  min-height: calc(${btnSize} + ${CssVar.pdy} * 2);
+  min-width: calc(${btnSize} + ${CssVar.pdx} * 2);
+  font-size: var(${varFontSize});
+${switchDesign(design, {
 neumorphism: `background: inherit;`
 })}
 }
+${sizeIterator(cn, {
+xs: `
+${varBtnSize}: calc(${CssVar.size} * 0.75);
+${varFontSize}: 1.2rem;
+`,
+s: `
+${varBtnSize}: calc(${CssVar.size} * 0.9);
+${varFontSize}: 1.4rem;
+`,
+m: `
+${varBtnSize}: ${CssVar.size};
+${varFontSize}: 1.6rem;
+`,
+l: `
+${varBtnSize}: calc(${CssVar.size} * 1.2);
+${varFontSize}: 1.8rem;
+`,
+xl: `
+${varBtnSize}: calc(${CssVar.size} * 1.5);
+${varFontSize}: 2.0rem;
+`,
+})}
 .${cn}-body {
   justify-content: center;
   align-items: center;
@@ -153,7 +172,7 @@ flat: `
 `,
 material: `
   border: 1.5px solid ${CssVar.bdc};
-  box-shadow: 0px 3px 4px -2px ${CssVar.sdw.c};
+  box-shadow: 0px 2px 4px -2px ${CssVar.sdw.c};
   transition: background 0.1s, color 0.1s, box-shadow 0.1s, top 0.1s, border-color 0.1s;
 `,
 neumorphism: `
@@ -179,7 +198,7 @@ neumorphism: `
   flex: 1;
 }
 .${cn}-body[data-round="true"] {
-  border-radius: calc(${CssVar.size} / 2 + 1px);
+  border-radius: calc(${btnSize} / 2 + 1px);
 }
 .${cn}:disabled {
   ${CssPV.inactOpacity}
@@ -187,8 +206,8 @@ neumorphism: `
   pointer-events: none;
 }
 .${cn}-body > .${iconCn} {
-  max-height: calc(${CssVar.size} - 4px);
-  max-width: calc(${CssVar.size}  - 4px);
+  max-height: calc(${btnSize} - 4px);
+  max-width: calc(${btnSize}  - 4px);
 }
 ${switchDesign(design, {
 flat: `

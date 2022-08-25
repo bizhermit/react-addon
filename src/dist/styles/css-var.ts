@@ -5,6 +5,8 @@ export type LayoutDesign = "flat" | "material" | "neumorphism";
 const colors = ["default", "light", "dark", "primary", "secondary", "warning", "danger", "disabled"] as const;
 export type Color = typeof colors[number];
 
+export type Size = "xs" | "s" | "m" | "l" | "xl";
+
 export type FitToOuter = "f" | "x" | "y" | "fx" | "fy" | "none";
 
 type CssVarCBDBase = {
@@ -54,9 +56,11 @@ type CssColorVar = {
   };
 };
 
+export const varFontSize = "--bh-fs";
+
 const CssVar = {
   size: "var(--bh-size, 30px)", // base size
-  fs: "var(--bh-fs, 1.6rem)", // font size
+  fs: `var(${varFontSize}, 1.6rem)`, // font size
   bdr: "var(--bh-bdr, 0px)", // border radius
   pdx: "var(--bh-pdx, 0px)", // padding x
   pdy: "var(--bh-pdy, 0px)", // padding y
@@ -665,6 +669,12 @@ export const CssPV = {
   ccvSdS: `1px 1px 1px ${CssVar.sdw.d} inset, -1px -1px 1px ${CssVar.sdw.b} inset`,
   colorCn: (color: Color) => `[data-color="${color || "default"}"]`,
   textSd: (color: string) => `text-shadow:1px 1px 0 ${color},-1px -1px 0 ${color},-1px 1px 0 ${color},1px -1px 0 ${color},0px 1px 0 ${color},0 -1px 0 ${color},-1px 0 0 ${color},1px 0 0 ${color};`,
+};
+
+export const sizeIterator = (base: string, css: Partial<{[key in Size]: string}>, selector?: string) => {
+  return Object.keys(css).map((key) => {
+    return `.${base}[data-size="${key}"]${selector ?? ""}{${css[key]}}`;
+  }).join("");
 };
 
 export const switchDesign = (design: LayoutDesign, css: Partial<{[key in LayoutDesign | "c" | "fm" | "_"]: string}>) => {

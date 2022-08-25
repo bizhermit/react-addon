@@ -90,6 +90,20 @@ const ButtonPage: NextPage = () => {
           $click: () => console.log("click button 6"),
         }]}</ToggleButton>
       </Row>
+      <Row $middle>
+        <Button $icon="cloud" $size="xs">XS button</Button>
+        <Button $icon="cloud" $size="s">S button</Button>
+        <Button $icon="cloud" $size="m">M button</Button>
+        <Button $icon="cloud" $size="l">L button</Button>
+        <Button $icon="cloud" $size="xl">XL button</Button>
+      </Row>
+      <Row $middle>
+        <Button $icon="cloud" $round $size="xs">XS button</Button>
+        <Button $icon="cloud" $round $size="s">S button</Button>
+        <Button $icon="cloud" $round $size="m">M button</Button>
+        <Button $icon="cloud" $round $size="l">L button</Button>
+        <Button $icon="cloud" $round $size="xl">XL button</Button>
+      </Row>
       <Caption $label="Label" $width={120}>
         <Button disabled={disabled}>Button</Button>
         <Button disabled={disabled} $round>Button</Button>
