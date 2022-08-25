@@ -303,7 +303,6 @@ neumorphism: `
 }
 .${cn}:hover:active > .${cn}-body {
   box-shadow: ${CssPV.ccvSd};
-  
 }
 .${cn}:disabled > .${cn}-body {
   box-shadow: ${CssPV.ccvSdS};
@@ -331,6 +330,10 @@ ${colorIterator((_s, v, qs) => `
 }
 .${cn}-body${qs} .${iconCn} {
   --bh-icon-fc: ${v.fc};
+}
+.${cn}-body${qs}[data-bdl="true"]:not([data-trp="true"]):not(:hover) .${iconCn} {
+  --bh-icon-fc: ${v.bgc};
+  --bh-icon-bc: ${v.btn.base.bgc};
 }
 .${cn}-body${qs}:not([data-trp="true"]) .${iconCn} {
   --bh-icon-bc: ${v.bgc};
