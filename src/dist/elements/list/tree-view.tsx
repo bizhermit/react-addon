@@ -416,7 +416,7 @@ const TreeViewItem: FC<{ prop: TreeViewItemProps; attrs: TreeViewAttributes; nes
           onClick={(e) => toggleOpen(undefined, e.ctrlKey)}
           data-disabled={prop.children == null}
         >
-          {prop.children ? <Icon $image={opened ? (attrs.$openedIconImage ?? "pull-down") : ( attrs.$closedIconImage ?? "pull-right")} /> : <></>}
+          {prop.children ? <Icon $image={opened ? (attrs.$openedIconImage ?? "pull-down") : ( attrs.$closedIconImage ?? "pull-right")} $transition /> : <></>}
         </div>
         {attrs.$checkBox ?
           <div

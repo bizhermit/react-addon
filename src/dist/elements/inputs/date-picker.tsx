@@ -409,7 +409,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerAttributes>((attrs
                   clickYearCell({ y: yNum - 1, m: mNum }, false, true)
                 }}
                 data-disabled={new Date(yNum - 1, 11, 31).getTime() < rangeFrom.current}
-              ><Icon $image="pull-left" /></div>
+              ><Icon $image="pull-left" $transition /></div>
             }
             {yNodes}
             {uiType === "list" || notEdit ? <></> :
@@ -420,7 +420,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerAttributes>((attrs
                   clickYearCell({ y: yNum + 1, m: mNum }, false, true)
                 }}
                 data-disabled={new Date(yNum+1, 0, 1).getTime() > rangeTo.current}
-              ><Icon $image="pull-right" /></div>
+              ><Icon $image="pull-right" $transition /></div>
             }
         </div>
         {mode === "y" ? <></> : <>
@@ -434,7 +434,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerAttributes>((attrs
                   clickMonthCell({ y: yNum, m: mNum - 1 }, false, true)
                 }}
                 data-disabled={new Date(yNum, mNum, 0).getTime() < rangeFrom.current}
-              ><Icon $image="pull-left" /></div>
+              ><Icon $image="pull-left" $transition /></div>
             }
             {mNodes}
             {uiType === "list" || notEdit ? <></> :
@@ -445,7 +445,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerAttributes>((attrs
                   clickMonthCell({ y: yNum, m: mNum + 1 }, false, true)
                 }}
                 data-disabled={new Date(yNum, mNum+1, 1).getTime() > rangeTo.current}
-              ><Icon $image="pull-right" /></div>
+              ><Icon $image="pull-right" $transition /></div>
             }
           </div>
         </>}
@@ -478,7 +478,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerAttributes>((attrs
               onClick={() => setUiType(c => c === "list" ? "calendar" : "list")}
               tabIndex={0}
               data-border
-            ><Icon $image={uiType === "list" ? "calendar" : "list"} /></div>
+            ><Icon $image={uiType === "list" ? "calendar" : "list"} $transition /></div>
             : <></>
           }
         </div>

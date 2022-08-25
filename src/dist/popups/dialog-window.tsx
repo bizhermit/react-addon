@@ -424,7 +424,7 @@ const DialogWindowWrapper: FC<{
                 onClick={() => { con.hide() }}
                 onMouseDown={(e) => e.stopPropagation()}
               >
-                <Icon $image="minus" />
+                <Icon $image="minus" $transition />
               </div>
             </>}
             {attrs.$hideCloseButton ? <></> : <>
@@ -433,7 +433,7 @@ const DialogWindowWrapper: FC<{
                 onClick={() => { con.close() }}
                 onMouseDown={(e) => e.stopPropagation()}
               >
-                <Icon $image="cross" />
+                <Icon $image="cross" $transition />
               </div>
             </>}
           </div>

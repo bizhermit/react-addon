@@ -371,7 +371,7 @@ const MessageHistory: FC<{
           data-verified={msg.verified}
         >
           <div className={`${cn}-hist_item_header`}>
-            <Icon $image={icon} $color={color} />
+            <Icon $image={icon} $color={color} $transition />
             <div className={`${cn}-hist_item_title`}>
               <Label $bold $type="h3">{msg.title}</Label>
             </div>
@@ -442,7 +442,7 @@ const MessageHistory: FC<{
           className={`${cn}-popup_item`}
           data-color={color}
         >
-          <Icon $image={icon} $color={color}/>
+          <Icon $image={icon} $color={color} $transition />
           <pre className={`${cn}-popup_item_texts`}>
             {msg.title ?? msg.body.join(" ")}
           </pre>

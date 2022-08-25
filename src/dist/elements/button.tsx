@@ -87,7 +87,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonAttributes>((attrs, $re
         data-trp={dBool(attrs.$transparent)}
         data-bdl={attrs.$borderless}
       >
-        {attrs.$icon == null ? <></> : <Icon {...(StringUtils.isString(attrs.$icon) ? { $image: attrs.$icon } : attrs.$icon)} />}
+        {attrs.$icon == null ? <></> : <Icon {...(StringUtils.isString(attrs.$icon) ? { $image: attrs.$icon } : attrs.$icon)} $transition />}
         {StringUtils.isString(attrs.children) ? <Label className={`${cn}-lbl`}>{attrs.children}</Label> : attrs.children}
       </div>
       {ButtonStyle}

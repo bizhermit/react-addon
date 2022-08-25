@@ -163,7 +163,7 @@ const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionContainerAt
         onKeyDown={e => pressPositiveKey(e, () => toggle())}
         data-iconpos={attrs.$iconPosition}
       >
-        {attrs.$disabled || attrs.$iconPosition === "none" ? <></> : <Icon $image={opened ? attrs.$openedIconImage ?? "pull-up" : attrs.$closedIconImage ?? "pull-down"} />}
+        {attrs.$disabled || attrs.$iconPosition === "none" ? <></> : <Icon $image={opened ? attrs.$openedIconImage ?? "pull-up" : attrs.$closedIconImage ?? "pull-down"} $transition />}
         {StringUtils.isString(attrs.$header) ? <Label className={`${cn}-lbl`}>{attrs.$header}</Label> : attrs.$header}
       </div>
       <div
