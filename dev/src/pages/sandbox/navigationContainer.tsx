@@ -76,7 +76,7 @@ const NavigationContainerPage: NextPage = () => {
           <ToggleBox $value={preventClickClose} $dispatch={setPreventClickClose} />
         </Caption>
       </Row>
-      <FlexBox $fto="fy" $padding>
+      <FlexBox $fto="fy">
         <NavigationContainer $fto="f" $hook={navHook} ref={ref}>
           <Navigation
             $position={position}

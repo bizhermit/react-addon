@@ -132,11 +132,11 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
           </Caption>
         </FlexBox>
       </Navigation>
-      <Row $fill $color={color} $colorType="nav">
+      <Row $fill $color={color} $colorType="nav" $shadow $padding={1}>
           {layout.screenSize > ScreenSize.medium ? <></> : 
             <Button
-              $color="default"
               $borderless
+              $transparent
               $icon={opened ? "cross" : "hamburger"}
               $click={() => {
                 setTimeout(() => {
@@ -146,16 +146,23 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
             />
           }
         <Label $type="h2">{headerTitle}</Label>
+        <Row $right>
+          <Button
+            $icon="message"
+            $click={() => {
+              msg.show();
+            }}
+          />
+        </Row>
       </Row>
-      <Row $fill>
-        <LayoutBox />
-        <Label>{layout.screenSize}</Label>
-        <Button $click={() => {
-          msg.show();
-        }}>msg</Button>
-      </Row>
-      <FlexBox $fto="fy" $scroll>
-        {children}
+      <FlexBox $fto="fy">
+        <Row $fill>
+          <LayoutBox />
+          <Label>{layout.screenSize}</Label>
+        </Row>
+        <FlexBox $fto="fy" $scroll>
+          {children}
+        </FlexBox>
       </FlexBox>
     </NavigationContainer>
     </>

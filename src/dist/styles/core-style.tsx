@@ -8,6 +8,7 @@ import JsxStyle from "./jsx-style";
 export const sbCn = "bh-sb";
 export const colorCn = "bh-color";
 export const shadowCn = "bh-shadow";
+export const paddingCn = "bh-padding";
 
 const CoreStyle =
 <JsxStyle id="bh-core" depsColor depsDesign>{({ color, design }) => `
@@ -201,8 +202,11 @@ ${ArrayUtils.generateArray(10, idx => `
 .${shadowCn}[data-shadow="-${idx}"][data-hover="true"]:hover {
   box-shadow: ${CssPV.nCcvSd(idx*1.5)};
 }`).join("")}
-`
-})}
+`})}
+.${paddingCn}[data-padding="true"] {
+  padding: ${CssVar.pdy} ${CssVar.pdx};
+}
+${ArrayUtils.generateArray(10, (idx) => `.${paddingCn}[data-padding="${idx}"] {padding:${4*idx}px}`).join("")}
 `}</JsxStyle>;
 
 export default CoreStyle;

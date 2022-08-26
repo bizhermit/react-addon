@@ -16,6 +16,7 @@ const ButtonPage: NextPage = () => {
 
   return (
     <FlexBox $fto="f"
+      $padding
       $scroll
       // style={{ background: "gray" }}
     >
