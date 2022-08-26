@@ -7,6 +7,7 @@ import FlexBox from "../../../react-addon/dist/elements/flex-box";
 import Row from "../../../react-addon/dist/elements/row";
 import ToggleButton from "../../../react-addon/dist/elements/toggle-button";
 import { colorIterator } from "../../../react-addon/dist/styles/css-var";
+import Budge from "../../../react-addon/dist/elements/badge";
 
 const ButtonPage: NextPage = () => {
   const [disabled, setDisabled] = useState(false);
@@ -27,9 +28,11 @@ const ButtonPage: NextPage = () => {
         </Caption>
       </Row>
       <Row>
-        <Button disabled={disabled} $click={() => {
-          console.log("click");
-        }}>sync func</Button>
+        <Budge>
+          <Button disabled={disabled} $click={() => {
+            console.log("click");
+          }}>sync func</Button>
+        </Budge>
         <Button ref={eref} disabled={disabled} $click={async (unlock) => {
           console.log("click 1");
           setTimeout(() => {
