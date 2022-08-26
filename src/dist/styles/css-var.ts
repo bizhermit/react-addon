@@ -148,7 +148,7 @@ const CssVar = {
     ipt: {
       bgc: "var(--bh-def-ipt-bgc, #fafafa)",
       fc: "var(--bh-def-ipt-fc, #1e1e1e)",
-      bdc: "var(--bh-def-ipt-bdc, #787880)",
+      bdc: "var(--bh-def-ipt-bdc, #b0b0b0)",
       on: "var(--bh-def-ipt-on, #c0c0c0)",
       off: "var(--bh-def-ipt-off, #fff)",
       knob: "var(--bh-def-ipt-knob, #fff)",
@@ -188,8 +188,8 @@ const CssVar = {
     ipt: {
       bgc: "var(--bh-def-ipt-bgc, #fafafa)",
       fc: "var(--bh-def-ipt-fc, #1e1e1e)",
-      bdc: "var(--bh-def-ipt-bdc, #787880)",
-      on: "var(--bh-def-ipt-on, #c0c0c0)",
+      bdc: "var(--bh-def-ipt-bdc, #101010)",
+      on: "var(--bh-def-ipt-on, #101010)",
       off: "var(--bh-def-ipt-off, #fff)",
       knob: "var(--bh-def-ipt-knob, #fff)",
     },
