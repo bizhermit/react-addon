@@ -14,6 +14,7 @@ const SliderPage: NextPage = () => {
   const [bind, setBind] = useState({});
   const [disabled, setDisabled] = useState(false);
   const [readOnly, setReadOnly] = useState(false);
+  const [showLabel, setShowLabel] = useState(false);
   const [resize, setResize] = useState(false);
   const hook = useSlider();
 
@@ -28,6 +29,9 @@ const SliderPage: NextPage = () => {
       </Caption>
       <Caption $label="resize">
         <ToggleBox $value={resize} $dispatch={setResize} />
+      </Caption>
+      <Caption $label="label">
+        <ToggleBox $value={showLabel} $dispatch={setShowLabel} />
       </Caption>
     </Row>
     <Row>
@@ -71,6 +75,7 @@ const SliderPage: NextPage = () => {
         $changing={(v) => {
           // console.log(v);
         }}
+        $showKnobLabel={showLabel}
       />
     </Caption>
     <Caption $label="Value" $width={110}>
@@ -78,7 +83,7 @@ const SliderPage: NextPage = () => {
     </Caption>
     <Row>
       {colorIterator(s => {
-        return <Slider key={s} $color={s} $defaultValue={50} $disabled={disabled} $readOnly={readOnly} $resize={resize} />
+        return <Slider key={s} $color={s} $defaultValue={50} $disabled={disabled} $readOnly={readOnly} $resize={resize} $showKnobLabel={showLabel} />
       })}
     </Row>
     </>
