@@ -141,6 +141,7 @@ const SandBoxPage: NextPage = () => {
           border: 3px double transparent;
           margin-bottom: 2px;
           min-height: 10px;
+          max-width: 200px;
           max-height: 54px;
           white-space: nowrap;
           overflow: hidden;

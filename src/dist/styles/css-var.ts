@@ -98,7 +98,7 @@ const CssVar = {
     bdc: "var(--bh-def-bdc, #787880)",
     head: {
       fc: "var(--bh-def-head-fc, #1e1e1e)",
-      bgc: "var(--bh-def-head-bgc, #d0d0d5)",
+      bgc: "var(--bh-def-head-bgc, #e4e4ef)",
       bdc: "var(--bh-def-head-bdc, #a4a4a7)",
     },
     nav: {
@@ -138,7 +138,7 @@ const CssVar = {
     bdc: "var(--bh-def-bdc, #787880)",
     head: {
       fc: "var(--bh-def-head-fc, #1e1e1e)",
-      bgc: "var(--bh-def-head-bgc, #d9d0d5)",
+      bgc: "var(--bh-def-head-bgc, #f0f0f9)",
       bdc: "var(--bh-def-head-bdc, #a4a4a7)",
     },
     nav: {
@@ -177,8 +177,8 @@ const CssVar = {
     bgc: "var(--bh-def-bgc, #fbfbfd)",
     bdc: "var(--bh-def-bdc, #787880)",
     head: {
-      fc: "var(--bh-def-head-fc, #1e1e1e)",
-      bgc: "var(--bh-def-head-bgc, #d0d0d5)",
+      fc: "var(--bh-def-head-fc, #f2f2f2)",
+      bgc: "var(--bh-def-head-bgc, #404045)",
       bdc: "var(--bh-def-head-bdc, #a4a4a7)",
     },
     nav: {
@@ -383,8 +383,8 @@ const CssVar = {
       bdc: "var(--bh-dpr-head-bdc, #c0c0c0)",
     },
     nav: {
-      fc: "var(--bh-dpr-nav-fc, #f2f2f2)",
-      bgc: "var(--bh-dpr-nav-bgc, linear-gradient(to bottom right, #99999f, #a1a1a6))",
+      fc: "var(--bh-dpr-nav-fc, #d8d8d8)",
+      bgc: "var(--bh-dpr-nav-bgc, #a1a1a6)",
       anchor: "var(--bh-dpr-nav-anchor, #9bf)",
     },
     ipt: {
@@ -398,17 +398,17 @@ const CssVar = {
     btn: {
       base: {
         bgc: "var(--bh-dpr-btn-base-bgc, #e0e0e2)",
-        fc: "var(--bh-dpr-btn-base-fc, #f2f2f2)",
+        fc: "var(--bh-dpr-btn-base-fc, #ededed)",
         bdc: "var(--bh-dpr-btn-base-bdc, #e0e0e2)",
       },
       hvr: {
         bgc: "var(--bh-dpr-btn-hvr-bgc, #d6d6d8)",
-        fc: "var(--bh-dpr-btn-hvr-fc, #f2f2f2)",
+        fc: "var(--bh-dpr-btn-hvr-fc, #ededed)",
         bdc: "var(--bh-dpr-btn-hvr-bdc, #d6d6d8)",
       },
       act: {
         bgc: "var(--bh-dpr-btn-act-bgc, #e2e2e4)",
-        fc: "var(--bh-dpr-btn-act-fc, #f2f2f2)",
+        fc: "var(--bh-dpr-btn-act-fc, #ededed)",
         bdc: "var(--bh-dpr-btn-act-bdc, #e2e2e4)",
       },
     },
