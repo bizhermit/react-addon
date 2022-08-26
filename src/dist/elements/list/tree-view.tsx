@@ -511,7 +511,7 @@ neumorphism: `
 ${switchDesign(design, {
 fm: `background: ${CssVar.hvrBgc};`,
 material: `box-shadow: 0px 4px 4px -2px ${CssVar.sdw.c};`,
-neumorphism: `box-shadow: ${CssPV.cvxSdD};`
+neumorphism: `box-shadow: ${CssPV.nCvxSdHover};`
 })}
 }
 .${cn}-tgl[data-disabled="false"]:hover:active {
@@ -524,7 +524,7 @@ material: `
 neumorphism: `
   margin-top: 1px;
   margin-bottom: -1px;
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
 `,
 })}
 }

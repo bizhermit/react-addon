@@ -2597,7 +2597,7 @@ fm: `
 }`,
 neumorphism: `
 .${cn}-wrap[data-border="true"] > .${cn} {
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
   padding: 2px;
 }
 .${cn}-wrap[data-border][data-radius="true"] > .${cn} > .${cn}-header {
@@ -2769,7 +2769,7 @@ material: `
 neumorphism: `
 .${cn}-header,
 .${cn}-footer {
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
 }
 .${cn}-edit > .${inputCn} {
   padding: 0px;

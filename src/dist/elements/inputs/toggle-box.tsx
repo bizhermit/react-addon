@@ -163,7 +163,7 @@ neumorphism: `
   width: calc(100% - 6px);
   top: 3px;
   left: 3px;
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
   background: ${CssVar.bgc};
 `})}
 }
@@ -208,18 +208,18 @@ material: `
 }`,
 neumorphism: `
 .${cn}[data-m="e"] > .${cn}-body::before {
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
 }
 .${cn}[data-m="e"] > .${cn}-body:hover > .${cn}-switch::before {
-  box-shadow: ${CssPV.cvxSdD};
+  box-shadow: ${CssPV.nCvxSdHover};
 }
 .${cn}[data-m="r"] .${cn}-body::before,
 .${cn}[data-m="d"] .${cn}-body::before {
-  box-shadow: ${CssPV.ccvSdS};
+  box-shadow: ${CssPV.nCcvSdDisabled};
 }
 .${cn}[data-m="r"] .${cn}-body > .${cn}-switch::before,
 .${cn}[data-m="d"] .${cn}-body > .${cn}-switch::before {
-  box-shadow: ${CssPV.cvxSdS};
+  box-shadow: ${CssPV.nCvxSdShallow};
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body[data-checked="true"]::before {

@@ -152,19 +152,19 @@ material: `
 }`,
 neumorphism: `
 .${cn}-cell[data-disabled="false"] > .${cn} {
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
 }
 .${cn}-cell[data-disabled="false"] > .${cn}:hover {
-  box-shadow: ${CssPV.cvxSdD};
+  box-shadow: ${CssPV.nCvxSdHover};
 }
 .${cn}-cell[data-disabled="false"] > .${cn}:hover:active {
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
 }`,
 })}
 .${cn}-cell[data-disabled="true"] > .${cn} {
   ${CssPV.inactOpacity}
 ${switchDesign(design, {
-neumorphism: `box-shadow: ${CssPV.ccvSdS};`
+neumorphism: `box-shadow: ${CssPV.nCcvSdDisabled};`
 })}
 }
 `}</JsxStyle>;

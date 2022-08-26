@@ -222,7 +222,7 @@ fm: `border: 1.5px dotted ${CssVar.bdc};`,
 .${cn}[data-m="e"] > .${cn}-drop_area {
   cursor: pointer;
 ${switchDesign(design, {
-neumorphism: `box-shadow: ${CssPV.ccvSd};`
+neumorphism: `box-shadow: ${CssPV.nCcvSdActive};`
 })}
 }
 ${switchDesign(design, {
@@ -247,7 +247,7 @@ ${colorIterator((_s, v, qs) => `
 .${cn}[data-m="d"] > .${cn}-drop_area {
   background: transparent;
 ${switchDesign(design, {
-neumorphism: `box-shadow: ${CssPV.ccvSdS};`
+neumorphism: `box-shadow: ${CssPV.nCcvSdDisabled};`
 })}
 }`
 })}

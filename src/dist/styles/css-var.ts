@@ -4,6 +4,7 @@ export type LayoutDesign = "flat" | "material" | "neumorphism";
 
 const colors = ["default", "light", "dark", "primary", "secondary", "warning", "danger", "disabled"] as const;
 export type Color = typeof colors[number];
+export type ColorType = "base" | "head" | "nav";
 
 export type Size = "xs" | "s" | "m" | "l" | "xl";
 
@@ -70,8 +71,8 @@ const CssVar = {
   bdc: "var(--bh-bdc, #aaaaaf)", // border color
   anchor: "var(--bh-anchor, #00f)", // anchor color
   sdw: { // shadow
-    c: "var(--bh-sdw_c, rgba(63,63,63,0.6))",
-    b: "var(--bh-sdw_b, rgba(240,240,240,0.4))",
+    c: "var(--bh-sdw_c, rgba(20,20,20,0.3))",
+    b: "var(--bh-sdw_b, rgba(224,224,229,0.2))",
     d: "var(--bh-sdw_d, rgba(0,0,0,0.3))",
   },
   sb: { // scrollbar
@@ -108,7 +109,7 @@ const CssVar = {
       bgc: "var(--bh-def-ipt-bgc, #fafafa)",
       fc: "var(--bh-def-ipt-fc, #1e1e1e)",
       bdc: "var(--bh-def-ipt-bdc, #787880)",
-      on: "var(--bh-def-ipt-on, #c0c0c0)",
+      on: "var(--bh-def-ipt-on, #c8c8cf)",
       off: "var(--bh-def-ipt-off, #fff)",
       knob: "var(--bh-def-ipt-knob, #fff)",
     },
@@ -131,18 +132,18 @@ const CssVar = {
     },
   } as CssColorVar,
   light: {
-    fc: "var(--bh-def-fc, #1e1e1e)",
+    fc: "var(--bh-def-fc, #707070)",
     bgc: "var(--bh-def-bgc, #fbfbfd)",
     bdc: "var(--bh-def-bdc, #787880)",
     head: {
       fc: "var(--bh-def-head-fc, #1e1e1e)",
-      bgc: "var(--bh-def-head-bgc, #d0d0d5)",
+      bgc: "var(--bh-def-head-bgc, #d9d0d5)",
       bdc: "var(--bh-def-head-bdc, #a4a4a7)",
     },
     nav: {
-      fc: "var(--bh-def-nav-fc, #f2f2f2)",
-      bgc: "var(--bh-def-nav-bgc, #444a50)",
-      anchor: "var(--bh-def-nav-anchor, #9bf)",
+      fc: "var(--bh-def-nav-fc, #1e1e1e)",
+      bgc: "var(--bh-def-nav-bgc, #e4e4ef)",
+      anchor: "var(--bh-def-nav-anchor, #00f)",
     },
     ipt: {
       bgc: "var(--bh-def-ipt-bgc, #fafafa)",
@@ -154,24 +155,24 @@ const CssVar = {
     },
     btn: {
       base: {
-        bgc: "var(--bh-def-btn-base-bgc, #787880)",
-        fc: "var(--bh-def-btn-base-fc, #f2f2f2)",
-        bdc: "var(--bh-def-btn-base-bdc, #787880)",
+        bgc: "var(--bh-def-btn-base-bgc, #d0d0d5)",
+        fc: "var(--bh-def-btn-base-fc, #1e1e1e)",
+        bdc: "var(--bh-def-btn-base-bdc, #d0d0d5)",
       },
       hvr: {
-        bgc: "var(--bh-def-btn-hvr-bgc, #66666d)",
-        fc: "var(--bh-def-btn-hvr-fc, #f2f2f2)",
-        bdc: "var(--bh-def-btn-hvr-bdc, #66666d)",
+        bgc: "var(--bh-def-btn-hvr-bgc, #c1c1c6)",
+        fc: "var(--bh-def-btn-hvr-fc, #1e1e1e)",
+        bdc: "var(--bh-def-btn-hvr-bdc, #c1c1c6)",
       },
       act: {
-        bgc: "var(--bh-def-btn-act-bgc, #82828a)",
-        fc: "var(--bh-def-btn-act-fc, #f2f2f2)",
-        bdc: "var(--bh-def-btn-act-bdc, #82828a)",
+        bgc: "var(--bh-def-btn-act-bgc, #d6d6da)",
+        fc: "var(--bh-def-btn-act-fc, #1e1e1e)",
+        bdc: "var(--bh-def-btn-act-bdc, #d6d6da)",
       },
     },
   } as CssColorVar,
   dark: {
-    fc: "var(--bh-def-fc, #1e1e1e)",
+    fc: "var(--bh-def-fc, #000)",
     bgc: "var(--bh-def-bgc, #fbfbfd)",
     bdc: "var(--bh-def-bdc, #787880)",
     head: {
@@ -181,7 +182,7 @@ const CssVar = {
     },
     nav: {
       fc: "var(--bh-def-nav-fc, #f2f2f2)",
-      bgc: "var(--bh-def-nav-bgc, #242a30)",
+      bgc: "var(--bh-def-nav-bgc, #141a20)",
       anchor: "var(--bh-def-nav-anchor, #9bf)",
     },
     ipt: {
@@ -194,19 +195,19 @@ const CssVar = {
     },
     btn: {
       base: {
-        bgc: "var(--bh-def-btn-base-bgc, #787880)",
+        bgc: "var(--bh-def-btn-base-bgc, #303030)",
         fc: "var(--bh-def-btn-base-fc, #f2f2f2)",
-        bdc: "var(--bh-def-btn-base-bdc, #787880)",
+        bdc: "var(--bh-def-btn-base-bdc, #303030)",
       },
       hvr: {
-        bgc: "var(--bh-def-btn-hvr-bgc, #66666d)",
+        bgc: "var(--bh-def-btn-hvr-bgc, #003)",
         fc: "var(--bh-def-btn-hvr-fc, #f2f2f2)",
-        bdc: "var(--bh-def-btn-hvr-bdc, #66666d)",
+        bdc: "var(--bh-def-btn-hvr-bdc, #003)",
       },
       act: {
-        bgc: "var(--bh-def-btn-act-bgc, #82828a)",
+        bgc: "var(--bh-def-btn-act-bgc, #3a3a3e)",
         fc: "var(--bh-def-btn-act-fc, #f2f2f2)",
-        bdc: "var(--bh-def-btn-act-bdc, #82828a)",
+        bdc: "var(--bh-def-btn-act-bdc, #3a3a3e)",
       },
     },
   } as CssColorVar,
@@ -302,7 +303,7 @@ const CssVar = {
     nav: {
       fc: "var(--bh-wrn-nav-fc, #f2f2f2)",
       bgc: "var(--bh-wrn-nav-bgc, linear-gradient(to bottom right, #808000, #878700))",
-      anchor: "var(--bh-wrn-nav-anchor, #45f)",
+      anchor: "var(--bh-wrn-nav-anchor, #9bf)",
     },
     ipt: {
       bgc: "var(--bh-wrn-ipt-bgc, #fafafa)",
@@ -371,7 +372,7 @@ const CssVar = {
     },
   } as CssColorVar,
   disabled: {
-    fc: "var(--bh-dpr-fc, #b0b0b0)",
+    fc: "var(--bh-dpr-fc, #c0c0c0)",
     bgc: "var(--bh-dpr-bgc, #f8f8fb)",
     bdc: "var(--bh-dpr-bdc, #e0e0e2)",
     head: {
@@ -654,6 +655,24 @@ const cvxBg = (cv?: CssVarCBDBase) => {
 const ccvBg = (cv?: CssVarCBDBase) => {
   return `linear-gradient(to bottom right, ${cv.d}, ${cv.b})`;
 };
+const cvxSd = (level: number) => {
+  if (level === 0) return "unset";
+  return `0px ${level*0.75}px ${level*2}px -1px ${CssVar.sdw.c}`;
+};
+const ccvSd = (level: number) => {
+  if (level === 0) return "unset";
+  return `0px ${level/2}px ${level*2}px -1px ${CssVar.sdw.c} inset`;
+};
+const nCvxSd = (level: number) => {
+  if (level === 0) return "unset";
+  const lvl = level - 1;
+  return `${lvl}px ${lvl}px ${lvl*2}px ${CssVar.sdw.d},-${lvl}px -${lvl}px ${lvl*2}px ${CssVar.sdw.b},1px 1px 1px -0.5px ${CssVar.sdw.b} inset,-1px -1px 1px -0.5px ${CssVar.sdw.d} inset`;
+};
+const nCcvSd = (level: number) => {
+  if (level === 0) return "unset";
+  const lvl = level - 1;
+  return `0.5px 0.5px 1.5px -0.5px ${CssVar.sdw.b},-0.5px -0.5px 1.5px -0.5px ${CssVar.sdw.d},${lvl}px ${lvl}px ${lvl*2}px ${CssVar.sdw.d} inset,-${lvl}px -${lvl}px ${lvl*2}px ${CssVar.sdw.b} inset`;
+};
 
 export const CssPV = {
   flex: `box-sizing:border-box;position:relative;display:flex;`,
@@ -661,12 +680,18 @@ export const CssPV = {
   inactOpacity: "opacity:0.6;",
   cvxBg,
   ccvBg,
-  cvxSd: `1px 1px 2px ${CssVar.sdw.d}, -0.5px -0.5px 2px ${CssVar.sdw.b}, 0.5px 0.5px 0.5px ${CssVar.sdw.b} inset, -0.5px -0.5px 1px ${CssVar.sdw.d} inset`,
-  cvxSdD: `2px 2px 4px ${CssVar.sdw.d}, -0.5px -0.5px 2px ${CssVar.sdw.b}, 0.5px 0.5px 0.5px ${CssVar.sdw.b} inset, -0.5px -0.5px 1px ${CssVar.sdw.d} inset`,
-  cvxSdS: `1px 1px 2px ${CssVar.sdw.b} inset, 1px 1px 2px -1px ${CssVar.sdw.d}, -1px -1px 2px -1px ${CssVar.sdw.d} inset`,
-  ccvSd: `0.5px 0.5px 1.5px ${CssVar.sdw.b}, -0.5px -0.5px 1.5px ${CssVar.sdw.d}, 1px 1px 2px ${CssVar.sdw.d} inset, -1px -1px 2px ${CssVar.sdw.b} inset`,
-  ccvSdD: `0.5px 0.5px 1.5px ${CssVar.sdw.b}, -0.5px -0.5px 1.5px ${CssVar.sdw.d}, 2px 2px 4px -1px ${CssVar.sdw.d} inset, -2px -2px 3px -1px ${CssVar.sdw.b} inset`,
-  ccvSdS: `1px 1px 1px ${CssVar.sdw.d} inset, -1px -1px 1px ${CssVar.sdw.b} inset`,
+  cvxSd,
+  ccvSd,
+  cvxSdBase: cvxSd(2),
+  cvxSdHover: cvxSd(4),
+  nCvxSd,
+  nCcvSd,
+  nCvxSdBase: nCvxSd(2),
+  nCvxSdHover: nCvxSd(3.5),
+  nCcvSdActive: nCcvSd(2),
+  nCcvSdDisabled: nCcvSd(1),
+  nCvxSdShallow: nCvxSd(1),
+  nCcvSdDeep: nCcvSd(3),
   colorCn: (color: Color) => `[data-color="${color || "default"}"]`,
   textSd: (color: string) => `text-shadow:1px 1px 0 ${color},-1px -1px 0 ${color},-1px 1px 0 ${color},1px -1px 0 ${color},0px 1px 0 ${color},0 -1px 0 ${color},-1px 0 0 ${color},1px 0 0 ${color};`,
 };

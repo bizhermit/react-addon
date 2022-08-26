@@ -422,11 +422,11 @@ ${colorIterator((_s, v, qs) => `
 `).join("")}`,
 neumorphism: `
 .${cn}-cell[data-selected="true"] {
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
 }
 .${cn}[data-m="r"] .${cn}-cell[data-selected="true"], 
 .${cn}[data-m="d"] .${cn}-cell[data-selected="true"] {
-  box-shadow: ${CssPV.ccvSdS};
+  box-shadow: ${CssPV.nCcvSdDisabled};
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body {

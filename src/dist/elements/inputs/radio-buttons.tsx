@@ -359,28 +359,28 @@ ${colorIterator((_s, v, qs) => `
 }`).join("")}`,
 neumorphism: `
 .${cn}-item:hover > .${radioButtonCn}[data-m="e"]::before {
-  box-shadow: ${CssPV.ccvSdD};
+  box-shadow: ${CssPV.nCcvSdDeep};
 }
 .${cn}[data-hrb="true"][data-m="e"] > .${cn}-item::before {
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
 }
 .${cn}[data-hrb="true"][data-m="e"] > .${cn}-item[data-selected="true"]::before {
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
 }
 .${cn}[data-hrb="true"][data-flow="row"] > .${cn}-item[data-selected="true"],
 .${cn}[data-hrb="true"][data-flow="column"] > .${cn}-item[data-selected="true"]:first-child {
   padding-top: calc(${CssVar.pdy} + 1px);
 }
 .${cn}[data-hrb="true"][data-m="e"] > .${cn}-item:not([data-selected="true"]):hover::before {
-  box-shadow: ${CssPV.cvxSdD};
+  box-shadow: ${CssPV.nCvxSdHover};
 }
 .${cn}[data-hrb="true"][data-m="r"] > .${cn}-item[data-selected="true"]::before,
 .${cn}[data-hrb="true"][data-m="d"] > .${cn}-item[data-selected="true"]::before {
-  box-shadow: ${CssPV.ccvSdS};
+  box-shadow: ${CssPV.nCcvSdDisabled};
 }
 .${cn}[data-hrb="true"][data-m="r"] > .${cn}-item:not([data-selected="true"])::before,
 .${cn}[data-hrb="true"][data-m="d"] > .${cn}-item:not([data-selected="true"])::before {
-  box-shadow: ${CssPV.cvxSdS};
+  box-shadow: ${CssPV.nCvxSdShallow};
 }
 .${cn}[data-hrb="true"][data-flow="column"] > .${cn}-item {
   min-height: ${CssVar.size};
@@ -483,11 +483,11 @@ fm: `
 }`,
 neumorphism: `
 .${radioButtonCn}[data-m="e"]::before {
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
 }
 .${radioButtonCn}[data-m="r"]::before,
 .${radioButtonCn}[data-m="d"]::before {
-  box-shadow: ${CssPV.ccvSdS};
+  box-shadow: ${CssPV.nCcvSdDisabled};
 }`})}
 .${radioButtonCn}::after {
   left: 33%;
@@ -504,7 +504,7 @@ ${switchDesign(design, {
 fm: `background: ${CssVar.default.fc};`,
 neumorphism: `
   background: ${CssVar.default.fc};
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
 `})}
 }
 ${switchDesign(design, {
@@ -515,7 +515,7 @@ fm: `
 }`,
 neumorphism: `
 .${radioButtonCn}[data-m="e"]:hover::before {
-  box-shadow: ${CssPV.ccvSdD};
+  box-shadow: ${CssPV.nCcvSdDeep};
 }`})}
 .${radioButtonCn}[data-m="d"] {
   ${CssPV.inactOpacity}

@@ -281,7 +281,7 @@ material: `
   transition: background 0.1s, box-shadow 0.1s, top 0.1s, border-color 0.1s;
 `,
 neumorphism: `
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
   background: ${CssVar.bgc};
   transition: background 0.1s, box-shadow 0.1s, margin-top 0.1s, margin-bottom 0.1s;
 `})}
@@ -369,11 +369,11 @@ material: `
 neumorphism: `
 .${cn}-inc:hover,
 .${cn}-dec:hover {
-  box-shadow: ${CssPV.cvxSdD};
+  box-shadow: ${CssPV.nCvxSdHover};
 }
 .${cn}-inc:active,
 .${cn}-dec:active {
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-btn > .${cn}-inc::before,

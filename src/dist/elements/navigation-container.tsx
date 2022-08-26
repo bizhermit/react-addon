@@ -5,7 +5,7 @@ import CssVar, { CssPV, FitToOuter, Color, colorIterator, switchDesign } from ".
 import JsxStyle from "../styles/jsx-style";
 import { attributesWithoutChildren, ftoCn } from "../utils/attributes";
 import { _HookSetter } from "../utils/hook";
-import { iconCn } from "./icon";
+import { iconCn, varIconBc, varIconFc } from "./icon";
 import { labelCn } from "./label";
 
 const cn = "bh-nvg";
@@ -305,7 +305,7 @@ const NavigationContainer = React.forwardRef<HTMLDivElement, NavigationContainer
         ref={nref}
         {...attributesWithoutChildren(navCont.props, `${cn}-nav ${sbCn}`)}
         data-opened={opened}
-        data-color={navCont.props.$color}
+        data-color={navCont.props.$color || "default"}
         onMouseEnter={mouseEnter}
         onMouseLeave={mouseLeave}
         onClick={(e) => { e.stopPropagation() }}
@@ -445,8 +445,8 @@ ${colorIterator((_s, v, qs) => `
   background: ${v.nav.bgc};
 }
 .${cn}-nav${qs} .${iconCn} {
-  --bh-icon-fc: ${v.nav.fc};
-  --bh-icon-bc: ${v.nav.bgc};
+  ${varIconFc}: ${v.nav.fc};
+  ${varIconBc}: ${v.nav.bgc};
 }
 .${cn}-nav${qs} .${labelCn}[data-type="a"],
 .${cn}-nav${qs} .bh-anchor {
@@ -454,29 +454,20 @@ ${colorIterator((_s, v, qs) => `
 }`).join("")}`,
 material: `
 .${cn}[data-pos="left"] > .${cn}-nav {
-  box-shadow: 5px 0 4px -5px ${CssVar.sdw.c};
+  box-shadow: 5px 0 5px ${CssVar.sdw.c};
 }
 .${cn}[data-pos="right"] > .${cn}-nav {
-  box-shadow: -4px 0 4px -5px ${CssVar.sdw.c};
+  box-shadow: -5px 0 5px ${CssVar.sdw.c};
 }
 .${cn}[data-pos="top"] > .${cn}-nav {
-  box-shadow: 0 5px 4px -5px ${CssVar.sdw.c};
+  box-shadow: 0 5px 5px ${CssVar.sdw.c};
 }
 .${cn}[data-pos="bottom"] > .${cn}-nav {
-  box-shadow: 0 -4px 4px -5px ${CssVar.sdw.c};
+  box-shadow: 0 -5px 5px ${CssVar.sdw.c};
 }`,
 neumorphism: `
-.${cn}[data-pos="left"] > .${cn}-nav {
-  box-shadow: 4px 0 3px -2px ${CssVar.sdw.d}, -2.5px 0 1px -2px ${CssVar.sdw.d} inset;
-}
-.${cn}[data-pos="right"] > .${cn}-nav {
-  box-shadow: -5.5px 0 3px -3px ${CssVar.sdw.b}, 2.5px 0 0.5px -1px ${CssVar.sdw.b} inset;
-}
-.${cn}[data-pos="top"] > .${cn}-nav {
-  box-shadow: 0px 4px 3px -2px ${CssVar.sdw.d}, 0px -2.5px 1px -2px ${CssVar.sdw.d} inset;
-}
-.${cn}[data-pos="bottom"] > .${cn}-nav {
-  box-shadow: 0 -5.5px 3px -3px ${CssVar.sdw.b}, 0 2.5px 0.5px -1px ${CssVar.sdw.b} inset;
+.${cn} > .${cn}-nav {
+  box-shadow: ${CssPV.nCvxSd(4)};
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}-nav${qs} {
@@ -484,8 +475,8 @@ ${colorIterator((_s, v, qs) => `
   background: ${v.nav.bgc};
 }
 .${cn}-nav${qs} .${iconCn} {
-  --bh-icon-fc: ${v.nav.fc};
-  --bh-icon-bc: ${v.nav.bgc};
+  ${varIconFc}: ${v.nav.fc};
+  ${varIconBc}: ${v.nav.bgc};
 }
 .${cn}-nav${qs} .${labelCn}[data-type="a"],
 .${cn}-nav${qs} .bh-anchor {

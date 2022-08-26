@@ -657,18 +657,18 @@ fm: `
 }`,
 neumorphism: `
 .${cn}-min:hover {
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
 }
 .${cn}-close > .${iconCn} {
   --bh-icon-fc: ${CssVar.danger.fc};
   --bh-icon-bc: ${CssVar.bgc};
 }
 .${cn}-close:hover {
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
 }
 .${cn}-min:hover:active,
 .${cn}-close:hover:active {
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
 }
 `})}
 .${cn}-body {

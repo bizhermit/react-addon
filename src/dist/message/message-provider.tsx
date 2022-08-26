@@ -659,7 +659,7 @@ neumorphism: `
   padding: 5px;
 ${switchDesign(design, {
 fm: `border: 1px solid ${CssVar.bdc};`,
-neumorphism: `box-shadow: ${CssPV.cvxSd};`,
+neumorphism: `box-shadow: ${CssPV.nCvxSdBase};`,
 })}
 }
 ${switchDesign(design, {
@@ -669,7 +669,7 @@ fm: `
 }`,
 neumorphism: `
 .${cn}-hist_item[data-verified="true"] {
-  box-shadow: ${CssPV.ccvSdS};
+  box-shadow: ${CssPV.nCcvSdDisabled};
 }`
 })}
 .${cn}-hist_item_header {
@@ -724,7 +724,7 @@ neumorphism: `
   margin-bottom: 5px;
 ${switchDesign(design, {
 fm: `border: 3px double ${CssVar.bdc};`,
-neumorphism: `box-shadow: ${CssPV.cvxSdS};`,
+neumorphism: `box-shadow: ${CssPV.nCvxSdShallow};`,
 })}
 }
 .${cn}-popup_item_texts {

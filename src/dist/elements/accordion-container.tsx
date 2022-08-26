@@ -224,7 +224,7 @@ fm: `
   border-bottom: 1px solid ${CssVar.bdc};
   border-right: 1px solid ${CssVar.bdc};
 `,
-neumorphism: `box-shadow: ${CssPV.ccvSd};`
+neumorphism: `box-shadow: ${CssPV.nCcvSdActive};`
 })}
 }
 .${cn}-header {
@@ -249,7 +249,7 @@ fm: `
 flat: `transition: background 0.1s, color 0.1s;`,
 material: `transition: background 0.1s, color 0.1s, box-shadow 0.1s, top 0.1s;`,
 neumorphism: `
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
   transition: background 0.1s, color 0.1s, box-shadow 0.1s, margin-top 0.1s, margin-bottom 0.1s;
 `})}
 }
@@ -325,13 +325,13 @@ material: `
 }`,
 neumorphism: `
 .${cn}:not([data-disabled="true"]) > .${cn}-header {
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
 }
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover {
-  box-shadow: ${CssPV.cvxSdD};
+  box-shadow: ${CssPV.nCvxSdHover};
 }
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover:active {
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
 }
 .${cn}[data-borderless="true"] > .${cn}-header {
   border-radius: ${CssVar.bdr};

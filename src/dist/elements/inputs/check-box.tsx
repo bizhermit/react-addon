@@ -130,7 +130,7 @@ fm: `
 }`,
 neumorphism: `
 .${cn}[data-m="e"] > .${cn}-body:hover > .${checkBoxCn}::before {
-  box-shadow: ${CssPV.ccvSdD};
+  box-shadow: ${CssPV.nCcvSdDeep};
 }`})}
 ${colorIterator((_s, v, qs) => `
 ${switchDesign(design, {
@@ -204,7 +204,7 @@ neumorphism: `transition: box-shadow 0.1s;`
 .${checkBoxCn}[data-m="e"]::before {
 ${switchDesign(design, {
 fm: `background: ${CssVar.default.ipt.off};`,
-neumorphism: `box-shadow: ${CssPV.ccvSd};`
+neumorphism: `box-shadow: ${CssPV.nCcvSdActive};`
 })}
 }
 .${checkBoxCn}[data-checked="true"][data-fill="true"]::before {
@@ -224,11 +224,11 @@ fm: `
 }`,
 neumorphism: `
 .${checkBoxCn}[data-m="e"]:hover::before {
-  box-shadow: ${CssPV.ccvSdD};
+  box-shadow: ${CssPV.nCcvSdDeep};
 }
 .${checkBoxCn}[data-m="r"]::before,
 .${checkBoxCn}[data-m="d"]::before {
-  box-shadow: ${CssPV.ccvSdS};
+  box-shadow: ${CssPV.nCcvSdDisabled};
 }`
 })}
 .${checkBoxCn}[data-m="d"] {

@@ -19,7 +19,7 @@ const ButtonPage: NextPage = () => {
       $scroll
       // style={{ background: "gray" }}
     >
-      <button>button</button>
+      {/* <button>button</button> */}
       <Row>
         <Caption $label="disabled">
           <ToggleBox $value={disabled} $dispatch={setDisabled} />
@@ -91,18 +91,30 @@ const ButtonPage: NextPage = () => {
         }]}</ToggleButton>
       </Row>
       <Row $middle>
-        <Button $icon="cloud" $size="xs">XS button</Button>
-        <Button $icon="cloud" $size="s">S button</Button>
-        <Button $icon="cloud" $size="m">M button</Button>
-        <Button $icon="cloud" $size="l">L button</Button>
-        <Button $icon="cloud" $size="xl">XL button</Button>
+        <Button disabled={disabled} $icon="cloud" $size="xs">XS button</Button>
+        <Button disabled={disabled} $icon="cloud" $size="s">S button</Button>
+        <Button disabled={disabled} $icon="cloud" $size="m">M button</Button>
+        <Button disabled={disabled} $icon="cloud" $size="l">L button</Button>
+        <Button disabled={disabled} $icon="cloud" $size="xl">XL button</Button>
       </Row>
       <Row $middle>
-        <Button $icon="cloud" $round $size="xs">XS button</Button>
-        <Button $icon="cloud" $round $size="s">S button</Button>
-        <Button $icon="cloud" $round $size="m">M button</Button>
-        <Button $icon="cloud" $round $size="l">L button</Button>
-        <Button $icon="cloud" $round $size="xl">XL button</Button>
+        <Button disabled={disabled} $icon="cloud" $round $size="xs">XS button</Button>
+        <Button disabled={disabled} $icon="cloud" $round $size="s">S button</Button>
+        <Button disabled={disabled} $icon="cloud" $round $size="m">M button</Button>
+        <Button disabled={disabled} $icon="cloud" $round $size="l">L button</Button>
+        <Button disabled={disabled} $icon="cloud" $round $size="xl">XL button</Button>
+      </Row>
+      <Row $middle>
+        <Button disabled={disabled} $icon="cloud" $size="xs" />
+        <Button disabled={disabled} $icon="cloud" $size="s" />
+        <Button disabled={disabled} $icon="cloud" $size="m" />
+        <Button disabled={disabled} $icon="cloud" $size="l" />
+        <Button disabled={disabled} $icon="cloud" $size="xl" />
+        <Button disabled={disabled} $icon="cloud" $round $size="xs" />
+        <Button disabled={disabled} $icon="cloud" $round $size="s" />
+        <Button disabled={disabled} $icon="cloud" $round $size="m" />
+        <Button disabled={disabled} $icon="cloud" $round $size="l" />
+        <Button disabled={disabled} $icon="cloud" $round $size="xl" />
       </Row>
       <Caption $label="Label" $width={120}>
         <Button disabled={disabled}>Button</Button>

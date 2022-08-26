@@ -188,7 +188,7 @@ fm: `
 `,
 neumorphism: `
   height: 100%;
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
   border-radius: calc(${CssVar.size} / 2 - 1px);
 `})}
 }
@@ -198,7 +198,7 @@ neumorphism: `
   width: 0px;
 ${switchDesign(design, {
 neumorphism: `
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
   border-radius: calc(${CssVar.size} / 2 - 1px) 0 0 calc(${CssVar.size} / 2 - 1px);
 `})}
 }
@@ -245,7 +245,7 @@ neumorphism: `
   width: calc(100% - 6px);
   top: 3px;
   left: 3px;
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
   background: ${CssVar.bgc};
 `})}
 }
@@ -302,13 +302,13 @@ neumorphism: `
   top: -100%;
 }
 .${cn}[data-m="e"] > .${cn}-body > .${cn}-handle:hover::before {
-  box-shadow: ${CssPV.cvxSdD};
+  box-shadow: ${CssPV.nCvxSdHover};
 }
 .${cn}[data-m="e"] > .${cn}-body > .${cn}-handle:active::before {
   border-radius: ${CssVar.bdr};
   width: 120%;
   left: -10%;
-  box-shadow: ${CssPV.cvxSdD};
+  box-shadow: ${CssPV.nCvxSdHover};
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body > .${cn}-bar > .${cn}-rate {
@@ -316,11 +316,11 @@ ${colorIterator((_s, v, qs) => `
 }`).join("")}
 .${cn}[data-m="r"] > .${cn}-body > .${cn}-bar,
 .${cn}[data-m="d"] > .${cn}-body > .${cn}-bar {
-  box-shadow: ${CssPV.ccvSdS};
+  box-shadow: ${CssPV.nCcvSdDisabled};
 }
 .${cn}[data-m="r"] > .${cn}-body > .${cn}-handle::before,
 .${cn}[data-m="d"] > .${cn}-body > .${cn}-handle::before {
-  box-shadow: ${CssPV.cvxSdS};
+  box-shadow: ${CssPV.nCvxSdShallow};
 }`})}
 .${cn}[data-m="r"] > .${cn}-body > .${cn}-bar,
 .${cn}[data-m="d"] > .${cn}-body > .${cn}-bar {

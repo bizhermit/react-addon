@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from "react";
-import { sbCn } from "../styles/core-style";
-import CssVar, { CssPV, FitToOuter, Color, colorIterator, switchDesign } from "../styles/css-var";
+import { colorCn, sbCn, shadowCn } from "../styles/core-style";
+import CssVar, { CssPV, FitToOuter, Color, ColorType } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributes, dBool, dPosX, dPosY, ftoCn } from "../utils/attributes";
 
@@ -17,27 +17,31 @@ export type FlexBoxAttributes = HTMLAttributes<HTMLDivElement> & {
   $top?: boolean;
   $middle?: boolean;
   $bottom?: boolean;
-  $shadow?: boolean;
+  $shadow?: boolean | number;
+  $hover?: boolean;
   $radius?: boolean;
   $scroll?: boolean;
   $padding?: boolean;
   $border?: boolean | Color;
   $color?: Color;
+  $colorType?: ColorType;
 };
 
 const FlexBox = React.forwardRef<HTMLDivElement, FlexBoxAttributes>((attrs, ref) => {
   return (
     <>
       <div
-        {...attributes(attrs, cn, ftoCn(attrs.$fto), attrs.$scroll ? sbCn : "")}
+        {...attributes(attrs, cn, colorCn, shadowCn, ftoCn(attrs.$fto), attrs.$scroll ? sbCn : "")}
         ref={ref}
         data-flow={attrs.$row ? "row" : "col"}
         data-wrap={dBool(attrs.$wrap)}
         data-posx={dPosX(attrs.$left, attrs.$center, attrs.$right) ?? "l"}
         data-posy={dPosY(attrs.$top, attrs.$middle, attrs.$bottom) ?? "t"}
         data-border={attrs.$border ?? attrs.$color}
-        data-color={attrs.$color ?? attrs.$color}
+        data-color={attrs.$color}
+        data-colortype={attrs.$colorType}
         data-shadow={attrs.$shadow}
+        data-hover={attrs.$hover}
         data-radius={attrs.$radius}
         data-padding={attrs.$padding}
       />
@@ -48,7 +52,7 @@ const FlexBox = React.forwardRef<HTMLDivElement, FlexBoxAttributes>((attrs, ref)
 
 const colCn = `${cn}[data-flow="col"]`;
 const rowCn = `${cn}[data-flow="row"]`;
-const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
+const Style = <JsxStyle id={cn} depsDesign>{() => `
 .${cn} {
   ${CssPV.flex}
   flex: none;
@@ -92,27 +96,12 @@ const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
 .${cn}[data-border="true"] {
   border: 1px solid ${CssVar.bdc};
 }
-.${cn}[data-shadow="true"] {
-${switchDesign(design, {
-fm: `box-shadow: 0px 3px 3px -2px ${CssVar.sdw.c};`,
-neumorphism: `box-shadow: ${CssPV.cvxSd};`,
-})}
-}
 .${cn}[data-radius="true"] {
   border-radius: ${CssVar.bdr};
 }
 .${cn}[data-padding="true"] {
   padding: ${CssVar.pdy} ${CssVar.pdx};
 }
-${colorIterator((s, v) => `
-.${cn}[data-border="${s}"] {
-  border: 1px solid ${v.bdc};
-}
-.${cn}[data-color="${s}"] {
-  background: ${v.bgc};
-  color: ${v.fc};
-}
-`).join("")}
 `}</JsxStyle>;
 
 export default FlexBox;

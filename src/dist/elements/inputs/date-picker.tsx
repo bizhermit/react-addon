@@ -767,13 +767,13 @@ ${ccn} > .${cn}-d > .${cn}-cell[data-selected="true"],
 ${lcn} > .${cn}-y > .${cn}-cell[data-selected="true"],
 ${lcn} > .${cn}-m > .${cn}-cell[data-selected="true"],
 ${lcn} > .${cn}-d > .${cn}-cell[data-selected="true"] {
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
 }
 .${cn}[data-m="r"] > ${ccn} > .${cn}-d > .${cn}-cell[data-selected="true"],
 .${cn}[data-m="d"] > ${ccn} > .${cn}-d > .${cn}-cell[data-selected="true"],
 .${cn}[data-m="r"] > ${lcn} > * > .${cn}-cell[data-selected="true"],
 .${cn}[data-m="d"] > ${lcn} > * > .${cn}-cell[data-selected="true"] {
-  box-shadow: ${CssPV.ccvSdS};
+  box-shadow: ${CssPV.nCcvSdDisabled};
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body {

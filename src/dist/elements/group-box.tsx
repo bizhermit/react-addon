@@ -57,7 +57,7 @@ ${switchDesign(design, {
 c: `min-height: ${CssVar.size};`,
 neumorphism: `
   border-radius: ${CssVar.bdr} ${CssVar.bdr} 0 0;
-  box-shadow: ${CssPV.cvxSdS};
+  box-shadow: ${CssPV.nCvxSdShallow};
 `})}
 }
 .${cn}-cap_prefix,
@@ -106,7 +106,7 @@ fm: `
   border-radius: 0 0 ${CssVar.bdr} ${CssVar.bdr};
 `,
 neumorphism: `
-  box-shadow: ${CssPV.ccvSdS};
+  box-shadow: ${CssPV.nCcvSdDisabled};
   border-radius: 0 0 ${CssVar.bdr} ${CssVar.bdr};
 `})}
 }

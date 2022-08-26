@@ -280,10 +280,10 @@ ${colorIterator((_s, v, qs) => `
   box-shadow: 0 -4.5px 0px -2px ${v.bdc} inset;
 }`).join("")}
 .${cn}-tab:not([data-selected="true"]):hover {
-  box-shadow: ${CssPV.cvxSdD};
+  box-shadow: ${CssPV.nCvxSdHover};
 }
 .${cn}-tab:not([data-selected="true"]):hover:active {
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
 }`})}
 `}</JsxStyle>;
 

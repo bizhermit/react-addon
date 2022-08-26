@@ -2,7 +2,7 @@ import StringUtils from "@bizhermit/basic-utils/dist/string-utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC, ReactNode, useMemo, useState } from "react";
-import CssVar from "../../react-addon/dist/styles/css-var";
+import { Color, colorIterator } from "../../react-addon/dist/styles/css-var";
 import LayoutBox from "./layout-selector";
 import NavigationContainer, { Navigation, useNavigationContainer } from "../../react-addon/dist/elements/navigation-container";
 import TreeView, { TreeViewItemTemplateFC } from "../../react-addon/dist/elements/list/tree-view";
@@ -12,12 +12,15 @@ import FlexBox from "../../react-addon/dist/elements/flex-box";
 import useMessage from "../../react-addon/dist/message/message-provider";
 import Button from "../../react-addon/dist/elements/button";
 import { ScreenSize, useLayout } from "../../react-addon/dist/styles/layout-provider";
+import SelectBox from "../../react-addon/dist/elements/inputs/select-box";
+import Caption from "../../react-addon/dist/elements/caption";
 
 const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
   const router = useRouter();
   const msg = useMessage();
   const navHook = useNavigationContainer();
   const [opened, setOpen] = useState(false);
+  const [color, setColor] = useState<Color>();
   const layout = useLayout();
   const menuItems = useMemo(() => {
     const toMenuItem = (url: string, label: string, parent?: string) => {
@@ -101,7 +104,7 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
     <>
     <NavigationContainer $fto="fy" $hook={navHook}>
       <Navigation
-        $color="default"
+        $color={color}
         $mode={layout.screenSize > ScreenSize.medium ? "visible" : "manual"}
         $edgeSize={60}
         style={{ alignItems: "flex-start" }}
@@ -109,11 +112,27 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
           setOpen(opened);
         }}
       >
-        <TreeView $fto="f" $items={menuItems} style={{ width: 300 }}>
+        <TreeView $fto="fy" $items={menuItems} style={{ width: 300 }}>
           <TreeViewMenuItem />
         </TreeView>
+        <FlexBox $padding $fto="x">
+          <Caption $label="NavColor">
+            <SelectBox
+              $color={color}
+              $value={color}
+              $dispatch={setColor}
+              $notInputText
+              $source={[
+                { value: undefined, label: "unset" },
+                ...colorIterator((c) => {
+                  return { value: c, label: c };
+                }),
+              ]}
+            />
+          </Caption>
+        </FlexBox>
       </Navigation>
-      <Row $fill style={{ background: CssVar.default.nav.bgc, color: CssVar.default.nav.fc }}>
+      <Row $fill $color={color} $colorType="nav">
           {layout.screenSize > ScreenSize.medium ? <></> : 
             <Button
               $color="default"

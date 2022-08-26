@@ -1,5 +1,6 @@
 import React, { FC, HTMLAttributes } from "react";
-import { CssPV } from "../styles/css-var";
+import { colorCn } from "../styles/core-style";
+import { Color, ColorType, CssPV } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributes, dPosX, dPosY } from "../utils/attributes";
 
@@ -12,15 +13,19 @@ const Row: FC<HTMLAttributes<HTMLDivElement> & {
   $middle?: boolean;
   $fill?: boolean;
   $nowrap?: boolean;
+  $color?: Color;
+  $colorType?: ColorType;
 }> = (attrs) => {
   return (
     <>
       <div
-        {...attributes(attrs, cn)}
+        {...attributes(attrs, cn, colorCn)}
         data-fill={attrs.$fill}
         data-nowrap={attrs.$nowrap}
         data-posx={dPosX(undefined, attrs.$center, attrs.$right) ?? "l"}
         data-posy={dPosY(attrs.$top, attrs.$middle, undefined) ?? "b"}
+        data-color={attrs.$color}
+        data-colortype={attrs.$colorType}
       />
       {Style}
     </>
