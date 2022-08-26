@@ -439,6 +439,18 @@ const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
 }
 ${switchDesign(design, {
 fm: `
+.${cn}[data-pos="left"] > .${cn}-nav {
+  box-shadow: 2px 0 1px -2px ${CssVar.sdw.c};
+}
+.${cn}[data-pos="right"] > .${cn}-nav {
+  box-shadow: -2px 0 1px -2px ${CssVar.sdw.c};
+}
+.${cn}[data-pos="top"] > .${cn}-nav {
+  box-shadow: 0 2px 1px -2px ${CssVar.sdw.c};
+}
+.${cn}[data-pos="bottom"] > .${cn}-nav {
+  box-shadow: 0 -2px 1px -2px ${CssVar.sdw.c};
+}
 ${colorIterator((_s, v, qs) => `
 .${cn}-nav${qs} {
   color: ${v.nav.fc};
