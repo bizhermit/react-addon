@@ -1,7 +1,7 @@
 import ArrayUtils from "@bizhermit/basic-utils/dist/array-utils";
 import { NextPage } from "next";
 import { createRef, useState } from "react";
-import { CssPV, Signal, signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { CssPV, Color, colorIterator } from "../../../react-addon/dist/styles/css-var";
 import Button from "../../../react-addon/dist/elements/button";
 import Caption from "../../../react-addon/dist/elements/caption";
 import FlexBox from "../../../react-addon/dist/elements/flex-box";
@@ -15,7 +15,7 @@ import Row from "../../../react-addon/dist/elements/row";
 const NavigationContainerPage: NextPage = () => {
   const [position, setPosition] = useState<"left" | "top" | "right" | "bottom">();
   const [mode, setMode] = useState<"visible" | "edge" | "manual">("visible");
-  const [signal, setSignal] = useState<Signal>();
+  const [color, setColor] = useState<Color>();
   const [preventClickClose, setPreventClickClose] = useState(false);
   const [opened, setOpen] = useState(false);
   const navHook = useNavigationContainer();
@@ -62,26 +62,26 @@ const NavigationContainerPage: NextPage = () => {
           $source={[{
             value: null,
             label: `unset`,
-          }, ...(signalIterator(s => {
+          }, ...(colorIterator(s => {
             return {
               value: s,
               label: s,
-              signal: s,
+              color: s,
             }
           }))]}
-          $value={signal}
-          $dispatch={setSignal}
+          $value={color}
+          $dispatch={setColor}
         />
         <Caption $label="preventClickClose">
           <ToggleBox $value={preventClickClose} $dispatch={setPreventClickClose} />
         </Caption>
       </Row>
-      <FlexBox $fto="fy" $padding>
+      <FlexBox $fto="fy">
         <NavigationContainer $fto="f" $hook={navHook} ref={ref}>
           <Navigation
             $position={position}
             $mode={mode}
-            $signal={signal}
+            $color={color}
             $edgeSize={40}
             $toggled={(opened) => {
               console.log("toggled", opened);

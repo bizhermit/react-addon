@@ -1,7 +1,7 @@
 import DatetimeUtils from "@bizhermit/basic-utils/dist/datetime-utils";
 import { NextPage } from "next";
 import { createRef, useEffect, useState } from "react";
-import { Signal, signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { Color, colorIterator } from "../../../react-addon/dist/styles/css-var";
 import Button from "../../../react-addon/dist/elements/button";
 import Calendar, { CalendarCellTemplate, useCalendar } from "../../../react-addon/dist/elements/calendar";
 import Caption from "../../../react-addon/dist/elements/caption";
@@ -16,7 +16,7 @@ const CalendarPage: NextPage = () => {
   const hook = useCalendar();
   const [disabled, setDsiabled] = useState(false);
   const [count, setCount] = useState(0);
-  const [signal, setSignal] = useState<Signal>();
+  const [color, setColor] = useState<Color>();
 
   return (
     <>
@@ -41,20 +41,20 @@ const CalendarPage: NextPage = () => {
         </Caption>
       </Row>
       <Row>
-        <Caption $label="signal">
+        <Caption $label="color">
           <RadioButtons
             $source={[{
               value: null,
               label: `unset`,
-            }, ...(signalIterator(s => {
+            }, ...(colorIterator(s => {
               return {
                 value: s,
                 label: s,
-                signal: s,
+                color: s,
               }
             }))]}
-            $value={signal}
-            $dispatch={setSignal}
+            $value={color}
+            $dispatch={setColor}
           />
         </Caption>
       </Row>
@@ -69,7 +69,7 @@ const CalendarPage: NextPage = () => {
             console.log(DatetimeUtils.format(ctx.before), "->", DatetimeUtils.format(ctx.after));
           }}
           $disabled={disabled}
-          $signal={signal}
+          $color={color}
         >
           <CalendarCell params={count} />
         </Calendar>

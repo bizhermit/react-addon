@@ -9,8 +9,7 @@ import TextBox from "../../../react-addon/dist/elements/inputs/text-box";
 import ToggleBox from "../../../react-addon/dist/elements/inputs/toggle-box";
 import ListView, { ListViewColumnProps, ListViewSelectMode, useListView } from "../../../react-addon/dist/elements/list/list-view";
 import Row from "../../../react-addon/dist/elements/row";
-import ListViewButtonColumn from "../../../react-addon/dist/elements/list/list-view-columns/button-column";
-import { colorIterator } from "../../../react-addon/dist/styles/css-var";
+import ListViewIconColumn from "../../../react-addon/dist/elements/list/list-view-columns/icon-column";
 
 const Page: NextPage = () => {
   const generageItems = (len = 10) => {
@@ -19,6 +18,8 @@ const Page: NextPage = () => {
         label: `label-${idx}`,
         number: idx,
         col0: `label-${idx}`,
+        icon1: idx % 2 ? "c-check" : undefined,
+        // icon1c: "primary"
       };
     });
   }
@@ -44,66 +45,12 @@ const Page: NextPage = () => {
       name: "label",
       headerCellLabel: "Label",
     })
-    cols.push(ListViewButtonColumn({
-      name: "text",
-      buttonLabel: "button",
-      fixed: true,
-      disabled: true,
-      clickCell: (params) => {
-        console.log("button", params);
-      },
+    cols.push(ListViewIconColumn({
+      name: "icon1",
+      colorDataName: "icon1c",
+      // defaultIcon: "c-star",
+      defaultColor: "danger"
     }));
-    cols.push(ListViewButtonColumn({
-      name: "icon",
-      icon: "calendar",
-      valid: (data) => {
-        return data.number % 3 !== 0;
-      },
-      clickCell: (params) => {
-        console.log("icon", params);
-      },
-    }));
-    cols.push(ListViewButtonColumn({
-      name: "icon-text",
-      buttonLabel: "left",
-      cellTextAlign: "left",
-      icon: {
-        image: "pull-left",
-        position: "left",
-      },
-      clickCell: (params) => {
-        console.log("left", params);
-      }
-    }));
-    cols.push(ListViewButtonColumn({
-      name: "text-icon",
-      buttonLabel: "right",
-      cellTextAlign: "right",
-      icon: {
-        image: "pull-right",
-        position: "right",
-      },
-      clickCell: (params) => {
-        console.log("right", params);
-      }
-    }));
-    colorIterator((s) => {
-      cols.push(ListViewButtonColumn({
-        name: s,
-        buttonLabel: s,
-        icon: {
-          image: "pen",
-          color: s,
-        },
-        width: 140,
-      }));
-    })
-    // ArrayUtils.generateArray(10, idx => {
-    //   cols.push({
-    //     name: `col${idx}`,
-    //     headerCellLabel: `Col${idx}`,
-    //   });
-    // });
     return cols;
   }, []);
   const [items, setItems] = useState(generageItems(100));

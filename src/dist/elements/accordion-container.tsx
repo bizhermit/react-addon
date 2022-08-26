@@ -1,7 +1,7 @@
 import StringUtils from "@bizhermit/basic-utils/dist/string-utils";
 import React, { HTMLAttributes, ReactNode, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { sbCn } from "../styles/core-style";
-import CssVar, { CssPV, FitToOuter, Signal, signalIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, FitToOuter, Color, colorIterator, switchDesign } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributesWithoutChildren, ftoCn } from "../utils/attributes";
 import { pressPositiveKey } from "../utils/dom";
@@ -31,7 +31,7 @@ export type AccordionContainerAttributes = HTMLAttributes<HTMLDivElement> & {
   $animationDuration?: number;
   $height?: number;
   $borderless?: boolean;
-  $signal?: Signal;
+  $color?: Color;
   $openedIconImage?: IconImage;
   $closedIconImage?: IconImage;
   $iconPosition?: "left" | "right" | "none";
@@ -151,7 +151,7 @@ const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionContainerAt
       {...attributesWithoutChildren(attrs, cn, ftoCn(attrs.$fto))}
       ref={ref}
       tabIndex={undefined}
-      data-signal={attrs.$signal}
+      data-color={attrs.$color}
       data-opened={opened}
       data-disabled={attrs.$disabled}
       data-borderless={attrs.$borderless}
@@ -163,7 +163,7 @@ const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionContainerAt
         onKeyDown={e => pressPositiveKey(e, () => toggle())}
         data-iconpos={attrs.$iconPosition}
       >
-        {attrs.$disabled || attrs.$iconPosition === "none" ? <></> : <Icon $image={opened ? attrs.$openedIconImage ?? "pull-up" : attrs.$closedIconImage ?? "pull-down"} />}
+        {attrs.$disabled || attrs.$iconPosition === "none" ? <></> : <Icon $image={opened ? attrs.$openedIconImage ?? "pull-up" : attrs.$closedIconImage ?? "pull-down"} $transition />}
         {StringUtils.isString(attrs.$header) ? <Label className={`${cn}-lbl`}>{attrs.$header}</Label> : attrs.$header}
       </div>
       <div
@@ -224,7 +224,7 @@ fm: `
   border-bottom: 1px solid ${CssVar.bdc};
   border-right: 1px solid ${CssVar.bdc};
 `,
-neumorphism: `box-shadow: ${CssPV.ccvSd};`
+neumorphism: `box-shadow: ${CssPV.nCcvSdActive};`
 })}
 }
 .${cn}-header {
@@ -249,7 +249,7 @@ fm: `
 flat: `transition: background 0.1s, color 0.1s;`,
 material: `transition: background 0.1s, color 0.1s, box-shadow 0.1s, top 0.1s;`,
 neumorphism: `
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
   transition: background 0.1s, color 0.1s, box-shadow 0.1s, margin-top 0.1s, margin-bottom 0.1s;
 `})}
 }
@@ -273,7 +273,7 @@ flat: `
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover:active {
   background: ${CssVar.actBgc};
 }`})}
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-header {
   background: ${v.btn.base.bgc};
   color: ${v.btn.base.fc};
@@ -321,20 +321,17 @@ material: `
   box-shadow: 0px 4px 4px -2px ${CssVar.sdw.c};
 }
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover:active {
-  top: 1px;
   box-shadow: unset;
 }`,
 neumorphism: `
 .${cn}:not([data-disabled="true"]) > .${cn}-header {
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
 }
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover {
-  box-shadow: ${CssPV.cvxSdD};
+  box-shadow: ${CssPV.nCvxSdHover};
 }
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover:active {
-  box-shadow: ${CssPV.ccvSd};
-  margin-top: 1px;
-  margin-bottom: -1px;
+  box-shadow: ${CssPV.nCcvSdActive};
 }
 .${cn}[data-borderless="true"] > .${cn}-header {
   border-radius: ${CssVar.bdr};
@@ -343,7 +340,7 @@ neumorphism: `
   box-shadow: unset;
   border-radius: unset;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-header {
   color: ${v.fc};
 }

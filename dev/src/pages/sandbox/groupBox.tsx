@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import GroupBox from "../../../react-addon/dist/elements/group-box";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 import FlexBox from "../../../react-addon/dist/elements/flex-box";
 import { createRef, CSSProperties } from "react";
 import Label from "../../../react-addon/dist/elements/label";
@@ -24,9 +24,9 @@ const GroupBoxPage: NextPage = () => {
         <h1>Body</h1>
         <h1>Body</h1>
       </GroupBox>
-      {signalIterator(s => {
+      {colorIterator(s => {
         return (
-          <GroupBox $caption={<Label>{s}</Label>} key={s} $signal={s} style={style}>
+          <GroupBox $caption={<Label>{s}</Label>} key={s} $color={s} style={style}>
             <h1>Body</h1>
             <h1>Body</h1>
             <h1>Body</h1>

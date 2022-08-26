@@ -1,6 +1,6 @@
 import StringUtils from "@bizhermit/basic-utils/dist/string-utils";
 import React from "react";
-import CssVar, { CssPV, Signal, switchDesign } from "../../../styles/css-var";
+import CssVar, { CssPV, Color, switchDesign } from "../../../styles/css-var";
 import JsxStyle from "../../../styles/jsx-style";
 import { cloneDomElement } from "../../../utils/dom";
 import { iconChildCount, iconCn, IconImage, IconStyle } from "../../icon";
@@ -11,7 +11,7 @@ const cn = "bh-lv_c-btn";
 const ListViewButtonColumn: ListViewColumnFunction<ListViewColumnProps & {
   buttonLabel?: string;
   icon?: IconImage | {
-    signal?: Signal;
+    color?: Color;
     image?: IconImage;
     position?: "left" | "right";
   };
@@ -33,7 +33,7 @@ const ListViewButtonColumn: ListViewColumnFunction<ListViewColumnProps & {
         const iconElem = document.createElement("div");
         iconElem.classList.add(`${iconCn}`, `${iconCn}-${icon.image}`);
         iconElem.innerHTML = `<div class="${iconCn}_c" />`.repeat(iconChildCount(icon.image));
-        if (icon.signal) iconElem.setAttribute("data-signal", icon.signal);
+        if (icon.color) iconElem.setAttribute("data-color", icon.color);
         if (icon.position === "right") elem.setAttribute("data-iconright", "");
         elem.appendChild(iconElem);
       }
@@ -149,25 +149,22 @@ material: `
 }
 .${cn}-cell[data-disabled="false"] > .${cn}:hover:active {
   box-shadow: none;
-  top: 1px;
 }`,
 neumorphism: `
 .${cn}-cell[data-disabled="false"] > .${cn} {
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
 }
 .${cn}-cell[data-disabled="false"] > .${cn}:hover {
-  box-shadow: ${CssPV.cvxSdD};
+  box-shadow: ${CssPV.nCvxSdHover};
 }
 .${cn}-cell[data-disabled="false"] > .${cn}:hover:active {
-  box-shadow: ${CssPV.ccvSd};
-  margin-top: 1px;
-  margin-bottom: -1px;
+  box-shadow: ${CssPV.nCcvSdActive};
 }`,
 })}
 .${cn}-cell[data-disabled="true"] > .${cn} {
   ${CssPV.inactOpacity}
 ${switchDesign(design, {
-neumorphism: `box-shadow: ${CssPV.ccvSdS};`
+neumorphism: `box-shadow: ${CssPV.nCcvSdDisabled};`
 })}
 }
 `}</JsxStyle>;

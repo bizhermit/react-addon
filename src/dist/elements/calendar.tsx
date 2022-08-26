@@ -3,7 +3,7 @@ import React, { cloneElement, FC, HTMLAttributes, ReactElement, ReactNode, useCa
 import { useEffect } from "react";
 import { useRef } from "react";
 import { sbCn } from "../styles/core-style";
-import CssVar, { CssPV, FitToOuter, Signal, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, FitToOuter, Color, switchDesign } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributesWithoutChildren, ftoCn } from "../utils/attributes";
 import { _HookSetter } from "../utils/hook";
@@ -40,7 +40,7 @@ export type CalendarAttributes = HTMLAttributes<HTMLDivElement> & {
   $disabled?: boolean;
   $changed?: (ctx: { after: Date; before: Date; }) => void;
   children: ReactElement<CalendarCellAttributes>;
-  $signal?: Signal;
+  $color?: Color;
   $prevMonthButtonIcon?: ButtonIconProps;
   $prevYearButtonIcon?: ButtonIconProps;
   $nextMonthButtonIcon?: ButtonIconProps;
@@ -167,14 +167,14 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarAttributes>((attrs, re
           <>
             <Button
               $icon={attrs.$prevYearButtonIcon ?? "pull-left-d"}
-              $signal={attrs.$signal}
+              $color={attrs.$color}
               $click={() => {
                 setTarget(DatetimeUtils.getPrevYearDate(target));
               }}
             />
             <Button
               $icon={attrs.$prevMonthButtonIcon ?? "pull-left"}
-              $signal={attrs.$signal}
+              $color={attrs.$color}
               $click={() => {
                 setTarget(DatetimeUtils.getPrevMonthDate(target));
               }}
@@ -188,20 +188,20 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarAttributes>((attrs, re
           $value={target}
           $dispatch={setTarget}
           $disabled={attrs.$disabled}
-          $signal={attrs.$signal}
+          $color={attrs.$color}
         />
         {attrs.$disabled ? <></> :
           <>
             <Button
               $icon={attrs.$nextMonthButtonIcon ?? "pull-right"}
-              $signal={attrs.$signal}
+              $color={attrs.$color}
               $click={() => {
                 setTarget(DatetimeUtils.getNextMonthDate(target));
               }}
             />
             <Button
               $icon={attrs.$nextYearButtonIcon ?? "pull-right-d"}
-              $signal={attrs.$signal}
+              $color={attrs.$color}
               $click={() => {
                 setTarget(DatetimeUtils.getNextYearDate(target));
               }}

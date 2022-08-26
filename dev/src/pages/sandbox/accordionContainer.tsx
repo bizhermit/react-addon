@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { createRef, useState } from "react";
-import { Signal, signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { Color, colorIterator } from "../../../react-addon/dist/styles/css-var";
 import AccordionContainer, { useAccordionContainer } from "../../../react-addon/dist/elements/accordion-container";
 import Button from "../../../react-addon/dist/elements/button";
 import Caption from "../../../react-addon/dist/elements/caption";
@@ -14,7 +14,7 @@ import Row from "../../../react-addon/dist/elements/row";
 const AccordionContainerPage: NextPage = () => {
   const [disabled, setDisabled] = useState(false);
   const [borderless, setBorderless] = useState(false);
-  const [signal, setSignal] = useState<Signal>();
+  const [color, setColor] = useState<Color>();
   const acdCtrHook = useAccordionContainer();
   const [iconPosition, setIconPosition] = useState<"left" | "right" | "none">("left");
   const ref = createRef<HTMLDivElement>();
@@ -57,15 +57,15 @@ const AccordionContainerPage: NextPage = () => {
           $source={[{
             value: null,
             label: `unset`,
-          }, ...(signalIterator(s => {
+          }, ...(colorIterator(s => {
             return {
               value: s,
               label: s,
-              signal: s,
+              color: s,
             }
           }))]}
-          $value={signal}
-          $dispatch={setSignal}
+          $value={color}
+          $dispatch={setColor}
         />
       </Row>
       <FlexBox $fto="fy" $padding>
@@ -73,7 +73,7 @@ const AccordionContainerPage: NextPage = () => {
           ref={ref}
           $hook={acdCtrHook}
           $fto="x"
-          $signal={signal}
+          $color={color}
           $disabled={disabled}
           // $header="AccordionContainer"
           $header={

@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { createRef, useState } from "react";
 import CheckBox, { useCheckBox } from "../../../react-addon/dist/elements/inputs/check-box";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 import Button from "../../../react-addon/dist/elements/button";
 import Caption from "../../../react-addon/dist/elements/caption";
 import Label from "../../../react-addon/dist/elements/label";
@@ -78,18 +78,18 @@ const CheckBoxPage: NextPage = () => {
       <Label>{String(value)}</Label>
     </Caption>
     <Row>
-      {signalIterator(s => {
+      {colorIterator(s => {
         return (
-          <CheckBox key={s} $signal={s} $disabled={disabled} $readOnly={readOnly}>
+          <CheckBox key={s} $color={s} $disabled={disabled} $readOnly={readOnly}>
             <Label>{s.toUpperCase()}</Label>
           </CheckBox>
         );
       })}
     </Row>
     <Row>
-      {signalIterator(s => {
+      {colorIterator(s => {
         return (
-          <CheckBox key={s} $signal={s} $disabled={disabled} $readOnly={readOnly} $fill>
+          <CheckBox key={s} $color={s} $disabled={disabled} $readOnly={readOnly} $fill>
             <Label>{s.toUpperCase()}</Label>
           </CheckBox>
         );

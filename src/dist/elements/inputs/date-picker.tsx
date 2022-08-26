@@ -2,7 +2,7 @@ import DatetimeUtils from "@bizhermit/basic-utils/dist/datetime-utils";
 import React, { Dispatch, FC, HTMLAttributes, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import useValue, { InputAttributesWithoutDispatch } from "../../hooks/value";
 import { sbCn } from "../../styles/core-style";
-import CssVar, { CssPV, signalIterator, switchDesign } from "../../styles/css-var";
+import CssVar, { CssPV, colorIterator, switchDesign } from "../../styles/css-var";
 import InputStyle, { InputBorder, inputCn } from "../../styles/input-style";
 import JsxStyle from "../../styles/jsx-style";
 import { _HookSetter } from "../../utils/hook";
@@ -409,7 +409,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerAttributes>((attrs
                   clickYearCell({ y: yNum - 1, m: mNum }, false, true)
                 }}
                 data-disabled={new Date(yNum - 1, 11, 31).getTime() < rangeFrom.current}
-              ><Icon $image="pull-left" /></div>
+              ><Icon $image="pull-left" $transition /></div>
             }
             {yNodes}
             {uiType === "list" || notEdit ? <></> :
@@ -420,7 +420,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerAttributes>((attrs
                   clickYearCell({ y: yNum + 1, m: mNum }, false, true)
                 }}
                 data-disabled={new Date(yNum+1, 0, 1).getTime() > rangeTo.current}
-              ><Icon $image="pull-right" /></div>
+              ><Icon $image="pull-right" $transition /></div>
             }
         </div>
         {mode === "y" ? <></> : <>
@@ -434,7 +434,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerAttributes>((attrs
                   clickMonthCell({ y: yNum, m: mNum - 1 }, false, true)
                 }}
                 data-disabled={new Date(yNum, mNum, 0).getTime() < rangeFrom.current}
-              ><Icon $image="pull-left" /></div>
+              ><Icon $image="pull-left" $transition /></div>
             }
             {mNodes}
             {uiType === "list" || notEdit ? <></> :
@@ -445,7 +445,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerAttributes>((attrs
                   clickMonthCell({ y: yNum, m: mNum + 1 }, false, true)
                 }}
                 data-disabled={new Date(yNum, mNum+1, 1).getTime() > rangeTo.current}
-              ><Icon $image="pull-right" /></div>
+              ><Icon $image="pull-right" $transition /></div>
             }
           </div>
         </>}
@@ -478,7 +478,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerAttributes>((attrs
               onClick={() => setUiType(c => c === "list" ? "calendar" : "list")}
               tabIndex={0}
               data-border
-            ><Icon $image={uiType === "list" ? "calendar" : "list"} /></div>
+            ><Icon $image={uiType === "list" ? "calendar" : "list"} $transition /></div>
             : <></>
           }
         </div>
@@ -743,7 +743,7 @@ fm: `
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body {
   color: ${v.ipt.fc};
 }
@@ -759,7 +759,7 @@ ${signalIterator((_s, v, qs) => `
 .${cn}${qs} > ${lcn} > .${cn}-m > .${cn}-cell[data-selected="true"],
 .${cn}${qs} > ${lcn} > .${cn}-d > .${cn}-cell[data-selected="true"] {
   background: ${v.ipt.on};
-  color: ${v.ipt.fc};
+  color: ${v.ipt.on_fc ?? v.ipt.fc};
 }
 `).join("")}`,
 neumorphism: `
@@ -767,15 +767,15 @@ ${ccn} > .${cn}-d > .${cn}-cell[data-selected="true"],
 ${lcn} > .${cn}-y > .${cn}-cell[data-selected="true"],
 ${lcn} > .${cn}-m > .${cn}-cell[data-selected="true"],
 ${lcn} > .${cn}-d > .${cn}-cell[data-selected="true"] {
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
 }
 .${cn}[data-m="r"] > ${ccn} > .${cn}-d > .${cn}-cell[data-selected="true"],
 .${cn}[data-m="d"] > ${ccn} > .${cn}-d > .${cn}-cell[data-selected="true"],
 .${cn}[data-m="r"] > ${lcn} > * > .${cn}-cell[data-selected="true"],
 .${cn}[data-m="d"] > ${lcn} > * > .${cn}-cell[data-selected="true"] {
-  box-shadow: ${CssPV.ccvSdS};
+  box-shadow: ${CssPV.nCcvSdDisabled};
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body {
   color: ${v.ipt.fc};
 }
@@ -787,7 +787,7 @@ ${signalIterator((_s, v, qs) => `
 .${cn}${qs} > ${lcn} > .${cn}-m > .${cn}-cell[data-selected="true"],
 .${cn}${qs} > ${lcn} > .${cn}-d > .${cn}-cell[data-selected="true"] {
   background: ${v.ipt.on};
-  color: ${v.ipt.fc};
+  color: ${v.ipt.on_fc ?? v.ipt.fc};
 }
 `).join("")}`})}
 `}</JsxStyle>

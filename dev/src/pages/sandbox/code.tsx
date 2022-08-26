@@ -14,7 +14,7 @@ import Button from "../../../react-addon/dist/elements/button";
 import FlexBox from "../../../react-addon/dist/elements/flex-box";
 import Row from "../../../react-addon/dist/elements/row";
 import ToggleButton from "../../../react-addon/dist/elements/toggle-button";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 
 const ButtonPage: NextPage = () => {
   const [disabled, setDisabled] = useState(false);
@@ -123,16 +123,16 @@ const ButtonPage: NextPage = () => {
           <Button $icon="signin" disabled={disabled} $transparent $iconRight $fillLabel style={{ width: 130 }}>button</Button>
           <Button $icon="signin" disabled={disabled} $transparent $iconRight $fillLabel $borderless style={{ width: 130 }}>button</Button>
         </Row>
-        {signalIterator(s => {
+        {colorIterator(s => {
           return (
             <Row key={s}>
-              <Button $signal={s} $icon="signin" disabled={disabled} style={{ width: 130 }}>{s}</Button>
-              <Button $signal={s} $icon="signin" disabled={disabled} style={{ width: 130 }}>{s}</Button>
-              <Button $signal={s} $icon="signin" $fillLabel disabled={disabled} style={{ width: 130 }}>{s}</Button>
-              <Button $signal={s} $icon="signin" $fillLabel $borderless disabled={disabled} style={{ width: 130 }}>{s}</Button>
-              <Button $signal={s} $icon="signin" disabled={disabled} $transparent $iconRight style={{ width: 130 }}>{s}</Button>
-              <Button $signal={s} $icon="signin" disabled={disabled} $transparent $iconRight $fillLabel style={{ width: 130 }}>{s}</Button>
-              <Button $signal={s} $icon="signin" disabled={disabled} $transparent $iconRight $fillLabel $borderless style={{ width: 130 }}>{s}</Button>
+              <Button $color={s} $icon="signin" disabled={disabled} style={{ width: 130 }}>{s}</Button>
+              <Button $color={s} $icon="signin" disabled={disabled} style={{ width: 130 }}>{s}</Button>
+              <Button $color={s} $icon="signin" $fillLabel disabled={disabled} style={{ width: 130 }}>{s}</Button>
+              <Button $color={s} $icon="signin" $fillLabel $borderless disabled={disabled} style={{ width: 130 }}>{s}</Button>
+              <Button $color={s} $icon="signin" disabled={disabled} $transparent $iconRight style={{ width: 130 }}>{s}</Button>
+              <Button $color={s} $icon="signin" disabled={disabled} $transparent $iconRight $fillLabel style={{ width: 130 }}>{s}</Button>
+              <Button $color={s} $icon="signin" disabled={disabled} $transparent $iconRight $fillLabel $borderless style={{ width: 130 }}>{s}</Button>
             </Row>
           );
         })}

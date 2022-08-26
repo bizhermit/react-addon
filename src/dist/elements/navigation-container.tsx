@@ -1,11 +1,11 @@
 import React, { cloneElement, FunctionComponent, HTMLAttributes, ReactElement, ReactNode, useCallback, useRef, useState } from "react";
 import { useEffect } from "react";
 import { sbCn } from "../styles/core-style";
-import CssVar, { CssPV, FitToOuter, Signal, signalIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, FitToOuter, Color, colorIterator, switchDesign } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributesWithoutChildren, ftoCn } from "../utils/attributes";
 import { _HookSetter } from "../utils/hook";
-import { iconCn } from "./icon";
+import { iconCn, varIconBc, varIconFc } from "./icon";
 import { labelCn } from "./label";
 
 const cn = "bh-nvg";
@@ -21,7 +21,7 @@ type NavigationAttributes = HTMLAttributes<HTMLDivElement> & {
   children?: ReactNode;
   $position?: "left" | "top" | "right" | "bottom";
   $mode?: "visible" | "edge" | "manual";
-  $signal?: Signal;
+  $color?: Color;
   $toggled?: (opened: boolean) => void;
   $edgeSize?: number | string;
   $preventClickClose?: boolean;
@@ -305,7 +305,7 @@ const NavigationContainer = React.forwardRef<HTMLDivElement, NavigationContainer
         ref={nref}
         {...attributesWithoutChildren(navCont.props, `${cn}-nav ${sbCn}`)}
         data-opened={opened}
-        data-signal={navCont.props.$signal}
+        data-color={navCont.props.$color || "default"}
         onMouseEnter={mouseEnter}
         onMouseLeave={mouseLeave}
         onClick={(e) => { e.stopPropagation() }}
@@ -439,14 +439,26 @@ const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
 }
 ${switchDesign(design, {
 fm: `
-${signalIterator((_s, v, qs) => `
+.${cn}[data-pos="left"] > .${cn}-nav {
+  box-shadow: 2px 0 1px -2px ${CssVar.sdw.c};
+}
+.${cn}[data-pos="right"] > .${cn}-nav {
+  box-shadow: -2px 0 1px -2px ${CssVar.sdw.c};
+}
+.${cn}[data-pos="top"] > .${cn}-nav {
+  box-shadow: 0 2px 1px -2px ${CssVar.sdw.c};
+}
+.${cn}[data-pos="bottom"] > .${cn}-nav {
+  box-shadow: 0 -2px 1px -2px ${CssVar.sdw.c};
+}
+${colorIterator((_s, v, qs) => `
 .${cn}-nav${qs} {
   color: ${v.nav.fc};
   background: ${v.nav.bgc};
 }
 .${cn}-nav${qs} .${iconCn} {
-  --bh-icon-fc: ${v.nav.fc};
-  --bh-icon-bc: ${v.nav.bgc};
+  ${varIconFc}: ${v.nav.fc};
+  ${varIconBc}: ${v.nav.bgc};
 }
 .${cn}-nav${qs} .${labelCn}[data-type="a"],
 .${cn}-nav${qs} .bh-anchor {
@@ -454,38 +466,29 @@ ${signalIterator((_s, v, qs) => `
 }`).join("")}`,
 material: `
 .${cn}[data-pos="left"] > .${cn}-nav {
-  box-shadow: 5px 0 4px -5px ${CssVar.sdw.c};
+  box-shadow: 5px 0 5px -1px ${CssVar.sdw.c};
 }
 .${cn}[data-pos="right"] > .${cn}-nav {
-  box-shadow: -4px 0 4px -5px ${CssVar.sdw.c};
+  box-shadow: -5px 0 5px -1px ${CssVar.sdw.c};
 }
 .${cn}[data-pos="top"] > .${cn}-nav {
-  box-shadow: 0 5px 4px -5px ${CssVar.sdw.c};
+  box-shadow: 0 5px 5px -1px ${CssVar.sdw.c};
 }
 .${cn}[data-pos="bottom"] > .${cn}-nav {
-  box-shadow: 0 -4px 4px -5px ${CssVar.sdw.c};
+  box-shadow: 0 -5px 5px -1px ${CssVar.sdw.c};
 }`,
 neumorphism: `
-.${cn}[data-pos="left"] > .${cn}-nav {
-  box-shadow: 4px 0 3px -2px ${CssVar.sdw.d}, -2.5px 0 1px -2px ${CssVar.sdw.d} inset;
+.${cn} > .${cn}-nav {
+  box-shadow: ${CssPV.nCvxSd(4)};
 }
-.${cn}[data-pos="right"] > .${cn}-nav {
-  box-shadow: -5.5px 0 3px -3px ${CssVar.sdw.b}, 2.5px 0 0.5px -1px ${CssVar.sdw.b} inset;
-}
-.${cn}[data-pos="top"] > .${cn}-nav {
-  box-shadow: 0px 4px 3px -2px ${CssVar.sdw.d}, 0px -2.5px 1px -2px ${CssVar.sdw.d} inset;
-}
-.${cn}[data-pos="bottom"] > .${cn}-nav {
-  box-shadow: 0 -5.5px 3px -3px ${CssVar.sdw.b}, 0 2.5px 0.5px -1px ${CssVar.sdw.b} inset;
-}
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}-nav${qs} {
   color: ${v.nav.fc};
   background: ${v.nav.bgc};
 }
 .${cn}-nav${qs} .${iconCn} {
-  --bh-icon-fc: ${v.nav.fc};
-  --bh-icon-bc: ${v.nav.bgc};
+  ${varIconFc}: ${v.nav.fc};
+  ${varIconBc}: ${v.nav.bgc};
 }
 .${cn}-nav${qs} .${labelCn}[data-type="a"],
 .${cn}-nav${qs} .bh-anchor {

@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { createRef, useState } from "react";
 import TextArea, { useTextArea } from "../../../react-addon/dist/elements/inputs/text-area";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 import Button from "../../../react-addon/dist/elements/button";
 import Caption from "../../../react-addon/dist/elements/caption";
 import FlexBox from "../../../react-addon/dist/elements/flex-box";
@@ -121,13 +121,13 @@ const TextAreaPage: NextPage = () => {
         <pre>{value}</pre>
       </Caption>
       <FlexBox>
-        {signalIterator((s) => {
+        {colorIterator((s) => {
           return (
             <FlexBox $row key={s}>
               {/* <Label>{s}</Label> */}
               <Row>
                 <TextArea
-                  $signal={s}
+                  $color={s}
                   $disabled={disabled}
                   $readOnly={readOnly}
                   // placeholder={s.toUpperCase()}
@@ -136,7 +136,7 @@ const TextAreaPage: NextPage = () => {
                   $border={border}
                 />
                 <TextArea
-                  $signal={s}
+                  $color={s}
                   $disabled={disabled}
                   $readOnly={readOnly}
                   $value={s}

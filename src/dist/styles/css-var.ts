@@ -2,8 +2,11 @@ export type _LayoutColor = "light" | "dark";
 export type LayoutColor = "system" | _LayoutColor;
 export type LayoutDesign = "flat" | "material" | "neumorphism";
 
-const signals = ["default", "primary", "secondary", "warning", "danger", "deprecated"] as const;
-export type Signal = typeof signals[number];
+const colors = ["default", "light", "dark", "primary", "secondary", "warning", "danger", "disabled"] as const;
+export type Color = typeof colors[number];
+export type ColorType = "base" | "head" | "nav";
+
+export type Size = "xs" | "s" | "m" | "l" | "xl";
 
 export type FitToOuter = "f" | "x" | "y" | "fx" | "fy" | "none";
 
@@ -13,7 +16,7 @@ type CssVarCBDBase = {
   d: string; // dark
 };
 
-type CssSignalVar = {
+type CssColorVar = {
   fc: string;
   bgc: string;
   bdc: string;
@@ -32,6 +35,7 @@ type CssSignalVar = {
     bgc: string;
     bdc: string;
     on: string;
+    on_fc?: string;
     off: string;
     knob: string;
   };
@@ -54,20 +58,22 @@ type CssSignalVar = {
   };
 };
 
+export const varFontSize = "--bh-fs";
+
 const CssVar = {
   size: "var(--bh-size, 30px)", // base size
-  fs: "var(--bh-fs, 1.6rem)", // font size
+  fs: `var(${varFontSize}, 1.6rem)`, // font size
   bdr: "var(--bh-bdr, 0px)", // border radius
   pdx: "var(--bh-pdx, 0px)", // padding x
   pdy: "var(--bh-pdy, 0px)", // padding y
-  phsize: "var(--bh-phsize, 12px)", // placeholder size
+  phsize: "var(--bh-phsize, 13px)", // placeholder size
   bgc: "var(--bh-bgc, #f4f4fb)", // background color
   fc: "var(--bh-fc, #1e1e1e)", // font color
   bdc: "var(--bh-bdc, #aaaaaf)", // border color
   anchor: "var(--bh-anchor, #00f)", // anchor color
   sdw: { // shadow
-    c: "var(--bh-sdw_c, rgba(63,63,63,0.6))",
-    b: "var(--bh-sdw_b, rgba(240,240,240,0.4))",
+    c: "var(--bh-sdw_c, rgba(20,20,20,0.3))",
+    b: "var(--bh-sdw_b, rgba(224,224,229,0.2))",
     d: "var(--bh-sdw_d, rgba(0,0,0,0.3))",
   },
   sb: { // scrollbar
@@ -92,19 +98,19 @@ const CssVar = {
     bdc: "var(--bh-def-bdc, #787880)",
     head: {
       fc: "var(--bh-def-head-fc, #1e1e1e)",
-      bgc: "var(--bh-def-head-bgc, #d0d0d5)",
+      bgc: "var(--bh-def-head-bgc, #e4e4ef)",
       bdc: "var(--bh-def-head-bdc, #a4a4a7)",
     },
     nav: {
       fc: "var(--bh-def-nav-fc, #f2f2f2)",
-      bgc: "var(--bh-def-nav-bgc, linear-gradient(to bottom right, #303033, #37373a))",
+      bgc: "var(--bh-def-nav-bgc, #343a40)",
       anchor: "var(--bh-def-nav-anchor, #9bf)",
     },
     ipt: {
       bgc: "var(--bh-def-ipt-bgc, #fafafa)",
       fc: "var(--bh-def-ipt-fc, #1e1e1e)",
       bdc: "var(--bh-def-ipt-bdc, #787880)",
-      on: "var(--bh-def-ipt-on, #c0c0c0)",
+      on: "var(--bh-def-ipt-on, #c8c8cf)",
       off: "var(--bh-def-ipt-off, #fff)",
       knob: "var(--bh-def-ipt-knob, #fff)",
     },
@@ -125,7 +131,88 @@ const CssVar = {
         bdc: "var(--bh-def-btn-act-bdc, #82828a)",
       },
     },
-  } as CssSignalVar,
+  } as CssColorVar,
+  light: {
+    fc: "var(--bh-def-fc, #707070)",
+    bgc: "var(--bh-def-bgc, #fbfbfd)",
+    bdc: "var(--bh-def-bdc, #787880)",
+    head: {
+      fc: "var(--bh-def-head-fc, #1e1e1e)",
+      bgc: "var(--bh-def-head-bgc, #f0f0f9)",
+      bdc: "var(--bh-def-head-bdc, #a4a4a7)",
+    },
+    nav: {
+      fc: "var(--bh-def-nav-fc, #1e1e1e)",
+      bgc: "var(--bh-def-nav-bgc, #e4e4ef)",
+      anchor: "var(--bh-def-nav-anchor, #00f)",
+    },
+    ipt: {
+      bgc: "var(--bh-def-ipt-bgc, #fafafa)",
+      fc: "var(--bh-def-ipt-fc, #1e1e1e)",
+      bdc: "var(--bh-def-ipt-bdc, #c8c8cb)",
+      on: "var(--bh-def-ipt-on, #e8e8ec)",
+      off: "var(--bh-def-ipt-off, #fff)",
+      knob: "var(--bh-def-ipt-knob, #fff)",
+    },
+    btn: {
+      base: {
+        bgc: "var(--bh-def-btn-base-bgc, #d0d0d5)",
+        fc: "var(--bh-def-btn-base-fc, #1e1e1e)",
+        bdc: "var(--bh-def-btn-base-bdc, #d0d0d5)",
+      },
+      hvr: {
+        bgc: "var(--bh-def-btn-hvr-bgc, #c1c1c6)",
+        fc: "var(--bh-def-btn-hvr-fc, #1e1e1e)",
+        bdc: "var(--bh-def-btn-hvr-bdc, #c1c1c6)",
+      },
+      act: {
+        bgc: "var(--bh-def-btn-act-bgc, #d6d6da)",
+        fc: "var(--bh-def-btn-act-fc, #1e1e1e)",
+        bdc: "var(--bh-def-btn-act-bdc, #d6d6da)",
+      },
+    },
+  } as CssColorVar,
+  dark: {
+    fc: "var(--bh-def-fc, #000)",
+    bgc: "var(--bh-def-bgc, #fbfbfd)",
+    bdc: "var(--bh-def-bdc, #787880)",
+    head: {
+      fc: "var(--bh-def-head-fc, #f2f2f2)",
+      bgc: "var(--bh-def-head-bgc, #404045)",
+      bdc: "var(--bh-def-head-bdc, #a4a4a7)",
+    },
+    nav: {
+      fc: "var(--bh-def-nav-fc, #f2f2f2)",
+      bgc: "var(--bh-def-nav-bgc, #141a20)",
+      anchor: "var(--bh-def-nav-anchor, #9bf)",
+    },
+    ipt: {
+      bgc: "var(--bh-def-ipt-bgc, #fafafa)",
+      fc: "var(--bh-def-ipt-fc, #1e1e1e)",
+      bdc: "var(--bh-def-ipt-bdc, #101010)",
+      on: "var(--bh-def-ipt-on, #101010)",
+      on_fc: "var(--bh-def-ipt-on-fc, #f2f2f2)",
+      off: "var(--bh-def-ipt-off, #fff)",
+      knob: "var(--bh-def-ipt-knob, #fff)",
+    },
+    btn: {
+      base: {
+        bgc: "var(--bh-def-btn-base-bgc, #303030)",
+        fc: "var(--bh-def-btn-base-fc, #f2f2f2)",
+        bdc: "var(--bh-def-btn-base-bdc, #303030)",
+      },
+      hvr: {
+        bgc: "var(--bh-def-btn-hvr-bgc, #003)",
+        fc: "var(--bh-def-btn-hvr-fc, #f2f2f2)",
+        bdc: "var(--bh-def-btn-hvr-bdc, #003)",
+      },
+      act: {
+        bgc: "var(--bh-def-btn-act-bgc, #3a3a3e)",
+        fc: "var(--bh-def-btn-act-fc, #f2f2f2)",
+        bdc: "var(--bh-def-btn-act-bdc, #3a3a3e)",
+      },
+    },
+  } as CssColorVar,
   primary: {
     fc: "var(--bh-pri-fc, #008000)",
     bgc: "var(--bh-pri-bgc, #f8fff8)",
@@ -165,7 +252,7 @@ const CssVar = {
         bdc: "var(--bh-pri-btn-act-bdc, #48a848)",
       },
     },
-  } as CssSignalVar,
+  } as CssColorVar,
   secondary: {
     fc: "var(--bh-sec-fc, #0000cd)",
     bgc: "var(--bh-sec-bgc, #f0f0ff)",
@@ -205,7 +292,7 @@ const CssVar = {
         bdc: "var(--bh-sec-btn-act-bdc, #4971d9)",
       },
     },
-  } as CssSignalVar,
+  } as CssColorVar,
   warning: {
     fc: "var(--bh-wrn-fc, #d0b600)",
     bgc: "var(--bh-wrn-bgc, #fffff4)",
@@ -218,7 +305,7 @@ const CssVar = {
     nav: {
       fc: "var(--bh-wrn-nav-fc, #f2f2f2)",
       bgc: "var(--bh-wrn-nav-bgc, linear-gradient(to bottom right, #808000, #878700))",
-      anchor: "var(--bh-wrn-nav-anchor, #45f)",
+      anchor: "var(--bh-wrn-nav-anchor, #9bf)",
     },
     ipt: {
       bgc: "var(--bh-wrn-ipt-bgc, #fafafa)",
@@ -245,7 +332,7 @@ const CssVar = {
         bdc: "var(--bh-wrn-btn-act-bdc, #d6b600)",
       },
     },
-  } as CssSignalVar,
+  } as CssColorVar,
   danger: {
     fc: "var(--bh-dng-fc, #c22222)",
     bgc: "var(--bh-dng-bgc, #fff4f4)",
@@ -285,9 +372,9 @@ const CssVar = {
         bdc: "var(--bh-dng-btn-act-bdc, #ba3f3f)",
       },
     },
-  } as CssSignalVar,
-  deprecated: {
-    fc: "var(--bh-dpr-fc, #b0b0b0)",
+  } as CssColorVar,
+  disabled: {
+    fc: "var(--bh-dpr-fc, #c0c0c0)",
     bgc: "var(--bh-dpr-bgc, #f8f8fb)",
     bdc: "var(--bh-dpr-bdc, #e0e0e2)",
     head: {
@@ -296,36 +383,36 @@ const CssVar = {
       bdc: "var(--bh-dpr-head-bdc, #c0c0c0)",
     },
     nav: {
-      fc: "var(--bh-dpr-nav-fc, #f2f2f2)",
-      bgc: "var(--bh-dpr-nav-bgc, linear-gradient(to bottom right, #99999f, #a1a1a6))",
+      fc: "var(--bh-dpr-nav-fc, #d8d8d8)",
+      bgc: "var(--bh-dpr-nav-bgc, #a1a1a6)",
       anchor: "var(--bh-dpr-nav-anchor, #9bf)",
     },
     ipt: {
       bgc: "var(--bh-dpr-ipt-bgc, #fafafa)",
       fc: "var(--bh-dpr-ipt-fc, #b0b0b0)",
       bdc: "var(--bh-dpr-ipt-bdc, #d8d8da)",
-      on: "var(--bh-dpr-ipt-on, #d8d8da)",
+      on: "var(--bh-dpr-ipt-on, #f0f0f3)",
       off: "var(--bh-dpr-ipt-off, #fff)",
       knob: "var(--bh-dpr-ipt-knob, #fff)",
     },
     btn: {
       base: {
         bgc: "var(--bh-dpr-btn-base-bgc, #e0e0e2)",
-        fc: "var(--bh-dpr-btn-base-fc, #f2f2f2)",
+        fc: "var(--bh-dpr-btn-base-fc, #ededed)",
         bdc: "var(--bh-dpr-btn-base-bdc, #e0e0e2)",
       },
       hvr: {
         bgc: "var(--bh-dpr-btn-hvr-bgc, #d6d6d8)",
-        fc: "var(--bh-dpr-btn-hvr-fc, #f2f2f2)",
+        fc: "var(--bh-dpr-btn-hvr-fc, #ededed)",
         bdc: "var(--bh-dpr-btn-hvr-bdc, #d6d6d8)",
       },
       act: {
         bgc: "var(--bh-dpr-btn-act-bgc, #e2e2e4)",
-        fc: "var(--bh-dpr-btn-act-fc, #f2f2f2)",
+        fc: "var(--bh-dpr-btn-act-fc, #ededed)",
         bdc: "var(--bh-dpr-btn-act-bdc, #e2e2e4)",
       },
     },
-  } as CssSignalVar,
+  } as CssColorVar,
   week: {
     sun: {
       fc: "var(--bh-week_sun-fc, #c22222)",
@@ -570,6 +657,24 @@ const cvxBg = (cv?: CssVarCBDBase) => {
 const ccvBg = (cv?: CssVarCBDBase) => {
   return `linear-gradient(to bottom right, ${cv.d}, ${cv.b})`;
 };
+const cvxSd = (level: number) => {
+  if (level === 0) return "unset";
+  return `0px ${level*0.75}px ${level*2}px -1px ${CssVar.sdw.c}`;
+};
+const ccvSd = (level: number) => {
+  if (level === 0) return "unset";
+  return `0px ${level/2}px ${level*2}px -1px ${CssVar.sdw.c} inset`;
+};
+const nCvxSd = (level: number) => {
+  if (level === 0) return "unset";
+  const lvl = level - 1;
+  return `${lvl}px ${lvl}px ${lvl*2}px ${CssVar.sdw.d},-${lvl}px -${lvl}px ${lvl*2}px ${CssVar.sdw.b},1px 1px 1px -0.5px ${CssVar.sdw.b} inset,-1px -1px 1px -0.5px ${CssVar.sdw.d} inset`;
+};
+const nCcvSd = (level: number) => {
+  if (level === 0) return "unset";
+  const lvl = level - 1;
+  return `0.5px 0.5px 1.5px -0.5px ${CssVar.sdw.b},-0.5px -0.5px 1.5px -0.5px ${CssVar.sdw.d},${lvl}px ${lvl}px ${lvl*2}px ${CssVar.sdw.d} inset,-${lvl}px -${lvl}px ${lvl*2}px ${CssVar.sdw.b} inset`;
+};
 
 export const CssPV = {
   flex: `box-sizing:border-box;position:relative;display:flex;`,
@@ -577,14 +682,26 @@ export const CssPV = {
   inactOpacity: "opacity:0.6;",
   cvxBg,
   ccvBg,
-  cvxSd: `1px 1px 2px ${CssVar.sdw.d}, -0.5px -0.5px 2px ${CssVar.sdw.b}, 0.5px 0.5px 0.5px ${CssVar.sdw.b} inset, -0.5px -0.5px 1px ${CssVar.sdw.d} inset`,
-  cvxSdD: `2px 2px 4px ${CssVar.sdw.d}, -0.5px -0.5px 2px ${CssVar.sdw.b}, 0.5px 0.5px 0.5px ${CssVar.sdw.b} inset, -0.5px -0.5px 1px ${CssVar.sdw.d} inset`,
-  cvxSdS: `1px 1px 2px ${CssVar.sdw.b} inset, 1px 1px 2px -1px ${CssVar.sdw.d}, -1px -1px 2px -1px ${CssVar.sdw.d} inset`,
-  ccvSd: `0.5px 0.5px 1.5px ${CssVar.sdw.b}, -0.5px -0.5px 1.5px ${CssVar.sdw.d}, 1px 1px 2px ${CssVar.sdw.d} inset, -1px -1px 2px ${CssVar.sdw.b} inset`,
-  ccvSdD: `0.5px 0.5px 1.5px ${CssVar.sdw.b}, -0.5px -0.5px 1.5px ${CssVar.sdw.d}, 2px 2px 4px -1px ${CssVar.sdw.d} inset, -2px -2px 3px -1px ${CssVar.sdw.b} inset`,
-  ccvSdS: `1px 1px 1px ${CssVar.sdw.d} inset, -1px -1px 1px ${CssVar.sdw.b} inset`,
-  signalCn: (signal: Signal) => `[data-signal="${signal || "default"}"]`,
+  cvxSd,
+  ccvSd,
+  cvxSdBase: cvxSd(2),
+  cvxSdHover: cvxSd(4),
+  nCvxSd,
+  nCcvSd,
+  nCvxSdBase: nCvxSd(2),
+  nCvxSdHover: nCvxSd(3.5),
+  nCcvSdActive: nCcvSd(2),
+  nCcvSdDisabled: nCcvSd(1),
+  nCvxSdShallow: nCvxSd(1),
+  nCcvSdDeep: nCcvSd(3),
+  colorCn: (color: Color) => `[data-color="${color || "default"}"]`,
   textSd: (color: string) => `text-shadow:1px 1px 0 ${color},-1px -1px 0 ${color},-1px 1px 0 ${color},1px -1px 0 ${color},0px 1px 0 ${color},0 -1px 0 ${color},-1px 0 0 ${color},1px 0 0 ${color};`,
+};
+
+export const sizeIterator = (base: string, css: Partial<{[key in Size]: string}>, selector?: string) => {
+  return Object.keys(css).map((key) => {
+    return `.${base}[data-size="${key}"]${selector ?? ""}{${css[key]}}`;
+  }).join("");
 };
 
 export const switchDesign = (design: LayoutDesign, css: Partial<{[key in LayoutDesign | "c" | "fm" | "_"]: string}>) => {
@@ -593,11 +710,11 @@ export const switchDesign = (design: LayoutDesign, css: Partial<{[key in LayoutD
   return css._ ?? "";
 };
 
-export const signalIterator = <T=string,>(func: (signal: Signal, v: CssSignalVar, selector: string) => T, skipDefault?: boolean) => {
+export const colorIterator = <T=string,>(func: (color: Color, v: CssColorVar, selector: string) => T, skipDefault?: boolean) => {
   const rets = [];
-  for (const signal of signals) {
-    if (signal === "default" && skipDefault) continue;
-    rets.push(func(signal, CssVar[signal] as CssSignalVar, `${CssPV.signalCn(signal)}`));
+  for (const color of colors) {
+    if (color === "default" && skipDefault) continue;
+    rets.push(func(color, CssVar[color] as CssColorVar, `${CssPV.colorCn(color)}`));
   }
   return rets as Array<T>;
 };

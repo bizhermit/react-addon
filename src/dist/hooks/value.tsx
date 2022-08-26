@@ -1,5 +1,5 @@
 import { Dispatch, useEffect, useRef, useState } from "react";
-import { Signal } from "../styles/css-var";
+import { Color } from "../styles/css-var";
 
 export const equalValue = (v1: any, v2: any) => {
   if (v1 == null && v2 == null) return true;
@@ -18,7 +18,7 @@ export type InputAttributes<T, U extends { [key: string]: any } = {}> = {
   $dispatch?: Dispatch<T>;
   $change?: (ctx: ChangeEventContext<T, U>) => (boolean | void);
   $changed?: (ctx: ChangeEventContext<T, U>) => void;
-  $signal?: Signal;
+  $color?: Color;
 };
 export type InputAttributesWithoutDispatch<T, U extends { [key: string]: any } = {}> = Omit<InputAttributes<T, U>, "$dispatch">;
 

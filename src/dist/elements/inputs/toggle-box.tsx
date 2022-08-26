@@ -1,6 +1,6 @@
 import React, {ForwardedRef, FunctionComponent, HTMLAttributes, ReactElement, useCallback, useEffect, useRef } from "react";
 import useValue, { equalValue, InputAttributes } from "../../hooks/value";
-import CssVar, { CssPV, signalIterator, switchDesign } from "../../styles/css-var";
+import CssVar, { CssPV, colorIterator, switchDesign } from "../../styles/css-var";
 import InputStyle, { inputCn } from "../../styles/input-style";
 import JsxStyle from "../../styles/jsx-style";
 import { pressPositiveKey } from "../../utils/dom";
@@ -163,7 +163,7 @@ neumorphism: `
   width: calc(100% - 6px);
   top: 3px;
   left: 3px;
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
   background: ${CssVar.bgc};
 `})}
 }
@@ -177,7 +177,7 @@ fm: `
   border-width: 2px;
   border-style: solid;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body::before {
   border-color: ${v.ipt.bdc};
 }
@@ -204,25 +204,24 @@ material: `
   box-shadow: 0px 4px 4px -2px ${CssVar.sdw.c};
 }
 .${cn}[data-m="e"] > .${cn}-body:hover:active .${cn}-switch::before {
-  top: 3px;
   box-shadow: none;
 }`,
 neumorphism: `
 .${cn}[data-m="e"] > .${cn}-body::before {
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
 }
 .${cn}[data-m="e"] > .${cn}-body:hover > .${cn}-switch::before {
-  box-shadow: ${CssPV.cvxSdD};
+  box-shadow: ${CssPV.nCvxSdHover};
 }
 .${cn}[data-m="r"] .${cn}-body::before,
 .${cn}[data-m="d"] .${cn}-body::before {
-  box-shadow: ${CssPV.ccvSdS};
+  box-shadow: ${CssPV.nCcvSdDisabled};
 }
 .${cn}[data-m="r"] .${cn}-body > .${cn}-switch::before,
 .${cn}[data-m="d"] .${cn}-body > .${cn}-switch::before {
-  box-shadow: ${CssPV.cvxSdS};
+  box-shadow: ${CssPV.nCvxSdShallow};
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body[data-checked="true"]::before {
   background: ${v.ipt.on};
 }`).join("")}`})}

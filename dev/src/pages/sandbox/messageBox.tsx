@@ -1,24 +1,24 @@
 import { NextPage } from "next";
 import { useState } from "react";
 import useMessageBox from "../../../react-addon/dist/message/message-box";
-import { Signal, signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { Color, colorIterator } from "../../../react-addon/dist/styles/css-var";
 import Button from "../../../react-addon/dist/elements/button";
 import RadioButtons from "../../../react-addon/dist/elements/inputs/radio-buttons";
 import Row from "../../../react-addon/dist/elements/row";
 
 const MessageBoxPage: NextPage = () => {
   const msgBox = useMessageBox();
-  const [signal, setSignal] = useState<Signal>();
+  const [color, setColor] = useState<Color>();
 
   return (
     <>
     <Row $fill>
       <RadioButtons
-        $value={signal}
-        $dispatch={setSignal}
+        $value={color}
+        $dispatch={setColor}
         $source={[
           { value: null, label: "unset" },
-          ...signalIterator((s) => {
+          ...colorIterator((s) => {
             return { value: s, label: s };
           })
         ]}
@@ -32,7 +32,7 @@ const MessageBoxPage: NextPage = () => {
           buttons: [{
             children: "close",
           }],
-          signal,
+          color,
         });
         unlock();
       }}>show</Button>

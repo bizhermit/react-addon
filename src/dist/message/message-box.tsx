@@ -1,6 +1,6 @@
 import React, { FC, KeyboardEvent, ReactNode, useCallback, useEffect, useMemo, useRef } from "react";
 import { createRoot, Root } from "react-dom/client";
-import CssVar, { CssPV, Signal, signalIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, Color, colorIterator, switchDesign } from "../styles/css-var";
 import { LayoutContext, useLayout } from "../styles/layout-provider";
 import JsxStyle from "../styles/jsx-style";
 import Button, { ButtonAttributes, buttonCn, useButton } from "../elements/button";
@@ -21,7 +21,7 @@ type MessageBoxProps = {
   title?: string;
   message: ReactNode;
   buttons: Array<MessageBoxButton>;
-  signal?: Signal;
+  color?: Color;
 };
 
 const MessageBox: FC<{ props: MessageBoxProps; resolve: (value: any) => void; }> = ({
@@ -143,7 +143,7 @@ const MessageBox: FC<{ props: MessageBoxProps; resolve: (value: any) => void; }>
         className={cn}
         ref={ref}
         onKeyDown={keydown}
-        data-signal={props.signal}
+        data-color={props.color}
       >
         {props.title ? 
           <div className={`${cn}-h`}>
@@ -241,7 +241,7 @@ const useMessageBox = () => {
           }
         }, {
           children: "OK",
-          $signal: "primary",
+          $color: "primary",
           $transparent: true,
           $click: (resolve) => {
             resolve(true);
@@ -272,7 +272,7 @@ const useMessageBox = () => {
           },
         }, {
           children: "OK",
-          $signal: "primary",
+          $color: "primary",
           $transparent: true,
           $click: (resolve) => {
             resolve({ result: true, text: bind.value });
@@ -354,7 +354,7 @@ neumorphism: `
 }
 ${switchDesign(design, {
 c: `
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-h {
   background: ${v.head.bgc};
   color: ${v.head.fc};

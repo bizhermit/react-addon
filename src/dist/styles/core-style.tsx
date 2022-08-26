@@ -1,11 +1,20 @@
+import ArrayUtils from "@bizhermit/basic-utils/dist/array-utils";
 import React from "react";
-import CssVar, { CssDarkVar, switchDesign } from "./css-var";
+import { iconCn, varIconBc, varIconFc } from "../elements/icon";
+import { labelCn } from "../elements/label";
+import CssVar, { colorIterator, CssDarkVar, CssPV, switchDesign } from "./css-var";
 import JsxStyle from "./jsx-style";
 
 export const sbCn = "bh-sb";
+export const colorCn = "bh-color";
 
 const CoreStyle =
-<JsxStyle id="bh-core" depsColor depsDesign>{({ color, design }) => `
+<>
+<JsxStyle id="bh-c_core" depsColor>{({ color }) => `
+${color==="dark" ? ` :root {${CssDarkVar}}` : ""}
+`}</JsxStyle>
+
+<JsxStyle id="bh-d_core" depsDesign>{({ design }) => `
 html {
   background: ${CssVar.bgc};
   color: ${CssVar.fc};
@@ -28,6 +37,30 @@ neumorphism: `
 `,
 })}
 }
+${switchDesign(design, {
+fm: `
+${ArrayUtils.generateArray(10, idx => `
+.bh-sd-${idx} {box-shadow: ${CssPV.cvxSd(idx)};}
+.bh-sd-${idx}[data-hover="true"]:hover {box-shadow: ${CssPV.cvxSd(idx*1.5)};}
+`).join("")}
+${ArrayUtils.generateArray(10, idx => `
+.bh-sd-n${idx} {box-shadow: ${CssPV.ccvSd(idx)};}
+.bh-sd-n${idx}[data-hover="true"]:hover {box-shadow: ${CssPV.ccvSd(idx*1.5)};}
+`).join("")}
+`,
+neumorphism: `
+${ArrayUtils.generateArray(10, idx => `
+.bh-sd-${idx} {box-shadow: ${CssPV.nCvxSd(idx)};}
+.bh-sd-${idx}[data-hover="true"]:hover {box-shadow: ${CssPV.nCvxSd(idx*1.5)};}
+`).join("")}
+${ArrayUtils.generateArray(10, idx => `
+.bh-sd-n${idx} {box-shadow: ${CssPV.nCcvSd(idx)};}
+.bh-sd-n${idx}[data-hover="true"]:hover {box-shadow: ${CssPV.nCcvSd(idx*1.5)};}
+`).join("")}
+`})}
+`}</JsxStyle>
+
+<JsxStyle id="bh-core">{() => `
 body {
   font-size: ${CssVar.fs};
 }
@@ -109,7 +142,50 @@ a:not(:disabled),
   opacity: 0.9;
 }
 }
-${color==="dark" ? ` :root {${CssDarkVar}}` : ""}
-`}</JsxStyle>;
+${colorIterator((c, v, qs) => `
+.${colorCn}${qs} {
+  background: ${v.bgc};
+  color: ${v.fc};
+}
+.${colorCn}${qs}[data-border="true"] {
+  border: 1px solid ${v.bdc};
+}
+.${colorCn}${qs} .${iconCn} {
+  ${varIconBc}: ${v.bgc};
+  ${varIconFc}: ${v.fc};
+}
+.${colorCn}${qs}[data-colortype="head"] {
+  background: ${v.head.bgc};
+  color: ${v.head.fc};
+}
+.${colorCn}${qs}[data-colortype="head"][data-border="true"] {
+  border-color: ${v.head.bdc};
+}
+.${colorCn}${qs}[data-colortype="head"] .${iconCn} {
+  ${varIconBc}: ${v.head.bgc};
+  ${varIconFc}: ${v.head.fc};
+}
+.${colorCn}${qs}[data-colortype="nav"] {
+  background: ${v.nav.bgc};
+  color: ${v.nav.fc};
+}
+.${colorCn}${qs}[data-colortype="nav"] .${iconCn} {
+  ${varIconBc}: ${v.nav.bgc};
+  ${varIconFc}: ${v.nav.fc};
+}
+.${colorCn}${qs}[data-colortype="nav"] .${labelCn}[data-type="a"],
+.${colorCn}${qs}[data-colortype="nav"] .bh-anchor {
+  color: ${v.nav.anchor};
+}
+.${colorCn}[data-border="${c}"] {
+  border: 1px solid ${v.bdc};
+}
+.${colorCn}[data-border="${c}"][data-colortype="head"] {
+  border: 1px solid ${v.head.bdc};
+}
+`).join("")}
+${ArrayUtils.generateArray(10, (idx) => `.bh-pad-${idx} {padding:${idx*4}px}`).join("")}
+`}</JsxStyle>
+</>;
 
 export default CoreStyle;

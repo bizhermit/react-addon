@@ -6,7 +6,7 @@ import Caption from "../../../react-addon/dist/elements/caption";
 import ToggleBox from "../../../react-addon/dist/elements/inputs/toggle-box";
 import Row from "../../../react-addon/dist/elements/row";
 import Label from "../../../react-addon/dist/elements/label";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 
 const FileBoxPage: NextPage = () => {
   const ref = createRef<HTMLDivElement>();
@@ -78,8 +78,8 @@ const FileBoxPage: NextPage = () => {
     <Caption $label="Value" $width={110}>
       <Label>{JSON.stringify(value?.type)}</Label>
     </Caption>
-    {signalIterator(s => {
-      return <FileBox key={s} $signal={s} $readOnly={readOnly} $disabled={disabled} $resize={resize} />;
+    {colorIterator(s => {
+      return <FileBox key={s} $color={s} $readOnly={readOnly} $disabled={disabled} $resize={resize} />;
     })}
     </>
   )

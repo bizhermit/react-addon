@@ -213,7 +213,7 @@ const SelectBox: SelectBoxFC = React.forwardRef<HTMLDivElement, SelectBoxAttribu
             setFilter(null);
             showPopup(true);
           }}
-        ><Icon $image="pull-down" /></div>
+        ><Icon $image="pull-down" $transition /></div>
       }
       {attrs.$resize ? <Resizer direction="x" /> : <></>}
       {attrs.$disabled || attrs.$readOnly ? <></> :

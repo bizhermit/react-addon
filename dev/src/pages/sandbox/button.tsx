@@ -1,24 +1,26 @@
 import { NextPage } from "next";
-import { createRef, useState } from "react";
+import { createRef, CSSProperties, useState } from "react";
 import Caption from "../../../react-addon/dist/elements/caption";
 import ToggleBox from "../../../react-addon/dist/elements/inputs/toggle-box";
 import Button from "../../../react-addon/dist/elements/button";
 import FlexBox from "../../../react-addon/dist/elements/flex-box";
 import Row from "../../../react-addon/dist/elements/row";
 import ToggleButton from "../../../react-addon/dist/elements/toggle-button";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 
 const ButtonPage: NextPage = () => {
   const [disabled, setDisabled] = useState(false);
   const ref = createRef<HTMLButtonElement>();
   const eref = createRef<HTMLButtonElement>();
+  const btnStyle: CSSProperties = { width: 140 };
 
   return (
     <FlexBox $fto="f"
+      $padding
       $scroll
       // style={{ background: "gray" }}
     >
-      <button>button</button>
+      {/* <button>button</button> */}
       <Row>
         <Caption $label="disabled">
           <ToggleBox $value={disabled} $dispatch={setDisabled} />
@@ -89,6 +91,32 @@ const ButtonPage: NextPage = () => {
           $click: () => console.log("click button 6"),
         }]}</ToggleButton>
       </Row>
+      <Row $middle>
+        <Button disabled={disabled} $icon="cloud" $size="xs">XS button</Button>
+        <Button disabled={disabled} $icon="cloud" $size="s">S button</Button>
+        <Button disabled={disabled} $icon="cloud" $size="m">M button</Button>
+        <Button disabled={disabled} $icon="cloud" $size="l">L button</Button>
+        <Button disabled={disabled} $icon="cloud" $size="xl">XL button</Button>
+      </Row>
+      <Row $middle>
+        <Button disabled={disabled} $icon="cloud" $round $size="xs">XS button</Button>
+        <Button disabled={disabled} $icon="cloud" $round $size="s">S button</Button>
+        <Button disabled={disabled} $icon="cloud" $round $size="m">M button</Button>
+        <Button disabled={disabled} $icon="cloud" $round $size="l">L button</Button>
+        <Button disabled={disabled} $icon="cloud" $round $size="xl">XL button</Button>
+      </Row>
+      <Row $middle>
+        <Button disabled={disabled} $icon="cloud" $size="xs" />
+        <Button disabled={disabled} $icon="cloud" $size="s" />
+        <Button disabled={disabled} $icon="cloud" $size="m" />
+        <Button disabled={disabled} $icon="cloud" $size="l" />
+        <Button disabled={disabled} $icon="cloud" $size="xl" />
+        <Button disabled={disabled} $icon="cloud" $round $size="xs" />
+        <Button disabled={disabled} $icon="cloud" $round $size="s" />
+        <Button disabled={disabled} $icon="cloud" $round $size="m" />
+        <Button disabled={disabled} $icon="cloud" $round $size="l" />
+        <Button disabled={disabled} $icon="cloud" $round $size="xl" />
+      </Row>
       <Caption $label="Label" $width={120}>
         <Button disabled={disabled}>Button</Button>
         <Button disabled={disabled} $round>Button</Button>
@@ -98,33 +126,27 @@ const ButtonPage: NextPage = () => {
         <Button disabled={disabled} $icon={{ $image: "signin" }} $round></Button>
       </Caption>
       <Caption $label="Label + Icon" $width={120}>
-        <Button disabled={disabled} $icon="favicon">Button</Button>
-        <Button disabled={disabled} $icon="favicon" $round>Button</Button>
-        <Button disabled={disabled} $icon="favicon" $iconRight>Button</Button>
-        <Button disabled={disabled} $icon="favicon" $iconRight $round>Button</Button>
+        <Button disabled={disabled} $icon="cloud-download">Button</Button>
+        <Button disabled={disabled} $icon="cloud-download" $round>Button</Button>
+        <Button disabled={disabled} $icon="cloud-download" $iconRight>Button</Button>
+        <Button disabled={disabled} $icon="cloud-download" $iconRight $round>Button</Button>
       </Caption>
       <FlexBox
         // style={{ backgroundColor: "white" }}
       >
         <Row>
-          <Button $icon="cloud-download" disabled={disabled} style={{ width: 130 }}>button</Button>
-          <Button $icon="cloud-download" disabled={disabled} style={{ width: 130 }}>button</Button>
-          <Button $icon="cloud-download" $fillLabel disabled={disabled} style={{ width: 130 }}>button</Button>
-          <Button $icon="cloud-download" $fillLabel $borderless disabled={disabled} style={{ width: 130 }}>button</Button>
-          <Button $icon="cloud-download" disabled={disabled} $transparent $iconRight style={{ width: 130 }}>button</Button>
-          <Button $icon="cloud-download" disabled={disabled} $transparent $iconRight $fillLabel style={{ width: 130 }}>button</Button>
-          <Button $icon="cloud-download" disabled={disabled} $transparent $iconRight $fillLabel $borderless style={{ width: 130 }}>button</Button>
+          <Button $icon="cloud-download" $fillLabel disabled={disabled} style={btnStyle}>button</Button>
+          <Button $icon="cloud-download" $fillLabel disabled={disabled} style={btnStyle} $borderless>bdr-less</Button>
+          <Button $icon="cloud-download" $fillLabel disabled={disabled} style={btnStyle} $transparent>trp</Button>
+          <Button $icon="cloud-download" $fillLabel disabled={disabled} style={btnStyle} $transparent $borderless>trp bdr-less</Button>
         </Row>
-        {signalIterator(s => {
+        {colorIterator(s => {
           return (
             <Row key={s}>
-              <Button $signal={s} $icon="cloud-download" disabled={disabled} style={{ width: 130 }}>{s}</Button>
-              <Button $signal={s} $icon="cloud-download" disabled={disabled} style={{ width: 130 }}>{s}</Button>
-              <Button $signal={s} $icon="cloud-download" $fillLabel disabled={disabled} style={{ width: 130 }}>{s}</Button>
-              <Button $signal={s} $icon="cloud-download" $fillLabel $borderless disabled={disabled} style={{ width: 130 }}>{s}</Button>
-              <Button $signal={s} $icon="cloud-download" disabled={disabled} $transparent $iconRight style={{ width: 130 }}>{s}</Button>
-              <Button $signal={s} $icon="cloud-download" disabled={disabled} $transparent $iconRight $fillLabel style={{ width: 130 }}>{s}</Button>
-              <Button $signal={s} $icon="cloud-download" disabled={disabled} $transparent $iconRight $fillLabel $borderless style={{ width: 130 }}>{s}</Button>
+              <Button $color={s} $icon="cloud-download" $fillLabel disabled={disabled} style={btnStyle}>{s}</Button>
+              <Button $color={s} $icon="cloud-download" $fillLabel disabled={disabled} style={btnStyle} $borderless>bdr-less</Button>
+              <Button $color={s} $icon="cloud-download" $fillLabel disabled={disabled} style={btnStyle} $transparent>trp</Button>
+              <Button $color={s} $icon="cloud-download" $fillLabel disabled={disabled} style={btnStyle} $transparent $borderless>trp bdr-less</Button>
             </Row>
           );
         })}

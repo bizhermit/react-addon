@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { createRef, useState } from "react";
 import TimeBox, { useTimeBox } from "../../../react-addon/dist/elements/inputs/time-box";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 import Button from "../../../react-addon/dist/elements/button";
 import Caption from "../../../react-addon/dist/elements/caption";
 import ToggleBox from "../../../react-addon/dist/elements/inputs/toggle-box";
@@ -98,18 +98,18 @@ const TimeBoxPage: NextPage = () => {
     <Caption $label="Value" $width={100}>
       <Label>{value}</Label>
     </Caption>
-    {signalIterator(s => {
+    {colorIterator(s => {
       return (
         <Row key={s}>
           <TimeBox
-            $signal={s}
+            $color={s}
             $readOnly={readOnly}
             $disabled={disabled}
             $border={border}
             $placeholder={s}
           />
           <TimeBox
-            $signal={s}
+            $color={s}
             $readOnly={readOnly}
             $disabled={disabled}
             $border={border}

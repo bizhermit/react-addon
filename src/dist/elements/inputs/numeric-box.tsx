@@ -2,7 +2,7 @@ import NumberUtils, { add, minus, numFormat } from "@bizhermit/basic-utils/dist/
 import StringUtils from "@bizhermit/basic-utils/dist/string-utils";
 import React, { ChangeEvent, HTMLAttributes, KeyboardEvent, useCallback, useEffect, useRef } from "react";
 import useValue, { InputAttributes } from "../../hooks/value";
-import CssVar, { CssPV, signalIterator, switchDesign } from "../../styles/css-var";
+import CssVar, { CssPV, colorIterator, switchDesign } from "../../styles/css-var";
 import InputStyle, { InputBorder, inputCn } from "../../styles/input-style";
 import JsxStyle from "../../styles/jsx-style";
 import { _HookSetter } from "../../utils/hook";
@@ -281,7 +281,7 @@ material: `
   transition: background 0.1s, box-shadow 0.1s, top 0.1s, border-color 0.1s;
 `,
 neumorphism: `
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
   background: ${CssVar.bgc};
   transition: background 0.1s, box-shadow 0.1s, margin-top 0.1s, margin-bottom 0.1s;
 `})}
@@ -319,7 +319,7 @@ fm: `
 }
 ${switchDesign(design, {
 fm: `
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-btn > .${cn}-inc::before,
 .${cn}${qs} > .${cn}-btn > .${cn}-dec::before {
   background: ${v.fc};
@@ -364,21 +364,18 @@ material: `
 .${cn} > .${cn}-btn > .${cn}-inc:active,
 .${cn} > .${cn}-btn > .${cn}-dec:active {
   box-shadow: none;
-  margin-top: 1px;
-  margin-bottom: -1px;
   z-index: 0;
 }`,
 neumorphism: `
 .${cn}-inc:hover,
 .${cn}-dec:hover {
-  box-shadow: ${CssPV.cvxSdD};
+  box-shadow: ${CssPV.nCvxSdHover};
 }
 .${cn}-inc:active,
 .${cn}-dec:active {
-  box-shadow: ${CssPV.ccvSd};
-  top: 1px;
+  box-shadow: ${CssPV.nCcvSdActive};
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-btn > .${cn}-inc::before,
 .${cn}${qs} > .${cn}-btn > .${cn}-dec::before {
   background: ${v.fc};

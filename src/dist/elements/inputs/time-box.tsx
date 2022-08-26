@@ -382,14 +382,14 @@ const TimeBox = React.forwardRef<HTMLDivElement, TimeBoxAttributes>((attrs, $ref
           className={`${inputCn}_btn`}
           tabIndex={-1}
           onClick={() => showTPic()}
-        ><Icon $image="clock" /></div>
+        ><Icon $image="clock" $transition /></div>
       }
       {attrs.$hideClearButton ? <></> :
         <div
           className={`${inputCn}_btn`}
           tabIndex={-1}
           onClick={clear}
-        ><Icon $image="cross" /></div>
+        ><Icon $image="cross" $transition /></div>
       }
       <Popup
         $hook={popup}

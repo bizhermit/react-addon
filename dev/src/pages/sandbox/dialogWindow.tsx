@@ -5,13 +5,13 @@ import Row from "../../../react-addon/dist/elements/row";
 import Label from "../../../react-addon/dist/elements/label";
 import { useEffect, useState } from "react";
 import RadioButtons from "../../../react-addon/dist/elements/inputs/radio-buttons";
-import { Signal, signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { Color, colorIterator } from "../../../react-addon/dist/styles/css-var";
 import DateBox from "../../../react-addon/dist/elements/inputs/date-box";
 
 const DialogWindowPage: NextPage = () => {
   const hook = useDialogWindow();
   const [count, setCount] = useState(0);
-  const [signal, setSignal] = useState<Signal>();
+  const [color, setColor] = useState<Color>();
 
   return (
     <>
@@ -29,15 +29,15 @@ const DialogWindowPage: NextPage = () => {
         $source={[{
           value: null,
           label: `unset`,
-        }, ...(signalIterator(s => {
+        }, ...(colorIterator(s => {
           return {
             value: s,
             label: s,
-            signal: s,
+            color: s,
           }
         }))]}
-        $value={signal}
-        $dispatch={setSignal}
+        $value={color}
+        $dispatch={setColor}
       />
     </Row>
     <Row $fill>
@@ -60,7 +60,7 @@ const DialogWindowPage: NextPage = () => {
       $hid={(p) => {
         console.log("hid", p);
       }}
-      $signal={signal}
+      $color={color}
       // $hideHeader
       // $preventMove
       // $preventResize

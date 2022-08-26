@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from "react";
-import CssVar, { Signal, signalIterator } from "../styles/css-var";
+import CssVar, { Color, colorIterator } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributes } from "../utils/attributes";
 
@@ -9,7 +9,7 @@ export const labelCn = cn;
 export type LabelAttributes = HTMLAttributes<HTMLSpanElement> & {
   $nowrap?: boolean;
   $bold?: boolean;
-  $signal?: Signal;
+  $color?: Color;
   $type?: "h0" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "a";
   $fill?: boolean;
 };
@@ -20,7 +20,7 @@ const Label = React.forwardRef<HTMLSpanElement, LabelAttributes>((attrs, ref) =>
       <span
         {...attributes(attrs, cn)}
         ref={ref}
-        data-signal={attrs.$signal}
+        data-color={attrs.$color}
         data-type={attrs.$type}
         data-nowrap={attrs.$nowrap}
         data-bold={attrs.$bold}
@@ -83,7 +83,7 @@ const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
   height: 100%;
   width: 100%;
 }
-${design ? `${signalIterator((_s, v, qs) => `
+${design ? `${colorIterator((_s, v, qs) => `
 .${cn}${qs} {
   color: ${v.fc};
 }`).join("")}

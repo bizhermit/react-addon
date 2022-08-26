@@ -409,14 +409,14 @@ const DateBox = React.forwardRef<HTMLDivElement, DateBoxAttributes>((attrs, $ref
           className={`${inputCn}_btn`}
           tabIndex={-1}
           onClick={() => showDPic()}
-        ><Icon $image="calendar" /></div>
+        ><Icon $image="calendar" $transition /></div>
       }
       {attrs.$hideClearButton || attrs.$disabled || attrs.$readOnly ? <></> :
         <div
           className={`${inputCn}_btn`}
           tabIndex={-1}
           onClick={clear}
-        ><Icon $image="cross" /></div>
+        ><Icon $image="cross" $transition /></div>
       }
       {attrs.$disabled || attrs.$readOnly ? <></> :
         <Popup

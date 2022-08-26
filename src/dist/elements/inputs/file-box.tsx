@@ -60,14 +60,14 @@ const FileBox = React.forwardRef<HTMLDivElement, FileBoxAttributes>((attrs, ref)
           <Button
             {...attrs.$butotnAttributes}
             $hook={btn}
-            $signal={attrs.$butotnAttributes?.$signal ?? attrs.$signal}
+            $color={attrs.$butotnAttributes?.$color ?? attrs.$color}
             $click={() => {
               iref.current.click();
             }}
           >{attrs.$butotnAttributes?.children ?? "ファイルを選択"}</Button>
         }
         {attrs.$hideLabel || val == null ? <></> :
-          <Label $nowrap $signal={attrs.$signal}>{label}</Label>
+          <Label $nowrap $color={attrs.$color}>{label}</Label>
         }
         {attrs.children}
       </div>

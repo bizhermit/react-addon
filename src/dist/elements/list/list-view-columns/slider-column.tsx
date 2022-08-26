@@ -1,6 +1,6 @@
 import NumberUtils from "@bizhermit/basic-utils/dist/number-utils";
 import React, { FC, useEffect } from "react";
-import CssVar, { CssPV, Signal, signalIterator, switchDesign } from "../../../styles/css-var";
+import CssVar, { CssPV, Color, colorIterator, switchDesign } from "../../../styles/css-var";
 import JsxStyle from "../../../styles/jsx-style";
 import { cloneDomElement } from "../../../utils/dom";
 import Slider, { SliderAttributes, useSlider } from "../../inputs/slider";
@@ -14,8 +14,8 @@ const ListViewSliderColumn: ListViewColumnFunction<ListViewEditColumnProps<numbe
   hideLabel?: boolean;
   hideBar?: boolean;
   barAlign?: "left" | "right";
-  defaultSignal?: Signal;
-  signal?: (value?: number) => Signal;
+  defaultColor?: Color;
+  color?: (value?: number) => Color;
   progressbarRender?: (value: number, barElement: HTMLDivElement) => void;
   format?: (value?: number) => string;
 }> = (props) => {
@@ -58,7 +58,7 @@ const ListViewSliderColumn: ListViewColumnFunction<ListViewEditColumnProps<numbe
         props.progressbarRender?.(val, contentElements[0] as HTMLDivElement);
         cache.val = val;
         contentElements[0].style.width = `${Math.min(100, Math.max(0, val ?? 0))}%`;
-        if (props.signal) contentElements[0].setAttribute("data-signal", props.signal(val));
+        if (props.color) contentElements[0].setAttribute("data-color", props.color(val));
       }
     },
     _beginEdit: props.disabled ? undefined : ({ target }) => {
@@ -143,7 +143,7 @@ c: `
 .${listViewCn}-body.bh-select-cell .${listViewCn}-cell.bh-_selected:hover .${cn} + .${cn}-lbl {
   ${CssPV.textSd(CssVar.lv.cell.act.hvr.bgc)}
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} {
   background: ${v.ipt.on};
 }

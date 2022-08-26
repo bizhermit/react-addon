@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, KeyboardEvent, useCallback, useEffect, useRef } from "react";
 import useValue, { InputAttributes } from "../../hooks/value";
-import CssVar, { CssPV, signalIterator, switchDesign } from "../../styles/css-var";
+import CssVar, { CssPV, colorIterator, switchDesign } from "../../styles/css-var";
 import InputStyle from "../../styles/input-style";
 import JsxStyle from "../../styles/jsx-style";
 import { releaseCursor, setCursor } from "../../utils/cursor";
@@ -19,6 +19,7 @@ export type SliderAttributes = HTMLAttributes<HTMLDivElement> & InputAttributes<
   $max?: number;
   $keydownInterval?: number;
   $resize?: boolean;
+  $showKnobLabel?: boolean;
   $changing?: (value: number) => void;
 };
 
@@ -36,8 +37,8 @@ const Slider = React.forwardRef<HTMLDivElement, SliderAttributes>((attrs, ref) =
     const rate = (v - min.current) / (max.current - min.current);
     rref.current.style.width = (rate * 100) + "%";
     href.current.style.left = ((bref.current.clientWidth - href.current.offsetWidth) * rate) + "px"
-    href.current.textContent = String(v);
-  }, []);
+    if (attrs.$showKnobLabel) href.current.textContent = String(v);
+  }, [attrs.$showKnobLabel]);
 
   const { val, set, buf } = useValue(attrs, {
     effect: optimizeHadbleLeft,
@@ -97,6 +98,14 @@ const Slider = React.forwardRef<HTMLDivElement, SliderAttributes>((attrs, ref) =
   };
 
   useEffect(() => {
+    if (attrs.$showKnobLabel) {
+      href.current.textContent = String(buf.current || "");
+    } else {
+      href.current.textContent = "";
+    }
+  }, [attrs.$showKnobLabel]);
+
+  useEffect(() => {
     (attrs.$hook as Hook)?._set({
       focus: () => bref.current?.focus(),
       getValue: () => buf.current,
@@ -123,6 +132,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderAttributes>((attrs, ref) =
           ref={href}
           onMouseDown={e => changeStart(e.clientX)}
           onTouchStart={e => changeStart(e.touches[0].clientX, true)}
+          data-label={attrs.$showKnobLabel}
         />
       </div>
       {attrs.$resize ? <Resizer direction="x" resizing={() => optimizeHadbleLeft(val)}/> : <></>}
@@ -188,7 +198,7 @@ fm: `
 `,
 neumorphism: `
   height: 100%;
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
   border-radius: calc(${CssVar.size} / 2 - 1px);
 `})}
 }
@@ -198,7 +208,7 @@ neumorphism: `
   width: 0px;
 ${switchDesign(design, {
 neumorphism: `
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
   border-radius: calc(${CssVar.size} / 2 - 1px) 0 0 calc(${CssVar.size} / 2 - 1px);
 `})}
 }
@@ -245,7 +255,7 @@ neumorphism: `
   width: calc(100% - 6px);
   top: 3px;
   left: 3px;
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
   background: ${CssVar.bgc};
 `})}
 }
@@ -253,16 +263,12 @@ neumorphism: `
   cursor: col-resize;
 }
 ${switchDesign(design, {
-_: `
-.${cn}[data-m="e"] > .${cn}-body > .${cn}-handle:active {
-  top: -100%;
-}`,
 fm: `
 .${cn}[data-m="e"] > .${cn}-body:focus > .${cn}-handle::before {
   border-width: 3px;
   border-style: double;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body > .${cn}-bar {
   border-color: ${v.ipt.bdc};
   background: ${v.ipt.off};
@@ -277,15 +283,15 @@ ${signalIterator((_s, v, qs) => `
 .${cn}${qs}[data-m="e"] > .${cn}-body > .${cn}-handle:active::after {
   background: ${v.ipt.bdc};
 }`).join("")}
-.${cn}[data-m="e"] > .${cn}-body > .${cn}-handle:active {
+.${cn}[data-m="e"] > .${cn}-body > .${cn}-handle[data-label="true"]:active {
   top: calc(${CssVar.size} / 2 * -1 - 4px);
 }
-.${cn}[data-m="e"] > .${cn}-body > .${cn}-handle:active::before {
+.${cn}[data-m="e"] > .${cn}-body > .${cn}-handle[data-label="true"]:active::before {
   border-radius: ${CssVar.bdr};
   width: 120%;
   left: -10%;
 }
-.${cn}[data-m="e"] > .${cn}-body > .${cn}-handle:active::after {
+.${cn}[data-m="e"] > .${cn}-body > .${cn}-handle:active[data-label="true"]::after {
   ${CssPV.ba}
   bottom: -1px;
   left: calc(50% - 2px);
@@ -302,29 +308,29 @@ material: `
   box-shadow: 0px 4px 4px -2px ${CssVar.sdw.c};
 }`,
 neumorphism: `
-.${cn}[data-m="e"] > .${cn}-body > .${cn}-handle:active {
+.${cn}[data-m="e"] > .${cn}-body > .${cn}-handle[data-label="true"]:active {
   top: -100%;
 }
 .${cn}[data-m="e"] > .${cn}-body > .${cn}-handle:hover::before {
-  box-shadow: ${CssPV.cvxSdD};
+  box-shadow: ${CssPV.nCvxSdHover};
 }
-.${cn}[data-m="e"] > .${cn}-body > .${cn}-handle:active::before {
+.${cn}[data-m="e"] > .${cn}-body > .${cn}-handle[data-label="true"]:active::before {
   border-radius: ${CssVar.bdr};
   width: 120%;
   left: -10%;
-  box-shadow: ${CssPV.cvxSdD};
+  box-shadow: ${CssPV.nCvxSdHover};
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body > .${cn}-bar > .${cn}-rate {
   background: ${v.ipt.on};
 }`).join("")}
 .${cn}[data-m="r"] > .${cn}-body > .${cn}-bar,
 .${cn}[data-m="d"] > .${cn}-body > .${cn}-bar {
-  box-shadow: ${CssPV.ccvSdS};
+  box-shadow: ${CssPV.nCcvSdDisabled};
 }
 .${cn}[data-m="r"] > .${cn}-body > .${cn}-handle::before,
 .${cn}[data-m="d"] > .${cn}-body > .${cn}-handle::before {
-  box-shadow: ${CssPV.cvxSdS};
+  box-shadow: ${CssPV.nCvxSdShallow};
 }`})}
 .${cn}[data-m="r"] > .${cn}-body > .${cn}-bar,
 .${cn}[data-m="d"] > .${cn}-body > .${cn}-bar {

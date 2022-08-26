@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, ReactNode } from "react";
 import { sbCn } from "../styles/core-style";
-import CssVar, { CssPV, Signal, signalIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, Color, colorIterator, switchDesign } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributesWithoutChildren } from "../utils/attributes";
 
@@ -8,7 +8,7 @@ const cn = "bh-grp";
 
 export type GroupBoxAttributes = HTMLAttributes<HTMLDivElement> & {
   $caption?: ReactNode;
-  $signal?: Signal;
+  $color?: Color;
   $padding?: boolean;
 };
 
@@ -17,7 +17,7 @@ const GroupBox = React.forwardRef<HTMLDivElement, GroupBoxAttributes>((attrs, re
     <div
       {...attributesWithoutChildren(attrs, cn)}
       ref={ref}
-      data-signal={attrs.$signal}
+      data-color={attrs.$color}
     >
       <div className={`${cn}-cap`}>
         <div className={`${cn}-cap_prefix`} />
@@ -57,7 +57,7 @@ ${switchDesign(design, {
 c: `min-height: ${CssVar.size};`,
 neumorphism: `
   border-radius: ${CssVar.bdr} ${CssVar.bdr} 0 0;
-  box-shadow: ${CssPV.cvxSdS};
+  box-shadow: ${CssPV.nCvxSdShallow};
 `})}
 }
 .${cn}-cap_prefix,
@@ -106,7 +106,7 @@ fm: `
   border-radius: 0 0 ${CssVar.bdr} ${CssVar.bdr};
 `,
 neumorphism: `
-  box-shadow: ${CssPV.ccvSdS};
+  box-shadow: ${CssPV.nCcvSdDisabled};
   border-radius: 0 0 ${CssVar.bdr} ${CssVar.bdr};
 `})}
 }
@@ -115,7 +115,7 @@ neumorphism: `
 }
 ${switchDesign(design, {
 fm: `
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-cap > .${cn}-cap_prefix,
 .${cn}${qs} > .${cn}-cap > .${cn}-cap_suffix,
 .${cn}${qs} > .${cn}-cont {
@@ -127,7 +127,7 @@ ${signalIterator((_s, v, qs) => `
 `).join("")}
 `,
 neumorphism: `
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-cap {
   background: ${v.head.bgc};
   color: ${v.head.fc};

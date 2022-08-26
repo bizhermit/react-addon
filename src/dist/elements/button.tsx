@@ -1,6 +1,6 @@
 import StringUtils from "@bizhermit/basic-utils/dist/string-utils";
 import React, { ButtonHTMLAttributes, MouseEvent, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
-import CssVar, { CssPV, Signal, signalIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, Color, colorIterator, switchDesign, Size, sizeIterator, varFontSize } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributesWithoutChildren, dBool } from "../utils/attributes";
 import { _HookSetter } from "../utils/hook";
@@ -17,13 +17,14 @@ type Hook = _HookSetter<ButtonHook>;
 
 export type ButtonIconProps = IconImage | {
   $image: IconImage;
-  $signal?: Signal;
+  $color?: Color;
   $round?: boolean;
 };
 
 export type ButtonAttributes = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onClick"> & {
   $hook?: ButtonHook;
-  $signal?: Signal;
+  $color?: Color;
+  $size?: Size;
   $click?: (unlock: (preventFocus?: boolean) => void, event: MouseEvent<HTMLButtonElement>) => void;
   $round?: boolean;
   $transparent?: boolean;
@@ -45,7 +46,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonAttributes>((attrs, $re
   const unlock = (preventFocus?: boolean) => {
     setDisabled(false);
     if (preventFocus !== true) ref.current?.focus();
-    
   };
 
   const click = (e: MouseEvent<HTMLButtonElement>) => {
@@ -74,10 +74,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonAttributes>((attrs, $re
       ref={ref}
       disabled={attrs.disabled || disabled}
       onClick={click}
+      data-size={attrs.$size ?? "m"}
     >
       <div
         className={`${cn}-body`}
-        data-signal={attrs.$signal}
+        data-color={attrs.$color}
         data-round={attrs.$round}
         data-content={attrs.children != null}
         data-icon={attrs.$icon != null}
@@ -86,7 +87,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonAttributes>((attrs, $re
         data-trp={dBool(attrs.$transparent)}
         data-bdl={attrs.$borderless}
       >
-        {attrs.$icon == null ? <></> : <Icon {...(StringUtils.isString(attrs.$icon) ? { $image: attrs.$icon } : attrs.$icon)} />}
+        {attrs.$icon == null ? <></> : <Icon {...(StringUtils.isString(attrs.$icon) ? { $image: attrs.$icon } : attrs.$icon)} $transition />}
         {StringUtils.isString(attrs.children) ? <Label className={`${cn}-lbl`}>{attrs.children}</Label> : attrs.children}
       </div>
       {ButtonStyle}
@@ -106,6 +107,9 @@ export const useButton = (): ButtonHook => {
   } as Hook;
 };
 
+const varBtnSize = "--btn-size";
+const btnSize = `var(${varBtnSize})`;
+
 const ButtonStyle = <JsxStyle id={cn} depsDesign>{({ design }) => `
 .${cn},
 .${cn}-body {
@@ -120,24 +124,24 @@ const ButtonStyle = <JsxStyle id={cn} depsDesign>{({ design }) => `
   color: inherit;
   border: none;
   box-shadow: none;
-  font-size: inherit;
   cursor: pointer;
   user-select: none;
   overflow: visible;
-${switchDesign(design, {
-_: `
-  padding: 0px;
-  min-height: ${CssVar.size};
-  min-width: ${CssVar.size};
-`,
-c: `
   padding: ${CssVar.pdy} ${CssVar.pdx};
-  min-height: calc(${CssVar.size} + ${CssVar.pdy} * 2);
-  min-width: calc(${CssVar.size} + ${CssVar.pdx} * 2);
-`,
+  min-height: calc(${btnSize} + ${CssVar.pdy} * 2);
+  min-width: calc(${btnSize} + ${CssVar.pdx} * 2);
+  font-size: var(${varFontSize});
+${switchDesign(design, {
 neumorphism: `background: inherit;`
 })}
 }
+${sizeIterator(cn, {
+xs: `${varBtnSize}: calc(${CssVar.size} * 0.75);${varFontSize}: 1.2rem;`,
+s: `${varBtnSize}: calc(${CssVar.size} * 0.9);${varFontSize}: 1.4rem;`,
+m: `${varBtnSize}: ${CssVar.size};${varFontSize}: 1.6rem;`,
+l: `${varBtnSize}: calc(${CssVar.size} * 1.2);${varFontSize}: 1.8rem;`,
+xl: `${varBtnSize}: calc(${CssVar.size} * 1.5);${varFontSize}: 2.0rem;`,
+})}
 .${cn}-body {
   justify-content: center;
   align-items: center;
@@ -153,11 +157,11 @@ flat: `
 `,
 material: `
   border: 1.5px solid ${CssVar.bdc};
-  box-shadow: 0px 3px 4px -2px ${CssVar.sdw.c};
+  box-shadow: ${CssPV.cvxSdBase};
   transition: background 0.1s, color 0.1s, box-shadow 0.1s, top 0.1s, border-color 0.1s;
 `,
 neumorphism: `
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
   transition: background 0.1s, color 0.1s, box-shadow 0.1s, margin-top 0.1s, margin-bottom 0.1s;
 `})}
 }
@@ -179,7 +183,7 @@ neumorphism: `
   flex: 1;
 }
 .${cn}-body[data-round="true"] {
-  border-radius: calc(${CssVar.size} / 2 + 1px);
+  border-radius: calc(${btnSize} / 2 + 1px);
 }
 .${cn}:disabled {
   ${CssPV.inactOpacity}
@@ -187,8 +191,8 @@ neumorphism: `
   pointer-events: none;
 }
 .${cn}-body > .${iconCn} {
-  max-height: calc(${CssVar.size} - 4px);
-  max-width: calc(${CssVar.size}  - 4px);
+  max-height: calc(${btnSize} - 4px);
+  max-width: calc(${btnSize}  - 4px);
 }
 ${switchDesign(design, {
 flat: `
@@ -198,7 +202,7 @@ flat: `
 .${cn}:hover:active > .${cn}-body {
   background: ${CssVar.actBgc};
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}-body${qs} {
   background: ${v.btn.base.bgc};
   color: ${v.btn.base.fc};
@@ -209,7 +213,7 @@ ${signalIterator((_s, v, qs) => `
   color: ${v.fc};
 }
 .${cn}-body[data-trp="true"]${qs}:not([data-bdl="true"]) {
-  border-color: ${v.bdc};
+  border-color: ${v.btn.base.bdc};
 }
 .${cn}-body${qs} .${iconCn} {
   --bh-icon-fc: ${v.btn.base.fc};
@@ -246,7 +250,7 @@ material: `
 .${cn}-body[data-trp="true"] {
   box-shadow: 0px 1px 2px ${CssVar.sdw.d}, 1px 1px 2px ${CssVar.sdw.d} inset;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}-body${qs} {
   background: ${v.btn.base.bgc};
   color: ${v.btn.base.fc};
@@ -257,14 +261,14 @@ ${signalIterator((_s, v, qs) => `
   color: ${v.fc};
 }
 .${cn}-body[data-trp="true"]${qs}:not([data-bdl="true"]) {
-  border-color: ${v.bdc};
+  border-color: ${v.btn.base.bdc};
 }
 .${cn}-body${qs} .${iconCn} {
   --bh-icon-fc: ${v.btn.base.fc};
   --bh-icon-bc: ${v.btn.base.bgc};
 }
 .${cn}-body[data-trp="true"]${qs} .${iconCn} {
-  --bh-icon-fc: ${v.bdc};
+  --bh-icon-fc: ${v.fc};
 }
 .${cn}:hover > .${cn}-body${qs} {
   background: ${v.btn.hvr.bgc};
@@ -275,9 +279,6 @@ ${signalIterator((_s, v, qs) => `
   --bh-icon-fc: ${v.btn.hvr.fc};
   --bh-icon-bc: ${v.btn.hvr.bgc};
 }`).join("")}
-.${cn}:hover:active > .${cn}-body {
-  top: 1px;
-}
 .${cn}:hover:active > .${cn}-body,
 .${cn}:disabled > .${cn}-body {
   box-shadow: none;
@@ -289,7 +290,7 @@ ${signalIterator((_s, v, qs) => `
   box-shadow: none;
 }
 .${cn}:hover > .${cn}-body {
-  box-shadow: 0px 4px 4px -2px ${CssVar.sdw.c};
+  box-shadow: ${CssPV.cvxSdHover};
 }`,
 neumorphism: `
 .${cn}-body[data-trp="true"] {
@@ -302,20 +303,18 @@ neumorphism: `
 .${cn}:hover > .${cn}-body,
 .${cn}:hover > .${cn}-body[data-trp="true"] {
   background: inherit;
-  box-shadow: ${CssPV.cvxSdD};
+  box-shadow: ${CssPV.nCvxSdHover};
 }
 .${cn}:hover:active > .${cn}-body {
-  box-shadow: ${CssPV.ccvSd};
-  margin-top: 1px;
-  margin-bottom: -1px;
+  box-shadow: ${CssPV.nCcvSdActive};
 }
 .${cn}:disabled > .${cn}-body {
-  box-shadow: ${CssPV.ccvSdS};
+  box-shadow: ${CssPV.nCcvSdDisabled};
 }
 .${cn}:disabled > .${cn}-body[data-trp="true"] {
-  box-shadow: 0 0 0px 1px ${CssVar.bdc} inset, ${CssPV.ccvSdS};
+  box-shadow: 0 0 0px 1px ${CssVar.bdc} inset, ${CssPV.nCcvSdDisabled};
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}-body${qs}[data-bdl="true"]:not([data-trp="true"]) {
   background: ${v.btn.base.bgc};
   color: ${v.btn.base.fc};
@@ -330,17 +329,21 @@ ${signalIterator((_s, v, qs) => `
   color: ${v.fc};
 }
 .${cn}-body[data-trp="true"]${qs} {
-  box-shadow: 0 0 0px 1px ${v.bdc} inset, 0.5px 0.5px 2px ${CssVar.sdw.d}, -0.5px -0.5px 2px ${CssVar.sdw.b}, 1px 1px 2px ${CssVar.sdw.d} inset, -1px -1px 2px ${CssVar.sdw.b} inset;
+  box-shadow: 0 0 0px 1px ${v.btn.base.bdc} inset, 0.5px 0.5px 2px ${CssVar.sdw.d}, -0.5px -0.5px 2px ${CssVar.sdw.b}, 1px 1px 2px ${CssVar.sdw.d} inset, -1px -1px 2px ${CssVar.sdw.b} inset;
   color: ${v.fc};
 }
 .${cn}-body${qs} .${iconCn} {
   --bh-icon-fc: ${v.fc};
 }
+.${cn}-body${qs}[data-bdl="true"]:not([data-trp="true"]):not(:hover) .${iconCn} {
+  --bh-icon-fc: ${v.btn.base.fc};
+  --bh-icon-bc: ${v.btn.base.bgc};
+}
 .${cn}-body${qs}:not([data-trp="true"]) .${iconCn} {
   --bh-icon-bc: ${v.bgc};
 }
 .${cn}:disabled > .${cn}-body[data-trp="true"]${qs} {
-  box-shadow: 0 0 0px 1px ${v.btn.base.bdc} inset, ${CssPV.ccvSdS};
+  box-shadow: 0 0 0px 1px ${v.btn.base.bdc} inset, ${CssPV.nCcvSdDisabled};
 }`).join("")}
 .${cn}-body[data-bdl="true"],
 .${cn}-body[data-bdl="true"][data-trp="true"] {

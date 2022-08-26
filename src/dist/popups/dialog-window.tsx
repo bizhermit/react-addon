@@ -1,5 +1,5 @@
 import React, { cloneElement, Dispatch, FC, ReactNode, SetStateAction, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import CssVar, { CssPV, Signal, signalIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, Color, colorIterator, switchDesign } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import Icon, { iconCn } from "../elements/icon";
 import MaskContainer, { MaskHook, useMask } from "./mask";
@@ -48,7 +48,7 @@ type DialogWindowAttributes = {
   $left?: number | string;
   $height?: number | string;
   $width?: number | string;
-  $signal?: Signal;
+  $color?: Color;
   $showed?: () => void;
   $closed?: (props?: {[key: string]: any}) => void;
   $hid?: (props?: {[key: string]: any}) => void;
@@ -405,7 +405,7 @@ const DialogWindowWrapper: FC<{
         visibility: "hidden",
         zIndex: dialogWindowBaseZIndex + zIndex * dialogWindowZIndexInterval + 2
       }}
-      data-signal={attrs.$signal}
+      data-color={attrs.$color}
       data-zindex={zIndex}
     >
       <div className={`${cn}-cont`}>
@@ -424,7 +424,7 @@ const DialogWindowWrapper: FC<{
                 onClick={() => { con.hide() }}
                 onMouseDown={(e) => e.stopPropagation()}
               >
-                <Icon $image="minus" />
+                <Icon $image="minus" $transition />
               </div>
             </>}
             {attrs.$hideCloseButton ? <></> : <>
@@ -433,7 +433,7 @@ const DialogWindowWrapper: FC<{
                 onClick={() => { con.close() }}
                 onMouseDown={(e) => e.stopPropagation()}
               >
-                <Icon $image="cross" />
+                <Icon $image="cross" $transition />
               </div>
             </>}
           </div>
@@ -622,7 +622,7 @@ neumorphism: `
   opacity: 0.8;
 ${switchDesign(design, {
 fm: `transition: background 0.1s;`,
-neumorphism: `transition: margin-top 0.1s, margin-bottom: 0.1s;`
+neumorphism: `transition: box-shadow 0.1s;`
 })}
 }
 ${switchDesign(design, {
@@ -654,24 +654,21 @@ fm: `
 .${cn}-close:hover:active > .${iconCn} {
   --bh-icon-fc: ${CssVar.danger.btn.act.fc};
   --bh-icon-bc: ${CssVar.danger.btn.act.bgc};
-}
-`,
+}`,
 neumorphism: `
 .${cn}-min:hover {
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
 }
 .${cn}-close > .${iconCn} {
   --bh-icon-fc: ${CssVar.danger.fc};
   --bh-icon-bc: ${CssVar.bgc};
 }
 .${cn}-close:hover {
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
 }
 .${cn}-min:hover:active,
 .${cn}-close:hover:active {
-  box-shadow: ${CssPV.ccvSd};
-  margin-top: 1px;
-  margin-bottom: -1px;
+  box-shadow: ${CssPV.nCcvSdActive};
 }
 `})}
 .${cn}-body {
@@ -750,7 +747,7 @@ neumorphism: `
 .${cn}-mask_d {
   background: transparent;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-cont > .${cn}-header {
   background: ${v.head.bgc};
   color: ${v.head.fc};

@@ -1,7 +1,7 @@
 import React from "react";
 import { buttonCn } from "../elements/button";
 import { iconCn } from "../elements/icon";
-import CssVar, { CssPV, signalIterator, switchDesign } from "./css-var";
+import CssVar, { CssPV, colorIterator, switchDesign } from "./css-var";
 import JsxStyle from "./jsx-style";
 
 export const inputCn = "bh-ipt";
@@ -64,7 +64,7 @@ neumorphism: `
   width: calc(100% - ${CssVar.pdx} * 2);
   height: calc(100% - ${CssVar.pdy} * 2);
   border-radius: ${CssVar.bdr};
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
 `})}
 }
 .${inputCn}[data-t="f"][data-round="true"]::before {
@@ -131,7 +131,7 @@ c: `height: calc(100% - ${CssVar.pdy} * 2 - ${CssVar.phsize});`,
 .${inputCn} textarea[data-align="right"] {
   text-align: right;
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${inputCn}${qs}::after {
   color: ${v.fc};
 }
@@ -148,7 +148,7 @@ fm: `
 .${inputCn}[data-t="f"][data-border="round"]::before {
   border-radius: ${CssVar.bdr};
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${inputCn}${qs}[data-t="f"][data-border="under"]::before {
   border-bottom: 1px solid ${v.ipt.bdc};
   border-right: 1px solid transparent !important;
@@ -179,7 +179,7 @@ ${signalIterator((_s, v, qs) => `
 }`,
 neumorphism: `
 .${inputCn}[data-m="r"]::before {
-  box-shadow: ${CssPV.ccvSdS};
+  box-shadow: ${CssPV.nCcvSdDisabled};
 }`})}
 .${inputCn}[data-m="d"]::before {
   display: none;
@@ -214,7 +214,7 @@ fm: `border: 1px solid transparent;`,
 flat: `transition: background 0.1s, border-color 0.1s;`,
 material: `transition: background 0.1s, box-shadow 0.1s, top 0.1s, border-color 0.1s;`,
 neumorphism: `
-  box-shadow: ${CssPV.cvxSd};
+  box-shadow: ${CssPV.nCvxSdBase};
   background: ${CssVar.bgc};
   transition: background 0.1s, box-shadow 0.1s, margin-top 0.1s, margin-bottom 0.1s;
 `})}
@@ -240,7 +240,7 @@ material: `box-shadow: 0px 3px 4px -2px ${CssVar.sdw.c};`,
 }
 ${switchDesign(design, {
 fm: `
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${inputCn}${qs} .${inputCn}_btn {
   color: ${v.fc};
 }
@@ -276,30 +276,28 @@ flat: `
 `).join("")}`,
 material: `
 .${inputCn}_btn:hover {
-  box-shadow: ${CssPV.cvxSdD};
+  box-shadow: ${CssPV.nCvxSdHover};
   box-shadow: 0px 4px 4px -2px ${CssVar.sdw.c};
 }
 .${inputCn}_btn:hover:active {
-  margin-top: 1px;
-  margin-bottom: -1px;
   box-shadow: none;
 }`,
 neumorphism: `
 .${inputCn}_btn:hover {
-  box-shadow: ${CssPV.cvxSdD};
+  box-shadow: ${CssPV.nCvxSdHover};
 }
 .${inputCn}_btn:hover:active {
-  top: 1px;
-  box-shadow: ${CssPV.ccvSd};
+  box-shadow: ${CssPV.nCcvSdActive};
 }
-.${inputCn} .${buttonCn}-body,
-.${inputCn} .${buttonCn}:hover > .${buttonCn}-body {
-  background: ${CssVar.bgc} !important;
+${colorIterator((_s, v, qs) => `
+.${inputCn}${qs} .${inputCn}_fld {
+  color: ${v.ipt.fc};
 }
-${signalIterator((_s, v, qs) => `
+.${inputCn}${qs}[data-t="f"]::before {
+  background: ${v.ipt.bgc};
+}
 .${inputCn}${qs} .${inputCn}_btn {
   color: ${v.fc};
-  background: ${v.ipt.bgc};
 }
 .${inputCn}${qs} .${inputCn}_btn > .${iconCn} {
   --bh-icon-fc: ${v.fc};

@@ -7,7 +7,7 @@ import Row from "../../../react-addon/dist/elements/row";
 import RadioButtons, { useRadioButtons } from "../../../react-addon/dist/elements/inputs/radio-buttons";
 import ArrayUtils from "@bizhermit/basic-utils/dist/array-utils";
 import Label from "../../../react-addon/dist/elements/label";
-import { CssPV, signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { CssPV, colorIterator } from "../../../react-addon/dist/styles/css-var";
 import Icon from "../../../react-addon/dist/elements/icon";
 
 const RadioButtonsPage: NextPage = () => {
@@ -101,7 +101,7 @@ const RadioButtonsPage: NextPage = () => {
         $readOnly={readOnly}
         $hideRadioButton={!showRadioButton}
         $column={direction === "column"}
-        $source={signalIterator(s => {
+        $source={colorIterator(s => {
           return {
             value: s,
             // label: (
@@ -111,7 +111,7 @@ const RadioButtonsPage: NextPage = () => {
             //   </>
             // ),
             label: s.toUpperCase(),
-            signal: s,
+            color: s,
           }
         })}
       />
@@ -124,11 +124,11 @@ const RadioButtonsPage: NextPage = () => {
         $column={direction === "column"}
         $source={[{
           value: "signin",
-          signal: "primary",
+          color: "primary",
           label: <><Label>Signin</Label><Icon $image="signin" /></>
         }, {
           value: "signout",
-          label: <><Icon $image="signout" $signal="danger" /><Label>Signout</Label></>
+          label: <><Icon $image="signout" $color="danger" /><Label>Signout</Label></>
         }]}
       />
     </Row>

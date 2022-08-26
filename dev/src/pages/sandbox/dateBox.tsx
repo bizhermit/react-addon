@@ -7,7 +7,7 @@ import ToggleBox from "../../../react-addon/dist/elements/inputs/toggle-box";
 import Label from "../../../react-addon/dist/elements/label";
 import Row from "../../../react-addon/dist/elements/row";
 import RadioButtons from "../../../react-addon/dist/elements/inputs/radio-buttons";
-import { signalIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 import { InputBorder } from "../../../react-addon/dist/styles/input-style";
 
 const DateBoxPage: NextPage = () => {
@@ -98,18 +98,18 @@ const DateBoxPage: NextPage = () => {
     <Caption $label="Value" $width={100}>
       <Label>{String(value)}</Label>
     </Caption>
-    {signalIterator(s => {
+    {colorIterator(s => {
       return (
         <Row key={s}>
           <DateBox
-            $signal={s}
+            $color={s}
             $placeholder={s}
             $readOnly={readOnly}
             $disabled={disabled}
             $border={border}
           />
           <DateBox
-            $signal={s}
+            $color={s}
             $readOnly={readOnly}
             $disabled={disabled}
             $border={border}

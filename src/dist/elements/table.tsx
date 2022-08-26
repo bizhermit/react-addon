@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, ReactNode } from "react";
-import CssVar, { Signal, signalIterator } from "../styles/css-var";
+import CssVar, { Color, colorIterator } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributes } from "../utils/attributes";
 
@@ -10,7 +10,7 @@ type TableAttributes = HTMLAttributes<HTMLTableElement> & {
   $border?: boolean;
   $oddEven?: boolean;
   $hover?: boolean;
-  $signal?: Signal;
+  $color?: Color;
 };
 export const Table = React.forwardRef<HTMLTableElement, TableAttributes>((attrs, ref) => {
   return (
@@ -21,7 +21,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableAttributes>((attrs,
         data-border={attrs.$border}
         data-oddeven={attrs.$oddEven}
         data-hover={attrs.$hover}
-        data-signal={attrs.$signal}
+        data-color={attrs.$color}
       />
       {Style}
     </>
@@ -57,7 +57,7 @@ const Style = <JsxStyle id={cn}>{() => `
   background: ${CssVar.lv.cell.hvr.cell.bgc};
   color: ${CssVar.lv.cell.hvr.cell.fc};
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} > * > * > th {
   background: ${v.head.bgc};
   color: ${v.head.fc};

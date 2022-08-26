@@ -1,6 +1,6 @@
 import ArrayUtils from "@bizhermit/basic-utils/dist/array-utils";
 import React, { HTMLAttributes } from "react";
-import CssVar, { CssPV, Signal, signalIterator } from "../styles/css-var";
+import CssVar, { CssPV, Color, colorIterator } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributes } from "../utils/attributes";
 
@@ -35,10 +35,11 @@ export type IconImage = "" | "favicon"
   ;
 
 export type IconAttributes = HTMLAttributes<HTMLDivElement> & {
-  $signal?: Signal;
+  $color?: Color;
   $image?: IconImage;
   $spinR?: boolean;
   $spinL?: boolean;
+  $transition?: boolean;
 };
 
 const singleDivImages = ["users", "save-as", "sync", "graph-border", "history", "code", "calendar", "location", "clip", "lock", "unlock", "folder-check", "folder-add", "guard", "c-cross", "c-add", "document"];
@@ -55,8 +56,9 @@ const Icon = React.forwardRef<HTMLDivElement, IconAttributes>((attrs, ref) => {
     <div
       {...attributes(attrs, cn, `${cn}-${attrs.$image}`)}
       ref={ref}
-      data-signal={attrs.$signal}
+      data-color={attrs.$color}
       data-spin={attrs.$spinR ? "r" : attrs.$spinL ? "l" : undefined}
+      data-transition={attrs.$transition}
     >
       {ArrayUtils.generateArray(iconChildCount(attrs.$image), i => <div key={i} className={cnc} />)}
       {IconStyle}
@@ -64,8 +66,10 @@ const Icon = React.forwardRef<HTMLDivElement, IconAttributes>((attrs, ref) => {
   );
 });
 
-const iconFc = "var(--bh-icon-fc)";
-const iconBc = "var(--bh-icon-bc)";
+export const varIconFc = "--bh-icon-fc";
+const iconFc = `var(${varIconFc})`;
+export const varIconBc = "--bh-icon-bc";
+const iconBc = `var(${varIconBc})`;
 
 export const IconStyle = <JsxStyle id={cn}>{() => `
 .${cn} {
@@ -75,8 +79,8 @@ export const IconStyle = <JsxStyle id={cn}>{() => `
   height: calc(${CssVar.fs} * 1.5);
   width: calc(${CssVar.fs} * 1.5);
   flex: none;
-  --bh-icon-fc: ${CssVar.fc};
-  --bh-icon-bc: ${CssVar.bgc};
+  ${varIconFc}: ${CssVar.fc};
+  ${varIconBc}: ${CssVar.bgc};
 }
 .${cnc} {
   box-sizing: border-box;
@@ -87,9 +91,16 @@ export const IconStyle = <JsxStyle id={cn}>{() => `
   width: 100%;
   cursor: inherit;
 }
-.${cn}::before, .${cn}::after,
-.${cnc}::before, .${cnc}::after {
+.${cn}::before, 
+.${cn}::after,
+.${cn} > .${cnc}::before,
+.${cn} > .${cnc}::after {
   ${CssPV.ba}
+}
+.${cn}[data-transition="true"]::before, 
+.${cn}[data-transition="true"]::after,
+.${cn}[data-transition="true"] > .${cnc}::before,
+.${cn}[data-transition="true"] > .${cnc}::after {
   transition: background 0.1s, border-color 0.1s;
 }
 .${cn}[data-spin="r"] {
@@ -106,9 +117,9 @@ export const IconStyle = <JsxStyle id={cn}>{() => `
   0% { transform: rotate(0deg); }
   100% { transform: rotate(-360deg); }
 }
-${signalIterator((_s, v, qs) => `
+${colorIterator((_s, v, qs) => `
 .${cn}${qs} {
-  --bh-icon-fc: ${v.fc} !important;
+  ${varIconFc}: ${v.fc} !important;
 }`).join("")}
 .${cn}-favicon::before {
   height: 80%;
