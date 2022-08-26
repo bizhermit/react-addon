@@ -13,6 +13,7 @@ const Badge: FC<{
   $fill?: boolean;
   $shape?: "circle" | "square";
   $size?: Size;
+  $title?: string;
   $content?: ReactNode;
   children?: ReactNode;
 }> = (attrs) => {
@@ -28,6 +29,7 @@ const Badge: FC<{
         data-fill={attrs.$fill}
         data-size={attrs.$size ?? "m"}
         data-shape={attrs.$shape || "circle"}
+        title={attrs.$title}
       >{
         typeof attrs.$content === "string" || typeof attrs.$content === "number" ?
           <Label>{attrs.$content}</Label> : attrs.$content
@@ -51,7 +53,8 @@ const BadgeStyle = <JsxStyle id={cn}>{() => `
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  opacity: 0.9;
+  opacity: 0.95;
+  cursor: default;
 }
 .${cn}-main[data-pos="left-top"] {
   top: calc(${CssVar.pdy} * -0.5);
