@@ -7,11 +7,14 @@ import JsxStyle from "./jsx-style";
 
 export const sbCn = "bh-sb";
 export const colorCn = "bh-color";
-export const shadowCn = "bh-shadow";
-export const paddingCn = "bh-padding";
 
 const CoreStyle =
-<JsxStyle id="bh-core" depsColor depsDesign>{({ color, design }) => `
+<>
+<JsxStyle id="bh-c_core" depsColor>{({ color }) => `
+${color==="dark" ? ` :root {${CssDarkVar}}` : ""}
+`}</JsxStyle>
+
+<JsxStyle id="bh-d_core" depsDesign>{({ design }) => `
 html {
   background: ${CssVar.bgc};
   color: ${CssVar.fc};
@@ -34,6 +37,30 @@ neumorphism: `
 `,
 })}
 }
+${switchDesign(design, {
+fm: `
+${ArrayUtils.generateArray(10, idx => `
+.bh-sd-${idx} {box-shadow: ${CssPV.cvxSd(idx)};}
+.bh-sd-${idx}[data-hover="true"]:hover {box-shadow: ${CssPV.cvxSd(idx*1.5)};}
+`).join("")}
+${ArrayUtils.generateArray(10, idx => `
+.bh-sd-n${idx} {box-shadow: ${CssPV.ccvSd(idx)};}
+.bh-sd-n${idx}[data-hover="true"]:hover {box-shadow: ${CssPV.ccvSd(idx*1.5)};}
+`).join("")}
+`,
+neumorphism: `
+${ArrayUtils.generateArray(10, idx => `
+.bh-sd-${idx} {box-shadow: ${CssPV.nCvxSd(idx)};}
+.bh-sd-${idx}[data-hover="true"]:hover {box-shadow: ${CssPV.nCvxSd(idx*1.5)};}
+`).join("")}
+${ArrayUtils.generateArray(10, idx => `
+.bh-sd-n${idx} {box-shadow: ${CssPV.nCcvSd(idx)};}
+.bh-sd-n${idx}[data-hover="true"]:hover {box-shadow: ${CssPV.nCcvSd(idx*1.5)};}
+`).join("")}
+`})}
+`}</JsxStyle>
+
+<JsxStyle id="bh-core">{() => `
 body {
   font-size: ${CssVar.fs};
 }
@@ -115,7 +142,6 @@ a:not(:disabled),
   opacity: 0.9;
 }
 }
-${color==="dark" ? ` :root {${CssDarkVar}}` : ""}
 ${colorIterator((c, v, qs) => `
 .${colorCn}${qs} {
   background: ${v.bgc};
@@ -158,55 +184,8 @@ ${colorIterator((c, v, qs) => `
   border: 1px solid ${v.head.bdc};
 }
 `).join("")}
-${switchDesign(design, {
-fm: `
-.${shadowCn}[data-shadow="true"] {
-  box-shadow: ${CssPV.cvxSdBase};
-}
-.${shadowCn}[data-hover="true"] {
-  transition: box-shadow 0.1s;
-}
-${ArrayUtils.generateArray(10, idx => `
-.${shadowCn}[data-shadow="${idx}"] {
-  box-shadow: ${CssPV.cvxSd(idx)};
-}
-.${shadowCn}[data-shadow="${idx}"][data-hover="true"]:hover {
-  box-shadow: ${CssPV.cvxSd(idx*1.5)};
-}`).join("")}
-${ArrayUtils.generateArray(10, idx => `
-.${shadowCn}[data-shadow="-${idx}"] {
-  box-shadow: ${CssPV.ccvSd(idx)};
-}
-.${shadowCn}[data-shadow="-${idx}"][data-hover="true"]:hover {
-  box-shadow: ${CssPV.ccvSd(idx*1.5)};
-}`).join("")}
-`,
-neumorphism: `
-.${shadowCn}[data-shadow="true"] {
-  box-shadow: ${CssPV.nCvxSdBase};
-}
-.${shadowCn}[data-hover="true"] {
-  transition: box-shadow 0.1s;
-}
-${ArrayUtils.generateArray(10, idx => `
-.${shadowCn}[data-shadow="${idx}"] {
-  box-shadow: ${CssPV.nCvxSd(idx)};
-}
-.${shadowCn}[data-shadow="${idx}"][data-hover="true"]:hover {
-  box-shadow: ${CssPV.nCvxSd(idx*1.5)};
-}`).join("")}
-${ArrayUtils.generateArray(10, idx => `
-.${shadowCn}[data-shadow="-${idx}"] {
-  box-shadow: ${CssPV.nCcvSd(idx)};
-}
-.${shadowCn}[data-shadow="-${idx}"][data-hover="true"]:hover {
-  box-shadow: ${CssPV.nCcvSd(idx*1.5)};
-}`).join("")}
-`})}
-.${paddingCn}[data-padding="true"] {
-  padding: ${CssVar.pdy} ${CssVar.pdx};
-}
-${ArrayUtils.generateArray(10, (idx) => `.${paddingCn}[data-padding="${idx}"] {padding:${4*idx}px}`).join("")}
-`}</JsxStyle>;
+${ArrayUtils.generateArray(10, (idx) => `.bh-pad-${idx} {padding:${idx*4}px}`).join("")}
+`}</JsxStyle>
+</>;
 
 export default CoreStyle;

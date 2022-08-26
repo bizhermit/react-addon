@@ -1,8 +1,8 @@
 import React, { FC, HTMLAttributes } from "react";
-import { colorCn, paddingCn, shadowCn } from "../styles/core-style";
+import { colorCn } from "../styles/core-style";
 import { Color, ColorType, CssPV } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
-import { attributes, dPosX, dPosY } from "../utils/attributes";
+import { attributes, dPosX, dPosY, paddingCn, shadowCn } from "../utils/attributes";
 
 const cn = "bh-row";
 
@@ -21,15 +21,13 @@ const Row: FC<HTMLAttributes<HTMLDivElement> & {
   return (
     <>
       <div
-        {...attributes(attrs, cn, colorCn, shadowCn, paddingCn)}
+        {...attributes(attrs, cn, colorCn, shadowCn(attrs.$shadow), paddingCn(attrs.$padding))}
         data-fill={attrs.$fill}
         data-nowrap={attrs.$nowrap}
         data-posx={dPosX(undefined, attrs.$center, attrs.$right) ?? "l"}
         data-posy={dPosY(attrs.$top, attrs.$middle, undefined) ?? "b"}
-        data-shadow={attrs.$shadow}
         data-color={attrs.$color}
         data-colortype={attrs.$colorType}
-        data-padding={attrs.$padding}
       />
       {Style}
     </>
@@ -41,6 +39,7 @@ const Style = <JsxStyle id={cn}>{() => `
   ${CssPV.flex}
   flex-flow: row wrap;
   flex: none;
+  transition: box-shadow 0.1s;
 }
 .${cn}[data-posx="l"] {
   justify-content: flex-start;

@@ -1,8 +1,8 @@
 import React, { HTMLAttributes } from "react";
-import { colorCn, paddingCn, sbCn, shadowCn } from "../styles/core-style";
+import { colorCn, sbCn } from "../styles/core-style";
 import CssVar, { CssPV, FitToOuter, Color, ColorType } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
-import { attributes, dBool, dPosX, dPosY, ftoCn } from "../utils/attributes";
+import { attributes, dBool, dPosX, dPosY, ftoCn, paddingCn, shadowCn } from "../utils/attributes";
 
 const cn = "bh-fbx";
 export const flexBoxCn = cn;
@@ -31,7 +31,7 @@ const FlexBox = React.forwardRef<HTMLDivElement, FlexBoxAttributes>((attrs, ref)
   return (
     <>
       <div
-        {...attributes(attrs, cn, colorCn, shadowCn, paddingCn, ftoCn(attrs.$fto), attrs.$scroll ? sbCn : "")}
+        {...attributes(attrs, cn, colorCn, shadowCn(attrs.$shadow), paddingCn(attrs.$padding), ftoCn(attrs.$fto), attrs.$scroll ? sbCn : "")}
         ref={ref}
         data-flow={attrs.$row ? "row" : "col"}
         data-wrap={dBool(attrs.$wrap)}
@@ -40,10 +40,8 @@ const FlexBox = React.forwardRef<HTMLDivElement, FlexBoxAttributes>((attrs, ref)
         data-border={attrs.$border ?? attrs.$color}
         data-color={attrs.$color}
         data-colortype={attrs.$colorType}
-        data-shadow={attrs.$shadow}
         data-hover={attrs.$hover}
         data-radius={attrs.$radius}
-        data-padding={attrs.$padding}
       />
       {Style}
     </>
@@ -56,6 +54,7 @@ const Style = <JsxStyle id={cn} depsDesign>{() => `
 .${cn} {
   ${CssPV.flex}
   flex: none;
+  transition: box-shadow 0.1s;
 }
 .${colCn} {
   flex-direction: column;

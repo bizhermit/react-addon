@@ -44,6 +44,16 @@ export const ftoCn = (fto?: FitToOuter) => {
   if (StringUtils.isEmpty(fto)) return "";
   return `bh-fto-${fto}`;
 };
+export const paddingCn = (padding?: boolean | number) => {
+  if (padding == null) return "";
+  if (typeof padding === "boolean") return padding ? "bh-pad-2" : "";
+  return `bh-pad-${padding}`;
+};
+export const shadowCn = (shadow?: boolean | number) => {
+  if (shadow == null) return "";
+  if (typeof shadow === "boolean") return shadow ? "bh-sd-2" : "";
+  return `bh-sd-${shadow < 0 ? "n" : ""}${Math.abs(shadow)}`;
+};
 
 export const convertClassNames = (classNames: string | Array<string>) => {
   if (classNames) {
