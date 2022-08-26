@@ -35,6 +35,7 @@ type CssColorVar = {
     bgc: string;
     bdc: string;
     on: string;
+    on_fc?: string;
     off: string;
     knob: string;
   };
@@ -190,6 +191,7 @@ const CssVar = {
       fc: "var(--bh-def-ipt-fc, #1e1e1e)",
       bdc: "var(--bh-def-ipt-bdc, #101010)",
       on: "var(--bh-def-ipt-on, #101010)",
+      on_fc: "var(--bh-def-ipt-on-fc, #f2f2f2)",
       off: "var(--bh-def-ipt-off, #fff)",
       knob: "var(--bh-def-ipt-knob, #fff)",
     },
