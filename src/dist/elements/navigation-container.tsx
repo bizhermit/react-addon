@@ -454,16 +454,16 @@ ${colorIterator((_s, v, qs) => `
 }`).join("")}`,
 material: `
 .${cn}[data-pos="left"] > .${cn}-nav {
-  box-shadow: 5px 0 5px ${CssVar.sdw.c};
+  box-shadow: 5px 0 5px -1px ${CssVar.sdw.c};
 }
 .${cn}[data-pos="right"] > .${cn}-nav {
-  box-shadow: -5px 0 5px ${CssVar.sdw.c};
+  box-shadow: -5px 0 5px -1px ${CssVar.sdw.c};
 }
 .${cn}[data-pos="top"] > .${cn}-nav {
-  box-shadow: 0 5px 5px ${CssVar.sdw.c};
+  box-shadow: 0 5px 5px -1px ${CssVar.sdw.c};
 }
 .${cn}[data-pos="bottom"] > .${cn}-nav {
-  box-shadow: 0 -5px 5px ${CssVar.sdw.c};
+  box-shadow: 0 -5px 5px -1px ${CssVar.sdw.c};
 }`,
 neumorphism: `
 .${cn} > .${cn}-nav {
