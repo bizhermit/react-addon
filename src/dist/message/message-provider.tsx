@@ -257,7 +257,13 @@ const MessageHistory: FC<{
         histRef.current.style.removeProperty("width");
         histRef.current.style.removeProperty("max-width");
         histRef.current.style.removeProperty("min-width");
-        props.messages.forEach(msg => msg.verified = true);
+        const targets = props.messages.filter(msg => !msg.verified);
+        targets.forEach(msg => msg.verified = true);
+        if (targets.length > 0) {
+          setTimeout(() => {
+            props.dispatch.changed();
+          }, 0);
+        }
       };
       let w = min;
       const impl = async () => {
