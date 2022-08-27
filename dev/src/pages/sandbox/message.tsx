@@ -1,20 +1,20 @@
 import { NextPage } from "next";
 import { FC, useEffect } from "react";
-import useMessage, { MessageProvider } from "../../../react-addon/dist/message/message-provider";
+import useMessage from "../../../react-addon/dist/message/message-provider";
 import Button from "../../../react-addon/dist/elements/button";
 import Row from "../../../react-addon/dist/elements/row";
 
 const MessagePage: NextPage = () => {
   return (
-    <MessageProvider
-      id="messageTest"
-      popupStayingTime={3000}
-      popupClickAction="showHistory"
-      historyShowAnimationDuration={100}
-      preventClickToHideHistory
-    >
+    // <MessageProvider
+    //   id="messageTest"
+    //   popupStayingTime={3000}
+    //   popupClickAction="showHistory"
+    //   historyShowAnimationDuration={100}
+    //   preventClickToHideHistory
+    // >
       <Component />
-    </MessageProvider>
+    // </MessageProvider>
   );
 };
 

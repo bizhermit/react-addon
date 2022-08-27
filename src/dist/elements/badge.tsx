@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, HTMLAttributes, ReactNode } from "react";
 import CssVar, { Color, colorIterator, Size, sizeIterator, varFontSize } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributesWithoutChildren } from "../utils/attributes";
@@ -7,7 +7,7 @@ import Label from "./label";
 
 const cn = "bh-bde";
 
-const Badge: FC<{
+const Badge: FC<HTMLAttributes<HTMLDivElement> & {
   $position?: "left-top" | "right-top" | "left-bottom" | "right-bottom";
   $color?: Color;
   $colorType?: "base" | "head" | "nav";

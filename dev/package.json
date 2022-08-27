@@ -21,7 +21,7 @@
     "start": "npm run build && node .nexpress/main.js",
     "clean:nextron": "npx rimraf .main .renderer",
     "nextron": "npx rimraf .next && npm run predist && npx electron .main/nextron/main.js",
-    "predist": "npm run clean:nextron -- dist/pack && npx tsc -p nextron/tsconfig.json && build:p",
+    "predist": "npm run clean:nextron -- dist/pack && npx tsc -p nextron/tsconfig.json && npm run build:p",
     "dist": "npm run build && npx next export -o .renderer && npx minifier .main && npx minifier .renderer && npx electron-builder",
     "dist:linux": "npm run dist -- --linux & npm run clean:nextron",
     "dist:win": "npm run dist -- --win & npm run clean:nextron",

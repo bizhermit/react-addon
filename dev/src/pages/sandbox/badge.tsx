@@ -28,7 +28,21 @@ const Page: NextPage = () => {
         </Caption>
       </Row>
       <Row>
-        <Badge $content="New!" $borderless={borderless} $color="warning">
+        <Badge
+          $content="New!"
+          $borderless={borderless}
+          $color="warning"
+          style={{ marginRight: 30 }}
+        >
+          <Button $icon="message">Contents</Button>
+        </Badge>
+        <Badge
+          $content={count}
+          $borderless={borderless}
+          $color="warning"
+          $position="left-top"
+          style={{ marginLeft: 30 }}
+        >
           <Button $icon="message">Contents</Button>
         </Badge>
       </Row>
