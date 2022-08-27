@@ -152,7 +152,7 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
           }
         <Label $type="h2">{headerTitle}</Label>
         <Row $right>
-          <Badge $content={msgCount}>
+          <Badge $content={msgCount} $visible={msgCount > 0}>
             <Button
               $icon="message"
               $click={() => {

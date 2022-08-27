@@ -16,6 +16,7 @@ const Badge: FC<{
   $size?: Size;
   $title?: string;
   $borderless?: boolean;
+  $visible?: boolean;
   $content?: ReactNode;
   children?: ReactNode;
 }> = (attrs) => {
@@ -31,18 +32,20 @@ const Badge: FC<{
   return (
     <div {...attributesWithoutChildren(attrs, `${cn}-wrap`)}>
       {attrs.children}
-      <div
-        className={cn}
-        data-pos={attrs.$position || "right-top"}
-        data-color={attrs.$color}
-        data-colortype={attrs.$colorType || "nav"}
-        data-fill={attrs.$fill}
-        data-size={attrs.$size ?? "m"}
-        data-shape={attrs.$shape || "circle"}
-        data-borderless={attrs.$borderless}
-        data-contenttype={contentType}
-        title={attrs.$title}
-      >{contentType === "s" ? <Label>{attrs.$content}</Label> : attrs.$content}</div>
+      {attrs.$visible === false ? <></> :
+        <div
+          className={cn}
+          data-pos={attrs.$position || "right-top"}
+          data-color={attrs.$color}
+          data-colortype={attrs.$colorType || "nav"}
+          data-fill={attrs.$fill}
+          data-size={attrs.$size ?? "m"}
+          data-shape={attrs.$shape || "circle"}
+          data-borderless={attrs.$borderless}
+          data-contenttype={contentType}
+          title={attrs.$title}
+        >{contentType === "s" ? <Label>{attrs.$content}</Label> : attrs.$content}</div>
+      }
       {BadgeStyle}
     </div>
   );

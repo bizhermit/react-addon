@@ -11,11 +11,15 @@ import Row from "../../../react-addon/dist/elements/row";
 import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 
 const Page: NextPage = () => {
+  const [visible, setVisible] = useState(true);
   const [borderless, setBorderless] = useState(false);
 
   return (
     <FlexBox $fto="fy" $scroll $padding>
       <Row $fill>
+        <Caption $label="Visible">
+          <ToggleBox $value={visible} $dispatch={setVisible} />
+        </Caption>
         <Caption $label="Borderless">
           <ToggleBox $value={borderless} $dispatch={setBorderless} />
         </Caption>
@@ -76,28 +80,28 @@ const Page: NextPage = () => {
           return (
             <Caption key={c} $label={c} $width={100} $color={c}>
               <Row key={c} style={{ gap: 20 }}>
-                <Badge $content={<Icon $image="crown" />} $color={c} $colorType="base" $shape="none" $borderless={borderless}>
+                <Badge $visible={visible} $content={<Icon $image="crown" />} $color={c} $colorType="base" $shape="none" $borderless={borderless}>
                   <Button $icon="message" />
                 </Badge>
-                <Badge $content="1" $color={c} $colorType="base" $shape="circle" $borderless={borderless}>
+                <Badge $visible={visible} $content="1" $color={c} $colorType="base" $shape="circle" $borderless={borderless}>
                   <Button $icon="message" $round />
                 </Badge>
-                <Badge $content="1" $color={c} $colorType="base" $shape="circle" $borderless={borderless}>
+                <Badge $visible={visible} $content="1" $color={c} $colorType="base" $shape="circle" $borderless={borderless}>
                   <Button $icon="message" />
                 </Badge>
-                <Badge $content="1" $color={c} $colorType="head" $shape="circle" $borderless={borderless}>
+                <Badge $visible={visible} $content="1" $color={c} $colorType="head" $shape="circle" $borderless={borderless}>
                   <Button $icon="message" />
                 </Badge>
-                <Badge $content="1" $color={c} $colorType="nav" $shape="circle" $borderless={borderless}>
+                <Badge $visible={visible} $content="1" $color={c} $colorType="nav" $shape="circle" $borderless={borderless}>
                   <Button $icon="message" />
                 </Badge>
-                <Badge $content="1" $color={c} $colorType="base" $shape="square" $borderless={borderless}>
+                <Badge $visible={visible} $content="1" $color={c} $colorType="base" $shape="square" $borderless={borderless}>
                   <Button $icon="message" />
                 </Badge>
-                <Badge $content="1" $color={c} $colorType="head" $shape="square" $borderless={borderless}>
+                <Badge $visible={visible} $content="1" $color={c} $colorType="head" $shape="square" $borderless={borderless}>
                   <Button $icon="message" />
                 </Badge>
-                <Badge $content="1" $color={c} $colorType="nav" $shape="square" $borderless={borderless}>
+                <Badge $visible={visible} $content="1" $color={c} $colorType="nav" $shape="square" $borderless={borderless}>
                   <Button $icon="message" />
                 </Badge>
               </Row>
