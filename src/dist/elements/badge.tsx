@@ -69,6 +69,8 @@ const BadgeStyle = <JsxStyle id={cn}>{() => `
   background: ${CssVar.bgc};
   color: ${CssVar.fc};
   border: 1px solid ${CssVar.bdc};
+  overflow: hidden;
+  width: fit-content;
 }
 .${cn}[data-pos="left-top"] {
   top: calc(${CssVar.pdy} * -0.8);
@@ -101,32 +103,32 @@ const BadgeStyle = <JsxStyle id={cn}>{() => `
 }
 ${sizeIterator(cn, {
 xs: `
-height: calc(${CssVar.size} * 0.5);
-width: calc(${CssVar.size} * 0.5);
+min-height: calc(${CssVar.size} * 0.5);
+min-width: calc(${CssVar.size} * 0.5);
 font-size: 1.0rem;
 ${varFontSize}: 1.1rem;
 `,
 s: `
-height: calc(${CssVar.size} * 0.6);
-width: calc(${CssVar.size} * 0.6);
+min-height: calc(${CssVar.size} * 0.6);
+min-width: calc(${CssVar.size} * 0.6);
 font-size: 1.1rem;
 ${varFontSize}: 1.25rem;
 `,
 m: `
-height: calc(${CssVar.size} * 0.7);
-width: calc(${CssVar.size} * 0.7);
+min-height: calc(${CssVar.size} * 0.7);
+min-width: calc(${CssVar.size} * 0.7);
 font-size: 1.2rem;
 ${varFontSize}: 1.4rem;
 `,
 l: `
-height: calc(${CssVar.size} * 0.8);
-width: calc(${CssVar.size} * 0.8);
+min-height: calc(${CssVar.size} * 0.8);
+min-width: calc(${CssVar.size} * 0.8);
 font-size: 1.3rem;
 ${varFontSize}: 1.6rem;
 `,
 xl: `
-height: calc(${CssVar.size} * 0.9);
-width: calc(${CssVar.size} * 0.9);
+min-height: calc(${CssVar.size} * 0.9);
+min-width: calc(${CssVar.size} * 0.9);
 font-size: 1.6rem;
 ${varFontSize}: 1.8rem;
 `,
