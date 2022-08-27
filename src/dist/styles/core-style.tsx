@@ -184,6 +184,10 @@ ${colorIterator((c, v, qs) => `
   border: 1px solid ${v.head.bdc};
 }
 `).join("")}
+${ArrayUtils.generateArray(10, idx => `
+.bh-dsd-n${idx} {filter: ${CssPV.dropSd(idx)};}
+.bh-dsd-n${idx}[data-hover="true"]:hover {filter: ${CssPV.dropSd(idx*1.5)};}
+`).join("")}
 ${ArrayUtils.generateArray(10, (idx) => `.bh-pad-${idx} {padding:${idx*4}px}`).join("")}
 `}</JsxStyle>
 </>;

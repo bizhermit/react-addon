@@ -14,10 +14,14 @@ import Button from "../../react-addon/dist/elements/button";
 import { ScreenSize, useLayout } from "../../react-addon/dist/styles/layout-provider";
 import SelectBox from "../../react-addon/dist/elements/inputs/select-box";
 import Caption from "../../react-addon/dist/elements/caption";
+import Badge from "../../react-addon/dist/elements/badge";
 
 const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
   const router = useRouter();
-  const msg = useMessage();
+  const [msgCount, setMsgCount] = useState(0);
+  const msg = useMessage((msgs) => {
+    setMsgCount(msgs.filter(msg => !msg.verified).length);
+  });
   const navHook = useNavigationContainer();
   const [opened, setOpen] = useState(false);
   const [color, setColor] = useState<Color>();
@@ -38,6 +42,7 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
       { id: "el", label: "Elements", defaultOpened: true },
       toMenuItem("icon", "Icon", "el"),
       toMenuItem("label", "Label", "el"),
+      toMenuItem("badge", "Badge", "el"),
       toMenuItem("button", "Button", "el"),
       toMenuItem("flexBox", "FlexBox", "el"),
       toMenuItem("groupBox", "GroupBox", "el"),
@@ -147,12 +152,14 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
           }
         <Label $type="h2">{headerTitle}</Label>
         <Row $right>
-          <Button
-            $icon="message"
-            $click={() => {
-              msg.show();
-            }}
-          />
+          <Badge $content={msgCount} $visible={msgCount > 0}>
+            <Button
+              $icon="message"
+              $click={() => {
+                msg.show();
+              }}
+            />
+          </Badge>
         </Row>
       </Row>
       <FlexBox $fto="fy">
