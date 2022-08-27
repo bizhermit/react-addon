@@ -684,11 +684,17 @@ const nCcvSd = (level: number) => {
   const lvl = level - 1;
   return `0.5px 0.5px 1.5px -0.5px ${CssVar.sdw.b},-0.5px -0.5px 1.5px -0.5px ${CssVar.sdw.d},${lvl}px ${lvl}px ${lvl*2}px ${CssVar.sdw.d} inset,-${lvl}px -${lvl}px ${lvl*2}px ${CssVar.sdw.b} inset`;
 };
+const dropSd = (level: number) => {
+  if (level === 0) return "unset";
+  const lvl = level - 1;
+  return `drop-shadow(0px ${lvl*1.5}px ${lvl}px ${CssVar.sdw.c});`;
+};
 
 export const CssPV = {
   flex: `box-sizing:border-box;position:relative;display:flex;`,
   ba: "box-sizing:border-box;position:absolute;content:\"\";",
   inactOpacity: "opacity:0.6;",
+  dropSd,
   cvxBg,
   ccvBg,
   cvxSd,

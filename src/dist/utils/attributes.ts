@@ -54,6 +54,11 @@ export const shadowCn = (shadow?: boolean | number) => {
   if (typeof shadow === "boolean") return shadow ? "bh-sd-2" : "";
   return `bh-sd-${shadow < 0 ? "n" : ""}${Math.abs(shadow)}`;
 };
+export const dropShadowCn = (shadow?: boolean | number) => {
+  if (shadow == null) return "";
+  if (typeof shadow === "boolean") return shadow ? "bh-dsd-2" : "";
+  return `bh-dsd-${shadow}`;
+};
 
 export const convertClassNames = (classNames: string | Array<string>) => {
   if (classNames) {

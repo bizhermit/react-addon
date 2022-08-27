@@ -11,7 +11,7 @@ import Row from "../../../react-addon/dist/elements/row";
 import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 
 const Page: NextPage = () => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1000);
   const [visible, setVisible] = useState(true);
   const [borderless, setBorderless] = useState(false);
 
@@ -41,6 +41,7 @@ const Page: NextPage = () => {
           $borderless={borderless}
           $color="warning"
           $position="left-top"
+          $fixedSize
           style={{ marginLeft: 30 }}
         >
           <Button $icon="message">Contents</Button>
