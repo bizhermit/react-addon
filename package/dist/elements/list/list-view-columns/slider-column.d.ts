@@ -1,4 +1,4 @@
-import { Signal } from "../../../styles/css-var";
+import { Color } from "../../../styles/css-var";
 import { SliderAttributes } from "../../inputs/slider";
 import { ListViewColumnFunction, ListViewEditColumnProps, ListViewEditInputAttributes } from "../list-view";
 declare const ListViewSliderColumn: ListViewColumnFunction<ListViewEditColumnProps<number> & {
@@ -7,8 +7,8 @@ declare const ListViewSliderColumn: ListViewColumnFunction<ListViewEditColumnPro
     hideLabel?: boolean;
     hideBar?: boolean;
     barAlign?: "left" | "right";
-    defaultSignal?: Signal;
-    signal?: (value?: number) => Signal;
+    defaultColor?: Color;
+    color?: (value?: number) => Color;
     progressbarRender?: (value: number, barElement: HTMLDivElement) => void;
     format?: (value?: number) => string;
 }>;

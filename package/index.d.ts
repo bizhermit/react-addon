@@ -13,6 +13,11 @@ declare module "@bizhermit/react-addon/dist/elements/accordion-container" {
   // tslint:disable-next-line:export-just-namespace
   export = AccordionContainer;
 }
+declare module "@bizhermit/react-addon/dist/elements/badge" {
+  const Badge: typeof import("./dist/elements/badge");
+  // tslint:disable-next-line:export-just-namespace
+  export = Badge;
+}
 declare module "@bizhermit/react-addon/dist/elements/button" {
   const Button: typeof import("./dist/elements/button");
   // tslint:disable-next-line:export-just-namespace
@@ -152,6 +157,11 @@ declare module "@bizhermit/react-addon/dist/elements/list/list-view-columns/grou
   const ListViewGroupColumn: typeof import("./dist/elements/list/list-view-columns/group-column");
   // tslint:disable-next-line:export-just-namespace
   export = ListViewGroupColumn;
+}
+declare module "@bizhermit/react-addon/dist/elements/list/list-view-columns/icon-column" {
+  const ListViewIconColumn: typeof import("./dist/elements/list/list-view-columns/icon-column");
+  // tslint:disable-next-line:export-just-namespace
+  export = ListViewIconColumn;
 }
 declare module "@bizhermit/react-addon/dist/elements/list/list-view-columns/multi-stage-column" {
   const ListViewMultiStageColumn: typeof import("./dist/elements/list/list-view-columns/multi-stage-column");

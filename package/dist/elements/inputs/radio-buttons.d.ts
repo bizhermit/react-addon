@@ -18,7 +18,7 @@ export declare type RadioButtonsAttributes<T extends string | number = string | 
     $preventSourceMemo?: boolean;
     $labelDataName?: string;
     $valueDataName?: string;
-    $signalDataName?: string;
+    $colorDataName?: string;
     $hideRadioButton?: boolean;
 };
 interface RadioButtonsFC extends FunctionComponent {

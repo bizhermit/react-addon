@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Signal } from "../styles/css-var";
+import { Color } from "../styles/css-var";
 import { ButtonAttributes } from "../elements/button";
 import { TextBoxAttributes } from "../elements/inputs/text-box";
 declare type MessageBoxButton = Omit<ButtonAttributes, "$click" | "$hook"> & {
@@ -12,7 +12,7 @@ declare type MessageBoxProps = {
     title?: string;
     message: ReactNode;
     buttons: Array<MessageBoxButton>;
-    signal?: Signal;
+    color?: Color;
 };
 declare const useMessageBox: () => {
     show: <T>(props: MessageBoxProps) => Promise<T>;

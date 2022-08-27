@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from "react";
-import { FitToOuter, Signal } from "../styles/css-var";
+import { FitToOuter, Color, ColorType } from "../styles/css-var";
 export declare const flexBoxCn = "bh-fbx";
 export declare type FlexBoxAttributes = HTMLAttributes<HTMLDivElement> & {
     $fto?: FitToOuter;
@@ -11,13 +11,14 @@ export declare type FlexBoxAttributes = HTMLAttributes<HTMLDivElement> & {
     $top?: boolean;
     $middle?: boolean;
     $bottom?: boolean;
-    $shadow?: boolean;
+    $shadow?: boolean | number;
+    $hover?: boolean;
     $radius?: boolean;
     $scroll?: boolean;
-    $padding?: boolean;
-    $signal?: Signal;
-    $border?: boolean | Signal;
-    $color?: Signal;
+    $padding?: boolean | number;
+    $border?: boolean | Color;
+    $color?: Color;
+    $colorType?: ColorType;
 };
 declare const FlexBox: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & {
     $fto?: FitToOuter;
@@ -29,12 +30,13 @@ declare const FlexBox: React.ForwardRefExoticComponent<React.HTMLAttributes<HTML
     $top?: boolean;
     $middle?: boolean;
     $bottom?: boolean;
-    $shadow?: boolean;
+    $shadow?: boolean | number;
+    $hover?: boolean;
     $radius?: boolean;
     $scroll?: boolean;
-    $padding?: boolean;
-    $signal?: Signal;
-    $border?: boolean | Signal;
-    $color?: Signal;
+    $padding?: boolean | number;
+    $border?: boolean | Color;
+    $color?: Color;
+    $colorType?: ColorType;
 } & React.RefAttributes<HTMLDivElement>>;
 export default FlexBox;

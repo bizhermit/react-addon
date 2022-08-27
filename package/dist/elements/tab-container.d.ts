@@ -1,5 +1,5 @@
 import React, { FC, HTMLAttributes, ReactElement, ReactNode } from "react";
-import { FitToOuter, Signal } from "../styles/css-var";
+import { FitToOuter, Color } from "../styles/css-var";
 import { MaskHook, MaskProps } from "../popups/mask";
 declare type TabKey = string | number;
 export declare type TabContainerHook = {
@@ -11,7 +11,7 @@ export declare type TabContentAttributes = {
     key: TabKey;
     title: string | ReactNode;
     $selected?: () => void;
-    $signal?: Signal;
+    $color?: Color;
     children?: ReactNode;
 };
 export declare type TabContentWrapperFC<P = {}> = FC<P & TabContentAttributes>;
@@ -25,7 +25,7 @@ export declare type TabContainerAttributes = HTMLAttributes<HTMLDivElement> & {
     $defaultKey?: TabKey;
     $selected?: (key: TabKey) => void;
     $calcTabWidth?: boolean;
-    $signal?: Signal;
+    $color?: Color;
     $navigationBackgroundColor?: boolean;
     children: ReactElement<TabContentAttributes> | Array<ReactElement<TabContentAttributes>>;
 };
@@ -35,7 +35,7 @@ declare const TabContainer: React.ForwardRefExoticComponent<React.HTMLAttributes
     $defaultKey?: TabKey;
     $selected?: (key: TabKey) => void;
     $calcTabWidth?: boolean;
-    $signal?: Signal;
+    $color?: Color;
     $navigationBackgroundColor?: boolean;
     children: ReactElement<TabContentAttributes> | Array<ReactElement<TabContentAttributes>>;
 } & React.RefAttributes<HTMLDivElement>>;

@@ -8,6 +8,7 @@ export declare type SliderAttributes = HTMLAttributes<HTMLDivElement> & InputAtt
     $max?: number;
     $keydownInterval?: number;
     $resize?: boolean;
+    $showKnobLabel?: boolean;
     $changing?: (value: number) => void;
 };
 declare const Slider: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & InputAttributes<number, {}> & {
@@ -16,6 +17,7 @@ declare const Slider: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLD
     $max?: number;
     $keydownInterval?: number;
     $resize?: boolean;
+    $showKnobLabel?: boolean;
     $changing?: (value: number) => void;
 } & React.RefAttributes<HTMLDivElement>>;
 export declare const useSlider: () => SliderHook;

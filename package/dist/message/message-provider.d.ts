@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from "react";
-import { Signal } from "../styles/css-var";
+import { Color } from "../styles/css-var";
 declare type MessageCounts = {
     total: number;
     info: number;
@@ -16,7 +16,7 @@ export declare type MessageContextProps = {
     getCounts: () => MessageCounts;
 };
 export declare const MessageContext: React.Context<MessageContextProps>;
-export declare type MessageType = Signal | "info" | "error" | "";
+export declare type MessageType = Color | "info" | "error" | "";
 export declare type Message = {
     title?: string;
     body?: string | Array<string>;

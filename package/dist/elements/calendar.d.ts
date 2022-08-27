@@ -1,5 +1,5 @@
 import React, { FC, HTMLAttributes, ReactElement, ReactNode } from "react";
-import { FitToOuter, Signal } from "../styles/css-var";
+import { FitToOuter, Color } from "../styles/css-var";
 import { ButtonIconProps } from "./button";
 export declare type CalendarHook = {
     setDate: (value: Date | string | number) => void;
@@ -24,7 +24,7 @@ export declare type CalendarAttributes = HTMLAttributes<HTMLDivElement> & {
         before: Date;
     }) => void;
     children: ReactElement<CalendarCellAttributes>;
-    $signal?: Signal;
+    $color?: Color;
     $prevMonthButtonIcon?: ButtonIconProps;
     $prevYearButtonIcon?: ButtonIconProps;
     $nextMonthButtonIcon?: ButtonIconProps;
@@ -42,7 +42,7 @@ declare const Calendar: React.ForwardRefExoticComponent<React.HTMLAttributes<HTM
         before: Date;
     }) => void;
     children: ReactElement<CalendarCellAttributes>;
-    $signal?: Signal;
+    $color?: Color;
     $prevMonthButtonIcon?: ButtonIconProps;
     $prevYearButtonIcon?: ButtonIconProps;
     $nextMonthButtonIcon?: ButtonIconProps;

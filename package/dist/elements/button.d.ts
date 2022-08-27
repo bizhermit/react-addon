@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes, MouseEvent } from "react";
-import { Signal } from "../styles/css-var";
+import { Color, Size } from "../styles/css-var";
 import { IconImage } from "./icon";
 export declare const buttonCn = "bh-btn";
 export declare type ButtonHook = {
@@ -7,12 +7,13 @@ export declare type ButtonHook = {
 };
 export declare type ButtonIconProps = IconImage | {
     $image: IconImage;
-    $signal?: Signal;
+    $color?: Color;
     $round?: boolean;
 };
 export declare type ButtonAttributes = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onClick"> & {
     $hook?: ButtonHook;
-    $signal?: Signal;
+    $color?: Color;
+    $size?: Size;
     $click?: (unlock: (preventFocus?: boolean) => void, event: MouseEvent<HTMLButtonElement>) => void;
     $round?: boolean;
     $transparent?: boolean;
@@ -24,7 +25,8 @@ export declare type ButtonAttributes = Omit<ButtonHTMLAttributes<HTMLButtonEleme
 };
 declare const Button: React.ForwardRefExoticComponent<Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onClick"> & {
     $hook?: ButtonHook;
-    $signal?: Signal;
+    $color?: Color;
+    $size?: Size;
     $click?: (unlock: (preventFocus?: boolean) => void, event: MouseEvent<HTMLButtonElement>) => void;
     $round?: boolean;
     $transparent?: boolean;

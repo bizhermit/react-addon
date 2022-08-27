@@ -1,4 +1,4 @@
-import { Signal } from "../../../styles/css-var";
+import { Color } from "../../../styles/css-var";
 import { ListViewColumnFunction } from "../list-view";
 declare type GanttChartColumnData = {
     dataName: string;
@@ -8,7 +8,7 @@ declare type GanttChartColumnData = {
     rateDataName?: string;
     barClassName?: string;
     disabled?: boolean;
-    defaultSignal?: Signal;
+    defaultColor?: Color;
 };
 declare type GanttChartUnit = "day" | "week" | "month";
 declare const ListViewGanttChartColumn: ListViewColumnFunction<{
@@ -29,6 +29,6 @@ declare const ListViewGanttChartColumn: ListViewColumnFunction<{
         to: Date;
         length: number;
     }) => string;
-    defaultSignal?: Signal;
+    defaultColor?: Color;
 }>;
 export default ListViewGanttChartColumn;

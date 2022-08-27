@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, ReactNode } from "react";
-import { FitToOuter, Signal } from "../../styles/css-var";
+import { FitToOuter, Color } from "../../styles/css-var";
 import { InputHook } from "../../utils/input";
 import { FileAccept } from "./file-box";
 export declare type FileAreaHook = InputHook<Array<File>> & {
@@ -8,7 +8,7 @@ export declare type FileAreaHook = InputHook<Array<File>> & {
 export declare type FileAreaAttributes = HTMLAttributes<HTMLDivElement> & {
     $hook?: FileAreaHook;
     $fto?: FitToOuter;
-    $signal?: Signal;
+    $color?: Color;
     $disabled?: boolean;
     $accept?: Array<FileAccept>;
     $resize?: boolean | "x" | "y" | "xy";
@@ -23,7 +23,7 @@ export declare type FileAreaAttributes = HTMLAttributes<HTMLDivElement> & {
 declare const FileArea: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & {
     $hook?: FileAreaHook;
     $fto?: FitToOuter;
-    $signal?: Signal;
+    $color?: Color;
     $disabled?: boolean;
     $accept?: Array<FileAccept>;
     $resize?: boolean | "x" | "y" | "xy";

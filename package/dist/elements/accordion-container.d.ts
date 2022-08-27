@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, ReactNode } from "react";
-import { FitToOuter, Signal } from "../styles/css-var";
+import { FitToOuter, Color } from "../styles/css-var";
 import { IconImage } from "./icon";
 export declare type AccordionContainerHook = {
     open: () => void;
@@ -17,7 +17,7 @@ export declare type AccordionContainerAttributes = HTMLAttributes<HTMLDivElement
     $animationDuration?: number;
     $height?: number;
     $borderless?: boolean;
-    $signal?: Signal;
+    $color?: Color;
     $openedIconImage?: IconImage;
     $closedIconImage?: IconImage;
     $iconPosition?: "left" | "right" | "none";
@@ -33,7 +33,7 @@ declare const AccordionContainer: React.ForwardRefExoticComponent<React.HTMLAttr
     $animationDuration?: number;
     $height?: number;
     $borderless?: boolean;
-    $signal?: Signal;
+    $color?: Color;
     $openedIconImage?: IconImage;
     $closedIconImage?: IconImage;
     $iconPosition?: "left" | "right" | "none";

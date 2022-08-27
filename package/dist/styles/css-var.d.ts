@@ -1,21 +1,24 @@
 export declare type _LayoutColor = "light" | "dark";
 export declare type LayoutColor = "system" | _LayoutColor;
 export declare type LayoutDesign = "flat" | "material" | "neumorphism";
-declare const signals: readonly ["default", "primary", "secondary", "warning", "danger", "deprecated"];
-export declare type Signal = typeof signals[number];
+declare const colors: readonly ["default", "light", "dark", "primary", "secondary", "warning", "danger", "disabled"];
+export declare type Color = typeof colors[number];
+export declare type ColorType = "base" | "head" | "nav";
+export declare type Size = "xs" | "s" | "m" | "l" | "xl";
 export declare type FitToOuter = "f" | "x" | "y" | "fx" | "fy" | "none";
 declare type CssVarCBDBase = {
     c: string;
     b: string;
     d: string;
 };
-declare type CssSignalVar = {
+declare type CssColorVar = {
     fc: string;
     bgc: string;
     bdc: string;
     nav: {
         fc: string;
         bgc: string;
+        bdc: string;
         anchor: string;
     };
     head: {
@@ -28,6 +31,7 @@ declare type CssSignalVar = {
         bgc: string;
         bdc: string;
         on: string;
+        on_fc?: string;
         off: string;
         knob: string;
     };
@@ -49,6 +53,7 @@ declare type CssSignalVar = {
         };
     };
 };
+export declare const varFontSize = "--bh-fs";
 declare const CssVar: {
     size: string;
     fs: string;
@@ -81,12 +86,14 @@ declare const CssVar: {
     };
     hvrBgc: string;
     actBgc: string;
-    default: CssSignalVar;
-    primary: CssSignalVar;
-    secondary: CssSignalVar;
-    warning: CssSignalVar;
-    danger: CssSignalVar;
-    disabled: CssSignalVar;
+    default: CssColorVar;
+    light: CssColorVar;
+    dark: CssColorVar;
+    primary: CssColorVar;
+    secondary: CssColorVar;
+    warning: CssColorVar;
+    danger: CssColorVar;
+    disabled: CssColorVar;
     week: {
         sun: {
             fc: string;
@@ -148,17 +155,31 @@ export declare const CssPV: {
     flex: string;
     ba: string;
     inactOpacity: string;
+    dropSd: (level: number) => string;
     cvxBg: (cv?: CssVarCBDBase) => string;
     ccvBg: (cv?: CssVarCBDBase) => string;
-    cvxSd: string;
-    cvxSdD: string;
-    cvxSdS: string;
-    ccvSd: string;
-    ccvSdD: string;
-    ccvSdS: string;
-    signalCn: (signal: Signal) => string;
+    cvxSd: (level: number) => string;
+    ccvSd: (level: number) => string;
+    cvxSdBase: string;
+    cvxSdHover: string;
+    nCvxSd: (level: number) => string;
+    nCcvSd: (level: number) => string;
+    nCvxSdBase: string;
+    nCvxSdHover: string;
+    nCcvSdActive: string;
+    nCcvSdDisabled: string;
+    nCvxSdShallow: string;
+    nCcvSdDeep: string;
+    colorCn: (color: Color) => string;
     textSd: (color: string) => string;
 };
+export declare const sizeIterator: (base: string, css: Partial<{
+    xs: string;
+    s: string;
+    m: string;
+    l: string;
+    xl: string;
+}>, selector?: string) => string;
 export declare const switchDesign: (design: LayoutDesign, css: Partial<{
     flat: string;
     material: string;
@@ -167,5 +188,5 @@ export declare const switchDesign: (design: LayoutDesign, css: Partial<{
     fm: string;
     _: string;
 }>) => string;
-export declare const signalIterator: <T = string>(func: (signal: Signal, v: CssSignalVar, selector: string) => T, skipDefault?: boolean) => T[];
+export declare const colorIterator: <T = string>(func: (color: Color, v: CssColorVar, selector: string) => T, skipDefault?: boolean) => T[];
 export default CssVar;
