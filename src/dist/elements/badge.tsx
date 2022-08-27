@@ -1,7 +1,8 @@
 import React, { FC, ReactNode } from "react";
-import CssVar, { Color, colorIterator, CssPV, Size, sizeIterator, varFontSize } from "../styles/css-var";
+import CssVar, { Color, colorIterator, Size, sizeIterator, varFontSize } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributesWithoutChildren } from "../utils/attributes";
+import { iconCn, varIconBc, varIconFc } from "./icon";
 import Label from "./label";
 
 const cn = "bh-bde";
@@ -11,41 +12,49 @@ const Badge: FC<{
   $color?: Color;
   $colorType?: "base" | "head" | "nav";
   $fill?: boolean;
-  $shape?: "circle" | "square";
+  $shape?: "circle" | "square" | "none";
   $size?: Size;
   $title?: string;
+  $borderless?: boolean;
   $content?: ReactNode;
   children?: ReactNode;
 }> = (attrs) => {
 
+  const contentType = (() => {
+    const t = typeof attrs.$content;
+    if (t === "string") return "s";
+    if (t === "number") return "s";
+    if (t === "boolean") return "s";
+    return "o";
+  })();
+
   return (
-    <div {...attributesWithoutChildren(attrs, cn)}>
+    <div {...attributesWithoutChildren(attrs, `${cn}-wrap`)}>
       {attrs.children}
       <div
-        className={`${cn}-main`}
+        className={cn}
         data-pos={attrs.$position || "right-top"}
         data-color={attrs.$color}
-        data-colortype={attrs.$colorType || "base"}
+        data-colortype={attrs.$colorType || "nav"}
         data-fill={attrs.$fill}
         data-size={attrs.$size ?? "m"}
         data-shape={attrs.$shape || "circle"}
+        data-borderless={attrs.$borderless}
+        data-contenttype={contentType}
         title={attrs.$title}
-      >{
-        typeof attrs.$content === "string" || typeof attrs.$content === "number" ?
-          <Label>{attrs.$content}</Label> : attrs.$content
-      }</div>
+      >{contentType === "s" ? <Label>{attrs.$content}</Label> : attrs.$content}</div>
       {BadgeStyle}
     </div>
   );
 };
 
 const BadgeStyle = <JsxStyle id={cn}>{() => `
-.${cn} {
+.${cn}-wrap {
   box-sizing: border-box;
   position: relative;
   overflow: visible;
 }
-.${cn}-main {
+.${cn} {
   box-sizing: border-box;
   position: absolute;
   z-index: 999;
@@ -53,77 +62,99 @@ const BadgeStyle = <JsxStyle id={cn}>{() => `
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  opacity: 0.95;
   cursor: default;
+  background: ${CssVar.bgc};
+  color: ${CssVar.fc};
+  border: 1px solid ${CssVar.bdc};
 }
-.${cn}-main[data-pos="left-top"] {
-  top: calc(${CssVar.pdy} * -0.5);
-  left: calc(${CssVar.pdx} * -0.5);
+.${cn}[data-pos="left-top"] {
+  top: calc(${CssVar.pdy} * -0.8);
+  left: calc(${CssVar.pdx} * -0.8);
 }
-.${cn}-main[data-pos="right-top"] {
-  top: calc(${CssVar.pdy} * -0.5);
-  right: calc(${CssVar.pdx} * -0.5);
+.${cn}[data-pos="right-top"] {
+  top: calc(${CssVar.pdy} * -0.8);
+  right: calc(${CssVar.pdx} * -0.8);
 }
-.${cn}-main[data-pos="left-bottom"] {
-  bottom: calc(${CssVar.pdy} * -0.5);
-  left: calc(${CssVar.pdx} * -0.5);
+.${cn}[data-pos="left-bottom"] {
+  bottom: calc(${CssVar.pdy} * -0.8);
+  left: calc(${CssVar.pdx} * -0.8);
 }
-.${cn}-main[data-pos="right-bottom"] {
-  bottom: calc(${CssVar.pdy} * -0.5);
-  right: calc(${CssVar.pdx} * -0.5);
+.${cn}[data-pos="right-bottom"] {
+  bottom: calc(${CssVar.pdy} * -0.8);
+  right: calc(${CssVar.pdx} * -0.8);
 }
-.${cn}-main[data-shape="circle"] {
+.${cn}[data-shape="circle"] {
   border-radius: 9999px;
 }
-.${cn}-main[data-shape="square"] {
+.${cn}[data-shape="square"] {
   border-radius: ${CssVar.bdr};
 }
-${sizeIterator(`${cn}-main`, {
+.${cn}[data-shape="none"] {
+  background: transparent !important;
+  border: none !important;
+}
+.${cn}[data-borderless="true"] {
+  border: none !important;
+}
+${sizeIterator(cn, {
 xs: `
-height: calc(${CssVar.size} * 0.4);
-width: calc(${CssVar.size} * 0.4);
+height: calc(${CssVar.size} * 0.5);
+width: calc(${CssVar.size} * 0.5);
 font-size: 1.0rem;
 ${varFontSize}: 1.1rem;
 `,
 s: `
-height: calc(${CssVar.size} * 0.5);
-width: calc(${CssVar.size} * 0.5);
+height: calc(${CssVar.size} * 0.6);
+width: calc(${CssVar.size} * 0.6);
 font-size: 1.1rem;
 ${varFontSize}: 1.25rem;
 `,
 m: `
-height: calc(${CssVar.size} * 0.6);
-width: calc(${CssVar.size} * 0.6);
+height: calc(${CssVar.size} * 0.7);
+width: calc(${CssVar.size} * 0.7);
 font-size: 1.2rem;
 ${varFontSize}: 1.4rem;
 `,
 l: `
-height: calc(${CssVar.size} * 0.7);
-width: calc(${CssVar.size} * 0.7);
+height: calc(${CssVar.size} * 0.8);
+width: calc(${CssVar.size} * 0.8);
 font-size: 1.3rem;
 ${varFontSize}: 1.6rem;
 `,
 xl: `
-height: calc(${CssVar.size} * 0.8);
-width: calc(${CssVar.size} * 0.8);
+height: calc(${CssVar.size} * 0.9);
+width: calc(${CssVar.size} * 0.9);
 font-size: 1.6rem;
 ${varFontSize}: 1.8rem;
 `,
 })}
 ${colorIterator((_c, v, s) => `
-.${cn}-main${s}[data-colortype="base"] {
+.${cn}${s}[data-colortype="base"] {
   background: ${v.bgc};
   color: ${v.fc};
-  border: 1px solid ${v.bdc};
+  border-color: ${v.bdc};
 }
-.${cn}-main${s}[data-colortype="head"] {
+.${cn}${s}[data-colortype="base"] .${iconCn} {
+  ${varIconFc}: ${v.fc};
+  ${varIconBc}: ${v.bgc};
+}
+.${cn}${s}[data-colortype="head"] {
   background: ${v.head.bgc};
   color: ${v.head.fc};
-  border: 1px solid ${v.head.bdc};
+  border-color: ${v.head.bdc};
 }
-.${cn}-main${s}[data-colortype="nav"] {
+.${cn}${s}[data-colortype="head"] .${iconCn} {
+  ${varIconFc}: ${v.head.fc};
+  ${varIconBc}: ${v.head.bgc};
+}
+.${cn}${s}[data-colortype="nav"] {
   background: ${v.nav.bgc};
   color: ${v.nav.fc};
+  border-color: ${v.nav.bdc};
+}
+.${cn}${s}[data-colortype="nav"] .${iconCn} {
+  ${varIconFc}: ${v.nav.fc};
+  ${varIconBc}: ${v.nav.bgc};
 }
 `).join("")}
 `}</JsxStyle>
