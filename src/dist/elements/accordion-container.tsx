@@ -203,7 +203,6 @@ const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: flex-start;
-  flex: none;
   overflow: visible;
   background: inherit;
   color: inherit;

@@ -41,7 +41,7 @@ export const dPosY = (t?: boolean, m?: boolean, b?: boolean) => {
 };
 
 export const ftoCn = (fto?: FitToOuter) => {
-  if (StringUtils.isEmpty(fto)) return "";
+  if (StringUtils.isEmpty(fto)) return "bh-fto";
   return `bh-fto-${fto}`;
 };
 export const paddingCn = (padding?: boolean | number) => {

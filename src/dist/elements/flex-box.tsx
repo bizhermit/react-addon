@@ -53,7 +53,6 @@ const rowCn = `${cn}[data-flow="row"]`;
 const Style = <JsxStyle id={cn} depsDesign>{() => `
 .${cn} {
   ${CssPV.flex}
-  flex: none;
   transition: box-shadow 0.1s;
 }
 .${colCn} {

@@ -194,7 +194,6 @@ const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
   min-height: ${CssVar.size};
   min-width: ${CssVar.size};
   padding: ${CssVar.pdy} ${CssVar.pdx};
-  flex: none;
 }
 .${cn}[data-fill="true"] {
   padding: 0px;

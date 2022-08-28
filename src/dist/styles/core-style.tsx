@@ -70,6 +70,9 @@ a:not(:disabled),
   cursor: pointer;
   color: ${CssVar.anchor} !important;
 }
+.bh-fto {
+  flex: none;
+}
 .bh-fto-f {
   height: 100%;
   width: 100%;

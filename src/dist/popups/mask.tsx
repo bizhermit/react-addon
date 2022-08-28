@@ -149,7 +149,6 @@ const Style = <JsxStyle id={cn}>{({}) => `
 .${cn} {
   box-sizing: border-box;
   position: relative;
-  flex: none;
   overflow: visible;
 }
 .${cn}-wall {
