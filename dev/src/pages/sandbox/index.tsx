@@ -40,13 +40,13 @@ const SandBoxPage: NextPage = () => {
               className="box"
               style={{
                 background: v.nav.bgc,
-                // borderColor: v.nav.bdc,
+                borderColor: v.nav.bdc,
                 color: v.nav.fc
               }}
             >
               {v.nav.bgc}<br/>
               {v.nav.fc}<br/>
-              {/* {v.nav.bdc} */}
+              {v.nav.bdc}
             </div>
             ipt
             <div
