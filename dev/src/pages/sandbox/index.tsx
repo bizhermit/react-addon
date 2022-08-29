@@ -66,7 +66,7 @@ const SandBoxPage: NextPage = () => {
               style={{
                 background: v.ipt.on,
                 borderColor: v.ipt.bdc,
-                color: v.ipt.fc
+                color: v.ipt.on_fc ?? v.ipt.fc
               }}
             >
               {v.ipt.on}
