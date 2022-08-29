@@ -15,6 +15,8 @@ import { ScreenSize, useLayout } from "../../react-addon/dist/styles/layout-prov
 import SelectBox from "../../react-addon/dist/elements/inputs/select-box";
 import Caption from "../../react-addon/dist/elements/caption";
 import Badge from "../../react-addon/dist/elements/badge";
+import Header from "../../react-addon/dist/elements/header";
+import Footer from "../../react-addon/dist/elements/footer";
 
 const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
   const router = useRouter();
@@ -24,7 +26,7 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
   });
   const navHook = useNavigationContainer();
   const [opened, setOpen] = useState(false);
-  const [color, setColor] = useState<Color>();
+  const [color, setColor] = useState<Color>("default");
   const layout = useLayout();
   const menuItems = useMemo(() => {
     const toMenuItem = (url: string, label: string, parent?: string) => {
@@ -128,7 +130,7 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
               $dispatch={setColor}
               $notInputText
               $source={[
-                { value: undefined, label: "unset" },
+                // { value: undefined, label: "unset" },
                 ...colorIterator((c) => {
                   return { value: c, label: c };
                 }),
@@ -137,19 +139,19 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
           </Caption>
         </FlexBox>
       </Navigation>
-      <Row $fill $color={color} $colorType="nav" $shadow $padding={1}>
-          {layout.screenSize > ScreenSize.medium ? <></> : 
-            <Button
-              $borderless
-              $transparent
-              $icon={opened ? "cross" : "hamburger"}
-              $click={() => {
-                setTimeout(() => {
-                  navHook.toggleNavigation();
-                }, 0);
-              }}
-            />
-          }
+      <Header>
+        {layout.screenSize > ScreenSize.medium ? <></> : 
+          <Button
+            $borderless
+            $transparent
+            $icon={opened ? "cross" : "hamburger"}
+            $click={() => {
+              setTimeout(() => {
+                navHook.toggleNavigation();
+              }, 0);
+            }}
+          />
+        }
         <Label $type="h2">{headerTitle}</Label>
         <Row $right>
           <Badge $content={msgCount} $visible={msgCount > 0}>
@@ -161,7 +163,7 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
             />
           </Badge>
         </Row>
-      </Row>
+      </Header>
       <FlexBox $fto="fy">
         <Row $fill>
           <LayoutBox />
@@ -171,6 +173,9 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
           {children}
         </FlexBox>
       </FlexBox>
+      <Footer $right>
+        <Label>&copy;BizHermit</Label>
+      </Footer>
     </NavigationContainer>
     </>
   );

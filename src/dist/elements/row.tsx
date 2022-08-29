@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes } from "react";
+import React, { FC, HTMLAttributes, ReactNode } from "react";
 import { colorCn } from "../styles/core-style";
 import { Color, ColorType, CssPV } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
@@ -6,7 +6,7 @@ import { attributes, dPosX, dPosY, paddingCn, shadowCn } from "../utils/attribut
 
 const cn = "bh-row";
 
-const Row: FC<HTMLAttributes<HTMLDivElement> & {
+export type RowAttributes = {
   $center?: boolean;
   $right?: boolean;
   $top?: boolean;
@@ -17,6 +17,10 @@ const Row: FC<HTMLAttributes<HTMLDivElement> & {
   $colorType?: ColorType;
   $shadow?: boolean | number;
   $padding?: boolean | number;
+};
+
+const Row: FC<HTMLAttributes<HTMLDivElement> & RowAttributes & {
+  children?: ReactNode;
 }> = (attrs) => {
   return (
     <>
