@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import Row from "../../react-addon/dist/elements/row";
-import { LayoutColorRadioButtons, LayoutColorSelectBox } from "../../react-addon/dist/components/layout-color";
-import { LayoutDesignRadioButtons, LayoutDesignSelectBox } from "../../react-addon/dist/components/layout-design";
+import { LayoutColorRadioButtons } from "../../react-addon/dist/components/layout-color";
+import { LayoutDesignRadioButtons } from "../../react-addon/dist/components/layout-design";
 import { useLayout } from "../../react-addon/dist/styles/layout-provider";
 import useElectron from "../hooks/electron";
 import Label from "../../react-addon/dist/elements/label";

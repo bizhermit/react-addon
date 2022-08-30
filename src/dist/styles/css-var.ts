@@ -62,7 +62,8 @@ type CssColorVar = {
 export const varFontSize = "--bh-fs";
 
 const lFc = "#1e1e1e";
-const lBc = "#aaaaaf";
+const lBc = "#f4f4fb";
+const lBdc = "#808088";
 const dFc = "#f2f2f2";
 const dBc = "#39393b";
 
@@ -73,10 +74,11 @@ const CssVar = {
   pdx: "var(--bh-pdx, 0px)", // padding x
   pdy: "var(--bh-pdy, 0px)", // padding y
   phsize: "var(--bh-phsize, 13px)", // placeholder size
-  bgc: "var(--bh-bgc, #f4f4fb)", // background color
+  bgc: `var(--bh-bgc, ${lBc})`, // background color
   fc: `var(--bh-fc, ${lFc})`, // font color
-  bdc: `var(--bh-bdc, ${lBc})`, // border color
+  bdc: `var(--bh-bdc, ${lBdc})`, // border color
   anchor: "var(--bh-anchor, #00f)", // anchor color
+  bsize: "var(--bh-bsize, 1Q)", // border width
   sdw: { // shadow
     c: "var(--bh-sdw_c, rgba(20,20,20,0.3))",
     b: "var(--bh-sdw_b, rgba(224,224,229,0.2))",
@@ -100,12 +102,12 @@ const CssVar = {
   actBgc: "var(--bh-act-bgc, rgba(204,204,204,0.3))",
   default: {
     fc: `var(--bh-def-fc, ${lFc})`,
-    bgc: "var(--bh-bgc, #f4f4fb)",
-    bdc: "var(--bh-def-bdc, #787880)",
+    bgc: `var(--bh-bgc, ${lBc})`,
+    bdc: `var(--bh-def-bdc, ${lBdc})`,
     head: {
       fc: `var(--bh-def-head-fc, ${lFc})`,
-      bgc: "var(--bh-def-head-bgc, #e4e4ef)",
-      bdc: "var(--bh-def-head-bdc, #a4a4a7)",
+      bgc: "var(--bh-def-head-bgc, #e4e4f1)",
+      bdc: "var(--bh-def-head-bdc, #787880)",
     },
     nav: {
       fc: "var(--bh-def-nav-fc, #f2f2f2)",
@@ -140,7 +142,7 @@ const CssVar = {
     },
   } as CssColorVar,
   pure: {
-    fc: "var(--bh-pur-fc, #000)",
+    fc: `var(--bh-pur-fc, ${lFc})`,
     bgc: "var(--bh-pur-bgc, #fff)",
     bdc: "var(--bh-pur-bdc, #787880)",
     head: {
@@ -181,8 +183,8 @@ const CssVar = {
     },
   } as CssColorVar,
   dull: {
-    fc: "var(--bh-dul-fc, #707070)",
-    bgc: "var(--bh-dul-bgc, #fbfbfd)",
+    fc: "var(--bh-dul-fc, #505050)",
+    bgc: `var(--bh-dul-bgc, ${lBc})`,
     bdc: "var(--bh-dul-bdc, #787880)",
     head: {
       fc: `var(--bh-dul-head-fc, ${lFc})`,
@@ -223,8 +225,8 @@ const CssVar = {
   } as CssColorVar,
   vivid: {
     fc: "var(--bh-vvd-fc, #000)",
-    bgc: "var(--bh-vvd-bgc, #fbfbfd)",
-    bdc: "var(--bh-vvd-bdc, #787880)",
+    bgc: "var(--bh-vvd-bgc, #fff)",
+    bdc: "var(--bh-vvd-bdc, #000)",
     head: {
       fc: "var(--bh-vvd-head-fc, #f2f2f2)",
       bgc: "var(--bh-vvd-head-bgc, #404045)",

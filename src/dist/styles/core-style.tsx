@@ -149,6 +149,7 @@ ${colorIterator((c, v, qs) => `
 .${colorCn}${qs} {
   background: ${v.bgc};
   color: ${v.fc};
+  --bh-bdc: ${v.bdc};
 }
 .${colorCn}${qs}[data-border="true"] {
   border: 1px solid ${v.bdc};
@@ -160,6 +161,7 @@ ${colorIterator((c, v, qs) => `
 .${colorCn}${qs}[data-colortype="head"] {
   background: ${v.head.bgc};
   color: ${v.head.fc};
+  --bh-bdc: ${v.head.bdc};
 }
 .${colorCn}${qs}[data-colortype="head"][data-border="true"] {
   border-color: ${v.head.bdc};
@@ -171,6 +173,7 @@ ${colorIterator((c, v, qs) => `
 .${colorCn}${qs}[data-colortype="nav"] {
   background: ${v.nav.bgc};
   color: ${v.nav.fc};
+  --bh-bdc: ${v.nav.bdc};
 }
 .${colorCn}${qs}[data-colortype="nav"] .${iconCn} {
   ${varIconBc}: ${v.nav.bgc};

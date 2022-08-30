@@ -1,7 +1,8 @@
 import { NextPage } from "next";
-import { colorIterator } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator, CssPV } from "../../../react-addon/dist/styles/css-var";
 import FlexBox from "../../../react-addon/dist/elements/flex-box";
 import Label from "../../../react-addon/dist/elements/label";
+import HLine from "../../../react-addon/dist/elements/line";
 
 const SandBoxPage: NextPage = () => {
   return (
@@ -10,44 +11,29 @@ const SandBoxPage: NextPage = () => {
         return (
           <FlexBox key={s} $fto="fx" $center>
             <Label $color={s}>{s}</Label>
-            <div
-              className="box"
-              style={{
-                background: v.bgc,
-                borderColor: v.bdc,
-                color: v.fc
-              }}
-            >
-              {v.bgc}<br/>
-              {v.fc}<br/>
+            <FlexBox className="box" $color={s} $colorType="base">
+              {v.bgc}
+              <HLine $bold={0} $padding $margin />
+              {v.fc}
+              <HLine $bold={1} $padding $margin />
               {v.bdc}
-            </div>
+            </FlexBox>
             head
-            <div
-              className="box"
-              style={{
-                background: v.head.bgc,
-                borderColor: v.head.bdc,
-                color: v.head.fc
-              }}
-            >
-              {v.head.bgc}<br/>
-              {v.head.fc}<br/>
+            <FlexBox className="box" $color={s} $colorType="head">
+              {v.head.bgc}
+              <HLine $bold={2} $padding $margin />
+              {v.head.fc}
+              <HLine $bold={3} $padding $margin />
               {v.head.bdc}
-            </div>
+            </FlexBox>
             nav
-            <div
-              className="box"
-              style={{
-                background: v.nav.bgc,
-                borderColor: v.nav.bdc,
-                color: v.nav.fc
-              }}
-            >
-              {v.nav.bgc}<br/>
-              {v.nav.fc}<br/>
+            <FlexBox className="box" $color={s} $colorType="nav">
+              {v.nav.bgc}
+              <HLine $bold={4} $padding $margin />
+              {v.nav.fc}
+              <HLine $bold={5} $padding $margin />
               {v.nav.bdc}
-            </div>
+            </FlexBox>
             ipt
             <div
               className="box"
@@ -57,8 +43,10 @@ const SandBoxPage: NextPage = () => {
                 color: v.ipt.fc
               }}
             >
-              {v.ipt.bgc}<br/>
-              {v.ipt.fc}<br/>
+              {v.ipt.bgc}
+              <HLine />
+              {v.ipt.fc}
+              <HLine />
               {v.ipt.bdc}
             </div>
             <div
@@ -131,7 +119,7 @@ const SandBoxPage: NextPage = () => {
           </FlexBox>
         );
       })}
-      <style jsx>{`
+      <style global jsx>{`
         .box {
           box-sizing: border-box;
           width: 100%;
@@ -142,7 +130,7 @@ const SandBoxPage: NextPage = () => {
           margin-bottom: 2px;
           min-height: 10px;
           max-width: 200px;
-          max-height: 54px;
+          max-height: 64px;
           white-space: nowrap;
           overflow: hidden;
           line-height: 1.6rem;
