@@ -13,25 +13,25 @@ const SandBoxPage: NextPage = () => {
             <Label $color={s}>{s}</Label>
             <FlexBox className="box" $color={s} $colorType="base">
               {v.bgc}
-              <HLine $bold={0} $padding $margin />
+              <HLine $padding $margin />
               {v.fc}
-              <HLine $bold={1} $padding $margin />
+              <HLine $padding $margin />
               {v.bdc}
             </FlexBox>
             head
             <FlexBox className="box" $color={s} $colorType="head">
               {v.head.bgc}
-              <HLine $bold={2} $padding $margin />
+              <HLine $padding $margin />
               {v.head.fc}
-              <HLine $bold={3} $padding $margin />
+              <HLine $padding $margin />
               {v.head.bdc}
             </FlexBox>
             nav
             <FlexBox className="box" $color={s} $colorType="nav">
               {v.nav.bgc}
-              <HLine $bold={4} $padding $margin />
+              <HLine $padding $margin />
               {v.nav.fc}
-              <HLine $bold={5} $padding $margin />
+              <HLine $padding $margin />
               {v.nav.bdc}
             </FlexBox>
             ipt

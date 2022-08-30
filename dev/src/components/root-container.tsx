@@ -139,7 +139,7 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
           </Caption>
         </FlexBox>
       </Navigation>
-      <Header>
+      <Header $color={color}>
         {layout.screenSize > ScreenSize.medium ? <></> : 
           <Button
             $borderless
@@ -173,7 +173,7 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
           {children}
         </FlexBox>
       </FlexBox>
-      <Footer $right>
+      <Footer $right $color={color}>
         <Label>&copy;BizHermit</Label>
       </Footer>
     </NavigationContainer>
