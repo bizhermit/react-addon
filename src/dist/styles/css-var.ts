@@ -61,7 +61,7 @@ type CssColorVar = {
 
 export const varFontSize = "--bh-fs";
 
-const lFc = "#1e1e1e";
+const lFc = "#161616";
 const lBc = "#f4f4fb";
 const lBdc = "#909099";
 const dFc = "#f2f2f2";
@@ -187,12 +187,12 @@ const CssVar = {
     bgc: "var(--bh-pur-bgc, #fff)",
     bdc: "var(--bh-pur-bdc, #555)",
     head: {
-      fc: `var(--bh-pur-head-fc, #111)`,
+      fc: `var(--bh-pur-head-fc, ${lFc})`,
       bgc: "var(--bh-pur-head-bgc, #fff)",
       bdc: "var(--bh-pur-head-bdc, #282828)",
     },
     nav: {
-      fc: `var(--bh-pur-nav-fc, #000)`,
+      fc: `var(--bh-pur-nav-fc, ${lFc})`,
       bgc: "var(--bh-pur-nav-bgc, #fff)",
       bdc: "var(--bh-pur-nav-bdc, #000)",
       anchor: "var(--bh-pur-nav-anchor, #00f)",
@@ -268,16 +268,16 @@ const CssVar = {
   reverse: {
     fc: `var(--bh-rvs-fc, ${dFc})`,
     bgc: `var(--bh-rvs-bgc, ${dBc})`,
-    bdc: "var(--bh-rvs-bdc, #787880)",
+    bdc: "var(--bh-rvs-bdc, #a0a0a3)",
     head: {
       fc: `var(--bh-rvs-head-fc, ${dFc})`,
       bgc: "var(--bh-rvs-head-bgc, #303033)",
-      bdc: "var(--bh-rvs-head-bdc, #4c4c4f)",
+      bdc: "var(--bh-rvs-head-bdc, #a8a8aa)",
     },
     nav: {
       fc: `var(--bh-rvs-nav-fc, ${dFc})`,
       bgc: "var(--bh-rvs-nav-bgc, #202022)",
-      bdc: "var(--bh-rvs-nav-bdc, #e8e8ea)",
+      bdc: "var(--bh-rvs-nav-bdc, #e0e0e3)",
       anchor: "var(--bh-rvs-nav-anchor, #00f)",
     },
     ipt: {
