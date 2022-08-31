@@ -2,7 +2,7 @@ export type _LayoutColor = "light" | "dark";
 export type LayoutColor = "system" | _LayoutColor;
 export type LayoutDesign = "flat" | "material" | "neumorphism";
 
-const colors = ["default", "dull", "pure", "vivid", "reverse", "primary", "secondary", "warning", "danger", "disabled"] as const;
+const colors = ["default", "dull", "pure", "vivid", "disabled", "reverse", "primary", "secondary", "warning", "danger"] as const;
 export type Color = typeof colors[number];
 export type ColorType = "base" | "head" | "nav";
 
@@ -270,14 +270,14 @@ const CssVar = {
     bgc: `var(--bh-rvs-bgc, ${dBc})`,
     bdc: "var(--bh-rvs-bdc, #787880)",
     head: {
-      fc: "var(--bh-rvs-head-fc, #1e1e1e)",
-      bgc: "var(--bh-rvs-head-bgc, #f0f0f9)",
-      bdc: "var(--bh-rvs-head-bdc, #a4a4a7)",
+      fc: `var(--bh-rvs-head-fc, ${dFc})`,
+      bgc: "var(--bh-rvs-head-bgc, #303033)",
+      bdc: "var(--bh-rvs-head-bdc, #4c4c4f)",
     },
     nav: {
-      fc: "var(--bh-rvs-nav-fc, #1e1e1e)",
-      bgc: "var(--bh-rvs-nav-bgc, #e4e4ef)",
-      bdc: "var(--bh-rvs-nav-bdc, #888)",
+      fc: `var(--bh-rvs-nav-fc, ${dFc})`,
+      bgc: "var(--bh-rvs-nav-bgc, #202022)",
+      bdc: "var(--bh-rvs-nav-bdc, #e8e8ea)",
       anchor: "var(--bh-rvs-nav-anchor, #00f)",
     },
     ipt: {
@@ -585,7 +585,7 @@ export const CssDarkVar = `
 --bh-def-head-bgc: #303033;
 --bh-def-head-fc: #${dFc};
 --bh-def-head-bdc: #4c4c4f;
---bh-def-nav-bgc: linear-gradient(to bottom right, #202022, #272729);
+--bh-def-nav-bgc: #202022;
 --bh-def-nav-fc: #${dFc};
 --bh-def-ipt-bgc: #3d3d3f;
 --bh-def-ipt-fc: #${dFc};
