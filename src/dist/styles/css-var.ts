@@ -313,12 +313,12 @@ const CssVar = {
     head: {
       fc: "var(--bh-pri-head-fc, #111)",
       bgc: "var(--bh-pri-head-bgc, #aae4aa)",
-      bdc: "var(--bh-pri-head-bdc, #7ac07a)",
+      bdc: "var(--bh-pri-head-bdc, #7ab07a)",
     },
     nav: {
       fc: "var(--bh-pri-nav-fc, #f2f2f2)",
-      bgc: "var(--bh-pri-nav-bgc, linear-gradient(to bottom right, #206620, #276d27))",
-      bdc: "var(--bh-pri-nav-bdc, #888)",
+      bgc: "var(--bh-pri-nav-bgc, #206620)",
+      bdc: "var(--bh-pri-nav-bdc, #d0e8d0)",
       anchor: "var(--bh-pri-nav-anchor, #9bf)",
     },
     ipt: {
@@ -354,12 +354,12 @@ const CssVar = {
     head: {
       fc: `var(--bh-sec-head-fc, ${lFc})`,
       bgc: "var(--bh-sec-head-bgc, #baceff)",
-      bdc: "var(--bh-sec-head-bdc, #9898ca)",
+      bdc: "var(--bh-sec-head-bdc, #9494bd)",
     },
     nav: {
       fc: "var(--bh-sec-nav-fc, #f2f2f2)",
-      bgc: "var(--bh-sec-nav-bgc, linear-gradient(to bottom right, #303078, #37377f))",
-      bdc: "var(--bh-sec-nav-bdc, #888)",
+      bgc: "var(--bh-sec-nav-bgc, #303078)",
+      bdc: "var(--bh-sec-nav-bdc, #d9d9e8)",
       anchor: "var(--bh-sec-nav-anchor, #9bf)",
     },
     ipt: {
@@ -389,18 +389,18 @@ const CssVar = {
     },
   } as CssColorVar,
   warning: {
-    fc: "var(--bh-wrn-fc, #d0b600)",
+    fc: "var(--bh-wrn-fc, #e0a600)",
     bgc: "var(--bh-wrn-bgc, #fffff4)",
     bdc: "var(--bh-wrn-bdc, #dfb700)",
     head: {
       fc: `var(--bh-wrn-head-fc, ${lFc})`,
       bgc: "var(--bh-wrn-head-bgc, #f7f790)",
-      bdc: "var(--bh-wrn-head-bdc, #cccc80)",
+      bdc: "var(--bh-wrn-head-bdc, #c8c880)",
     },
     nav: {
       fc: "var(--bh-wrn-nav-fc, #f2f2f2)",
-      bgc: "var(--bh-wrn-nav-bgc, linear-gradient(to bottom right, #808000, #878700))",
-      bdc: "var(--bh-wrn-nav-bdc, #888)",
+      bgc: "var(--bh-wrn-nav-bgc, #878700)",
+      bdc: "var(--bh-wrn-nav-bdc, #e8e899)",
       anchor: "var(--bh-wrn-nav-anchor, #9bf)",
     },
     ipt: {
@@ -436,12 +436,12 @@ const CssVar = {
     head: {
       fc: `var(--bh-dng-head-fc, ${lFc})`,
       bgc: "var(--bh-dng-head-bgc, #ffc0c0)",
-      bdc: "var(--bh-dng-head-bdc, #ef7a7a)",
+      bdc: "var(--bh-dng-head-bdc, #e87a7a)",
     },
     nav: {
       fc: "var(--bh-dng-nav-fc, #f2f2f2)",
-      bgc: "var(--bh-dng-nav-bgc, linear-gradient(to bottom right, #892020, #912727))",
-      bdc: "var(--bh-dng-nav-bdc, #888)",
+      bgc: "var(--bh-dng-nav-bgc, #912727)",
+      bdc: "var(--bh-dng-nav-bdc, #edc0c0)",
       anchor: "var(--bh-dng-nav-anchor, #9bf)",
     },
     ipt: {
