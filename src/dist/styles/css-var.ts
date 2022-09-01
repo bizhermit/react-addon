@@ -14,6 +14,7 @@ const colors = [
   "tertiary",
   "warning",
   "danger",
+  "cool",
   "pretty"
 ] as const;
 export type Color = typeof colors[number];
@@ -568,6 +569,47 @@ const CssVar = {
       },
     },
   } as CssColorVar,
+  cool: {
+    fc: "var(--bh-col-fc, #00a1e9)",
+    bgc: "var(--bh-col-bgc, #f4ffff)",
+    bdc: "var(--bh-col-bdc, #8ec6ff)",
+    head: {
+      fc: `var(--bh-col-head-fc, ${lFc})`,
+      bgc: "var(--bh-col-head-bgc, #b7ffff)",
+      bdc: "var(--bh-col-head-bdc, #84c1ff)",
+    },
+    nav: {
+      fc: `var(--bh-col-nav-fc, ${lFc})`,
+      bgc: "var(--bh-col-nav-bgc, #77ffff)",
+      bdc: "var(--bh-col-nav-bdc, #7fafff)",
+      anchor: "var(--bh-col-nav-anchor, #00f)",
+    },
+    ipt: {
+      bgc: "var(--bh-col-ipt-bgc, #fafafa)",
+      fc: `var(--bh-col-ipt-fc, ${lFc})`,
+      bdc: "var(--bh-col-ipt-bdc, #8ec6ff)",
+      on: "var(--bh-col-ipt-on, #7fffff)",
+      off: "var(--bh-col-ipt-off, #fff)",
+      knob: "var(--bh-col-ipt-knob, #fff)",
+    },
+    btn: {
+      base: {
+        bgc: "var(--bh-col-btn-base-bgc, #c1e0ff)",
+        fc: `var(--bh-col-btn-base-fc, ${lFc})`,
+        bdc: "var(--bh-col-btn-base-bdc, #c1e0ff)",
+      },
+      hvr: {
+        bgc: "var(--bh-col-btn-hvr-bgc, #a3d1ff)",
+        fc: `var(--bh-col-btn-hvr-fc, ${lFc})`,
+        bdc: "var(--bh-col-btn-hvr-bdc, #a3d1ff)",
+      },
+      act: {
+        bgc: "var(--bh-col-btn-act-bgc, #b2d8ff)",
+        fc: `var(--bh-col-btn-act-fc, ${lFc})`,
+        bdc: "var(--bh-col-btn-act-bdc, #b2d8ff)",
+      },
+    },
+  },
   pretty: {
     fc: "var(--bh-prt-fc, #ff89ff)",
     bgc: "var(--bh-prt-bgc, #fff4f9)",
@@ -581,7 +623,7 @@ const CssVar = {
       fc: "var(--bh-prt-nav-fc, #f2f2f2)",
       bgc: "var(--bh-prt-nav-bgc, #ff8ec6)",
       bdc: "var(--bh-prt-nav-bdc, #ffe5f2)",
-      anchor: "var(--bh-prt-nav-anchor, #00f)",
+      anchor: "var(--bh-prt-nav-anchor, #22c)",
     },
     ipt: {
       bgc: "var(--bh-prt-ipt-bgc, #fafafa)",
@@ -593,19 +635,19 @@ const CssVar = {
     },
     btn: {
       base: {
-        bgc: "var(--bh-prt-btn-base-bgc, #b23737)",
+        bgc: "var(--bh-prt-btn-base-bgc, #ff99ff)",
         fc: "var(--bh-prt-btn-base-fc, #f2f2f2)",
-        bdc: "var(--bh-prt-btn-base-bdc, #b23737)",
+        bdc: "var(--bh-prt-btn-base-bdc, #ff99ff)",
       },
       hvr: {
-        bgc: "var(--bh-prt-btn-hvr-bgc, #a22727)",
+        bgc: "var(--bh-prt-btn-hvr-bgc, #ff7fff)",
         fc: "var(--bh-prt-btn-hvr-fc, #f2f2f2)",
-        bdc: "var(--bh-prt-btn-hvr-bdc, #a22727)",
+        bdc: "var(--bh-prt-btn-hvr-bdc, #ff7fff)",
       },
       act: {
-        bgc: "var(--bh-prt-btn-act-bgc, #ba3f3f)",
+        bgc: "var(--bh-prt-btn-act-bgc, #ff8eff)",
         fc: "var(--bh-prt-btn-act-fc, #f2f2f2)",
-        bdc: "var(--bh-prt-btn-act-bdc, #ba3f3f)",
+        bdc: "var(--bh-prt-btn-act-bdc, #ff8eff)",
       },
     },
   },
