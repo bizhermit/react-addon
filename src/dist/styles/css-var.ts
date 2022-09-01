@@ -14,7 +14,7 @@ const colors = [
   "tertiary",
   "warning",
   "danger",
-  // "pritty"
+  "pretty"
 ] as const;
 export type Color = typeof colors[number];
 export type ColorType = "base" | "head" | "nav";
@@ -546,7 +546,7 @@ const CssVar = {
       bgc: "var(--bh-dng-ipt-bgc, #fafafa)",
       fc: `var(--bh-dng-ipt-fc, ${lFc})`,
       bdc: "var(--bh-dng-ipt-bdc, #d23f3f)",
-      on: "var(--bh-dng-ipt-on, #f8a9ac)",
+      on: "var(--bh-dng-ipt-on, #ffacae)",
       off: "var(--bh-dng-ipt-off, #fff)",
       knob: "var(--bh-dng-ipt-knob, #fff)",
     },
@@ -568,7 +568,47 @@ const CssVar = {
       },
     },
   } as CssColorVar,
-  
+  pretty: {
+    fc: "var(--bh-prt-fc, #ff89ff)",
+    bgc: "var(--bh-prt-bgc, #fff4f9)",
+    bdc: "var(--bh-prt-bdc, #ff99cc)",
+    head: {
+      fc: `var(--bh-prt-head-fc, ${lFc})`,
+      bgc: "var(--bh-prt-head-bgc, #ffdbed)",
+      bdc: "var(--bh-prt-head-bdc, #ff93c9)",
+    },
+    nav: {
+      fc: "var(--bh-prt-nav-fc, #f2f2f2)",
+      bgc: "var(--bh-prt-nav-bgc, #ff8ec6)",
+      bdc: "var(--bh-prt-nav-bdc, #ffe5f2)",
+      anchor: "var(--bh-prt-nav-anchor, #9bf)",
+    },
+    ipt: {
+      bgc: "var(--bh-prt-ipt-bgc, #fafafa)",
+      fc: `var(--bh-prt-ipt-fc, ${lFc})`,
+      bdc: "var(--bh-prt-ipt-bdc, #ff99cc)",
+      on: "var(--bh-prt-ipt-on, #ffd6ff)",
+      off: "var(--bh-prt-ipt-off, #fff)",
+      knob: "var(--bh-prt-ipt-knob, #fff)",
+    },
+    btn: {
+      base: {
+        bgc: "var(--bh-prt-btn-base-bgc, #b23737)",
+        fc: "var(--bh-prt-btn-base-fc, #f2f2f2)",
+        bdc: "var(--bh-prt-btn-base-bdc, #b23737)",
+      },
+      hvr: {
+        bgc: "var(--bh-prt-btn-hvr-bgc, #a22727)",
+        fc: "var(--bh-prt-btn-hvr-fc, #f2f2f2)",
+        bdc: "var(--bh-prt-btn-hvr-bdc, #a22727)",
+      },
+      act: {
+        bgc: "var(--bh-prt-btn-act-bgc, #ba3f3f)",
+        fc: "var(--bh-prt-btn-act-fc, #f2f2f2)",
+        bdc: "var(--bh-prt-btn-act-bdc, #ba3f3f)",
+      },
+    },
+  },
   week: {
     sun: {
       fc: "var(--bh-week_sun-fc, #c22222)",
