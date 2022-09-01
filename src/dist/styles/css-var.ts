@@ -335,7 +335,7 @@ const CssVar = {
       fc: `var(--bh-rvs-nav-fc, ${dFc})`,
       bgc: "var(--bh-rvs-nav-bgc, #202022)",
       bdc: "var(--bh-rvs-nav-bdc, #e0e0e3)",
-      anchor: "var(--bh-rvs-nav-anchor, #00f)",
+      anchor: "var(--bh-rvs-nav-anchor, #9bf)",
     },
     ipt: {
       bgc: "var(--bh-rvs-ipt-bgc, #3d3d3f)",
@@ -581,7 +581,7 @@ const CssVar = {
       fc: "var(--bh-prt-nav-fc, #f2f2f2)",
       bgc: "var(--bh-prt-nav-bgc, #ff8ec6)",
       bdc: "var(--bh-prt-nav-bdc, #ffe5f2)",
-      anchor: "var(--bh-prt-nav-anchor, #9bf)",
+      anchor: "var(--bh-prt-nav-anchor, #00f)",
     },
     ipt: {
       bgc: "var(--bh-prt-ipt-bgc, #fafafa)",
