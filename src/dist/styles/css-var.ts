@@ -50,7 +50,7 @@ type CssColorVar = {
     bgc: string;
     bdc: string;
     on: string;
-    on_fc?: string;
+    on_fc: string;
     off: string;
     knob: string;
   };
@@ -302,6 +302,7 @@ const CssVar = {
       fc: "var(--bh-dpr-ipt-fc, #b0b0b0)",
       bdc: "var(--bh-dpr-ipt-bdc, #d8d8da)",
       on: "var(--bh-dpr-ipt-on, #f0f0f3)",
+      on_fc: "var(--bh-dpr-ipt-on-fc, #b0b0b0)",
       off: "var(--bh-dpr-ipt-off, #fff)",
       knob: "var(--bh-dpr-ipt-knob, #fff)",
     },
@@ -343,6 +344,7 @@ const CssVar = {
       fc: `var(--bh-rvs-ipt-fc, ${dFc})`,
       bdc: "var(--bh-rvs-ipt-bdc, #707073)",
       on: "var(--bh-rvs-ipt-on, #606063)",
+      on_fc: `var(--bh-rvs-ipt-on-fc, ${dFc})`,
       off: "var(--bh-rvs-ipt-off, #3d3d3f)",
       knob: "var(--bh-rvs-ipt-knob, #303033)",
     },
@@ -384,6 +386,7 @@ const CssVar = {
       fc: `var(--bh-pri-ipt-fc, ${lFc})`,
       bdc: "var(--bh-pri-ipt-bdc, #228b22)",
       on: "var(--bh-pri-ipt-on, #70d490)",
+      on_fc: `var(--bh-pri-ipt-on-fc, ${lFc})`,
       off: "var(--bh-pri-ipt-off, #fff)",
       knob: "var(--bh-pri-ipt-knob, #fff)",
     },
@@ -425,6 +428,7 @@ const CssVar = {
       fc: `var(--bh-sec-ipt-fc, ${lFc})`,
       bdc: "var(--bh-sec-ipt-bdc, #4169d1)",
       on: "var(--bh-sec-ipt-on, #9ac5f0)",
+      on_fc: `var(--bh-sec-ipt-on-fc, ${lFc})`,
       off: "var(--bh-sec-ipt-off, #fff)",
       knob: "var(--bh-sec-ipt-knob, #fff)",
     },
@@ -466,6 +470,7 @@ const CssVar = {
       fc: `var(--bh-ter-ipt-fc, ${lFc})`,
       bdc: "var(--bh-ter-ipt-bdc, #4c6473)",
       on: "var(--bh-ter-ipt-on, #b0cbd9)",
+      on_fc: `var(--bh-ter-ipt-on-fc, ${lFc})`,
       off: "var(--bh-ter-ipt-off, #fff)",
       knob: "var(--bh-ter-ipt-knob, #fff)",
     },
@@ -507,6 +512,7 @@ const CssVar = {
       fc: `var(--bh-wrn-ipt-fc, ${lFc})`,
       bdc: "var(--bh-wrn-ipt-bdc, #dfb700)",
       on: "var(--bh-wrn-ipt-on, #e8e830)",
+      on_fc: `var(--bh-wrn-ipt-on-fc, ${lFc})`,
       off: "var(--bh-wrn-ipt-off, #fff)",
       knob: "var(--bh-wrn-ipt-knob, #fff)",
     },
@@ -548,6 +554,7 @@ const CssVar = {
       fc: `var(--bh-dng-ipt-fc, ${lFc})`,
       bdc: "var(--bh-dng-ipt-bdc, #d23f3f)",
       on: "var(--bh-dng-ipt-on, #ffacae)",
+      on_fc: `var(--bh-dng-ipt-on-fc, ${lFc})`,
       off: "var(--bh-dng-ipt-off, #fff)",
       knob: "var(--bh-dng-ipt-knob, #fff)",
     },
@@ -589,6 +596,7 @@ const CssVar = {
       fc: `var(--bh-col-ipt-fc, ${lFc})`,
       bdc: "var(--bh-col-ipt-bdc, #8ec6ff)",
       on: "var(--bh-col-ipt-on, #7fffff)",
+      on_fc: `var(--bh-col-ipt-on-fc, ${lFc})`,
       off: "var(--bh-col-ipt-off, #fff)",
       knob: "var(--bh-col-ipt-knob, #fff)",
     },
@@ -630,6 +638,7 @@ const CssVar = {
       fc: `var(--bh-prt-ipt-fc, ${lFc})`,
       bdc: "var(--bh-prt-ipt-bdc, #ff99cc)",
       on: "var(--bh-prt-ipt-on, #ffd6ff)",
+      on_fc: `var(--bh-prt-ipt-on-fc, ${lFc})`,
       off: "var(--bh-prt-ipt-off, #fff)",
       knob: "var(--bh-prt-ipt-knob, #fff)",
     },
