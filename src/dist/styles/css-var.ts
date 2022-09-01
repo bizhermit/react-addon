@@ -118,8 +118,9 @@ const CssVar = {
     ipt: {
       bgc: "var(--bh-def-ipt-bgc, #fafafa)",
       fc: `var(--bh-def-ipt-fc, ${lFc})`,
-      bdc: "var(--bh-def-ipt-bdc, #787880)",
-      on: "var(--bh-def-ipt-on, #c8c8cf)",
+      bdc: `var(--bh-def-ipt-bdc, ${lBdc})`,
+      on: "var(--bh-def-ipt-on, #bcc7d7)",
+      on_fc: `var(--bh-def-ipt-on-fc, ${lFc})`,
       off: "var(--bh-def-ipt-off, #fff)",
       knob: "var(--bh-def-ipt-knob, #fff)",
     },
@@ -158,9 +159,10 @@ const CssVar = {
     },
     ipt: {
       bgc: "var(--bh-dul-ipt-bgc, #fafafa)",
-      fc: `var(--bh-dul-ipt-fc, ${lFc})`,
-      bdc: "var(--bh-dul-ipt-bdc, #c8c8cb)",
+      fc: `var(--bh-dul-ipt-fc, #606060)`,
+      bdc: "var(--bh-dul-ipt-bdc, #a0a0a7)",
       on: "var(--bh-dul-ipt-on, #e8e8ec)",
+      on_fc: "var(--bh-dul-ipt-on-fc, #606060)",
       off: "var(--bh-dul-ipt-off, #fff)",
       knob: "var(--bh-dul-ipt-knob, #fff)",
     },
@@ -198,10 +200,11 @@ const CssVar = {
       anchor: "var(--bh-pur-nav-anchor, #00f)",
     },
     ipt: {
-      bgc: "var(--bh-pur-ipt-bgc, #fafafa)",
+      bgc: "var(--bh-pur-ipt-bgc, #fff)",
       fc: `var(--bh-pur-ipt-fc, ${lFc})`,
-      bdc: "var(--bh-pur-ipt-bdc, #c8c8cb)",
-      on: "var(--bh-pur-ipt-on, #e8e8ec)",
+      bdc: "var(--bh-pur-ipt-bdc, #555)",
+      on: "var(--bh-pur-ipt-on, #7d7b83)",
+      on_fc: "var(--bh-pur-ipt-on-fc, #fff)",
       off: "var(--bh-pur-ipt-off, #fff)",
       knob: "var(--bh-pur-ipt-knob, #fff)",
     },
@@ -241,9 +244,9 @@ const CssVar = {
     ipt: {
       bgc: "var(--bh-vvd-ipt-bgc, #fafafa)",
       fc: `var(--bh-vvd-ipt-fc, ${lFc})`,
-      bdc: "var(--bh-vvd-ipt-bdc, #101010)",
-      on: "var(--bh-vvd-ipt-on, #101010)",
-      on_fc: "var(--bh-vvd-ipt-on-fc, #f2f2f2)",
+      bdc: "var(--bh-vvd-ipt-bdc, #000)",
+      on: "var(--bh-vvd-ipt-on, #0d0015)",
+      on_fc: `var(--bh-vvd-ipt-on-fc, #fff)`,
       off: "var(--bh-vvd-ipt-off, #fff)",
       knob: "var(--bh-vvd-ipt-knob, #fff)",
     },
@@ -281,12 +284,12 @@ const CssVar = {
       anchor: "var(--bh-rvs-nav-anchor, #00f)",
     },
     ipt: {
-      bgc: "var(--bh-rvs-ipt-bgc, #fafafa)",
-      fc: "var(--bh-rvs-ipt-fc, #1e1e1e)",
-      bdc: "var(--bh-rvs-ipt-bdc, #c8c8cb)",
-      on: "var(--bh-rvs-ipt-on, #e8e8ec)",
-      off: "var(--bh-rvs-ipt-off, #fff)",
-      knob: "var(--bh-rvs-ipt-knob, #fff)",
+      bgc: "var(--bh-rvs-ipt-bgc, #3d3d3f)",
+      fc: `var(--bh-rvs-ipt-fc, ${dFc})`,
+      bdc: "var(--bh-rvs-ipt-bdc, #707073)",
+      on: "var(--bh-rvs-ipt-on, #606063)",
+      off: "var(--bh-rvs-ipt-off, #3d3d3f)",
+      knob: "var(--bh-rvs-ipt-knob, #303033)",
     },
     btn: {
       base: {
@@ -579,121 +582,121 @@ export const CssDarkVar = `
 --bh-mask-ifc: rgba(95,95,167,1);
 --bh-hvr-bgc: rgba(89,89,89,0.5);
 --bh-act-bgc: rgba(89,89,89,0.3);
---bh-def-fc: #${dFc};
+--bh-def-fc: ${dFc};
 --bh-def-bgc: ${dBc};
 --bh-def-bdc: #707073;
 --bh-def-head-bgc: #303033;
---bh-def-head-fc: #${dFc};
+--bh-def-head-fc: ${dFc};
 --bh-def-head-bdc: #4c4c4f;
 --bh-def-nav-bgc: #202022;
---bh-def-nav-fc: #${dFc};
+--bh-def-nav-fc: ${dFc};
 --bh-def-ipt-bgc: #3d3d3f;
---bh-def-ipt-fc: #${dFc};
+--bh-def-ipt-fc: ${dFc};
 --bh-def-ipt-bdc: #707073;
 --bh-def-ipt-on: #606063;
 --bh-def-ipt-off: #3d3d3f;
 --bh-def-ipt-knob: #303033;
 --bh-def-btn-base-bgc: #58585a;
---bh-def-btn-base-fc: #${dFc};
+--bh-def-btn-base-fc: ${dFc};
 --bh-def-btn-base-bdc: #58585a;
 --bh-def-btn-hvr-bgc: #636366;
---bh-def-btn-hvr-fc: #${dFc};
+--bh-def-btn-hvr-fc: ${dFc};
 --bh-def-btn-hvr-bdc: #636366;
 --bh-def-btn-act-bgc: #4c4c4f;
---bh-def-btn-act-fc: #${dFc};
+--bh-def-btn-act-fc: ${dFc};
 --bh-def-btn-act-bdc: #4c4c4f;
 --bh-pri-fc: #30b030;
 --bh-pri-bgc: #393c39;
 --bh-pri-bdc: #307330;
 --bh-pri-head-bgc: #303f30;
---bh-pri-head-fc: #${dFc};
+--bh-pri-head-fc: ${dFc};
 --bh-pri-head-bdc: #475c47;
 --bh-pri-nav-bgc: linear-gradient(to bottom right, #043904, #0b410b);
---bh-pri-nav-fc: #${dFc};
+--bh-pri-nav-fc: ${dFc};
 --bh-pri-ipt-bgc: #3d3d3f;
---bh-pri-ipt-fc: #${dFc};
+--bh-pri-ipt-fc: ${dFc};
 --bh-pri-ipt-bdc: #307330;
 --bh-pri-ipt-on: #255125;
 --bh-pri-ipt-off: #3d3d3f;
 --bh-pri-ipt-knob: #303033;
 --bh-pri-btn-base-bgc: #285028;
---bh-pri-btn-base-fc: #${dFc};
+--bh-pri-btn-base-fc: ${dFc};
 --bh-pri-btn-base-bdc: #285028;
 --bh-pri-btn-hvr-bgc: #315b31;
---bh-pri-btn-hvr-fc: #${dFc};
+--bh-pri-btn-hvr-fc: ${dFc};
 --bh-pri-btn-hvr-bdc: #315b31;
 --bh-pri-btn-act-bgc: #214921;
---bh-pri-btn-act-fc: #${dFc};
+--bh-pri-btn-act-fc: ${dFc};
 --bh-pri-btn-act-bdc: #234a23;
 --bh-sec-fc: #508aff;
 --bh-sec-bgc: #393942;
 --bh-sec-bdc: #4052aa;
 --bh-sec-head-bgc: #303256;
---bh-sec-head-fc: #${dFc};
+--bh-sec-head-fc: ${dFc};
 --bh-sec-head-bdc: #474767;
 --bh-sec-nav-bgc: linear-gradient(to bottom right, #14243e, #1b2b45);
---bh-sec-nav-fc: #${dFc};
+--bh-sec-nav-fc: ${dFc};
 --bh-sec-ipt-bgc: #3d3d3f;
---bh-sec-ipt-fc: #${dFc};
+--bh-sec-ipt-fc: ${dFc};
 --bh-sec-ipt-bdc: #4052aa;
 --bh-sec-ipt-on: #24296f;
 --bh-sec-ipt-off: #3d3d3f;
 --bh-sec-ipt-knob: #303033;
 --bh-sec-btn-base-bgc: #333c6a;
---bh-sec-btn-base-fc: #${dFc};
+--bh-sec-btn-base-fc: ${dFc};
 --bh-sec-btn-base-bdc: #333c6a;
 --bh-sec-btn-hvr-bgc: #39437c;
---bh-sec-btn-hvr-fc: #${dFc};
+--bh-sec-btn-hvr-fc: ${dFc};
 --bh-sec-btn-hvr-bdc: #39437c;
 --bh-sec-btn-act-bgc: #2e3765;
---bh-sec-btn-act-fc: #${dFc};
+--bh-sec-btn-act-fc: ${dFc};
 --bh-sec-btn-act-bdc: #2e3765;
 --bh-wrn-fc: #c0c01e;
 --bh-wrn-bgc: #3a3a30;
 --bh-wrn-bdc: #7f7f10;
 --bh-wrn-head-bgc: #38360a;
---bh-wrn-head-fc: #${dFc};
+--bh-wrn-head-fc: ${dFc};
 --bh-wrn-head-bdc: #555503;
 --bh-wrn-nav-bgc: linear-gradient(to bottom right, #353000, #3c3700);
---bh-wrn-nav-fc: #${dFc};
+--bh-wrn-nav-fc: ${dFc};
 --bh-wrn-nav-anchor: #9bf;
 --bh-wrn-ipt-bgc: #3d3d3f;
---bh-wrn-ipt-fc: #${dFc};
+--bh-wrn-ipt-fc: ${dFc};
 --bh-wrn-ipt-bdc: #7f7f10;
 --bh-wrn-ipt-on: #565000;
 --bh-wrn-ipt-off: #3d3d3f;
 --bh-wrn-ipt-knob: #303033;
 --bh-wrn-btn-base-bgc: #4f4c00;
---bh-wrn-btn-base-fc: #${dFc};
+--bh-wrn-btn-base-fc: ${dFc};
 --bh-wrn-btn-base-bdc: #4f4c00;
 --bh-wrn-btn-hvr-bgc: #5c5900;
---bh-wrn-btn-hvr-fc: #${dFc};
+--bh-wrn-btn-hvr-fc: ${dFc};
 --bh-wrn-btn-hvr-bdc: #5c5900;
 --bh-wrn-btn-act-bgc: #494400;
---bh-wrn-btn-act-fc: #${dFc};
+--bh-wrn-btn-act-fc: ${dFc};
 --bh-wrn-btn-act-bdc: #494400;
 --bh-dng-fc: #ef4a57;
 --bh-dng-bgc: #423535;
 --bh-dng-bdc: #b02525;
 --bh-dng-head-bgc: #503030;
---bh-dng-head-fc: #${dFc};
+--bh-dng-head-fc: ${dFc};
 --bh-dng-head-bdc: #724040;
 --bh-dng-nav-bgc: linear-gradient(to bottom right, #402424, #472b2b);
---bh-dng-nav-fc: #${dFc};
+--bh-dng-nav-fc: ${dFc};
 --bh-dng-ipt-bgc: #3d3d3f;
---bh-dng-ipt-fc: #${dFc};
+--bh-dng-ipt-fc: ${dFc};
 --bh-dng-ipt-bdc: #b02525;
 --bh-dng-ipt-on: #5f2020;
 --bh-dng-ipt-off: #3d3d3f;
 --bh-dng-ipt-knob: #303033;
 --bh-dng-btn-base-bgc: #6f3437;
---bh-dng-btn-base-fc: #${dFc};
+--bh-dng-btn-base-fc: ${dFc};
 --bh-dng-btn-base-bdc: #6f3437;
 --bh-dng-btn-hvr-bgc: #7f3a3e;
---bh-dng-btn-hvr-fc: #${dFc};
+--bh-dng-btn-hvr-fc: ${dFc};
 --bh-dng-btn-hvr-bdc: #7f3a3e;
 --bh-dng-btn-act-bgc: #692e31;
---bh-dng-btn-act-fc: #${dFc};
+--bh-dng-btn-act-fc: ${dFc};
 --bh-dng-btn-act-bdc: #692e31;
 --bh-dpr-fc: #707070;
 --bh-dpr-bgc: #393939;
@@ -725,25 +728,25 @@ export const CssDarkVar = `
 --bh-week_sat-fc: #d0d0ff;
 --bh-week_sat-bgc: #32323b;
 --bh-week_sat-bdc: #474767;
---bh-lv_header-fc: #${dFc};
+--bh-lv_header-fc: ${dFc};
 --bh-lv_header-bgc: #303030;
 --bh-lv_header-bdc: #787878;
 --bh-lv_header-sort: #888888;
---bh-lv_cell-ft_b: #${dFc};
---bh-lv_cell-ft_d: #${dFc};
+--bh-lv_cell-ft_b: ${dFc};
+--bh-lv_cell-ft_d: ${dFc};
 --bh-lv_cell-bg_b: #404040;
 --bh-lv_cell-bg_d: #3c3c3c;
 --bh-lv_cell-bd_b: #616161;
 --bh-lv_cell-bd_d: #5c5c5c;
---bh-lv_cell-hvr-row-fc: #${dFc};
+--bh-lv_cell-hvr-row-fc: ${dFc};
 --bh-lv_cell-hvr-row-bgc: #333336;
 --bh-lv_cell-hvr-row-bdc: #575757;
---bh-lv_cell-hvr-cell-fc: #${dFc};
+--bh-lv_cell-hvr-cell-fc: ${dFc};
 --bh-lv_cell-hvr-cell-bgc: #28282a;
 --bh-lv_cell-hvr-cell-bdc: #505050;
---bh-lv_cell-act-fc: #${dFc};
+--bh-lv_cell-act-fc: ${dFc};
 --bh-lv_cell-act-bgc: #202022;
---bh-lv_cell-act_hvr-fc: #${dFc};
+--bh-lv_cell-act_hvr-fc: ${dFc};
 --bh-lv_cell-act_hvr-bgc: #101011;
 `;
 
