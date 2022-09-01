@@ -88,9 +88,7 @@ const SandBoxPage: NextPage = () => {
                 color: v.btn.base.fc,
               }}
             >
-              {v.btn.base.bgc}<br/>
-              {v.btn.base.bdc}<br/>
-              {v.btn.base.fc}
+              <Label>base</Label>
             </div>
             <div
               className="box"
@@ -100,9 +98,7 @@ const SandBoxPage: NextPage = () => {
                 color: v.btn.hvr.fc,
               }}
             >
-              {v.btn.hvr.bgc}<br/>
-              {v.btn.hvr.bdc}<br/>
-              {v.btn.hvr.fc}
+              <Label>hover</Label>
             </div>
             <div
               className="box"
@@ -112,9 +108,7 @@ const SandBoxPage: NextPage = () => {
                 color: v.btn.act.fc,
               }}
             >
-              {v.btn.act.bgc}<br/>
-              {v.btn.act.bdc}<br/>
-              {v.btn.act.fc}
+              <Label>active</Label>
             </div>
           </FlexBox>
         );

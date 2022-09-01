@@ -167,17 +167,17 @@ const CssVar = {
     btn: {
       base: {
         bgc: "var(--bh-dul-btn-base-bgc, #d0d0d5)",
-        fc: `var(--bh-dul-btn-base-fc, ${lFc})`,
+        fc: `var(--bh-dul-btn-base-fc, #373737)`,
         bdc: "var(--bh-dul-btn-base-bdc, #d0d0d5)",
       },
       hvr: {
         bgc: "var(--bh-dul-btn-hvr-bgc, #c1c1c6)",
-        fc: `var(--bh-dul-btn-hvr-fc, ${lFc})`,
+        fc: `var(--bh-dul-btn-hvr-fc, #373737)`,
         bdc: "var(--bh-dul-btn-hvr-bdc, #c1c1c6)",
       },
       act: {
         bgc: "var(--bh-dul-btn-act-bgc, #d6d6da)",
-        fc: `var(--bh-dul-btn-act-fc, ${lFc})`,
+        fc: `var(--bh-dul-btn-act-fc, #373737)`,
         bdc: "var(--bh-dul-btn-act-bdc, #d6d6da)",
       },
     },
@@ -207,19 +207,19 @@ const CssVar = {
     },
     btn: {
       base: {
-        bgc: "var(--bh-pur-btn-base-bgc, #d0d0d5)",
+        bgc: "var(--bh-pur-btn-base-bgc, #fff)",
         fc: `var(--bh-pur-btn-base-fc, ${lFc})`,
-        bdc: "var(--bh-pur-btn-base-bdc, #d0d0d5)",
+        bdc: "var(--bh-pur-btn-base-bdc, #fff)",
       },
       hvr: {
-        bgc: "var(--bh-pur-btn-hvr-bgc, #c1c1c6)",
+        bgc: "var(--bh-pur-btn-hvr-bgc, #e8e8e8)",
         fc: `var(--bh-pur-btn-hvr-fc, ${lFc})`,
-        bdc: "var(--bh-pur-btn-hvr-bdc, #c1c1c6)",
+        bdc: "var(--bh-pur-btn-hvr-bdc, #e8e8e8)",
       },
       act: {
-        bgc: "var(--bh-pur-btn-act-bgc, #d6d6da)",
+        bgc: "var(--bh-pur-btn-act-bgc, #f3f3f3)",
         fc: `var(--bh-pur-btn-act-fc, ${lFc})`,
-        bdc: "var(--bh-pur-btn-act-bdc, #d6d6da)",
+        bdc: "var(--bh-pur-btn-act-bdc, #f3f3f3)",
       },
     },
   } as CssColorVar,
@@ -249,19 +249,19 @@ const CssVar = {
     },
     btn: {
       base: {
-        bgc: "var(--bh-vvd-btn-base-bgc, #303030)",
+        bgc: "var(--bh-vvd-btn-base-bgc, #000008)",
         fc: "var(--bh-vvd-btn-base-fc, #f2f2f2)",
-        bdc: "var(--bh-vvd-btn-base-bdc, #303030)",
+        bdc: "var(--bh-vvd-btn-base-bdc, #000008)",
       },
       hvr: {
-        bgc: "var(--bh-vvd-btn-hvr-bgc, #003)",
+        bgc: "var(--bh-vvd-btn-hvr-bgc, #404048)",
         fc: "var(--bh-vvd-btn-hvr-fc, #f2f2f2)",
-        bdc: "var(--bh-vvd-btn-hvr-bdc, #003)",
+        bdc: "var(--bh-vvd-btn-hvr-bdc, #404048)",
       },
       act: {
-        bgc: "var(--bh-vvd-btn-act-bgc, #3a3a3e)",
+        bgc: "var(--bh-vvd-btn-act-bgc, #202028)",
         fc: "var(--bh-vvd-btn-act-fc, #f2f2f2)",
-        bdc: "var(--bh-vvd-btn-act-bdc, #3a3a3e)",
+        bdc: "var(--bh-vvd-btn-act-bdc, #202028)",
       },
     },
   } as CssColorVar,
@@ -290,19 +290,19 @@ const CssVar = {
     },
     btn: {
       base: {
-        bgc: "var(--bh-rvs-btn-base-bgc, #d0d0d5)",
-        fc: "var(--bh-rvs-btn-base-fc, #1e1e1e)",
-        bdc: "var(--bh-rvs-btn-base-bdc, #d0d0d5)",
+        bgc: "var(--bh-rvs-btn-base-bgc, #58585a)",
+        fc: `var(--bh-rvs-btn-base-fc, ${dFc})`,
+        bdc: "var(--bh-rvs-btn-base-bdc, #58585a)",
       },
       hvr: {
-        bgc: "var(--bh-rvs-btn-hvr-bgc, #c1c1c6)",
-        fc: "var(--bh-rvs-btn-hvr-fc, #1e1e1e)",
-        bdc: "var(--bh-rvs-btn-hvr-bdc, #c1c1c6)",
+        bgc: "var(--bh-rvs-btn-hvr-bgc, #636366)",
+        fc: `var(--bh-rvs-btn-hvr-fc, ${dFc})`,
+        bdc: "var(--bh-rvs-btn-hvr-bdc, #636366)",
       },
       act: {
-        bgc: "var(--bh-rvs-btn-act-bgc, #d6d6da)",
-        fc: "var(--bh-rvs-btn-act-fc, #1e1e1e)",
-        bdc: "var(--bh-rvs-btn-act-bdc, #d6d6da)",
+        bgc: "var(--bh-rvs-btn-act-bgc, #4c4c4f)",
+        fc: `var(--bh-rvs-btn-act-fc, ${dFc})`,
+        bdc: "var(--bh-rvs-btn-act-bdc, #4c4c4f)",
       },
     },
   } as CssColorVar,
