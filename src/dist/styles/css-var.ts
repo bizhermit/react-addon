@@ -19,16 +19,8 @@ const colors = [
 ] as const;
 export type Color = typeof colors[number];
 export type ColorType = "base" | "head" | "nav";
-
 export type Size = "xs" | "s" | "m" | "l" | "xl";
-
 export type FitToOuter = "f" | "x" | "y" | "fx" | "fy" | "none";
-
-type CssVarCBDBase = {
-  c: string; // color
-  b: string; // bright
-  d: string; // dark
-};
 
 type CssColorVar = {
   fc: string;
@@ -80,6 +72,7 @@ const lBc = "#f4f4fb";
 const lBdc = "#909099";
 const dFc = "#f2f2f2";
 const dBc = "#39393b";
+const dBdc = "#69696a";
 
 const CssVar = {
   size: "var(--bh-size, 30px)", // base size
@@ -719,7 +712,7 @@ const CssVar = {
 export const CssDarkVar = `
 --bh-bgc: ${dBc};
 --bh-fc: ${dFc};
---bh-bdc: #69696a;
+--bh-bdc: ${dBdc};
 --bh-anchor: #9bf;
 --bh-sdw_c: rgba(0,0,0,0.9);
 --bh-sdw_b: rgba(80,80,80,0.5);
@@ -898,12 +891,6 @@ export const CssDarkVar = `
 
 export const cssParamsSize = () => typeof document === "undefined" ? 30 : Number((getComputedStyle(document.documentElement).getPropertyValue("--bh-size") || "30px").replace("px", ""));
 
-const cvxBg = (cv?: CssVarCBDBase) => {
-  return `linear-gradient(to bottom right, ${cv.b}, ${cv.d})`;
-};
-const ccvBg = (cv?: CssVarCBDBase) => {
-  return `linear-gradient(to bottom right, ${cv.d}, ${cv.b})`;
-};
 const cvxSd = (level: number) => {
   if (level === 0) return "unset";
   return `0px ${level*0.75}px ${level*2}px -1px ${CssVar.sdw.c}`;
@@ -933,8 +920,6 @@ export const CssPV = {
   ba: "box-sizing:border-box;position:absolute;content:\"\";",
   inactOpacity: "opacity:0.6;",
   dropSd,
-  cvxBg,
-  ccvBg,
   cvxSd,
   ccvSd,
   cvxSdBase: cvxSd(2),
