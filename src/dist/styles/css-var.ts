@@ -72,7 +72,7 @@ const lBc = "#f4f4fb";
 const lBdc = "#909099";
 const dFc = "#f2f2f2";
 const dBc = "#39393b";
-const dBdc = "#69696a";
+const dBdc = "#808084";
 
 const CssVar = {
   size: "var(--bh-size, 30px)", // base size
@@ -87,7 +87,7 @@ const CssVar = {
   anchor: "var(--bh-anchor, #00f)", // anchor color
   bsize: "var(--bh-bsize, 1Q)", // border width
   sdw: { // shadow
-    c: "var(--bh-sdw_c, rgba(20,20,20,0.3))",
+    c: "var(--bh-sdw_c, rgba(105,105,105,0.75))",
     b: "var(--bh-sdw_b, rgba(224,224,229,0.2))",
     d: "var(--bh-sdw_d, rgba(0,0,0,0.3))",
   },
@@ -714,7 +714,7 @@ export const CssDarkVar = `
 --bh-fc: ${dFc};
 --bh-bdc: ${dBdc};
 --bh-anchor: #9bf;
---bh-sdw_c: rgba(0,0,0,0.9);
+--bh-sdw_c: rgba(13,0,15,0.75);
 --bh-sdw_b: rgba(80,80,80,0.5);
 --bh-sdw_d: rgba(0,0,0,0.65);
 --bh-mask-bgc: rgba(60,60,63,0.6);
@@ -723,16 +723,18 @@ export const CssDarkVar = `
 --bh-act-bgc: rgba(89,89,89,0.3);
 --bh-def-fc: ${dFc};
 --bh-def-bgc: ${dBc};
---bh-def-bdc: #707073;
---bh-def-head-bgc: #303033;
+--bh-def-bdc: ${dBdc};
+--bh-def-head-bgc: #2a2c2f;
 --bh-def-head-fc: ${dFc};
---bh-def-head-bdc: #4c4c4f;
---bh-def-nav-bgc: #202022;
+--bh-def-head-bdc: #909094;
+--bh-def-nav-bgc: #1b2328;
 --bh-def-nav-fc: ${dFc};
---bh-def-ipt-bgc: #3d3d3f;
+--bh-def-nav-bdc: #c0c0c2;
+--bh-def-ipt-bgc: #3e3e41;
 --bh-def-ipt-fc: ${dFc};
---bh-def-ipt-bdc: #707073;
---bh-def-ipt-on: #606063;
+--bh-def-ipt-bdc: ${dBdc};
+--bh-def-ipt-on: #585a6a;
+--bh-def-ipt-on-fc: ${dFc};
 --bh-def-ipt-off: #3d3d3f;
 --bh-def-ipt-knob: #303033;
 --bh-def-btn-base-bgc: #58585a;
