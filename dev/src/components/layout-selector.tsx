@@ -13,6 +13,7 @@ const LayoutBox: FC = () => {
     <Row $fill $middle>
       <LayoutColorRadioButtons $unset style={{ marginRight: 0 }} $changed={(v) => {
         layout.setColor(v.after);
+        if (v.after == null) return;
         electron?.setLayoutColor(v.after);
       }} />
       {/* <LayoutColorSelectBox $unset $notInputText style={{ marginRight: 0, width: 100 }} $changed={(v) => {
@@ -22,6 +23,7 @@ const LayoutBox: FC = () => {
       <Label>/</Label>
       <LayoutDesignRadioButtons $unset style={{ marginRight: 0 }} $changed={(v) => {
         layout.setDesign(v.after);
+        if (v.after == null) return;
         electron?.setLayoutDesign(v.after);
       }} />
       {/* <LayoutDesignSelectBox $unset $notInputText style={{ width: 150 }} $changed={(v) => {
