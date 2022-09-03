@@ -2,7 +2,7 @@ import React, { cloneElement, FC, HTMLAttributes, ReactElement, ReactNode, useCa
 import { sbCn } from "../styles/core-style";
 import CssVar, { CssPV, FitToOuter, Color, switchDesign, ColorType, colorIterator } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
-import { attributesWithoutChildren, bdColorCn, bgColorCn, colorCn, fgColorCn } from "../utils/attributes";
+import { attributesWithoutChildren, bgColorCn, fgColorCn } from "../utils/attributes";
 import { _HookSetter } from "../utils/hook";
 import MaskContainer, { MaskHook, MaskProps, useMask } from "../popups/mask";
 

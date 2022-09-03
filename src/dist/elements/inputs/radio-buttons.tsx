@@ -8,7 +8,7 @@ import JsxStyle from "../../styles/jsx-style";
 import { pressPositiveKey } from "../../utils/dom";
 import { _HookSetter } from "../../utils/hook";
 import { inputAttributes, InputHook, inputMode } from "../../utils/input";
-import { iconCn } from "../icon";
+import { iconCn, varIconFc } from "../icon";
 import Label, { labelCn } from "../label";
 
 const cn = "bh-rdo";
@@ -337,7 +337,7 @@ ${colorIterator((_s, v, qs) => `
   color: ${v.fgc};
 }
 .${cn}-item${qs} .${iconCn} {
-  --bh-icon-fc: ${v.fgc};
+  ${varIconFc}: ${v.fgc};
 }
 .${cn}[data-hrb="true"][data-flow="row"][data-m="e"] > .${cn}-item${qs}::before {
   box-shadow: 0 -4px 0 -2px ${v.ipt.off} inset;
@@ -432,14 +432,14 @@ ${colorIterator((_s, v, qs) => `
   color: ${v.fgc};
 }
 .${cn}-item${qs} .${iconCn} {
-  --bh-icon-fc: ${v.fgc};
+  ${varIconFc}: ${v.fgc};
 }
 .${cn}[data-hrb="true"] > .${cn}-item${qs}[data-selected="true"] .${cn}-lbl,
 .${cn}[data-hrb="true"] > .${cn}-item${qs}[data-selected="true"] .${labelCn} {
   color: ${v.ipt.fgc};
 }
 .${cn}[data-hrb="true"] > .${cn}-item${qs}[data-selected="true"] .${iconCn} {
-  --bh-icon-fc: ${v.ipt.fgc};
+  ${varIconFc}: ${v.ipt.fgc};
 }
 .${cn}[data-hrb="true"] > .${cn}-item${qs}[data-selected="true"]::before {
   background: ${v.ipt.on};

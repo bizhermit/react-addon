@@ -6,7 +6,7 @@ import JsxStyle from "../styles/jsx-style";
 import { attributesWithoutChildren, ftoCn } from "../utils/attributes";
 import { pressPositiveKey } from "../utils/dom";
 import { _HookSetter } from "../utils/hook";
-import Icon, { iconCn, IconImage } from "./icon";
+import Icon, { iconCn, IconImage, varIconBc, varIconFc } from "./icon";
 import Label from "./label";
 
 const cn = "bh-acd";
@@ -278,8 +278,8 @@ ${colorIterator((_s, v, qs) => `
   color: ${v.btn.base.fgc};
 }
 .${cn}${qs} > .${cn}-header .${iconCn} {
-  --bh-icon-fc: ${v.btn.base.fgc};
-  --bh-icon-bc: ${v.btn.base.bgc};
+  ${varIconFc}: ${v.btn.base.fgc};
+  ${varIconBc}: ${v.btn.base.bgc};
 }
 .${cn}${qs}:not([data-disabled="true"]) > .${cn}-header:hover {
   background: ${v.btn.hvr.bgc};
@@ -287,8 +287,8 @@ ${colorIterator((_s, v, qs) => `
   border-color: ${v.btn.hvr.bdc};
 }
 .${cn}${qs}:not([data-disabled="true"]) > .${cn}-header:hover .${iconCn} {
-  --bh-icon-fc: ${v.btn.hvr.fgc};
-  --bh-icon-bc: ${v.btn.hvr.bgc};
+  ${varIconFc}: ${v.btn.hvr.fgc};
+  ${varIconBc}: ${v.btn.hvr.bgc};
 }
 ${switchDesign(design, {
 flat: `
@@ -298,8 +298,8 @@ flat: `
   border-color: ${v.btn.act.bdc};
 }
 .${cn}${qs}:not([data-disabled="true"]) > .${cn}-header:hover:active .${iconCn} {
-  --bh-icon-fc: ${v.btn.act.fgc};
-  --bh-icon-bc: ${v.btn.act.bgc};
+  ${varIconFc}: ${v.btn.act.fgc};
+  ${varIconBc}: ${v.btn.act.bgc};
 }`})}
 .${cn}${qs} > .${cn}-body {
   border-color: ${v.bdc};
@@ -344,7 +344,7 @@ ${colorIterator((_s, v, qs) => `
   color: ${v.fgc};
 }
 .${cn}${qs} > .${cn}-header .${iconCn} {
-  --bh-icon-fc: ${v.fgc};
+  ${varIconFc}: ${v.fgc};
 }
 `).join("")}
 `})}
