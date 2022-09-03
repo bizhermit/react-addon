@@ -772,7 +772,31 @@ export const CssDarkVar = `
 --bh-dul-btn-act-fc: #cfcfd2;
 --bh-dul-btn-act-bdc: #404042;
 
-
+--bh-rvs-fc: ${lFc};
+--bh-rvs-bgc: ${lBc};
+--bh-rvs-bdc: ${lBdc};
+--bh-rvs-head-bgc: #e4e4f1;
+--bh-rvs-head-fc: ${lFc};
+--bh-rvs-head-bdc: #888890;
+--bh-rvs-nav-bgc: #343a40;
+--bh-rvs-nav-fc: #f2f2f2;
+--bh-rvs-nav-bdc: #d8d8e0;
+--bh-rvs-ipt-bgc: #fafafa;
+--bh-rvs-ipt-fc: ${lFc};
+--bh-rvs-ipt-bdc: ${lBdc};
+--bh-rvs-ipt-on: #bcc7d7;
+--bh-rvs-ipt-on-fc: ${lFc};
+--bh-rvs-ipt-off: #fff;
+--bh-rvs-ipt-knob: #fff;
+--bh-rvs-btn-base-bgc: #787880;
+--bh-rvs-btn-base-fc: #f2f2f2;
+--bh-rvs-btn-base-bdc: #787880;
+--bh-rvs-btn-hvr-bgc: #66666d;
+--bh-rvs-btn-hvr-fc: #f2f2f2;
+--bh-rvs-btn-hvr-bdc: #66666d;
+--bh-rvs-btn-act-bgc: #82828a;
+--bh-rvs-btn-act-fc: #f2f2f2;
+--bh-rvs-btn-act-bdc: #82828a;
 --bh-pri-fc: #30b030;
 --bh-pri-bgc: #393c39;
 --bh-pri-bdc: #307330;
