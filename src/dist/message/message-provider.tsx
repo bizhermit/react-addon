@@ -745,12 +745,12 @@ ${colorIterator((_s, v, qs) => `
   background: ${CssVar.bgc};
 }
 .${cn}-hist_item${qs} .${cn}-hist_item_title {
-  color: ${v.fc};
+  color: ${v.fgc};
 }
 .${cn}-popup_item${qs} {
   background: ${v.bgc};
   border-color: ${v.bdc};
-  color: ${v.fc};
+  color: ${v.fgc};
 }
 `).join("")}
 `})}

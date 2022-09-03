@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { colorIterator, CssPV } from "../../../react-addon/dist/styles/css-var";
+import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 import FlexBox from "../../../react-addon/dist/elements/flex-box";
 import Label from "../../../react-addon/dist/elements/label";
 import HLine from "../../../react-addon/dist/elements/line";
@@ -34,7 +34,7 @@ const SandBoxPage: NextPage = () => {
               style={{
                 background: v.ipt.bgc,
                 borderColor: v.ipt.bdc,
-                color: v.ipt.fc
+                color: v.ipt.fgc
               }}
             >
               input
@@ -44,7 +44,7 @@ const SandBoxPage: NextPage = () => {
               style={{
                 background: v.ipt.on,
                 borderColor: v.ipt.bdc,
-                color: v.ipt.on_fc ?? v.ipt.fc
+                color: v.ipt.onf
               }}
             >
               on
@@ -54,7 +54,7 @@ const SandBoxPage: NextPage = () => {
               style={{
                 background: v.ipt.off,
                 borderColor: v.ipt.bdc,
-                color: v.ipt.fc
+                color: v.ipt.fgc
               }}
             >
               off
@@ -62,9 +62,9 @@ const SandBoxPage: NextPage = () => {
             <div
               className="box"
               style={{
-                background: v.ipt.knob,
+                background: v.ipt.knb,
                 borderColor: v.ipt.bdc,
-                color: v.ipt.fc
+                color: v.ipt.fgc
               }}
             >
               knob
@@ -75,7 +75,7 @@ const SandBoxPage: NextPage = () => {
               style={{
                 background: v.btn.base.bgc,
                 borderColor: v.btn.base.bdc,
-                color: v.btn.base.fc,
+                color: v.btn.base.fgc,
               }}
             >
               base
@@ -85,7 +85,7 @@ const SandBoxPage: NextPage = () => {
               style={{
                 background: v.btn.hvr.bgc,
                 borderColor: v.btn.hvr.bdc,
-                color: v.btn.hvr.fc,
+                color: v.btn.hvr.fgc,
               }}
             >
               hover
@@ -95,7 +95,7 @@ const SandBoxPage: NextPage = () => {
               style={{
                 background: v.btn.act.bgc,
                 borderColor: v.btn.act.bdc,
-                color: v.btn.act.fc,
+                color: v.btn.act.fgc,
               }}
             >
               active

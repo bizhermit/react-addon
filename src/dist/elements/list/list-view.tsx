@@ -2705,7 +2705,7 @@ c: `
 .${cn}-header .${cn}-cell,
 .${cn}-footer .${cn}-cell {
   background: ${CssVar.lv.header.bgc};
-  color: ${CssVar.lv.header.fc};
+  color: ${CssVar.lv.header.fgc};
   border-right: 1px solid ${CssVar.lv.header.bdc};
 }
 .${cn}-header .${cn}-cell-m_s .${cn}-row:not(:last-child),
@@ -2732,23 +2732,23 @@ c: `
 }
 .${cn}-body .${cn}-row:hover .${cn}-cell {
   background: ${CssVar.lv.cell.hvr.row.bgc};
-  color: ${CssVar.lv.cell.hvr.row.fc};
+  color: ${CssVar.lv.cell.hvr.row.fgc};
   border-right-color: ${CssVar.lv.cell.hvr.row.bdc};
 }
 .${cn}-body .${cn}-row:hover .${cn}-cell:hover {
   background: ${CssVar.lv.cell.hvr.cell.bgc};
-  color: ${CssVar.lv.cell.hvr.cell.fc};
+  color: ${CssVar.lv.cell.hvr.cell.fgc};
   border-right-color: ${CssVar.lv.cell.hvr.cell.bdc};
 }
 .${cn}-body[data-select="row"] .${cn}-row[data-selected] .${cn}-cell,
 .${cn}-body[data-select="cell"] .${cn}-cell[data-selected] {
   background: ${CssVar.lv.cell.act.bgc};
-  color: ${CssVar.lv.cell.act.fc};
+  color: ${CssVar.lv.cell.act.fgc};
 }
 .${cn}-body[data-select="row"] .${cn}-row[data-selected] .${cn}-cell:hover,
 .${cn}-body[data-select="cell"] .${cn}-cell[data-selected]:hover {
   background: ${CssVar.lv.cell.act.hvr.bgc};
-  color: ${CssVar.lv.cell.act.hvr.fc};
+  color: ${CssVar.lv.cell.act.hvr.fgc};
 }
 .${cn}-resizer,
 .${cn}-cell:active + .${cn}-cell .${cn}-resizer {

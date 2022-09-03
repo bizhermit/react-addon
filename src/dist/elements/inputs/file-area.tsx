@@ -236,11 +236,11 @@ c: `
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-drop_area {
   border-color: ${v.ipt.bdc};
-  color: ${v.fc};
+  color: ${v.fgc};
   background: ${v.ipt.bgc};
 }
 .${cn}${qs} .${iconCn} {
-  --bh-icon-fc: ${v.fc};
+  --bh-icon-fc: ${v.fgc};
 }
 `).join("")}
 .${cn}[data-m="d"] > .${cn}-drop_area {

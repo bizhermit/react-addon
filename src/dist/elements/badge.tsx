@@ -68,7 +68,7 @@ const BadgeStyle = <JsxStyle id={cn} depsDesign>{({ design }) => `
   align-items: center;
   cursor: default;
   background: ${CssVar.bgc};
-  color: ${CssVar.fc};
+  color: ${CssVar.fgc};
   overflow: hidden;
   width: fit-content;
   user-select: none;
@@ -176,29 +176,29 @@ width: calc(${CssVar.size} * 0.9);
 ${colorIterator((_c, v, s) => `
 .${cn}${s}[data-colortype="base"] {
   background: ${v.bgc};
-  color: ${v.fc};
+  color: ${v.fgc};
   border-color: ${v.bdc};
 }
 .${cn}${s}[data-colortype="base"] .${iconCn} {
-  ${varIconFc}: ${v.fc};
+  ${varIconFc}: ${v.fgc};
   ${varIconBc}: ${v.bgc};
 }
 .${cn}${s}[data-colortype="head"] {
   background: ${v.head.bgc};
-  color: ${v.head.fc};
+  color: ${v.head.fgc};
   border-color: ${v.head.bdc};
 }
 .${cn}${s}[data-colortype="head"] .${iconCn} {
-  ${varIconFc}: ${v.head.fc};
+  ${varIconFc}: ${v.head.fgc};
   ${varIconBc}: ${v.head.bgc};
 }
 .${cn}${s}[data-colortype="nav"] {
   background: ${v.nav.bgc};
-  color: ${v.nav.fc};
+  color: ${v.nav.fgc};
   border-color: ${v.nav.bdc};
 }
 .${cn}${s}[data-colortype="nav"] .${iconCn} {
-  ${varIconFc}: ${v.nav.fc};
+  ${varIconFc}: ${v.nav.fgc};
   ${varIconBc}: ${v.nav.bgc};
 }
 `).join("")}

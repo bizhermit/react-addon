@@ -275,30 +275,30 @@ flat: `
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-header {
   background: ${v.btn.base.bgc};
-  color: ${v.btn.base.fc};
+  color: ${v.btn.base.fgc};
 }
 .${cn}${qs} > .${cn}-header .${iconCn} {
-  --bh-icon-fc: ${v.btn.base.fc};
+  --bh-icon-fc: ${v.btn.base.fgc};
   --bh-icon-bc: ${v.btn.base.bgc};
 }
 .${cn}${qs}:not([data-disabled="true"]) > .${cn}-header:hover {
   background: ${v.btn.hvr.bgc};
-  color: ${v.btn.hvr.fc};
+  color: ${v.btn.hvr.fgc};
   border-color: ${v.btn.hvr.bdc};
 }
 .${cn}${qs}:not([data-disabled="true"]) > .${cn}-header:hover .${iconCn} {
-  --bh-icon-fc: ${v.btn.hvr.fc};
+  --bh-icon-fc: ${v.btn.hvr.fgc};
   --bh-icon-bc: ${v.btn.hvr.bgc};
 }
 ${switchDesign(design, {
 flat: `
 .${cn}${qs}:not([data-disabled="true"]) > .${cn}-header:hover:active {
   background: ${v.btn.act.bgc};
-  color: ${v.btn.act.fc};
+  color: ${v.btn.act.fgc};
   border-color: ${v.btn.act.bdc};
 }
 .${cn}${qs}:not([data-disabled="true"]) > .${cn}-header:hover:active .${iconCn} {
-  --bh-icon-fc: ${v.btn.act.fc};
+  --bh-icon-fc: ${v.btn.act.fgc};
   --bh-icon-bc: ${v.btn.act.bgc};
 }`})}
 .${cn}${qs} > .${cn}-body {
@@ -341,10 +341,10 @@ neumorphism: `
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-header {
-  color: ${v.fc};
+  color: ${v.fgc};
 }
 .${cn}${qs} > .${cn}-header .${iconCn} {
-  --bh-icon-fc: ${v.fc};
+  --bh-icon-fc: ${v.fgc};
 }
 `).join("")}
 `})}

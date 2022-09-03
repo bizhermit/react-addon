@@ -73,7 +73,7 @@ const Style = <JsxStyle id={cn}>{() => `
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-lbl {
-  color: ${v.fc};
+  color: ${v.fgc};
 }
 .${cn}${qs}[data-border="true"] {
   border: 1px solid ${v.bdc};

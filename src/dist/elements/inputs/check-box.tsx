@@ -145,7 +145,7 @@ fm: `
   background: ${v.ipt.off};
 }`})}
 .${cn}${qs} > .${cn}-body > .${checkBoxCn}[data-checked="true"]::after {
-  border-color: ${v.fc};
+  border-color: ${v.fgc};
 }
 .${cn}${qs} > .${cn}-body > .${checkBoxCn}[data-checked="true"][data-fill="true"]::before {
   background: ${v.ipt.bdc};
@@ -154,7 +154,7 @@ fm: `
   border-color: ${v.ipt.bgc};
 }
 .${cn}${qs} > .${cn}-body {
-  color: ${v.fc};
+  color: ${v.fgc};
 }`).join("")}
 `}</JsxStyle>;
 
@@ -196,7 +196,7 @@ neumorphism: `transition: box-shadow 0.1s;`
   transition: border-color 0.1s;
 }
 .${checkBoxCn}[data-checked="true"]::after {
-  border-color: ${CssVar.default.ipt.fc};
+  border-color: ${CssVar.default.ipt.fgc};
 }
 .${checkBoxCn}[data-m="e"] {
   cursor: pointer;

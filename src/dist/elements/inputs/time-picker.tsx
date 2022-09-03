@@ -404,7 +404,7 @@ fm: `
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body {
-  color: ${v.ipt.fc};
+  color: ${v.ipt.fgc};
 }
 .${cn}${qs}[data-m="e"] > .${cn}-body {
   background: ${v.ipt.bgc};
@@ -417,7 +417,7 @@ ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body > .${cn}-m > .${cn}-cell[data-selected="true"],
 .${cn}${qs} > .${cn}-body > .${cn}-s > .${cn}-cell[data-selected="true"] {
   background: ${v.ipt.on};
-  color: ${v.ipt.on_fc};
+  color: ${v.ipt.onf};
 }
 `).join("")}`,
 neumorphism: `
@@ -430,7 +430,7 @@ neumorphism: `
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body {
-  color: ${v.ipt.fc};
+  color: ${v.ipt.fgc};
 }
 .${cn}${qs}[data-m="e"] > .${cn}-body {
   background: ${v.ipt.bgc};
@@ -439,7 +439,7 @@ ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body > .${cn}-m > .${cn}-cell[data-selected="true"],
 .${cn}${qs} > .${cn}-body > .${cn}-s > .${cn}-cell[data-selected="true"] {
   background: ${v.ipt.on};
-  color: ${v.ipt.on_fc};
+  color: ${v.ipt.onf};
 }
 `).join("")}`})}
 `}</JsxStyle>;

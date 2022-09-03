@@ -133,7 +133,7 @@ const Style = <JsxStyle id={cn}>{() => `
   height: 4px;
   width: 50%;
   left: 25%;
-  background: ${CssVar.fc};
+  background: ${CssVar.fgc};
   opacity: 0.7;
 }
 .${cn}::before {

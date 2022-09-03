@@ -16,7 +16,7 @@ ${color==="dark" ? ` :root {${CssDarkVar}}` : ""}
 <JsxStyle id="bh-d_core" depsDesign>{({ design }) => `
 html {
   background: ${CssVar.bgc};
-  color: ${CssVar.fc};
+  color: ${CssVar.fgc};
   font-size: 62.5%;
 ${switchDesign(design, {
 flat: `
@@ -148,39 +148,39 @@ a:not(:disabled),
 ${colorIterator((c, v, qs) => `
 .${colorCn}${qs} {
   background: ${v.bgc};
-  color: ${v.fc};
+  color: ${v.fgc};
   --bh-bdc: ${v.bdc};
-  ${varAnchor}: ${v.anchor};
+  ${varAnchor}: ${v.anc};
 }
 .${colorCn}${qs}[data-border="true"] {
   border: 1px solid ${v.bdc};
 }
 .${colorCn}${qs} .${iconCn} {
   ${varIconBc}: ${v.bgc};
-  ${varIconFc}: ${v.fc};
+  ${varIconFc}: ${v.fgc};
 }
 .${colorCn}${qs}[data-colortype="head"] {
   background: ${v.head.bgc};
-  color: ${v.head.fc};
+  color: ${v.head.fgc};
   --bh-bdc: ${v.head.bdc};
-  ${varAnchor}: ${v.head.anchor};
+  ${varAnchor}: ${v.head.anc};
 }
 .${colorCn}${qs}[data-colortype="head"][data-border="true"] {
   border-color: ${v.head.bdc};
 }
 .${colorCn}${qs}[data-colortype="head"] .${iconCn} {
   ${varIconBc}: ${v.head.bgc};
-  ${varIconFc}: ${v.head.fc};
+  ${varIconFc}: ${v.head.fgc};
 }
 .${colorCn}${qs}[data-colortype="nav"] {
   background: ${v.nav.bgc};
-  color: ${v.nav.fc};
+  color: ${v.nav.fgc};
   --bh-bdc: ${v.nav.bdc};
-  ${varAnchor}: ${v.nav.anchor};
+  ${varAnchor}: ${v.nav.anc};
 }
 .${colorCn}${qs}[data-colortype="nav"] .${iconCn} {
   ${varIconBc}: ${v.nav.bgc};
-  ${varIconFc}: ${v.nav.fc};
+  ${varIconFc}: ${v.nav.fgc};
 }
 .${colorCn}[data-border="${c}"] {
   border: 1px solid ${v.bdc};

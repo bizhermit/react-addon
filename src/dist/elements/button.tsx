@@ -205,39 +205,39 @@ flat: `
 ${colorIterator((_s, v, qs) => `
 .${cn}-body${qs} {
   background: ${v.btn.base.bgc};
-  color: ${v.btn.base.fc};
+  color: ${v.btn.base.fgc};
   border-color: ${v.btn.base.bdc};
 }
 .${cn}-body[data-trp="true"]${qs} {
   background: transparent;
-  color: ${v.fc};
+  color: ${v.fgc};
 }
 .${cn}-body[data-trp="true"]${qs}:not([data-bdl="true"]) {
   border-color: ${v.btn.base.bdc};
 }
 .${cn}-body${qs} .${iconCn} {
-  --bh-icon-fc: ${v.btn.base.fc};
+  --bh-icon-fc: ${v.btn.base.fgc};
   --bh-icon-bc: ${v.btn.base.bgc};
 }
 .${cn}-body[data-trp="true"]${qs} .${iconCn} {
-  --bh-icon-fc: ${v.fc};
+  --bh-icon-fc: ${v.fgc};
 }
 .${cn}:hover > .${cn}-body${qs} {
   background: ${v.btn.hvr.bgc};
-  color: ${v.btn.hvr.fc};
+  color: ${v.btn.hvr.fgc};
   border-color: ${v.btn.hvr.bdc};
 }
 .${cn}:hover > .${cn}-body${qs} .${iconCn} {
-  --bh-icon-fc: ${v.btn.hvr.fc};
+  --bh-icon-fc: ${v.btn.hvr.fgc};
   --bh-icon-bc: ${v.btn.hvr.bgc};
 }
 .${cn}:hover:active > .${cn}-body${qs} {
   background: ${v.btn.act.bgc};
-  color: ${v.btn.act.fc};
+  color: ${v.btn.act.fgc};
   border-color: ${v.btn.act.bdc};
 }
 .${cn}:hover:active > .${cn}-body${qs} .${iconCn} {
-  --bh-icon-fc: ${v.btn.act.fc};
+  --bh-icon-fc: ${v.btn.act.fgc};
   --bh-icon-bc: ${v.btn.act.bgc};
 }`).join("")}
 .${cn}-body[data-bdl="true"] {
@@ -253,30 +253,30 @@ material: `
 ${colorIterator((_s, v, qs) => `
 .${cn}-body${qs} {
   background: ${v.btn.base.bgc};
-  color: ${v.btn.base.fc};
+  color: ${v.btn.base.fgc};
   border-color: ${v.btn.base.bdc};
 }
 .${cn}-body[data-trp="true"]${qs} {
   background: transparent;
-  color: ${v.fc};
+  color: ${v.fgc};
 }
 .${cn}-body[data-trp="true"]${qs}:not([data-bdl="true"]) {
   border-color: ${v.btn.base.bdc};
 }
 .${cn}-body${qs} .${iconCn} {
-  --bh-icon-fc: ${v.btn.base.fc};
+  --bh-icon-fc: ${v.btn.base.fgc};
   --bh-icon-bc: ${v.btn.base.bgc};
 }
 .${cn}-body[data-trp="true"]${qs} .${iconCn} {
-  --bh-icon-fc: ${v.fc};
+  --bh-icon-fc: ${v.fgc};
 }
 .${cn}:hover > .${cn}-body${qs} {
   background: ${v.btn.hvr.bgc};
-  color: ${v.btn.hvr.fc};
+  color: ${v.btn.hvr.fgc};
   border-color: ${v.btn.hvr.bdc};
 }
 .${cn}:hover > .${cn}-body${qs} .${iconCn} {
-  --bh-icon-fc: ${v.btn.hvr.fc};
+  --bh-icon-fc: ${v.btn.hvr.fgc};
   --bh-icon-bc: ${v.btn.hvr.bgc};
 }`).join("")}
 .${cn}:hover:active > .${cn}-body,
@@ -317,26 +317,26 @@ neumorphism: `
 ${colorIterator((_s, v, qs) => `
 .${cn}-body${qs}[data-bdl="true"]:not([data-trp="true"]) {
   background: ${v.btn.base.bgc};
-  color: ${v.btn.base.fc};
+  color: ${v.btn.base.fgc};
 }
 .${cn}-body${qs}:not([data-trp="true"]) {
   background: ${v.bgc};
-  color: ${v.fc};
+  color: ${v.fgc};
 }
 .${cn}:hover > .${cn}-body${qs},
 .${cn}:hover > .${cn}-body${qs}[data-trp="true"] {
   background: ${v.bgc};
-  color: ${v.fc};
+  color: ${v.fgc};
 }
 .${cn}-body[data-trp="true"]${qs} {
   box-shadow: 0 0 0px 1px ${v.btn.base.bdc} inset, 0.5px 0.5px 2px ${CssVar.sdw.d}, -0.5px -0.5px 2px ${CssVar.sdw.b}, 1px 1px 2px ${CssVar.sdw.d} inset, -1px -1px 2px ${CssVar.sdw.b} inset;
-  color: ${v.fc};
+  color: ${v.fgc};
 }
 .${cn}-body${qs} .${iconCn} {
-  --bh-icon-fc: ${v.fc};
+  --bh-icon-fc: ${v.fgc};
 }
 .${cn}-body${qs}[data-bdl="true"]:not([data-trp="true"]):not(:hover) .${iconCn} {
-  --bh-icon-fc: ${v.btn.base.fc};
+  --bh-icon-fc: ${v.btn.base.fgc};
   --bh-icon-bc: ${v.btn.base.bgc};
 }
 .${cn}-body${qs}:not([data-trp="true"]) .${iconCn} {

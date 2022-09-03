@@ -563,7 +563,7 @@ ${design ? `filter: drop-shadow(0 2px 3px ${CssVar.sdw.c});` : ""}
   height: 100%;
   width: 100%;
   background: ${CssVar.bgc};
-  color: ${CssVar.fc};
+  color: ${CssVar.fgc};
   border-radius: ${CssVar.bdr};
   overflow: hidden;
 }
@@ -631,28 +631,28 @@ fm: `
   background: ${CssVar.default.btn.hvr.bgc};
 }
 .${cn}-min:hover > .${iconCn} {
-  --bh-icon-fc: ${CssVar.default.btn.hvr.fc};
+  --bh-icon-fc: ${CssVar.default.btn.hvr.fgc};
   --bh-icon-bc: ${CssVar.default.btn.hvr.bgc};
 }
 .${cn}-min:hover:active {
   background: ${CssVar.default.btn.act.bgc};
 }
 .${cn}-min:hover:active > .${iconCn} {
-  --bh-icon-fc: ${CssVar.default.btn.act.fc};
+  --bh-icon-fc: ${CssVar.default.btn.act.fgc};
   --bh-icon-bc: ${CssVar.default.btn.act.bgc};
 }
 .${cn}-close:hover {
   background: ${CssVar.danger.btn.hvr.bgc};
 }
 .${cn}-close:hover > .${iconCn} {
-  --bh-icon-fc: ${CssVar.danger.btn.hvr.fc};
+  --bh-icon-fc: ${CssVar.danger.btn.hvr.fgc};
   --bh-icon-bc: ${CssVar.danger.btn.hvr.bgc};
 }
 .${cn}-close:hover:active {
   background: ${CssVar.danger.btn.act.bgc};
 }
 .${cn}-close:hover:active > .${iconCn} {
-  --bh-icon-fc: ${CssVar.danger.btn.act.fc};
+  --bh-icon-fc: ${CssVar.danger.btn.act.fgc};
   --bh-icon-bc: ${CssVar.danger.btn.act.bgc};
 }`,
 neumorphism: `
@@ -660,7 +660,7 @@ neumorphism: `
   box-shadow: ${CssPV.nCvxSdBase};
 }
 .${cn}-close > .${iconCn} {
-  --bh-icon-fc: ${CssVar.danger.fc};
+  --bh-icon-fc: ${CssVar.danger.fgc};
   --bh-icon-bc: ${CssVar.bgc};
 }
 .${cn}-close:hover {
@@ -750,7 +750,7 @@ neumorphism: `
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-cont > .${cn}-header {
   background: ${v.head.bgc};
-  color: ${v.head.fc};
+  color: ${v.head.fgc};
 }
 `).join("")}
 `}</JsxStyle>;

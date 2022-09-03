@@ -122,7 +122,7 @@ ${colorIterator((_s, v, qs) => `
   border-color: ${v.bdc};
 }
 .${cn}${qs} > .${cn}-cap {
-  color: ${v.fc};
+  color: ${v.fgc};
 }
 `).join("")}
 `,
@@ -130,7 +130,7 @@ neumorphism: `
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-cap {
   background: ${v.head.bgc};
-  color: ${v.head.fc};
+  color: ${v.head.fgc};
 }
 `).join("")}`
 })}

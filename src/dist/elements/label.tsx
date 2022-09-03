@@ -85,7 +85,7 @@ const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
 }
 ${design ? `${colorIterator((_s, v, qs) => `
 .${cn}${qs} {
-  color: ${v.fc};
+  color: ${v.fgc};
 }`).join("")}
 ` : ""}`}</JsxStyle>;
 

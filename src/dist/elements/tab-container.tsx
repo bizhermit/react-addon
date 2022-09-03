@@ -213,42 +213,42 @@ fm: `
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}-tab${qs} {
-  color: ${v.fc};
+  color: ${v.fgc};
 }
 .${cn}-tab${qs} .${iconCn} {
-  --bh-icon-fc: ${v.fc};
+  --bh-icon-fc: ${v.fgc};
 }
 .${cn}-tab${qs}:not([data-selected="true"]):hover {
   background: ${v.btn.base.bgc};
-  color: ${v.btn.base.fc};
+  color: ${v.btn.base.fgc};
 }
 .${cn}-tab${qs}:not([data-selected="true"]):hover .${iconCn} {
-  --bh-icon-fc: ${v.btn.base.fc};
+  --bh-icon-fc: ${v.btn.base.fgc};
   --bh-icon-bc: ${v.btn.base.bgc};
 }
 .${cn}-list[data-nav="true"]${qs} {
   background: ${v.nav.bgc};
-  color: ${v.nav.fc};
+  color: ${v.nav.fgc};
 }
 .${cn}-list[data-nav="true"]${qs} > .${cn}-tab {
-  color: ${v.nav.fc};
+  color: ${v.nav.fgc};
 }
 .${cn}-list[data-nav="true"]${qs} > .${cn}-tab .${iconCn} {
-  --bh-icon-fc: ${v.nav.fc};
+  --bh-icon-fc: ${v.nav.fgc};
   --bh-icon-bc: ${v.nav.bgc};
 }
 .${cn}-list[data-nav="true"]${qs} .${labelCn}[data-type="a"],
 .${cn}-list[data-nav="true"]${qs} .bh-anchor {
-  color: ${v.nav.anchor};
+  color: ${v.nav.anc};
 }
 ${switchDesign(design, {
 flat: `
 .${cn}-tab${qs}:not([data-selected="true"]):hover:active {
   background: ${v.btn.act.bgc};
-  color: ${v.btn.act.fc};
+  color: ${v.btn.act.fgc};
 }
 .${cn}-tab${qs}:not([data-selected="true"]):hover:active .${iconCn} {
-  --bh-icon-fc: ${v.btn.act.fc};
+  --bh-icon-fc: ${v.btn.act.fgc};
   --bh-icon-bc: ${v.btn.act.bgc};
 }`})}
 .${cn}-tab${qs}[data-selected="true"] {
@@ -271,10 +271,10 @@ neumorphism: `
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}-tab${qs} {
-  color: ${v.fc};
+  color: ${v.fgc};
 }
 .${cn}-tab${qs} .${iconCn} {
-  --bh-icon-fc: ${v.fc};
+  --bh-icon-fc: ${v.fgc};
 }
 .${cn}-tab${qs}[data-selected="true"] {
   box-shadow: 0 -4.5px 0px -2px ${v.bdc} inset;

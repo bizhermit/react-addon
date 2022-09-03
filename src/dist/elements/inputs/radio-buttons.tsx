@@ -330,14 +330,14 @@ ${colorIterator((_s, v, qs) => `
   outline-color: ${v.ipt.bdc};
 }
 .${cn}-item${qs} > .${radioButtonCn}[data-selected="true"]::after {
-  background: ${v.fc};
+  background: ${v.fgc};
 }
 .${cn}-item${qs} .${cn}-lbl,
 .${cn}-item${qs} .${labelCn} {
-  color: ${v.fc};
+  color: ${v.fgc};
 }
 .${cn}-item${qs} .${iconCn} {
-  --bh-icon-fc: ${v.fc};
+  --bh-icon-fc: ${v.fgc};
 }
 .${cn}[data-hrb="true"][data-flow="row"][data-m="e"] > .${cn}-item${qs}::before {
   box-shadow: 0 -4px 0 -2px ${v.ipt.off} inset;
@@ -424,22 +424,22 @@ neumorphism: `
   height: calc(100% - ${CssVar.pdy} * 2);
 }
 .${cn}-item > .${radioButtonCn}[data-selected="true"]::after {
-  background: ${CssVar.default.ipt.fc};
+  background: ${CssVar.default.ipt.fgc};
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}-item${qs} .${cn}-lbl,
 .${cn}-item${qs} .${labelCn} {
-  color: ${v.fc};
+  color: ${v.fgc};
 }
 .${cn}-item${qs} .${iconCn} {
-  --bh-icon-fc: ${v.fc};
+  --bh-icon-fc: ${v.fgc};
 }
 .${cn}[data-hrb="true"] > .${cn}-item${qs}[data-selected="true"] .${cn}-lbl,
 .${cn}[data-hrb="true"] > .${cn}-item${qs}[data-selected="true"] .${labelCn} {
-  color: ${v.ipt.fc};
+  color: ${v.ipt.fgc};
 }
 .${cn}[data-hrb="true"] > .${cn}-item${qs}[data-selected="true"] .${iconCn} {
-  --bh-icon-fc: ${v.ipt.fc};
+  --bh-icon-fc: ${v.ipt.fgc};
 }
 .${cn}[data-hrb="true"] > .${cn}-item${qs}[data-selected="true"]::before {
   background: ${v.ipt.on};
@@ -501,9 +501,9 @@ neumorphism: `transition: background 0.2s, box-shadow 0.2s;`
 }
 .${radioButtonCn}[data-selected="true"]::after {
 ${switchDesign(design, {
-fm: `background: ${CssVar.default.fc};`,
+fm: `background: ${CssVar.default.fgc};`,
 neumorphism: `
-  background: ${CssVar.default.fc};
+  background: ${CssVar.default.fgc};
   box-shadow: ${CssPV.nCvxSdBase};
 `})}
 }

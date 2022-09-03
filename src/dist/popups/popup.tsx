@@ -379,7 +379,7 @@ const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
 }
 .${cn}[data-transparent="false"] {
   background: ${CssVar.bgc};
-  color: ${CssVar.fc};
+  color: ${CssVar.fgc};
 ${design ? `filter: drop-shadow(0 2px 3px ${CssVar.sdw.c});` : ""}
 }
 .${cn}[data-transparent="true"] {

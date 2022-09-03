@@ -291,7 +291,7 @@ const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
   border-radius: ${CssVar.bdr};
   overflow: hidden;
   background: ${CssVar.bgc};
-  color: ${CssVar.fc};
+  color: ${CssVar.fgc};
   min-width: 180px;
 ${design ? `filter: drop-shadow(0 2px 3px ${CssVar.sdw.c});` : ""}
 }
@@ -357,10 +357,10 @@ c: `
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-h {
   background: ${v.head.bgc};
-  color: ${v.head.fc};
+  color: ${v.head.fgc};
 }
 .${cn}${qs} > .${cn}-h .${iconCn} {
-  --bh-icon-fc: ${v.head.fc};
+  --bh-icon-fc: ${v.head.fgc};
   --bh-icon-bc: ${v.head.bgc};
 }
 .${cn}${qs} {

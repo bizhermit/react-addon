@@ -453,16 +453,16 @@ fm: `
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}-nav${qs} {
-  color: ${v.nav.fc};
+  color: ${v.nav.fgc};
   background: ${v.nav.bgc};
 }
 .${cn}-nav${qs} .${iconCn} {
-  ${varIconFc}: ${v.nav.fc};
+  ${varIconFc}: ${v.nav.fgc};
   ${varIconBc}: ${v.nav.bgc};
 }
 .${cn}-nav${qs} .${labelCn}[data-type="a"],
 .${cn}-nav${qs} .bh-anchor {
-  color: ${v.nav.anchor};
+  color: ${v.nav.anc};
 }`).join("")}`,
 material: `
 .${cn}[data-pos="left"] > .${cn}-nav {
@@ -483,16 +483,16 @@ neumorphism: `
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}-nav${qs} {
-  color: ${v.nav.fc};
+  color: ${v.nav.fgc};
   background: ${v.nav.bgc};
 }
 .${cn}-nav${qs} .${iconCn} {
-  ${varIconFc}: ${v.nav.fc};
+  ${varIconFc}: ${v.nav.fgc};
   ${varIconBc}: ${v.nav.bgc};
 }
 .${cn}-nav${qs} .${labelCn}[data-type="a"],
 .${cn}-nav${qs} .bh-anchor {
-  color: ${v.nav.anchor};
+  color: ${v.nav.anc};
 }
 `).join("")}`})}
 `}</JsxStyle>;
