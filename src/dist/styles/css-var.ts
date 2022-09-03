@@ -733,7 +733,7 @@ export const CssDarkVar = `
 --bh-def-ipt-bgc: #3e3e41;
 --bh-def-ipt-fc: ${dFc};
 --bh-def-ipt-bdc: ${dBdc};
---bh-def-ipt-on: #585a6a;
+--bh-def-ipt-on: #64636f;
 --bh-def-ipt-on-fc: ${dFc};
 --bh-def-ipt-off: #3d3d3f;
 --bh-def-ipt-knob: #303033;
@@ -771,6 +771,33 @@ export const CssDarkVar = `
 --bh-dul-btn-act-bgc: #404042;
 --bh-dul-btn-act-fc: #cfcfd2;
 --bh-dul-btn-act-bdc: #404042;
+--bh-pur-fc: ${dFc};
+--bh-pur-bgc: #000;
+--bh-pur-bdc: #808080;
+--bh-pur-head-bgc: #000;
+--bh-pur-head-fc: ${dFc};
+--bh-pur-head-bdc: #808080;
+--bh-pur-nav-bgc: #000;
+--bh-pur-nav-fc: ${dFc};
+--bh-pur-nav-bdc: #808080;
+--bh-pur-ipt-bgc: #1f1f1f;
+--bh-pur-ipt-fc: ${dFc};
+--bh-pur-ipt-bdc: #808080;
+--bh-pur-ipt-on: #94939f;
+--bh-pur-ipt-on-fc: #d0d0d2;
+--bh-pur-ipt-off: #3d3d3f;
+--bh-pur-ipt-knob: #303033;
+--bh-pur-btn-base-bgc: #141414;
+--bh-pur-btn-base-fc: ${dFc};
+--bh-pur-btn-base-bdc: #141414;
+--bh-pur-btn-hvr-bgc: #252525;
+--bh-pur-btn-hvr-fc: ${dFc};
+--bh-pur-btn-hvr-bdc: #252525;
+--bh-pur-btn-act-bgc: #090909;
+--bh-pur-btn-act-fc: ${dFc};
+--bh-pur-btn-act-bdc: #090909;
+
+
 
 --bh-rvs-fc: ${lFc};
 --bh-rvs-bgc: ${lBc};
