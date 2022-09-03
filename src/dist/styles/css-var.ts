@@ -473,14 +473,14 @@ const CssVar = {
     anc: `var(${ter}-${anc}, ${lAnc})`,
     head: {
       fgc: `var(${ter}-head-${fgc}, ${lFc})`,
-      bgc: `var(${ter}-head-${bgc}, #a0cbc9)`,
-      bdc: `var(${ter}-head-${bdc}, #6c848d)`,
+      bgc: `var(${ter}-head-${bgc}, #a2d0df)`,
+      bdc: `var(${ter}-head-${bdc}, #7c949d)`,
       anc: `var(${ter}-head-${anc}, ${lAnc})`,
     },
     nav: {
       fgc: `var(${ter}-nav-${fgc}, #f2f2f2)`,
       bgc: `var(${ter}-nav-${bgc}, #455765)`,
-      bdc: `var(${ter}-nav-${bdc}, #90bbb9)`,
+      bdc: `var(${ter}-nav-${bdc}, #a0cfca)`,
       anc: `var(${ter}-nav-${anc}, ${dAnc})`,
     },
     ipt: {
@@ -981,7 +981,7 @@ ${ter}-${bgc}: #323737;
 ${ter}-${bdc}: #478888;
 ${ter}-${anc}: ${dAnc};
 ${ter}-head-${fgc}: ${dFc};
-${ter}-head-${bgc}: #2f4040;
+${ter}-head-${bgc}: #2a3f4c;
 ${ter}-head-${bdc}: #407070;
 ${ter}-head-${anc}: ${dAnc};
 ${ter}-nav-${fgc}: ${dFc};
@@ -1032,13 +1032,13 @@ ${wrn}-${btnH}-${bdc}: #909000;
 ${wrn}-${btnA}-${fgc}: ${dFc};
 ${wrn}-${btnA}-${bgc}: #797900;
 ${wrn}-${btnA}-${bdc}: #797900;
-${dng}-${fgc}: #ff2a37;
+${dng}-${fgc}: #ff2f3a;
 ${dng}-${bgc}: #423535;
-${dng}-${bdc}: #d02525;
+${dng}-${bdc}: #b84040;
 ${dng}-${anc}: ${dAnc};
 ${dng}-head-${fgc}: ${dFc};
 ${dng}-head-${bgc}: #5a2727;
-${dng}-head-${bdc}: #ca4040;
+${dng}-head-${bdc}: #da5050;
 ${dng}-head-${anc}: ${dAnc};
 ${dng}-nav-${fgc}: ${dFc};
 ${dng}-nav-${bgc}: #521010;
@@ -1046,8 +1046,8 @@ ${dng}-nav-${bdc}: #f0a0a0;
 ${dng}-nav-${anc}: ${dAnc};
 ${dng}-ipt-${fgc}: ${dFc};
 ${dng}-ipt-${bgc}: #3d3d3f;
-${dng}-ipt-${bdc}: #d02525;
-${dng}-ipt-on: #7c2f2f;
+${dng}-ipt-${bdc}: #b84040;
+${dng}-ipt-on: #5f2c2c;
 ${dng}-ipt-on-${fgc}: ${dFc};
 ${dng}-ipt-off: #3d3d3f;
 ${dng}-ipt-knob: #303033;
@@ -1070,7 +1070,7 @@ ${coo}-head-${bdc}: #1e96bf;
 ${coo}-head-${anc}: ${dAnc};
 ${coo}-nav-${fgc}: ${dFc};
 ${coo}-nav-${bgc}: #374063;
-${coo}-nav-${bdc}: #aee6ff;
+${coo}-nav-${bdc}: #8ec6df;
 ${coo}-nav-${anc}: ${dAnc};
 ${coo}-ipt-${fgc}: ${dFc};
 ${coo}-ipt-${bgc}: #3d3d3f;
@@ -1088,7 +1088,6 @@ ${coo}-${btnH}-${bdc}: #8686c0;
 ${coo}-${btnA}-${fgc}: ${dFc};
 ${coo}-${btnA}-${bgc}: #7171b9;
 ${coo}-${btnA}-${bdc}: #7171b9;
-
 ${prt}-${fgc}: #ffa8ff;
 ${prt}-${bgc}: #513845;
 ${prt}-${bdc}: #c889ac;
