@@ -1,6 +1,17 @@
 import StringUtils from "@bizhermit/basic-utils/dist/string-utils";
 import { ReactElement, ReactNode } from "react";
-import { FitToOuter } from "../styles/css-var";
+import { Color, ColorType, FitToOuter } from "../styles/css-var";
+
+export type ColorAttributes = {
+  $color?: Color;
+  $colorType?: ColorType;
+  $fgColor?: Color;
+  $fgColorType?: ColorType;
+  $bgColor?: Color;
+  $bgColorType?: ColorType;
+  $bdColor?: Color;
+  $bdColorType?: ColorType;
+};
 
 export const attributes = (attrs: {[key: string]: any}, ...cns: Array<string>) => {
   const retAttrs = {
@@ -58,6 +69,31 @@ export const dropShadowCn = (shadow?: boolean | number) => {
   if (shadow == null) return "";
   if (typeof shadow === "boolean") return shadow ? "bh-dsd-2" : "";
   return `bh-dsd-${shadow}`;
+};
+export const colorCn = (color?: Color, type?: ColorType) => {
+  if (color == null) return "";
+  return `bh-c_${color}_${type || "base"}`;
+};
+export const fgColorCn = (color?: Color, type?: ColorType) => {
+  if (color == null) return "";
+  return `bh-fgc_${color}_${type || "base"}`;
+};
+export const bgColorCn = (color?: Color, type?: ColorType) => {
+  if (color == null) return "";
+  return `bh-bgc_${color}_${type || "base"}`;
+};
+export const bdColorCn = (color?: Color, type?: ColorType) => {
+  if (color == null) return "";
+  return `bh-bdc_${color}_${type || "base"}`;
+};
+export const colorsCn = (attrs: ColorAttributes) => {
+  if (attrs == null) return [];
+  return [
+    colorCn(attrs.$color, attrs.$colorType),
+    fgColorCn(attrs.$fgColor, attrs.$fgColorType),
+    bgColorCn(attrs.$bgColor, attrs.$bgColorType),
+    bdColorCn(attrs.$bdColor, attrs.$bdColorType)
+  ];
 };
 
 export const convertClassNames = (classNames: string | Array<string>) => {

@@ -1,11 +1,9 @@
 import React, { cloneElement, FC, HTMLAttributes, ReactElement, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { sbCn } from "../styles/core-style";
-import CssVar, { CssPV, FitToOuter, Color, colorIterator, switchDesign } from "../styles/css-var";
+import { colorCn, sbCn } from "../styles/core-style";
+import CssVar, { CssPV, FitToOuter, Color, switchDesign, ColorType } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributesWithoutChildren } from "../utils/attributes";
 import { _HookSetter } from "../utils/hook";
-import { iconCn } from "./icon";
-import { labelCn } from "./label";
 import MaskContainer, { MaskHook, MaskProps, useMask } from "../popups/mask";
 
 const cn = "bh-tab";
@@ -24,6 +22,7 @@ export type TabContentAttributes = {
   title: string | ReactNode;
   $selected?: () => void;
   $color?: Color;
+  $colorType?: ColorType;
   children?: ReactNode;
 };
 
@@ -44,7 +43,7 @@ export type TabContainerAttributes = HTMLAttributes<HTMLDivElement> & {
   $selected?: (key: TabKey) => void;
   $calcTabWidth?: boolean;
   $color?: Color;
-  $navigationBackgroundColor?: boolean;
+  $colorType?: ColorType;
   children: ReactElement<TabContentAttributes> | Array<ReactElement<TabContentAttributes>>;
 };
 
@@ -92,7 +91,12 @@ const TabContainer = React.forwardRef<HTMLDivElement, TabContainerAttributes>((a
       $className={cn}
       $scroll={false}
     >
-      <div className={`${cn}-list`} data-calc={attrs.$calcTabWidth} data-nav={attrs.$navigationBackgroundColor} data-color={attrs.$color}>
+      <div
+        className={`${cn}-list ${colorCn}`}
+        data-calc={attrs.$calcTabWidth}
+        data-color={attrs.$color || "default"}
+        data-colortype={attrs.$colorType}
+      >
         {useMemo(() => {
           return (Array.isArray(attrs.children) ? attrs.children : [attrs.children]).map(cont => {
             return (
@@ -101,6 +105,7 @@ const TabContainer = React.forwardRef<HTMLDivElement, TabContainerAttributes>((a
                 className={`${cn}-tab`}
                 data-selected={String(key) === String(cont.key)}
                 data-color={cont.props.$color}
+                data-colortype={cont.props.$colorType}
                 onClick={() => setKey(cont.key)}
               >{cont.props.title ?? ""}</div>
             );
@@ -207,84 +212,34 @@ neumorphism: `
   z-index: 0;
 }
 ${switchDesign(design, {
+c: `
+.${cn}-tab[data-selected="true"]::before {
+  ${CssPV.ba}
+  bottom: 0px;
+  left: 0px;
+  height: 2px;
+  width: 100%;
+  background: var(--bh-bdc);
+}
+`,
 fm: `
-.${cn}-tab[data-selected="true"] {
-  box-shadow: 0 -4.5px 0px -2px ${CssVar.bdc} inset;
-}
-${colorIterator((_s, v, qs) => `
-.${cn}-tab${qs} {
-  color: ${v.fgc};
-}
-.${cn}-tab${qs} .${iconCn} {
-  --bh-icon-fc: ${v.fgc};
-}
-.${cn}-tab${qs}:not([data-selected="true"]):hover {
-  background: ${v.btn.base.bgc};
-  color: ${v.btn.base.fgc};
-}
-.${cn}-tab${qs}:not([data-selected="true"]):hover .${iconCn} {
-  --bh-icon-fc: ${v.btn.base.fgc};
-  --bh-icon-bc: ${v.btn.base.bgc};
-}
-.${cn}-list[data-nav="true"]${qs} {
-  background: ${v.nav.bgc};
-  color: ${v.nav.fgc};
-}
-.${cn}-list[data-nav="true"]${qs} > .${cn}-tab {
-  color: ${v.nav.fgc};
-}
-.${cn}-list[data-nav="true"]${qs} > .${cn}-tab .${iconCn} {
-  --bh-icon-fc: ${v.nav.fgc};
-  --bh-icon-bc: ${v.nav.bgc};
-}
-.${cn}-list[data-nav="true"]${qs} .${labelCn}[data-type="a"],
-.${cn}-list[data-nav="true"]${qs} .bh-anchor {
-  color: ${v.nav.anc};
-}
-${switchDesign(design, {
-flat: `
-.${cn}-tab${qs}:not([data-selected="true"]):hover:active {
-  background: ${v.btn.act.bgc};
-  color: ${v.btn.act.fgc};
-}
-.${cn}-tab${qs}:not([data-selected="true"]):hover:active .${iconCn} {
-  --bh-icon-fc: ${v.btn.act.fgc};
-  --bh-icon-bc: ${v.btn.act.bgc};
-}`})}
-.${cn}-tab${qs}[data-selected="true"] {
-  box-shadow: 0 -4.5px 0px -2px ${v.bdc} inset;
-}`).join("")}`,
-flat: `
 .${cn}-tab:not([data-selected="true"]):hover {
   background: ${CssVar.hvrBgc};
 }
 .${cn}-tab:not([data-selected="true"]):hover:active {
   background: ${CssVar.actBgc};
-}`,
-material: `
-.${cn}-tab:not([data-selected="true"]):hover {
-  background: ${CssVar.hvrBgc};
-}`,
+}
+`,
 neumorphism: `
-.${cn}-tab[data-selected="true"] {
-  box-shadow: 0 -4.5px 0px -2px ${CssVar.bdc} inset;
-}
-${colorIterator((_s, v, qs) => `
-.${cn}-tab${qs} {
-  color: ${v.fgc};
-}
-.${cn}-tab${qs} .${iconCn} {
-  --bh-icon-fc: ${v.fgc};
-}
-.${cn}-tab${qs}[data-selected="true"] {
-  box-shadow: 0 -4.5px 0px -2px ${v.bdc} inset;
-}`).join("")}
 .${cn}-tab:not([data-selected="true"]):hover {
   box-shadow: ${CssPV.nCvxSdHover};
 }
-.${cn}-tab:not([data-selected="true"]):hover:active {
+.${cn}-tab:not([data-selected="true"]):hover:active,
+.${cn}-tab[data-selected="true"] {
   box-shadow: ${CssPV.nCcvSdActive};
-}`})}
+}
+`
+})}
 `}</JsxStyle>;
 
 export default TabContainer;

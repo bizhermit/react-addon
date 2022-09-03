@@ -1,8 +1,8 @@
 import React, { HTMLAttributes } from "react";
-import { colorCn, sbCn } from "../styles/core-style";
-import CssVar, { CssPV, FitToOuter, Color, ColorType } from "../styles/css-var";
+import { sbCn } from "../styles/core-style";
+import CssVar, { CssPV, FitToOuter, Color } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
-import { attributes, dBool, dPosX, dPosY, ftoCn, paddingCn, shadowCn } from "../utils/attributes";
+import { attributes, ColorAttributes, colorsCn, dBool, dPosX, dPosY, ftoCn, paddingCn, shadowCn } from "../utils/attributes";
 
 const cn = "bh-fbx";
 export const flexBoxCn = cn;
@@ -22,24 +22,20 @@ export type FlexBoxAttributes = HTMLAttributes<HTMLDivElement> & {
   $radius?: boolean;
   $scroll?: boolean;
   $padding?: boolean | number;
-  $border?: boolean | Color;
-  $color?: Color;
-  $colorType?: ColorType;
-};
+  $border?: boolean;
+} & ColorAttributes;
 
 const FlexBox = React.forwardRef<HTMLDivElement, FlexBoxAttributes>((attrs, ref) => {
   return (
     <>
       <div
-        {...attributes(attrs, cn, colorCn, shadowCn(attrs.$shadow), paddingCn(attrs.$padding), ftoCn(attrs.$fto), attrs.$scroll ? sbCn : "")}
+        {...attributes(attrs, cn, ...colorsCn(attrs), shadowCn(attrs.$shadow), paddingCn(attrs.$padding), ftoCn(attrs.$fto), attrs.$scroll ? sbCn : "")}
         ref={ref}
         data-flow={attrs.$row ? "row" : "col"}
         data-wrap={dBool(attrs.$wrap)}
         data-posx={dPosX(attrs.$left, attrs.$center, attrs.$right) ?? "l"}
         data-posy={dPosY(attrs.$top, attrs.$middle, attrs.$bottom) ?? "t"}
-        data-border={attrs.$border ?? attrs.$color}
-        data-color={attrs.$color}
-        data-colortype={attrs.$colorType}
+        data-border={attrs.$border}
         data-hover={attrs.$hover}
         data-radius={attrs.$radius}
       />

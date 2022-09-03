@@ -11,19 +11,19 @@ const SandBoxPage: NextPage = () => {
         return (
           <FlexBox key={s} $fto="fx" $center>
             <Label $color={s}>{s}</Label>
-            <FlexBox className="box" $color={s} $colorType="base">
+            <FlexBox className="box" $color={s} $colorType="base" $border>
               <Label>text</Label>
               <HLine $padding $margin />
               <Label $type="a">link</Label>
             </FlexBox>
             head
-            <FlexBox className="box" $color={s} $colorType="head">
+            <FlexBox className="box" $color={s} $colorType="head" $border>
               <Label>text</Label>
               <HLine $padding $margin />
               <Label $type="a">link</Label>
             </FlexBox>
             nav
-            <FlexBox className="box" $color={s} $colorType="nav">
+            <FlexBox className="box" $color={s} $colorType="nav" $border>
               <Label>text</Label>
               <HLine $padding $margin />
               <Label $type="a">link</Label>
