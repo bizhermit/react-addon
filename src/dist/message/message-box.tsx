@@ -1,12 +1,12 @@
 import React, { FC, KeyboardEvent, ReactNode, useCallback, useEffect, useMemo, useRef } from "react";
 import { createRoot, Root } from "react-dom/client";
-import CssVar, { CssPV, Color, colorIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, Color, switchDesign } from "../styles/css-var";
 import { LayoutContext, useLayout } from "../styles/layout-provider";
 import JsxStyle from "../styles/jsx-style";
 import Button, { ButtonAttributes, buttonCn, useButton } from "../elements/button";
-import { iconCn } from "../elements/icon";
 import TextBox, { TextBoxAttributes } from "../elements/inputs/text-box";
 import Label from "../elements/label";
+import { colorCn } from "../styles/core-style";
 
 const cn = "bh-mgs_box";
 
@@ -146,7 +146,11 @@ const MessageBox: FC<{ props: MessageBoxProps; resolve: (value: any) => void; }>
         data-color={props.color}
       >
         {props.title ? 
-          <div className={`${cn}-h`}>
+          <div
+            className={`${cn}-h ${colorCn}`}
+            data-color={props.color}
+            data-colortype="nav"
+          >
             <Label $bold>{props.title}</Label>
           </div> : <></>
         }
@@ -352,22 +356,6 @@ neumorphism: `
 .${cn}-mask_d {
   background: transparent;
 }
-${switchDesign(design, {
-c: `
-${colorIterator((_s, v, qs) => `
-.${cn}${qs} > .${cn}-h {
-  background: ${v.head.bgc};
-  color: ${v.head.fgc};
-}
-.${cn}${qs} > .${cn}-h .${iconCn} {
-  --bh-icon-fc: ${v.head.fgc};
-  --bh-icon-bc: ${v.head.bgc};
-}
-.${cn}${qs} {
-  background: ${v.bgc};
-}
-`).join("")}
-`})}
 `}</JsxStyle>;
 
 export default useMessageBox;
