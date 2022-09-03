@@ -3,6 +3,8 @@ import { NextPage } from "next";
 import { createRef } from "react";
 import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 import Label from "../../../react-addon/dist/elements/label";
+import Row from "../../../react-addon/dist/elements/row";
+import Caption from "../../../react-addon/dist/elements/caption";
 
 const LabelPage: NextPage = () => {
   const eref = createRef<HTMLSpanElement>();
@@ -10,16 +12,30 @@ const LabelPage: NextPage = () => {
   return (
     <>
       {/* <ExtraLabel bold wrap type="h1" color="warning"> */}
-      <Label $nowrap ref={eref} onClick={() => {
-        console.log("click", eref.current);
-      }} onMouseEnter={() => {
-        console.log("hover", eref.current);
-      }} onMouseLeave={() => {
-        console.log("leave", eref.current);
-      }}>hoge</Label>
+      <Row>
+        <Label $nowrap ref={eref} style={{ width: 180 }} onClick={() => {
+          console.log("click", eref.current);
+        }} onMouseEnter={() => {
+          console.log("hover", eref.current);
+        }} onMouseLeave={() => {
+          console.log("leave", eref.current);
+        }}>hoge</Label>
+        <Caption $border $label="unset" style={{ width: 180 }}><Label>unset</Label></Caption>
+        <Caption $label="unset" style={{ width: 180 }}><Label>unset</Label></Caption>
+        <Caption $label="unset" style={{ width: 180 }}><Label>unset</Label></Caption>
+        <Caption $border $label="unset" style={{ width: 180 }}><Label>unset</Label></Caption>
+      </Row>
       {/* </ExtraLabel> */}
       {colorIterator((s) => {
-        return <Label key={s} $color={s}>{`label ${s}`}</Label>;
+        return (
+          <Row key={s}>
+            <Label $color={s} style={{ width: 180 }}>{`label ${s}`}</Label>
+            <Caption $color={s} $border $label={s} style={{ width: 180 }}><Label>{s}</Label></Caption>
+            <Caption $fgColor={s} $label={s} style={{ width: 180 }}><Label>{s}</Label></Caption>
+            <Caption $bgColor={s} $label={s} style={{ width: 180 }}><Label>{s}</Label></Caption>
+            <Caption $bdColor={s} $border $label={s} style={{ width: 180 }}><Label>{s}</Label></Caption>
+          </Row>
+        );
       })}
       <Label $bold>Bold</Label>
       <Label $type="a">Link</Label>

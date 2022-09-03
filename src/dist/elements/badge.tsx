@@ -91,7 +91,7 @@ const BadgeStyle = <JsxStyle id={cn} depsDesign>{({ design }) => `
 ${switchDesign(design, {
 fm: `
 .${cn}[data-border="true"] {
-  border: 1px solid
+  border: 1px solid ${CssVar.bdc};
 }`,
 neumorphism: `
 .${cn}[data-border="true"] {
