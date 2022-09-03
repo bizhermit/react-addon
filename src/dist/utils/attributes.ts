@@ -57,17 +57,17 @@ export const ftoCn = (fto?: FitToOuter) => {
 };
 export const paddingCn = (padding?: boolean | number) => {
   if (padding == null) return "";
-  if (typeof padding === "boolean") return padding ? "bh-pad-2" : "";
+  if (typeof padding === "boolean") return padding ? "bh-pad-2" : "bh-pad-0";
   return `bh-pad-${padding}`;
 };
 export const shadowCn = (shadow?: boolean | number) => {
   if (shadow == null) return "";
-  if (typeof shadow === "boolean") return shadow ? "bh-sd-2" : "";
+  if (typeof shadow === "boolean") return shadow ? "bh-sd-2" : "bh-sd-0";
   return `bh-sd-${shadow < 0 ? "n" : ""}${Math.abs(shadow)}`;
 };
 export const dropShadowCn = (shadow?: boolean | number) => {
   if (shadow == null) return "";
-  if (typeof shadow === "boolean") return shadow ? "bh-dsd-2" : "";
+  if (typeof shadow === "boolean") return shadow ? "bh-dsd-2" : "bh-dsd-0";
   return `bh-dsd-${shadow}`;
 };
 export const colorCn = (color?: Color, type?: ColorType) => {
