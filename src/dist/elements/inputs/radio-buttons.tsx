@@ -215,7 +215,7 @@ const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
   min-height: calc(${CssVar.size} + ${CssVar.pdy} * 2);
   min-width: calc(${CssVar.size} + ${CssVar.pdx} * 2);
   outline-offset: -2px;
-  flex: 1 0 auto;
+  flex: none;
 }
 .${cn}[data-flow="row"]:not([data-hrb="true"]) > .${cn}-item:not(:last-child) {
   margin-right: 5px;

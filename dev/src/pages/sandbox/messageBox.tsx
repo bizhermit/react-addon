@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { useState } from "react";
 import useMessageBox from "../../../react-addon/dist/message/message-box";
-import { Color, colorIterator } from "../../../react-addon/dist/styles/css-var";
+import { Color, colorIterator, ColorType } from "../../../react-addon/dist/styles/css-var";
 import Button from "../../../react-addon/dist/elements/button";
 import RadioButtons from "../../../react-addon/dist/elements/inputs/radio-buttons";
 import Row from "../../../react-addon/dist/elements/row";

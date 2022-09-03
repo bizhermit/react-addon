@@ -17,6 +17,7 @@ const InputStyle = <JsxStyle id={inputCn} depsDesign>{({ design }) => `
   flex: none;
   overflow: visible;
   width: 160px;
+  max-width: 100%;
 ${switchDesign(design, {
 _: `
   padding: 0px;
