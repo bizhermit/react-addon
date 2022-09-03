@@ -9,10 +9,28 @@ import Row from "../../../react-addon/dist/elements/row";
 const MessageBoxPage: NextPage = () => {
   const msgBox = useMessageBox();
   const [color, setColor] = useState<Color>();
+  const [colorType, setColorType] = useState<ColorType>();
 
   return (
     <>
     <Row $fill>
+      <RadioButtons
+        $source={[{
+          value: null,
+          label: `unset`,
+        }, {
+          value: "base",
+          label: "base",
+        }, {
+          value: "head",
+          label: "head",
+        }, {
+          value: "nav",
+          label: "nav",
+        }]}
+        $value={colorType}
+        $dispatch={setColorType}
+      />
       <RadioButtons
         $value={color}
         $dispatch={setColor}
@@ -33,6 +51,7 @@ const MessageBoxPage: NextPage = () => {
             children: "close",
           }],
           color,
+          colorType,
         });
         unlock();
       }}>show</Button>

@@ -419,7 +419,7 @@ const DialogWindowWrapper: FC<{
             onTouchStart={e => moveStart(e.currentTarget, e.touches[0].clientX, e.touches[0].clientY, true)}
             data-move={attrs.$preventMove !== true}
             data-color={attrs.$color}
-            data-colortype={attrs.$colorType ?? "head"}
+            data-colortype={attrs.$colorType || "head"}
           >
             <div className={`${cn}-title`}>
               {isReactElement(attrs.$title) ? attrs.$title : <Label $bold>{attrs.$title}</Label>  }

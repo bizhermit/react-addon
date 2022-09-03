@@ -1,6 +1,6 @@
 import React, { FC, KeyboardEvent, ReactNode, useCallback, useEffect, useMemo, useRef } from "react";
 import { createRoot, Root } from "react-dom/client";
-import CssVar, { CssPV, Color, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, Color, switchDesign, ColorType } from "../styles/css-var";
 import { LayoutContext, useLayout } from "../styles/layout-provider";
 import JsxStyle from "../styles/jsx-style";
 import Button, { ButtonAttributes, buttonCn, useButton } from "../elements/button";
@@ -22,6 +22,7 @@ type MessageBoxProps = {
   message: ReactNode;
   buttons: Array<MessageBoxButton>;
   color?: Color;
+  colorType?: ColorType;
 };
 
 const MessageBox: FC<{ props: MessageBoxProps; resolve: (value: any) => void; }> = ({
@@ -143,13 +144,12 @@ const MessageBox: FC<{ props: MessageBoxProps; resolve: (value: any) => void; }>
         className={cn}
         ref={ref}
         onKeyDown={keydown}
-        data-color={props.color}
       >
         {props.title ? 
           <div
             className={`${cn}-h ${colorCn}`}
             data-color={props.color}
-            data-colortype="nav"
+            data-colortype={props.colorType || "nav"}
           >
             <Label $bold>{props.title}</Label>
           </div> : <></>
