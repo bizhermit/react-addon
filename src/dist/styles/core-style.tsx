@@ -1,8 +1,7 @@
 import ArrayUtils from "@bizhermit/basic-utils/dist/array-utils";
 import React from "react";
 import { iconCn, varIconBc, varIconFc } from "../elements/icon";
-import { labelCn } from "../elements/label";
-import CssVar, { colorIterator, CssDarkVar, CssPV, switchDesign } from "./css-var";
+import CssVar, { colorIterator, CssDarkVar, CssPV, switchDesign, varAnchor } from "./css-var";
 import JsxStyle from "./jsx-style";
 
 export const sbCn = "bh-sb";
@@ -65,6 +64,7 @@ body {
   font-size: ${CssVar.fs};
 }
 a:not(:disabled),
+.bh-anchor:not(:disabled),
 .bh-anchor:not([data-disabled="true"]) {
   text-decoration: underline;
   cursor: pointer;
@@ -150,6 +150,7 @@ ${colorIterator((c, v, qs) => `
   background: ${v.bgc};
   color: ${v.fc};
   --bh-bdc: ${v.bdc};
+  ${varAnchor}: ${v.anchor};
 }
 .${colorCn}${qs}[data-border="true"] {
   border: 1px solid ${v.bdc};
@@ -162,6 +163,7 @@ ${colorIterator((c, v, qs) => `
   background: ${v.head.bgc};
   color: ${v.head.fc};
   --bh-bdc: ${v.head.bdc};
+  ${varAnchor}: ${v.head.anchor};
 }
 .${colorCn}${qs}[data-colortype="head"][data-border="true"] {
   border-color: ${v.head.bdc};
@@ -174,14 +176,11 @@ ${colorIterator((c, v, qs) => `
   background: ${v.nav.bgc};
   color: ${v.nav.fc};
   --bh-bdc: ${v.nav.bdc};
+  ${varAnchor}: ${v.nav.anchor};
 }
 .${colorCn}${qs}[data-colortype="nav"] .${iconCn} {
   ${varIconBc}: ${v.nav.bgc};
   ${varIconFc}: ${v.nav.fc};
-}
-.${colorCn}${qs}[data-colortype="nav"] .${labelCn}[data-type="a"],
-.${colorCn}${qs}[data-colortype="nav"] .bh-anchor {
-  color: ${v.nav.anchor};
 }
 .${colorCn}[data-border="${c}"] {
   border: 1px solid ${v.bdc};

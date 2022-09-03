@@ -12,27 +12,21 @@ const SandBoxPage: NextPage = () => {
           <FlexBox key={s} $fto="fx" $center>
             <Label $color={s}>{s}</Label>
             <FlexBox className="box" $color={s} $colorType="base">
-              {v.bgc}
+              <Label>text</Label>
               <HLine $padding $margin />
-              {v.fc}
-              <HLine $padding $margin />
-              {v.bdc}
+              <Label $type="a">link</Label>
             </FlexBox>
             head
             <FlexBox className="box" $color={s} $colorType="head">
-              {v.head.bgc}
+              <Label>text</Label>
               <HLine $padding $margin />
-              {v.head.fc}
-              <HLine $padding $margin />
-              {v.head.bdc}
+              <Label $type="a">link</Label>
             </FlexBox>
             nav
             <FlexBox className="box" $color={s} $colorType="nav">
-              {v.nav.bgc}
+              <Label>text</Label>
               <HLine $padding $margin />
-              {v.nav.fc}
-              <HLine $padding $margin />
-              {v.nav.bdc}
+              <Label $type="a">link</Label>
             </FlexBox>
             ipt
             <div
@@ -43,11 +37,7 @@ const SandBoxPage: NextPage = () => {
                 color: v.ipt.fc
               }}
             >
-              {v.ipt.bgc}
-              <HLine />
-              {v.ipt.fc}
-              <HLine />
-              {v.ipt.bdc}
+              input
             </div>
             <div
               className="box"
@@ -57,7 +47,7 @@ const SandBoxPage: NextPage = () => {
                 color: v.ipt.on_fc ?? v.ipt.fc
               }}
             >
-              {v.ipt.on}
+              on
             </div>
             <div
               className="box"
@@ -67,7 +57,7 @@ const SandBoxPage: NextPage = () => {
                 color: v.ipt.fc
               }}
             >
-              {v.ipt.off}
+              off
             </div>
             <div
               className="box"
@@ -77,7 +67,7 @@ const SandBoxPage: NextPage = () => {
                 color: v.ipt.fc
               }}
             >
-              {v.ipt.knob}
+              knob
             </div>
             btn
             <div
@@ -88,7 +78,7 @@ const SandBoxPage: NextPage = () => {
                 color: v.btn.base.fc,
               }}
             >
-              <Label>base</Label>
+              base
             </div>
             <div
               className="box"
@@ -98,7 +88,7 @@ const SandBoxPage: NextPage = () => {
                 color: v.btn.hvr.fc,
               }}
             >
-              <Label>hover</Label>
+              hover
             </div>
             <div
               className="box"
@@ -108,7 +98,7 @@ const SandBoxPage: NextPage = () => {
                 color: v.btn.act.fc,
               }}
             >
-              <Label>active</Label>
+              active
             </div>
           </FlexBox>
         );
