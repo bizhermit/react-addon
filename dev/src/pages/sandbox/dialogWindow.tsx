@@ -5,13 +5,14 @@ import Row from "../../../react-addon/dist/elements/row";
 import Label from "../../../react-addon/dist/elements/label";
 import { useEffect, useState } from "react";
 import RadioButtons from "../../../react-addon/dist/elements/inputs/radio-buttons";
-import { Color, colorIterator } from "../../../react-addon/dist/styles/css-var";
+import { Color, colorIterator, ColorType } from "../../../react-addon/dist/styles/css-var";
 import DateBox from "../../../react-addon/dist/elements/inputs/date-box";
 
 const DialogWindowPage: NextPage = () => {
   const hook = useDialogWindow();
   const [count, setCount] = useState(0);
   const [color, setColor] = useState<Color>();
+  const [colorType, setColorType] = useState<ColorType>();
 
   return (
     <>
@@ -25,6 +26,23 @@ const DialogWindowPage: NextPage = () => {
       <Button $click={() => {
         hook.hide({ action: "hide by parent button" });
       }}>hide</Button>
+      <RadioButtons
+        $source={[{
+          value: null,
+          label: `unset`,
+        }, {
+          value: "base",
+          label: "base",
+        }, {
+          value: "head",
+          label: "head",
+        }, {
+          value: "nav",
+          label: "nav",
+        }]}
+        $value={colorType}
+        $dispatch={setColorType}
+      />
       <RadioButtons
         $source={[{
           value: null,
@@ -61,6 +79,7 @@ const DialogWindowPage: NextPage = () => {
         console.log("hid", p);
       }}
       $color={color}
+      $colorType={colorType}
       // $hideHeader
       // $preventMove
       // $preventResize

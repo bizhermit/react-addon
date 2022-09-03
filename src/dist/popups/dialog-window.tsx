@@ -1,5 +1,5 @@
 import React, { cloneElement, Dispatch, FC, ReactNode, SetStateAction, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import CssVar, { CssPV, Color, colorIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, Color, switchDesign, ColorType } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import Icon, { iconCn } from "../elements/icon";
 import MaskContainer, { MaskHook, useMask } from "./mask";
@@ -8,6 +8,8 @@ import { releaseCursor, setCursor } from "../utils/cursor";
 import { isReactElement } from "../utils/attributes";
 import usePortalElement from "../hooks/portal-element";
 import { createPortal } from "react-dom";
+import Label from "../elements/label";
+import { colorCn } from "../styles/core-style";
 
 const cn = "bh-dw";
 
@@ -49,6 +51,7 @@ type DialogWindowAttributes = {
   $height?: number | string;
   $width?: number | string;
   $color?: Color;
+  $colorType?: ColorType;
   $showed?: () => void;
   $closed?: (props?: {[key: string]: any}) => void;
   $hid?: (props?: {[key: string]: any}) => void;
@@ -405,19 +408,22 @@ const DialogWindowWrapper: FC<{
         visibility: "hidden",
         zIndex: dialogWindowBaseZIndex + zIndex * dialogWindowZIndexInterval + 2
       }}
-      data-color={attrs.$color}
       data-zindex={zIndex}
     >
       <div className={`${cn}-cont`}>
         {attrs.$hideHeader ? <></> :
           <div
-            className={`${cn}-header`}
+            className={`${cn}-header ${colorCn}`}
             onDoubleClick={dblclickHeader}
             onMouseDown={e => moveStart(e.currentTarget, e.clientX, e.clientY)}
             onTouchStart={e => moveStart(e.currentTarget, e.touches[0].clientX, e.touches[0].clientY, true)}
             data-move={attrs.$preventMove !== true}
+            data-color={attrs.$color}
+            data-colortype={attrs.$colorType ?? "head"}
           >
-            <div className={`${cn}-title`}>{attrs.$title}</div>
+            <div className={`${cn}-title`}>
+              {isReactElement(attrs.$title) ? attrs.$title : <Label $bold>{attrs.$title}</Label>  }
+            </div>
             {attrs.$hideMinimizeButton ? <></> : <>
               <div
                 className={`${cn}-min`}
@@ -747,12 +753,6 @@ neumorphism: `
 .${cn}-mask_d {
   background: transparent;
 }
-${colorIterator((_s, v, qs) => `
-.${cn}${qs} > .${cn}-cont > .${cn}-header {
-  background: ${v.head.bgc};
-  color: ${v.head.fgc};
-}
-`).join("")}
 `}</JsxStyle>;
 
 export default DialogWindow;
