@@ -22,48 +22,27 @@ export type ColorType = "base" | "head" | "nav";
 export type Size = "xs" | "s" | "m" | "l" | "xl";
 export type FitToOuter = "f" | "x" | "y" | "fx" | "fy" | "none";
 
-type CssColorVar = {
+type ColorSet = {
   fgc: string;
   bgc: string;
   bdc: string;
   anc: string;
-  nav: {
-    fgc: string;
-    bgc: string;
-    bdc: string;
-    anc: string;
-  };
-  head: {
-    fgc: string;
-    bgc: string;
-    bdc: string;
-    anc: string;
-  };
-  ipt: {
-    fgc: string;
-    bgc: string;
-    bdc: string;
+};
+type ColorSetWithoutAnc = Omit<ColorSet, "anc">;
+
+type CssColorVar = ColorSet & {
+  nav: ColorSet;
+  head: ColorSet;
+  ipt: ColorSetWithoutAnc & {
     on: string;
     onf: string;
     off: string;
     knb: string;
   };
   btn: {
-    base: {
-      fgc: string;
-      bgc: string;
-      bdc: string;
-    },
-    hvr: {
-      fgc: string;
-      bgc: string;
-      bdc: string;
-    },
-    act: {
-      fgc: string;
-      bgc: string;
-      bdc: string;
-    }
+    base: ColorSetWithoutAnc;
+    hvr: ColorSetWithoutAnc;
+    act: ColorSetWithoutAnc;
   };
 };
 
@@ -93,11 +72,11 @@ const anc = "anc";
 const lFc = "#161616";
 const lBc = "#f4f4fb";
 const lBdc = "#909099";
-const lAnchor = "#00f";
+const lAnc = "#00f";
 const dFc = "#f4f4f4";
 const dBc = "#39393b";
 const dBdc = "#808084";
-const dAnchor = "#9bf";
+const dAnc = "#9bf";
 
 export const varFontSize = "--bh-fs";
 export const varAnchor = `--bh-${anc}`;
@@ -112,7 +91,7 @@ const CssVar = {
   bgc: `var(--bh-${bgc}, ${lBc})`, // background color
   fgc: `var(--bh-${fgc}, ${lFc})`, // font color
   bdc: `var(--bh-${bdc}, ${lBdc})`, // border color
-  anchor: `var(${varAnchor}, ${lAnchor})`, // anchor color
+  anchor: `var(${varAnchor}, ${lAnc})`, // anchor color
   bsize: `var(--bh-bsize, 1Q)`, // border width
   sdw: { // shadow
     c: `var(--bh-sdw_c, rgba(105,105,105,0.75))`,
@@ -139,18 +118,18 @@ const CssVar = {
     fgc: `var(${def}-${fgc}, ${lFc})`,
     bgc: `var(${def}-${bgc}, ${lBc})`,
     bdc: `var(${def}-${bdc}, ${lBdc})`,
-    anc: `var(${def}-${anc}, ${lAnchor})`,
+    anc: `var(${def}-${anc}, ${lAnc})`,
     head: {
       fgc: `var(${def}-head-${fgc}, ${lFc})`,
       bgc: `var(${def}-head-${bgc}, #e4e4f1)`,
       bdc: `var(${def}-head-${bdc}, #888890)`,
-      anc: `var(${def}-head-${anc}, ${lAnchor})`,
+      anc: `var(${def}-head-${anc}, ${lAnc})`,
     },
     nav: {
       fgc: `var(${def}-nav-${fgc}, #f2f2f2)`,
       bgc: `var(${def}-nav-${bgc}, #343a40)`,
       bdc: `var(${def}-nav-${bdc}, #d8d8e0)`,
-      anc: `var(${def}-nav-${anc}, ${dAnchor})`,
+      anc: `var(${def}-nav-${anc}, ${dAnc})`,
     },
     ipt: {
       fgc: `var(${def}-ipt-${fgc}, ${lFc})`,
@@ -183,18 +162,18 @@ const CssVar = {
     fgc: `var(${dul}-${fgc}, #606060)`,
     bgc: `var(${dul}-${bgc}, ${lBc})`,
     bdc: `var(${dul}-${bdc}, #a0a0a7)`,
-    anc: `var(${dul}-${anc}, ${lAnchor})`,
+    anc: `var(${dul}-${anc}, ${lAnc})`,
     head: {
       fgc: `var(${dul}-head-${fgc}, #505050)`,
       bgc: `var(${dul}-head-${bgc}, #e4e4f1)`,
       bdc: `var(${dul}-head-${bdc}, #909097)`,
-      anc: `var(${dul}-head-${anc}, ${lAnchor})`,
+      anc: `var(${dul}-head-${anc}, ${lAnc})`,
     },
     nav: {
       fgc: `var(${dul}-nav-${fgc}, #dadada)`,
       bgc: `var(${dul}-nav-${bgc}, #343a40)`,
       bdc: `var(${dul}-nav-${bdc}, #d8d8e0)`,
-      anc: `var(${dul}-nav-${anc}, ${dAnchor})`,
+      anc: `var(${dul}-nav-${anc}, ${dAnc})`,
     },
     ipt: {
       fgc: `var(${dul}-ipt-${fgc}, #606060)`,
@@ -227,18 +206,18 @@ const CssVar = {
     fgc: `var(${pur}-${fgc}, ${lFc})`,
     bgc: `var(${pur}-${bgc}, #fff)`,
     bdc: `var(${pur}-${bdc}, #555)`,
-    anc: `var(${pur}-${anc}, ${lAnchor})`,
+    anc: `var(${pur}-${anc}, ${lAnc})`,
     head: {
       fgc: `var(${pur}-head-${fgc}, ${lFc})`,
       bgc: `var(${pur}-head-${bgc}, #fff)`,
       bdc: `var(${pur}-head-${bdc}, #282828)`,
-      anc: `var(${pur}-head-${anc}, ${lAnchor})`,
+      anc: `var(${pur}-head-${anc}, ${lAnc})`,
     },
     nav: {
       fgc: `var(${pur}-nav-${fgc}, ${lFc})`,
       bgc: `var(${pur}-nav-${bgc}, #fff)`,
       bdc: `var(${pur}-nav-${bdc}, #000)`,
-      anc: `var(${pur}-nav-${anc}, ${lAnchor})`,
+      anc: `var(${pur}-nav-${anc}, ${lAnc})`,
     },
     ipt: {
       fgc: `var(${pur}-ipt-${fgc}, ${lFc})`,
@@ -271,18 +250,18 @@ const CssVar = {
     fgc: `var(${vvd}-${fgc}, #000)`,
     bgc: `var(${vvd}-${bgc}, #fff)`,
     bdc: `var(${vvd}-${bdc}, #000)`,
-    anc: `var(${vvd}-${anc}, ${lAnchor})`,
+    anc: `var(${vvd}-${anc}, ${lAnc})`,
     head: {
       fgc: `var(${vvd}-head-${fgc}, #fff)`,
       bgc: `var(${vvd}-head-${bgc}, #444)`,
       bdc: `var(${vvd}-head-${bdc}, #fff)`,
-      anc: `var(${vvd}-head-${anc}, ${dAnchor})`,
+      anc: `var(${vvd}-head-${anc}, ${dAnc})`,
     },
     nav: {
       fgc: `var(${vvd}-nav-${fgc}, #fff)`,
       bgc: `var(${vvd}-nav-${bgc}, #000)`,
       bdc: `var(${vvd}-nav-${bdc}, #fff)`,
-      anc: `var(${vvd}-nav-${anc}, ${dAnchor})`,
+      anc: `var(${vvd}-nav-${anc}, ${dAnc})`,
     },
     ipt: {
       fgc: `var(${vvd}-ipt-${fgc}, ${lFc})`,
@@ -315,18 +294,18 @@ const CssVar = {
     fgc: `var(${dis}-${fgc}, #c0c0c0)`,
     bgc: `var(${dis}-${bgc}, #f8f8fb)`,
     bdc: `var(${dis}-${bdc}, #e0e0e2)`,
-    anc: `var(${dis}-${anc}, ${dAnchor})`,
+    anc: `var(${dis}-${anc}, ${dAnc})`,
     head: {
       fgc: `var(${dis}-head-${fgc}, #a0a0a0)`,
       bgc: `var(${dis}-head-${bgc}, #e0e0e0)`,
       bdc: `var(${dis}-head-${bdc}, #c0c0c0)`,
-      anc: `var(${dis}-head-${anc}, ${dAnchor})`,
+      anc: `var(${dis}-head-${anc}, ${dAnc})`,
     },
     nav: {
       fgc: `var(${dis}-nav-${fgc}, #d8d8d8)`,
       bgc: `var(${dis}-nav-${bgc}, #a1a1a6)`,
       bdc: `var(${dis}-nav-${bdc}, #888)`,
-      anc: `var(${dis}-nav-${anc}, ${dAnchor})`,
+      anc: `var(${dis}-nav-${anc}, ${dAnc})`,
     },
     ipt: {
       fgc: `var(${dis}-ipt-${fgc}, #b0b0b0)`,
@@ -359,18 +338,18 @@ const CssVar = {
     fgc: `var(${rvs}-${fgc}, ${dFc})`,
     bgc: `var(${rvs}-${bgc}, ${dBc})`,
     bdc: `var(${rvs}-${bdc}, #a0a0a3)`,
-    anc: `var(${rvs}-${anc}, ${dAnchor})`,
+    anc: `var(${rvs}-${anc}, ${dAnc})`,
     head: {
       fgc: `var(${rvs}-head-${fgc}, ${dFc})`,
       bgc: `var(${rvs}-head-${bgc}, #303033)`,
       bdc: `var(${rvs}-head-${bdc}, #a8a8aa)`,
-      anc: `var(${rvs}-head-${anc}, ${dAnchor})`,
+      anc: `var(${rvs}-head-${anc}, ${dAnc})`,
     },
     nav: {
       fgc: `var(${rvs}-nav-${fgc}, ${dFc})`,
       bgc: `var(${rvs}-nav-${bgc}, #202022)`,
       bdc: `var(${rvs}-nav-${bdc}, #e0e0e3)`,
-      anc: `var(${rvs}-nav-${anc}, ${dAnchor})`,
+      anc: `var(${rvs}-nav-${anc}, ${dAnc})`,
     },
     ipt: {
       fgc: `var(${rvs}-ipt-${fgc}, ${dFc})`,
@@ -403,18 +382,18 @@ const CssVar = {
     fgc: `var(${pri}-${fgc}, #008000)`,
     bgc: `var(${pri}-${bgc}, #f8fff8)`,
     bdc: `var(${pri}-${bdc}, #228b22)`,
-    anc: `var(${pri}-${anc}, ${lAnchor})`,
+    anc: `var(${pri}-${anc}, ${lAnc})`,
     head: {
       fgc: `var(${pri}-head-${fgc}, #111)`,
       bgc: `var(${pri}-head-${bgc}, #aae4aa)`,
       bdc: `var(${pri}-head-${bdc}, #7ab07a)`,
-      anc: `var(${pri}-head-${anc}, ${lAnchor})`,
+      anc: `var(${pri}-head-${anc}, ${lAnc})`,
     },
     nav: {
       fgc: `var(${pri}-nav-${fgc}, #f2f2f2)`,
       bgc: `var(${pri}-nav-${bgc}, #206620)`,
       bdc: `var(${pri}-nav-${bdc}, #d0e8d0)`,
-      anc: `var(${pri}-nav-${anc}, ${dAnchor})`,
+      anc: `var(${pri}-nav-${anc}, ${dAnc})`,
     },
     ipt: {
       fgc: `var(${pri}-ipt-${fgc}, ${lFc})`,
@@ -447,18 +426,18 @@ const CssVar = {
     fgc: `var(${sec}-${fgc}, #0000cd)`,
     bgc: `var(${sec}-${bgc}, #f0f0ff)`,
     bdc: `var(${sec}-${bdc}, #4169d1)`,
-    anc: `var(${sec}-${anc}, ${lAnchor})`,
+    anc: `var(${sec}-${anc}, ${lAnc})`,
     head: {
       fgc: `var(${sec}-head-${fgc}, ${lFc})`,
       bgc: `var(${sec}-head-${bgc}, #baceff)`,
       bdc: `var(${sec}-head-${bdc}, #9494bd)`,
-      anc: `var(${sec}-head-${anc}, ${lAnchor})`,
+      anc: `var(${sec}-head-${anc}, ${lAnc})`,
     },
     nav: {
       fgc: `var(${sec}-nav-${fgc}, #f2f2f2)`,
       bgc: `var(${sec}-nav-${bgc}, #303078)`,
       bdc: `var(${sec}-nav-${bdc}, #d9d9e8)`,
-      anc: `var(${sec}-nav-${anc}, ${dAnchor})`,
+      anc: `var(${sec}-nav-${anc}, ${dAnc})`,
     },
     ipt: {
       fgc: `var(${sec}-ipt-${fgc}, ${lFc})`,
@@ -491,18 +470,18 @@ const CssVar = {
     fgc: `var(${ter}-${fgc}, #44617b)`,
     bgc: `var(${ter}-${bgc}, #ebf6f7)`,
     bdc: `var(${ter}-${bdc}, #4c6473)`,
-    anc: `var(${ter}-${anc}, ${lAnchor})`,
+    anc: `var(${ter}-${anc}, ${lAnc})`,
     head: {
       fgc: `var(${ter}-head-${fgc}, ${lFc})`,
       bgc: `var(${ter}-head-${bgc}, #a0cbc9)`,
       bdc: `var(${ter}-head-${bdc}, #6c848d)`,
-      anc: `var(${ter}-head-${anc}, ${lAnchor})`,
+      anc: `var(${ter}-head-${anc}, ${lAnc})`,
     },
     nav: {
       fgc: `var(${ter}-nav-${fgc}, #f2f2f2)`,
       bgc: `var(${ter}-nav-${bgc}, #455765)`,
       bdc: `var(${ter}-nav-${bdc}, #90bbb9)`,
-      anc: `var(${ter}-nav-${anc}, ${dAnchor})`,
+      anc: `var(${ter}-nav-${anc}, ${dAnc})`,
     },
     ipt: {
       fgc: `var(${ter}-ipt-${fgc}, ${lFc})`,
@@ -535,18 +514,18 @@ const CssVar = {
     fgc: `var(${wrn}-${fgc}, #e0a600)`,
     bgc: `var(${wrn}-${bgc}, #fffff4)`,
     bdc: `var(${wrn}-${bdc}, #dfb700)`,
-    anc: `var(${wrn}-${anc}, ${lAnchor})`,
+    anc: `var(${wrn}-${anc}, ${lAnc})`,
     head: {
       fgc: `var(${wrn}-head-${fgc}, ${lFc})`,
       bgc: `var(${wrn}-head-${bgc}, #f7f790)`,
       bdc: `var(${wrn}-head-${bdc}, #c8c880)`,
-      anc: `var(${wrn}-head-${anc}, ${lAnchor})`,
+      anc: `var(${wrn}-head-${anc}, ${lAnc})`,
     },
     nav: {
       fgc: `var(${wrn}-nav-${fgc}, #f2f2f2)`,
       bgc: `var(${wrn}-nav-${bgc}, #878700)`,
       bdc: `var(${wrn}-nav-${bdc}, #e8e899)`,
-      anc: `var(${wrn}-nav-${anc}, ${dAnchor})`,
+      anc: `var(${wrn}-nav-${anc}, ${dAnc})`,
     },
     ipt: {
       fgc: `var(${wrn}-ipt-${fgc}, ${lFc})`,
@@ -579,18 +558,18 @@ const CssVar = {
     fgc: `var(${dng}-${fgc}, #c22222)`,
     bgc: `var(${dng}-${bgc}, #fff4f4)`,
     bdc: `var(${dng}-${bdc}, #d23f3f)`,
-    anc: `var(${dng}-${anc}, ${lAnchor})`,
+    anc: `var(${dng}-${anc}, ${lAnc})`,
     head: {
       fgc: `var(${dng}-head-${fgc}, ${lFc})`,
       bgc: `var(${dng}-head-${bgc}, #ffc0c0)`,
       bdc: `var(${dng}-head-${bdc}, #e87a7a)`,
-      anc: `var(${dng}-head-${anc}, ${lAnchor})`,
+      anc: `var(${dng}-head-${anc}, ${lAnc})`,
     },
     nav: {
       fgc: `var(${dng}-nav-${fgc}, #f2f2f2)`,
       bgc: `var(${dng}-nav-${bgc}, #912727)`,
       bdc: `var(${dng}-nav-${bdc}, #edc0c0)`,
-      anc: `var(${dng}-nav-${anc}, ${dAnchor})`,
+      anc: `var(${dng}-nav-${anc}, ${dAnc})`,
     },
     ipt: {
       fgc: `var(${dng}-ipt-${fgc}, ${lFc})`,
@@ -623,18 +602,18 @@ const CssVar = {
     fgc: `var(${coo}-${fgc}, #00a1e9)`,
     bgc: `var(${coo}-${bgc}, #f4ffff)`,
     bdc: `var(${coo}-${bdc}, #8ec6ff)`,
-    anc: `var(${coo}-${anc}, ${lAnchor})`,
+    anc: `var(${coo}-${anc}, ${lAnc})`,
     head: {
       fgc: `var(${coo}-head-${fgc}, ${lFc})`,
       bgc: `var(${coo}-head-${bgc}, #b7ffff)`,
       bdc: `var(${coo}-head-${bdc}, #84c1ff)`,
-      anc: `var(${coo}-head-${anc}, ${lAnchor})`,
+      anc: `var(${coo}-head-${anc}, ${lAnc})`,
     },
     nav: {
       fgc: `var(${coo}-nav-${fgc}, ${lFc})`,
       bgc: `var(${coo}-nav-${bgc}, #77ffff)`,
       bdc: `var(${coo}-nav-${bdc}, #7fafff)`,
-      anc: `var(${coo}-nav-${anc}, ${lAnchor})`,
+      anc: `var(${coo}-nav-${anc}, ${lAnc})`,
     },
     ipt: {
       fgc: `var(${coo}-ipt-${fgc}, ${lFc})`,
@@ -667,18 +646,18 @@ const CssVar = {
     fgc: `var(${prt}-${fgc}, #ff89ff)`,
     bgc: `var(${prt}-${bgc}, #fff4f9)`,
     bdc: `var(${prt}-${bdc}, #ff99cc)`,
-    anc: `var(${prt}-${anc}, ${lAnchor})`,
+    anc: `var(${prt}-${anc}, ${lAnc})`,
     head: {
       fgc: `var(${prt}-head-${fgc}, ${lFc})`,
       bgc: `var(${prt}-head-${bgc}, #ffdbed)`,
       bdc: `var(${prt}-head-${bdc}, #ff93c9)`,
-      anc: `var(${prt}-head-${anc}, ${lAnchor})`,
+      anc: `var(${prt}-head-${anc}, ${lAnc})`,
     },
     nav: {
       fgc: `var(${prt}-nav-${fgc}, #f2f2f2)`,
       bgc: `var(${prt}-nav-${bgc}, #ff8ec6)`,
       bdc: `var(${prt}-nav-${bdc}, #ffe5f2)`,
-      anc: `var(${prt}-nav-${anc}, ${lAnchor})`,
+      anc: `var(${prt}-nav-${anc}, ${lAnc})`,
     },
     ipt: {
       fgc: `var(${prt}-ipt-${fgc}, ${lFc})`,
@@ -778,12 +757,15 @@ export const CssDarkVar = `
 ${def}-${fgc}: ${dFc};
 ${def}-${bgc}: ${dBc};
 ${def}-${bdc}: ${dBdc};
+${def}-${anc}: ${dAnc};
 ${def}-head-${bgc}: #2a2c2f;
 ${def}-head-${fgc}: ${dFc};
 ${def}-head-${bdc}: #a0a0a4;
+${def}-head-${anc}: ${dAnc};
 ${def}-nav-${bgc}: #1b2328;
 ${def}-nav-${fgc}: ${dFc};
 ${def}-nav-${bdc}: #c0c0c2;
+${def}-nav-${anc}: ${dAnc};
 ${def}-ipt-${bgc}: #3e3e41;
 ${def}-ipt-${fgc}: ${dFc};
 ${def}-ipt-${bdc}: ${dBdc};
@@ -803,13 +785,15 @@ ${def}-${btnA}-${bdc}: #4c4c4f;
 ${dul}-${fgc}: #c8c8ca;
 ${dul}-${bgc}: ${dBc};
 ${dul}-${bdc}: #737377;
+${dul}-${anc}: ${dAnc};
 ${dul}-head-${bgc}: #2a2c2f;
 ${dul}-head-${fgc}: #cacacd;
 ${dul}-head-${bdc}: #808084;
+${dul}-head-${anc}: ${dAnc};
 ${dul}-nav-${bgc}: #1b2328;
 ${dul}-nav-${fgc}: #cfcfd2;
 ${dul}-nav-${bdc}: #c0c0c2;
-${dul}-nav-${anc}: #9bf;
+${dul}-nav-${anc}: ${dAnc};
 ${dul}-ipt-${bgc}: #3e3e41;
 ${dul}-ipt-${fgc}: #d0d0d2;
 ${dul}-ipt-${bdc}: #737377;
@@ -829,13 +813,15 @@ ${dul}-${btnA}-${bdc}: #404042;
 ${pur}-${fgc}: ${dFc};
 ${pur}-${bgc}: #000;
 ${pur}-${bdc}: #808080;
+${pur}-${anc}: ${dAnc};
 ${pur}-head-${bgc}: #000;
 ${pur}-head-${fgc}: ${dFc};
 ${pur}-head-${bdc}: #808080;
+${pur}-head-${anc}: ${dAnc};
 ${pur}-nav-${bgc}: #000;
 ${pur}-nav-${fgc}: ${dFc};
 ${pur}-nav-${bdc}: #808080;
-${pur}-nav-${anc}: #9bf;
+${pur}-nav-${anc}: ${dAnc};
 ${pur}-ipt-${bgc}: #1f1f1f;
 ${pur}-ipt-${fgc}: ${dFc};
 ${pur}-ipt-${bdc}: #808080;
@@ -855,13 +841,15 @@ ${pur}-${btnA}-${bdc}: #090909;
 ${vvd}-${fgc}: #fff;
 ${vvd}-${bgc}: #000;
 ${vvd}-${bdc}: #fff;
+${vvd}-${anc}: ${dAnc};
 ${vvd}-head-${bgc}: #e4e4f1;
 ${vvd}-head-${fgc}: #000;
 ${vvd}-head-${bdc}: #000;
+${vvd}-head-${anc}: ${lAnc};
 ${vvd}-nav-${bgc}: #fff;
 ${vvd}-nav-${fgc}: #000;
 ${vvd}-nav-${bdc}: #000;
-${vvd}-nav-${anc}: #00f;
+${vvd}-nav-${anc}: ${lAnc};
 ${vvd}-ipt-${bgc}: #1f1f1f;
 ${vvd}-ipt-${fgc}: ${dFc};
 ${vvd}-ipt-${bdc}: #fff;
@@ -878,15 +866,44 @@ ${vvd}-${btnH}-${bdc}: #e8e8e8;
 ${vvd}-${btnA}-${bgc}: #f3f3f3;
 ${vvd}-${btnA}-${fgc}: ${lFc};
 ${vvd}-${btnA}-${bdc}: #f3f3f3;
+${dis}-${fgc}: #707070;
+${dis}-${bgc}: #393939;
+${dis}-${bdc}: #606060;
+${dis}-${anc}: #579;
+${dis}-head-${bgc}: #323232;
+${dis}-head-${fgc}: #737373;
+${dis}-head-${bdc}: #4e4e4e;
+${dis}-head-${anc}: #579;
+${dis}-nav-${bgc}: #2f2f2f;
+${dis}-nav-${fgc}: #737373;
+${dis}-nav-${anc}: #579;
+${dis}-ipt-${bgc}: #3d3d3f;
+${dis}-ipt-${fgc}: #737373;
+${dis}-ipt-${bdc}: #606060;
+${dis}-ipt-on: #4b4b4b;
+${dis}-ipt-off: #3d3d3f;
+${dis}-ipt-knob: #303033;
+${dis}-${btnB}-${bgc}: #444444;
+${dis}-${btnB}-${fgc}: #707070;
+${dis}-${btnB}-${bdc}: #444444;
+${dis}-${btnH}-${bgc}: #4c4c4c;
+${dis}-${btnH}-${fgc}: #707070;
+${dis}-${btnH}-${bdc}: #4c4c4c;
+${dis}-${btnA}-${bgc}: #404040;
+${dis}-${btnA}-${fgc}: #707070;
+${dis}-${btnA}-${bdc}: #404040;
 ${rvs}-${fgc}: ${lFc};
 ${rvs}-${bgc}: ${lBc};
 ${rvs}-${bdc}: ${lBdc};
+${rvs}-${anc}: ${lAnc};
 ${rvs}-head-${bgc}: #e4e4f1;
 ${rvs}-head-${fgc}: ${lFc};
 ${rvs}-head-${bdc}: #888890;
+${rvs}-head-${anc}: ${lAnc};
 ${rvs}-nav-${bgc}: #343a40;
 ${rvs}-nav-${fgc}: #f2f2f2;
 ${rvs}-nav-${bdc}: #d8d8e0;
+${rvs}-nav-${anc}: ${dAnc};
 ${rvs}-ipt-${bgc}: #fafafa;
 ${rvs}-ipt-${fgc}: ${lFc};
 ${rvs}-ipt-${bdc}: ${lBdc};
@@ -903,31 +920,6 @@ ${rvs}-${btnH}-${bdc}: #66666d;
 ${rvs}-${btnA}-${bgc}: #82828a;
 ${rvs}-${btnA}-${fgc}: #f2f2f2;
 ${rvs}-${btnA}-${bdc}: #82828a;
-${dis}-${fgc}: #707070;
-${dis}-${bgc}: #393939;
-${dis}-${bdc}: #606060;
-${dis}-head-${bgc}: #323232;
-${dis}-head-${fgc}: #737373;
-${dis}-head-${bdc}: #4e4e4e;
-${dis}-nav-${bgc}: #2f2f2f;
-${dis}-nav-${fgc}: #737373;
-${dis}-nav-${anc}: #469;
-${dis}-ipt-${bgc}: #3d3d3f;
-${dis}-ipt-${fgc}: #737373;
-${dis}-ipt-${bdc}: #606060;
-${dis}-ipt-on: #4b4b4b;
-${dis}-ipt-off: #3d3d3f;
-${dis}-ipt-knob: #303033;
-${dis}-${btnB}-${bgc}: #444444;
-${dis}-${btnB}-${fgc}: #707070;
-${dis}-${btnB}-${bdc}: #444444;
-${dis}-${btnH}-${bgc}: #4c4c4c;
-${dis}-${btnH}-${fgc}: #707070;
-${dis}-${btnH}-${bdc}: #4c4c4c;
-${dis}-${btnA}-${bgc}: #404040;
-${dis}-${btnA}-${fgc}: #707070;
-${dis}-${btnA}-${bdc}: #404040;
-
 
 ${pri}-${fgc}: #30b030;
 ${pri}-${bgc}: #393c39;
