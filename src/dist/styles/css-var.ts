@@ -755,6 +755,7 @@ export const CssDarkVar = `
 --bh-dul-nav-bgc: #1b2328;
 --bh-dul-nav-fc: #cfcfd2;
 --bh-dul-nav-bdc: #c0c0c2;
+--bh-dul-nav-anchor: #9bf;
 --bh-dul-ipt-bgc: #3e3e41;
 --bh-dul-ipt-fc: #d0d0d2;
 --bh-dul-ipt-bdc: #737377;
@@ -780,6 +781,7 @@ export const CssDarkVar = `
 --bh-pur-nav-bgc: #000;
 --bh-pur-nav-fc: ${dFc};
 --bh-pur-nav-bdc: #808080;
+--bh-pur-nav-anchor: #9bf;
 --bh-pur-ipt-bgc: #1f1f1f;
 --bh-pur-ipt-fc: ${dFc};
 --bh-pur-ipt-bdc: #808080;
@@ -796,7 +798,32 @@ export const CssDarkVar = `
 --bh-pur-btn-act-bgc: #090909;
 --bh-pur-btn-act-fc: ${dFc};
 --bh-pur-btn-act-bdc: #090909;
-
+--bh-vvd-fc: #fff;
+--bh-vvd-bgc: #000;
+--bh-vvd-bdc: #fff;
+--bh-vvd-head-bgc: #e4e4f1;
+--bh-vvd-head-fc: #000;
+--bh-vvd-head-bdc: #000;
+--bh-vvd-nav-bgc: #fff;
+--bh-vvd-nav-fc: #000;
+--bh-vvd-nav-bdc: #000;
+--bh-vvd-nav-anchor: #00f;
+--bh-vvd-ipt-bgc: #1f1f1f;
+--bh-vvd-ipt-fc: ${dFc};
+--bh-vvd-ipt-bdc: #fff;
+--bh-vvd-ipt-on: #fff;
+--bh-vvd-ipt-on-fc: #000;
+--bh-vvd-ipt-off: #3d3d3f;
+--bh-vvd-ipt-knob: #303033;
+--bh-vvd-btn-base-bgc: #fff;
+--bh-vvd-btn-base-fc: ${lFc};
+--bh-vvd-btn-base-bdc: #fff;
+--bh-vvd-btn-hvr-bgc: #e8e8e8;
+--bh-vvd-btn-hvr-fc: ${lFc};
+--bh-vvd-btn-hvr-bdc: #e8e8e8;
+--bh-vvd-btn-act-bgc: #f3f3f3;
+--bh-vvd-btn-act-fc: ${lFc};
+--bh-vvd-btn-act-bdc: #f3f3f3;
 
 
 --bh-rvs-fc: ${lFc};
