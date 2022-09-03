@@ -70,7 +70,7 @@ export const varFontSize = "--bh-fs";
 const lFc = "#161616";
 const lBc = "#f4f4fb";
 const lBdc = "#909099";
-const dFc = "#f2f2f2";
+const dFc = "#f4f4f4";
 const dBc = "#39393b";
 const dBdc = "#808084";
 
@@ -726,7 +726,7 @@ export const CssDarkVar = `
 --bh-def-bdc: ${dBdc};
 --bh-def-head-bgc: #2a2c2f;
 --bh-def-head-fc: ${dFc};
---bh-def-head-bdc: #909094;
+--bh-def-head-bdc: #a0a0a4;
 --bh-def-nav-bgc: #1b2328;
 --bh-def-nav-fc: ${dFc};
 --bh-def-nav-bdc: #c0c0c2;
@@ -746,6 +746,33 @@ export const CssDarkVar = `
 --bh-def-btn-act-bgc: #4c4c4f;
 --bh-def-btn-act-fc: ${dFc};
 --bh-def-btn-act-bdc: #4c4c4f;
+--bh-dul-fc: #c8c8ca;
+--bh-dul-bgc: ${dBc};
+--bh-dul-bdc: #737377;
+--bh-dul-head-bgc: #2a2c2f;
+--bh-dul-head-fc: #cacacd;
+--bh-dul-head-bdc: #808084;
+--bh-dul-nav-bgc: #1b2328;
+--bh-dul-nav-fc: #cfcfd2;
+--bh-dul-nav-bdc: #c0c0c2;
+--bh-dul-ipt-bgc: #3e3e41;
+--bh-dul-ipt-fc: #d0d0d2;
+--bh-dul-ipt-bdc: #737377;
+--bh-dul-ipt-on: #585a6a;
+--bh-dul-ipt-on-fc: #d0d0d2;
+--bh-dul-ipt-off: #3d3d3f;
+--bh-dul-ipt-knob: #303033;
+--bh-dul-btn-base-bgc: #48484a;
+--bh-dul-btn-base-fc: #cfcfd2;
+--bh-dul-btn-base-bdc: #48484a;
+--bh-dul-btn-hvr-bgc: #535356;
+--bh-dul-btn-hvr-fc: #cfcfd2;
+--bh-dul-btn-hvr-bdc: #535356;
+--bh-dul-btn-act-bgc: #404042;
+--bh-dul-btn-act-fc: #cfcfd2;
+--bh-dul-btn-act-bdc: #404042;
+
+
 --bh-pri-fc: #30b030;
 --bh-pri-bgc: #393c39;
 --bh-pri-bdc: #307330;
