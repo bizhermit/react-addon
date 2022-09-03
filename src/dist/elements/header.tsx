@@ -1,8 +1,7 @@
 import React, { FC, HTMLAttributes, ReactNode } from "react";
-import { colorCn } from "../styles/core-style";
 import { CssPV, switchDesign } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
-import { attributesWithoutChildren, shadowCn } from "../utils/attributes";
+import { attributesWithoutChildren, colorsCn, shadowCn } from "../utils/attributes";
 import Row, { RowAttributes } from "./row";
 
 const cn = "bh-header";
@@ -11,11 +10,7 @@ const Header: FC<HTMLAttributes<HTMLElement> & Omit<RowAttributes, "$fill"> & {
   children?: ReactNode;
 }> = (attrs) => {
   return (
-    <header
-      {...attributesWithoutChildren(attrs, cn, colorCn, shadowCn(attrs.$shadow))}
-      data-color={attrs.$color || "default"}
-      data-colortype={attrs.$colorType || "head"}
-    >
+    <header {...attributesWithoutChildren(attrs, cn, ...colorsCn({...attrs, $color: attrs.$color || "default"}, "head"), shadowCn(attrs.$shadow))}>
       <Row
         $fill
         $padding={attrs.$padding}

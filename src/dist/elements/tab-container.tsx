@@ -1,8 +1,8 @@
 import React, { cloneElement, FC, HTMLAttributes, ReactElement, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { colorCn, sbCn } from "../styles/core-style";
-import CssVar, { CssPV, FitToOuter, Color, switchDesign, ColorType } from "../styles/css-var";
+import { sbCn } from "../styles/core-style";
+import CssVar, { CssPV, FitToOuter, Color, switchDesign, ColorType, colorIterator } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
-import { attributesWithoutChildren } from "../utils/attributes";
+import { attributesWithoutChildren, bdColorCn, bgColorCn, colorCn, fgColorCn } from "../utils/attributes";
 import { _HookSetter } from "../utils/hook";
 import MaskContainer, { MaskHook, MaskProps, useMask } from "../popups/mask";
 
@@ -92,10 +92,8 @@ const TabContainer = React.forwardRef<HTMLDivElement, TabContainerAttributes>((a
       $scroll={false}
     >
       <div
-        className={`${cn}-list ${colorCn}`}
+        className={`${cn}-list ${fgColorCn(attrs.$color, attrs.$colorType)} ${bgColorCn(attrs.$color, attrs.$colorType)}`}
         data-calc={attrs.$calcTabWidth}
-        data-color={attrs.$color || "default"}
-        data-colortype={attrs.$colorType}
       >
         {useMemo(() => {
           return (Array.isArray(attrs.children) ? attrs.children : [attrs.children]).map(cont => {
@@ -104,8 +102,8 @@ const TabContainer = React.forwardRef<HTMLDivElement, TabContainerAttributes>((a
                 key={cont.key}
                 className={`${cn}-tab`}
                 data-selected={String(key) === String(cont.key)}
-                data-color={cont.props.$color}
-                data-colortype={cont.props.$colorType}
+                data-color={cont.props.$color || "default"}
+                data-colortype={attrs.$colorType}
                 onClick={() => setKey(cont.key)}
               >{cont.props.title ?? ""}</div>
             );
@@ -219,26 +217,29 @@ c: `
   left: 0px;
   height: 2px;
   width: 100%;
-  background: var(--bh-bdc);
+  background: ${CssVar.fgc};
 }
-`,
+${colorIterator((_c, v, s) => `
+.${cn}-tab${s}[data-selected="true"]::before {
+  background: ${v.ipt.on};
+}`).join("")}`,
 fm: `
 .${cn}-tab:not([data-selected="true"]):hover {
   background: ${CssVar.hvrBgc};
+  z-index: 1;
 }
 .${cn}-tab:not([data-selected="true"]):hover:active {
   background: ${CssVar.actBgc};
-}
-`,
+}`,
 neumorphism: `
 .${cn}-tab:not([data-selected="true"]):hover {
   box-shadow: ${CssPV.nCvxSdHover};
+  z-index: 1;
 }
 .${cn}-tab:not([data-selected="true"]):hover:active,
 .${cn}-tab[data-selected="true"] {
   box-shadow: ${CssPV.nCcvSdActive};
-}
-`
+}`
 })}
 `}</JsxStyle>;
 

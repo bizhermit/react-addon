@@ -1,8 +1,7 @@
 import React, { FC, HTMLAttributes, ReactNode } from "react";
-import { colorCn } from "../styles/core-style";
-import { Color, ColorType, CssPV } from "../styles/css-var";
+import { CssPV } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
-import { attributes, dPosX, dPosY, paddingCn, shadowCn } from "../utils/attributes";
+import { attributes, ColorAttributes, colorsCn, dPosX, dPosY, paddingCn, shadowCn } from "../utils/attributes";
 
 const cn = "bh-row";
 
@@ -13,11 +12,9 @@ export type RowAttributes = {
   $middle?: boolean;
   $fill?: boolean;
   $nowrap?: boolean;
-  $color?: Color;
-  $colorType?: ColorType;
   $shadow?: boolean | number;
   $padding?: boolean | number;
-};
+} & ColorAttributes;
 
 const Row: FC<HTMLAttributes<HTMLDivElement> & RowAttributes & {
   children?: ReactNode;
@@ -25,13 +22,11 @@ const Row: FC<HTMLAttributes<HTMLDivElement> & RowAttributes & {
   return (
     <>
       <div
-        {...attributes(attrs, cn, colorCn, shadowCn(attrs.$shadow), paddingCn(attrs.$padding))}
+        {...attributes(attrs, cn, ...colorsCn(attrs), shadowCn(attrs.$shadow), paddingCn(attrs.$padding))}
         data-fill={attrs.$fill}
         data-nowrap={attrs.$nowrap}
         data-posx={dPosX(undefined, attrs.$center, attrs.$right) ?? "l"}
         data-posy={dPosY(attrs.$top, attrs.$middle, undefined) ?? "b"}
-        data-color={attrs.$color}
-        data-colortype={attrs.$colorType}
       />
       {Style}
     </>

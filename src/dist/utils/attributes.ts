@@ -86,13 +86,13 @@ export const bdColorCn = (color?: Color, type?: ColorType) => {
   if (color == null) return "";
   return `bh-bdc_${color}_${type || "base"}`;
 };
-export const colorsCn = (attrs: ColorAttributes) => {
+export const colorsCn = (attrs: ColorAttributes, defaultColorType?: ColorType) => {
   if (attrs == null) return [];
   return [
-    colorCn(attrs.$color, attrs.$colorType),
-    fgColorCn(attrs.$fgColor, attrs.$fgColorType),
-    bgColorCn(attrs.$bgColor, attrs.$bgColorType),
-    bdColorCn(attrs.$bdColor, attrs.$bdColorType)
+    colorCn(attrs.$color, attrs.$colorType || defaultColorType),
+    fgColorCn(attrs.$fgColor, attrs.$fgColorType || defaultColorType),
+    bgColorCn(attrs.$bgColor, attrs.$bgColorType || defaultColorType),
+    bdColorCn(attrs.$bdColor, attrs.$bdColorType || defaultColorType),
   ];
 };
 

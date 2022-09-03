@@ -1,12 +1,10 @@
 import React, { cloneElement, FunctionComponent, HTMLAttributes, ReactElement, ReactNode, useCallback, useRef, useState } from "react";
 import { useEffect } from "react";
 import { sbCn } from "../styles/core-style";
-import CssVar, { CssPV, FitToOuter, Color, colorIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, FitToOuter, Color, switchDesign, ColorType } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
-import { attributesWithoutChildren, ftoCn } from "../utils/attributes";
+import { attributesWithoutChildren, colorCn, ftoCn } from "../utils/attributes";
 import { _HookSetter } from "../utils/hook";
-import { iconCn, varIconBc, varIconFc } from "./icon";
-import { labelCn } from "./label";
 
 const cn = "bh-nvg";
 
@@ -22,6 +20,7 @@ type NavigationAttributes = HTMLAttributes<HTMLDivElement> & {
   $position?: "left" | "top" | "right" | "bottom";
   $mode?: "visible" | "edge" | "manual";
   $color?: Color;
+  $colorType?: ColorType;
   $toggled?: (opened: boolean) => void;
   $edgeSize?: number | string;
   $preventClickClose?: boolean;
@@ -303,9 +302,8 @@ const NavigationContainer = React.forwardRef<HTMLDivElement, NavigationContainer
     >
       <nav
         ref={nref}
-        {...attributesWithoutChildren(navCont.props, `${cn}-nav ${sbCn}`)}
+        {...attributesWithoutChildren(navCont.props, `${cn}-nav`, sbCn, colorCn(navCont.props.$color, navCont.props.$colorType || "nav"))}
         data-opened={opened}
-        data-color={navCont.props.$color || "default"}
         onMouseEnter={mouseEnter}
         onMouseLeave={mouseLeave}
         onClick={(e) => { e.stopPropagation() }}
@@ -450,20 +448,7 @@ fm: `
 }
 .${cn}[data-pos="bottom"] > .${cn}-nav {
   box-shadow: 0 -2px 1px -2px ${CssVar.sdw.c};
-}
-${colorIterator((_s, v, qs) => `
-.${cn}-nav${qs} {
-  color: ${v.nav.fgc};
-  background: ${v.nav.bgc};
-}
-.${cn}-nav${qs} .${iconCn} {
-  ${varIconFc}: ${v.nav.fgc};
-  ${varIconBc}: ${v.nav.bgc};
-}
-.${cn}-nav${qs} .${labelCn}[data-type="a"],
-.${cn}-nav${qs} .bh-anchor {
-  color: ${v.nav.anc};
-}`).join("")}`,
+}`,
 material: `
 .${cn}[data-pos="left"] > .${cn}-nav {
   box-shadow: 5px 0 5px -1px ${CssVar.sdw.c};
@@ -480,21 +465,7 @@ material: `
 neumorphism: `
 .${cn} > .${cn}-nav {
   box-shadow: ${CssPV.nCvxSd(4)};
-}
-${colorIterator((_s, v, qs) => `
-.${cn}-nav${qs} {
-  color: ${v.nav.fgc};
-  background: ${v.nav.bgc};
-}
-.${cn}-nav${qs} .${iconCn} {
-  ${varIconFc}: ${v.nav.fgc};
-  ${varIconBc}: ${v.nav.bgc};
-}
-.${cn}-nav${qs} .${labelCn}[data-type="a"],
-.${cn}-nav${qs} .bh-anchor {
-  color: ${v.nav.anc};
-}
-`).join("")}`})}
+}`})}
 `}</JsxStyle>;
 
 export const Navigation: NavigationFC = (props: NavigationAttributes) => {

@@ -94,7 +94,7 @@ const CssVar = {
   anchor: `var(${varAnchor}, ${lAnc})`, // anchor color
   bsize: `var(--bh-bsize, 1Q)`, // border width
   sdw: { // shadow
-    c: `var(--bh-sdw_c, rgba(105,105,105,0.75))`,
+    c: `var(--bh-sdw_c, rgba(0,0,0,0.6))`,
     b: `var(--bh-sdw_b, rgba(224,224,229,0.2))`,
     d: `var(--bh-sdw_d, rgba(0,0,0,0.3))`,
   },
@@ -126,7 +126,7 @@ const CssVar = {
       anc: `var(${def}-head-${anc}, ${lAnc})`,
     },
     nav: {
-      fgc: `var(${def}-nav-${fgc}, #f2f2f2)`,
+      fgc: `var(${def}-nav-${fgc}, ${dFc})`,
       bgc: `var(${def}-nav-${bgc}, #343a40)`,
       bdc: `var(${def}-nav-${bdc}, #d8d8e0)`,
       anc: `var(${def}-nav-${anc}, ${dAnc})`,
@@ -142,17 +142,17 @@ const CssVar = {
     },
     btn: {
       base: {
-        fgc: `var(${def}-${btnB}-${fgc}, #f2f2f2)`,
+        fgc: `var(${def}-${btnB}-${fgc}, ${dFc})`,
         bgc: `var(${def}-${btnB}-${bgc}, #787880)`,
         bdc: `var(${def}-${btnB}-${bdc}, #787880)`,
       },
       hvr: {
-        fgc: `var(${def}-${btnH}-${fgc}, #f2f2f2)`,
+        fgc: `var(${def}-${btnH}-${fgc}, ${dFc})`,
         bgc: `var(${def}-${btnH}-${bgc}, #66666d)`,
         bdc: `var(${def}-${btnH}-${bdc}, #66666d)`,
       },
       act: {
-        fgc: `var(${def}-${btnA}-${fgc}, #f2f2f2)`,
+        fgc: `var(${def}-${btnA}-${fgc}, ${dFc})`,
         bgc: `var(${def}-${btnA}-${bgc}, #82828a)`,
         bdc: `var(${def}-${btnA}-${bdc}, #82828a)`,
       },
@@ -274,17 +274,17 @@ const CssVar = {
     },
     btn: {
       base: {
-        fgc: `var(${vvd}-${btnB}-${fgc}, #f2f2f2)`,
+        fgc: `var(${vvd}-${btnB}-${fgc}, ${dFc})`,
         bgc: `var(${vvd}-${btnB}-${bgc}, #000008)`,
         bdc: `var(${vvd}-${btnB}-${bdc}, #000008)`,
       },
       hvr: {
-        fgc: `var(${vvd}-${btnH}-${fgc}, #f2f2f2)`,
+        fgc: `var(${vvd}-${btnH}-${fgc}, ${dFc})`,
         bgc: `var(${vvd}-${btnH}-${bgc}, #404048)`,
         bdc: `var(${vvd}-${btnH}-${bdc}, #404048)`,
       },
       act: {
-        fgc: `var(${vvd}-${btnA}-${fgc}, #f2f2f2)`,
+        fgc: `var(${vvd}-${btnA}-${fgc}, ${dFc})`,
         bgc: `var(${vvd}-${btnA}-${bgc}, #202028)`,
         bdc: `var(${vvd}-${btnA}-${bdc}, #202028)`,
       },
@@ -390,7 +390,7 @@ const CssVar = {
       anc: `var(${pri}-head-${anc}, ${lAnc})`,
     },
     nav: {
-      fgc: `var(${pri}-nav-${fgc}, #f2f2f2)`,
+      fgc: `var(${pri}-nav-${fgc}, ${dFc})`,
       bgc: `var(${pri}-nav-${bgc}, #206620)`,
       bdc: `var(${pri}-nav-${bdc}, #d0e8d0)`,
       anc: `var(${pri}-nav-${anc}, ${dAnc})`,
@@ -406,17 +406,17 @@ const CssVar = {
     },
     btn: {
       base: {
-        fgc: `var(${pri}-${btnB}-${fgc}, #f2f2f2)`,
+        fgc: `var(${pri}-${btnB}-${fgc}, ${dFc})`,
         bgc: `var(${pri}-${btnB}-${bgc}, #40a040)`,
         bdc: `var(${pri}-${btnB}-${bdc}, #40a040)`,
       },
       hvr: {
-        fgc: `var(${pri}-${btnH}-${fgc}, #f2f2f2)`,
+        fgc: `var(${pri}-${btnH}-${fgc}, ${dFc})`,
         bgc: `var(${pri}-${btnH}-${bgc}, #309030)`,
         bdc: `var(${pri}-${btnH}-${bdc}, #309030)`,
       },
       act: {
-        fgc: `var(${pri}-${btnA}-${fgc}, #f2f2f2)`,
+        fgc: `var(${pri}-${btnA}-${fgc}, ${dFc})`,
         bgc: `var(${pri}-${btnA}-${bgc}, #48a848)`,
         bdc: `var(${pri}-${btnA}-${bdc}, #48a848)`,
       },
@@ -434,7 +434,7 @@ const CssVar = {
       anc: `var(${sec}-head-${anc}, ${lAnc})`,
     },
     nav: {
-      fgc: `var(${sec}-nav-${fgc}, #f2f2f2)`,
+      fgc: `var(${sec}-nav-${fgc}, ${dFc})`,
       bgc: `var(${sec}-nav-${bgc}, #303078)`,
       bdc: `var(${sec}-nav-${bdc}, #d9d9e8)`,
       anc: `var(${sec}-nav-${anc}, ${dAnc})`,
@@ -450,17 +450,17 @@ const CssVar = {
     },
     btn: {
       base: {
-        fgc: `var(${sec}-${btnB}-${fgc}, #f2f2f2)`,
+        fgc: `var(${sec}-${btnB}-${fgc}, ${dFc})`,
         bgc: `var(${sec}-${btnB}-${bgc}, #4169d1)`,
         bdc: `var(${sec}-${btnB}-${bdc}, #4169d1)`,
       },
       hvr: {
-        fgc: `var(${sec}-${btnH}-${fgc}, #f2f2f2)`,
+        fgc: `var(${sec}-${btnH}-${fgc}, ${dFc})`,
         bgc: `var(${sec}-${btnH}-${bgc}, #3159c1)`,
         bdc: `var(${sec}-${btnH}-${bgc}, #3159c1)`,
       },
       act: {
-        fgc: `var(${sec}-${btnA}-${fgc}, #f2f2f2)`,
+        fgc: `var(${sec}-${btnA}-${fgc}, ${dFc})`,
         bgc: `var(${sec}-${btnA}-${bgc}, #4971d9)`,
         bdc: `var(${sec}-${btnA}-${bdc}, #4971d9)`,
       },
@@ -478,7 +478,7 @@ const CssVar = {
       anc: `var(${ter}-head-${anc}, ${lAnc})`,
     },
     nav: {
-      fgc: `var(${ter}-nav-${fgc}, #f2f2f2)`,
+      fgc: `var(${ter}-nav-${fgc}, ${dFc})`,
       bgc: `var(${ter}-nav-${bgc}, #455765)`,
       bdc: `var(${ter}-nav-${bdc}, #a0cfca)`,
       anc: `var(${ter}-nav-${anc}, ${dAnc})`,
@@ -494,17 +494,17 @@ const CssVar = {
     },
     btn: {
       base: {
-        fgc: `var(${ter}-${btnB}-${fgc}, #f2f2f2)`,
+        fgc: `var(${ter}-${btnB}-${fgc}, ${dFc})`,
         bgc: `var(${ter}-${btnB}-${bgc}, #5b7e91)`,
         bdc: `var(${ter}-${btnB}-${bdc}, #5b7e91)`,
       },
       hvr: {
-        fgc: `var(${ter}-${btnH}-${fgc}, #f2f2f2)`,
+        fgc: `var(${ter}-${btnH}-${fgc}, ${dFc})`,
         bgc: `var(${ter}-${btnH}-${bgc}, #426579)`,
         bdc: `var(${ter}-${btnH}-${bgc}, #426579)`,
       },
       act: {
-        fgc: `var(${ter}-${btnA}-${fgc}, #f2f2f2)`,
+        fgc: `var(${ter}-${btnA}-${fgc}, ${dFc})`,
         bgc: `var(${ter}-${btnA}-${bgc}, #6c848d)`,
         bdc: `var(${ter}-${btnA}-${bdc}, #6c848d)`,
       },
@@ -522,7 +522,7 @@ const CssVar = {
       anc: `var(${wrn}-head-${anc}, ${lAnc})`,
     },
     nav: {
-      fgc: `var(${wrn}-nav-${fgc}, #f2f2f2)`,
+      fgc: `var(${wrn}-nav-${fgc}, ${dFc})`,
       bgc: `var(${wrn}-nav-${bgc}, #878700)`,
       bdc: `var(${wrn}-nav-${bdc}, #e8e899)`,
       anc: `var(${wrn}-nav-${anc}, ${dAnc})`,
@@ -538,17 +538,17 @@ const CssVar = {
     },
     btn: {
       base: {
-        fgc: `var(${wrn}-${btnB}-${fgc}, #f2f2f2)`,
+        fgc: `var(${wrn}-${btnB}-${fgc}, ${dFc})`,
         bgc: `var(${wrn}-${btnB}-${bgc}, #d0b000)`,
         bdc: `var(${wrn}-${btnB}-${bdc}, #d0b000)`,
       },
       hvr: {
-        fgc: `var(${wrn}-${btnH}-${fgc}, #f2f2f2)`,
+        fgc: `var(${wrn}-${btnH}-${fgc}, ${dFc})`,
         bgc: `var(${wrn}-${btnH}-${bgc}, #c4a400)`,
         bdc: `var(${wrn}-${btnH}-${bdc}, #c4a400)`,
       },
       act: {
-        fgc: `var(${wrn}-${btnA}-${fgc}, #f2f2f2)`,
+        fgc: `var(${wrn}-${btnA}-${fgc}, ${dFc})`,
         bgc: `var(${wrn}-${btnA}-${bgc}, #d6b600)`,
         bdc: `var(${wrn}-${btnA}-${bdc}, #d6b600)`,
       },
@@ -566,7 +566,7 @@ const CssVar = {
       anc: `var(${dng}-head-${anc}, ${lAnc})`,
     },
     nav: {
-      fgc: `var(${dng}-nav-${fgc}, #f2f2f2)`,
+      fgc: `var(${dng}-nav-${fgc}, ${dFc})`,
       bgc: `var(${dng}-nav-${bgc}, #912727)`,
       bdc: `var(${dng}-nav-${bdc}, #edc0c0)`,
       anc: `var(${dng}-nav-${anc}, ${dAnc})`,
@@ -582,17 +582,17 @@ const CssVar = {
     },
     btn: {
       base: {
-        fgc: `var(${dng}-${btnB}-${fgc}, #f2f2f2)`,
+        fgc: `var(${dng}-${btnB}-${fgc}, ${dFc})`,
         bgc: `var(${dng}-${btnB}-${bgc}, #b23737)`,
         bdc: `var(${dng}-${btnB}-${bdc}, #b23737)`,
       },
       hvr: {
-        fgc: `var(${dng}-${btnH}-${fgc}, #f2f2f2)`,
+        fgc: `var(${dng}-${btnH}-${fgc}, ${dFc})`,
         bgc: `var(${dng}-${btnH}-${bgc}, #a22727)`,
         bdc: `var(${dng}-${btnH}-${bdc}, #a22727)`,
       },
       act: {
-        fgc: `var(${dng}-${btnA}-${fgc}, #f2f2f2)`,
+        fgc: `var(${dng}-${btnA}-${fgc}, ${dFc})`,
         bgc: `var(${dng}-${btnA}-${bgc}, #ba3f3f)`,
         bdc: `var(${dng}-${btnA}-${bdc}, #ba3f3f)`,
       },
@@ -654,7 +654,7 @@ const CssVar = {
       anc: `var(${prt}-head-${anc}, ${lAnc})`,
     },
     nav: {
-      fgc: `var(${prt}-nav-${fgc}, #f2f2f2)`,
+      fgc: `var(${prt}-nav-${fgc}, ${dFc})`,
       bgc: `var(${prt}-nav-${bgc}, #ff8ec6)`,
       bdc: `var(${prt}-nav-${bdc}, #ffe5f2)`,
       anc: `var(${prt}-nav-${anc}, ${lAnc})`,
@@ -670,17 +670,17 @@ const CssVar = {
     },
     btn: {
       base: {
-        fgc: `var(${prt}-${btnB}-${fgc}, #f2f2f2)`,
+        fgc: `var(${prt}-${btnB}-${fgc}, ${dFc})`,
         bgc: `var(${prt}-${btnB}-${bgc}, #ff99ff)`,
         bdc: `var(${prt}-${btnB}-${bdc}, #ff99ff)`,
       },
       hvr: {
-        fgc: `var(${prt}-${btnH}-${fgc}, #f2f2f2)`,
+        fgc: `var(${prt}-${btnH}-${fgc}, ${dFc})`,
         bgc: `var(${prt}-${btnH}-${bgc}, #ff7fff)`,
         bdc: `var(${prt}-${btnH}-${bdc}, #ff7fff)`,
       },
       act: {
-        fgc: `var(${prt}-${btnA}-${fgc}, #f2f2f2)`,
+        fgc: `var(${prt}-${btnA}-${fgc}, ${dFc})`,
         bgc: `var(${prt}-${btnA}-${bgc}, #ff8eff)`,
         bdc: `var(${prt}-${btnA}-${bdc}, #ff8eff)`,
       },
@@ -747,7 +747,7 @@ export const CssDarkVar = `
 --bh-${bgc}: ${dBc};
 --bh-${bdc}: ${dBdc};
 --bh-${anc}: #9bf;
---bh-sdw_c: rgba(13,0,15,0.75);
+--bh-sdw_c: rgba(0,0,0,0.6);
 --bh-sdw_b: rgba(80,80,80,0.5);
 --bh-sdw_d: rgba(0,0,0,0.65);
 --bh-mask-${bgc}: rgba(60,60,63,0.6);
@@ -900,7 +900,7 @@ ${rvs}-head-${bgc}: #e4e4f1;
 ${rvs}-head-${fgc}: ${lFc};
 ${rvs}-head-${bdc}: #888890;
 ${rvs}-head-${anc}: ${lAnc};
-${rvs}-nav-${fgc}: #f2f2f2;
+${rvs}-nav-${fgc}: ${dFc};
 ${rvs}-nav-${bgc}: #343a40;
 ${rvs}-nav-${bdc}: #d8d8e0;
 ${rvs}-nav-${anc}: ${dAnc};
@@ -911,13 +911,13 @@ ${rvs}-ipt-on: #bcc7d7;
 ${rvs}-ipt-on-${fgc}: ${lFc};
 ${rvs}-ipt-off: #fff;
 ${rvs}-ipt-knob: #fff;
-${rvs}-${btnB}-${fgc}: #f2f2f2;
+${rvs}-${btnB}-${fgc}: ${dFc};
 ${rvs}-${btnB}-${bgc}: #787880;
 ${rvs}-${btnB}-${bdc}: #787880;
-${rvs}-${btnH}-${fgc}: #f2f2f2;
+${rvs}-${btnH}-${fgc}: ${dFc};
 ${rvs}-${btnH}-${bgc}: #66666d;
 ${rvs}-${btnH}-${bdc}: #66666d;
-${rvs}-${btnA}-${fgc}: #f2f2f2;
+${rvs}-${btnA}-${fgc}: ${dFc};
 ${rvs}-${btnA}-${bgc}: #82828a;
 ${rvs}-${btnA}-${bdc}: #82828a;
 ${pri}-${fgc}: #30c030;

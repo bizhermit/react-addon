@@ -5,7 +5,6 @@ import CssVar, { colorIterator, CssDarkVar, CssPV, switchDesign, varAnchor } fro
 import JsxStyle from "./jsx-style";
 
 export const sbCn = "bh-sb";
-export const colorCn = "bh-color";
 
 const CoreStyle =
 <>

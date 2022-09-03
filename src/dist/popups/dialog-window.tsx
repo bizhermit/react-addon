@@ -5,11 +5,10 @@ import Icon, { iconCn } from "../elements/icon";
 import MaskContainer, { MaskHook, useMask } from "./mask";
 import { _HookSetter } from "../utils/hook";
 import { releaseCursor, setCursor } from "../utils/cursor";
-import { isReactElement } from "../utils/attributes";
+import { colorCn, isReactElement } from "../utils/attributes";
 import usePortalElement from "../hooks/portal-element";
 import { createPortal } from "react-dom";
 import Label from "../elements/label";
-import { colorCn } from "../styles/core-style";
 
 const cn = "bh-dw";
 
@@ -413,13 +412,11 @@ const DialogWindowWrapper: FC<{
       <div className={`${cn}-cont`}>
         {attrs.$hideHeader ? <></> :
           <div
-            className={`${cn}-header ${colorCn}`}
+            className={`${cn}-header ${colorCn(attrs.$color, attrs.$colorType || "head")}`}
             onDoubleClick={dblclickHeader}
             onMouseDown={e => moveStart(e.currentTarget, e.clientX, e.clientY)}
             onTouchStart={e => moveStart(e.currentTarget, e.touches[0].clientX, e.touches[0].clientY, true)}
             data-move={attrs.$preventMove !== true}
-            data-color={attrs.$color}
-            data-colortype={attrs.$colorType || "head"}
           >
             <div className={`${cn}-title`}>
               {isReactElement(attrs.$title) ? attrs.$title : <Label $bold>{attrs.$title}</Label>  }

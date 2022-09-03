@@ -6,7 +6,7 @@ import JsxStyle from "../styles/jsx-style";
 import Button, { ButtonAttributes, buttonCn, useButton } from "../elements/button";
 import TextBox, { TextBoxAttributes } from "../elements/inputs/text-box";
 import Label from "../elements/label";
-import { colorCn } from "../styles/core-style";
+import { colorCn } from "../utils/attributes";
 
 const cn = "bh-mgs_box";
 
@@ -146,11 +146,7 @@ const MessageBox: FC<{ props: MessageBoxProps; resolve: (value: any) => void; }>
         onKeyDown={keydown}
       >
         {props.title ? 
-          <div
-            className={`${cn}-h ${colorCn}`}
-            data-color={props.color}
-            data-colortype={props.colorType || "nav"}
-          >
+          <div className={`${cn}-h ${colorCn(props.color, props.colorType || "nav")}`}>
             <Label $bold>{props.title}</Label>
           </div> : <></>
         }

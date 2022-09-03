@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from "react";
 import { sbCn } from "../styles/core-style";
-import CssVar, { CssPV, FitToOuter, Color } from "../styles/css-var";
+import CssVar, { CssPV, FitToOuter } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
 import { attributes, ColorAttributes, colorsCn, dBool, dPosX, dPosY, ftoCn, paddingCn, shadowCn } from "../utils/attributes";
 
