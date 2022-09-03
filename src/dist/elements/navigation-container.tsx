@@ -376,7 +376,6 @@ const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
   align-items: center;
   flex: none;
   z-index: 2;
-  background: ${CssVar.bgc};
   min-width: 0px;
   min-height: 0px;
   max-width: 100%;
@@ -436,7 +435,7 @@ const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
   min-height: 0px;
 }
 ${switchDesign(design, {
-fm: `
+flat: `
 .${cn}[data-pos="left"] > .${cn}-nav {
   box-shadow: 2px 0 1px -2px ${CssVar.sdw.c};
 }
@@ -451,16 +450,16 @@ fm: `
 }`,
 material: `
 .${cn}[data-pos="left"] > .${cn}-nav {
-  box-shadow: 5px 0 5px -1px ${CssVar.sdw.c};
+  box-shadow: 5px 0 8px -4px ${CssVar.sdw.c};
 }
 .${cn}[data-pos="right"] > .${cn}-nav {
-  box-shadow: -5px 0 5px -1px ${CssVar.sdw.c};
+  box-shadow: -5px 0 8px -4px ${CssVar.sdw.c};
 }
 .${cn}[data-pos="top"] > .${cn}-nav {
-  box-shadow: 0 5px 5px -1px ${CssVar.sdw.c};
+  box-shadow: 0 5px 8px -4px ${CssVar.sdw.c};
 }
 .${cn}[data-pos="bottom"] > .${cn}-nav {
-  box-shadow: 0 -5px 5px -1px ${CssVar.sdw.c};
+  box-shadow: 0 -5px 8px -4px ${CssVar.sdw.c};
 }`,
 neumorphism: `
 .${cn} > .${cn}-nav {
