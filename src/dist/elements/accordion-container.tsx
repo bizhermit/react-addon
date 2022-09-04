@@ -314,10 +314,10 @@ flat: `
 }`,
 material: `
 .${cn}:not([data-disabled="true"]) > .${cn}-header {
-  box-shadow: 0px 3px 4px -2px ${CssVar.sdw.c};
+  box-shadow: ${CssPV.cvxSd(1)};
 }
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover {
-  box-shadow: 0px 4px 4px -2px ${CssVar.sdw.c};
+  box-shadow: ${CssPV.cvxSd(2)};
 }
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover:active {
   box-shadow: unset;
