@@ -1,7 +1,7 @@
 import React, { cloneElement, Dispatch, FC, ReactNode, SetStateAction, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import CssVar, { CssPV, Color, switchDesign, ColorType } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
-import Icon, { iconCn, varIconBc, varIconFc } from "../elements/icon";
+import Icon, { varIconBc, varIconFc } from "../elements/icon";
 import MaskContainer, { MaskHook, useMask } from "./mask";
 import { _HookSetter } from "../utils/hook";
 import { releaseCursor, setCursor } from "../utils/cursor";
@@ -632,29 +632,21 @@ ${switchDesign(design, {
 fm: `
 .${cn}-min:hover {
   background: ${CssVar.default.btn.hvr.bgc};
-}
-.${cn}-min:hover > .${iconCn} {
   ${varIconFc}: ${CssVar.default.btn.hvr.fgc};
   ${varIconBc}: ${CssVar.default.btn.hvr.bgc};
 }
 .${cn}-min:hover:active {
   background: ${CssVar.default.btn.act.bgc};
-}
-.${cn}-min:hover:active > .${iconCn} {
   ${varIconFc}: ${CssVar.default.btn.act.fgc};
   ${varIconBc}: ${CssVar.default.btn.act.bgc};
 }
 .${cn}-close:hover {
   background: ${CssVar.danger.btn.hvr.bgc};
-}
-.${cn}-close:hover > .${iconCn} {
   ${varIconFc}: ${CssVar.danger.btn.hvr.fgc};
   ${varIconBc}: ${CssVar.danger.btn.hvr.bgc};
 }
 .${cn}-close:hover:active {
   background: ${CssVar.danger.btn.act.bgc};
-}
-.${cn}-close:hover:active > .${iconCn} {
   ${varIconFc}: ${CssVar.danger.btn.act.fgc};
   ${varIconBc}: ${CssVar.danger.btn.act.bgc};
 }`,
@@ -662,7 +654,7 @@ neumorphism: `
 .${cn}-min:hover {
   box-shadow: ${CssPV.nCvxSdBase};
 }
-.${cn}-close > .${iconCn} {
+.${cn}-close {
   ${varIconFc}: ${CssVar.danger.fgc};
   ${varIconBc}: ${CssVar.bgc};
 }
