@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 import FlexBox from "../../../react-addon/dist/elements/flex-box";
 import Label from "../../../react-addon/dist/elements/label";
+import HLine from "../../../react-addon/dist/elements/line";
 
 const SandBoxPage: NextPage = () => {
   return (
@@ -10,86 +11,63 @@ const SandBoxPage: NextPage = () => {
         return (
           <FlexBox key={s} $fto="fx" $center>
             <Label $color={s}>{s}</Label>
-            <div
-              className="box"
-              style={{
-                background: v.bgc,
-                borderColor: v.bdc,
-                color: v.fc
-              }}
-            >
-              {v.bgc}<br/>
-              {v.fc}<br/>
-              {v.bdc}
-            </div>
+            <FlexBox className="box" $color={s} $colorType="base" $border>
+              <Label>text</Label>
+              <HLine $padding $margin />
+              <Label $type="a">link</Label>
+            </FlexBox>
             head
-            <div
-              className="box"
-              style={{
-                background: v.head.bgc,
-                borderColor: v.head.bdc,
-                color: v.head.fc
-              }}
-            >
-              {v.head.bgc}<br/>
-              {v.head.fc}<br/>
-              {v.head.bdc}
-            </div>
+            <FlexBox className="box" $color={s} $colorType="head" $border>
+              <Label>text</Label>
+              <HLine $padding $margin />
+              <Label $type="a">link</Label>
+            </FlexBox>
             nav
-            <div
-              className="box"
-              style={{
-                background: v.nav.bgc,
-                // borderColor: v.nav.bdc,
-                color: v.nav.fc
-              }}
-            >
-              {v.nav.bgc}<br/>
-              {v.nav.fc}<br/>
-              {/* {v.nav.bdc} */}
-            </div>
+            <FlexBox className="box" $color={s} $colorType="nav" $border>
+              <Label>text</Label>
+              <HLine $padding $margin />
+              <Label $type="a">link</Label>
+            </FlexBox>
             ipt
             <div
               className="box"
               style={{
                 background: v.ipt.bgc,
                 borderColor: v.ipt.bdc,
-                color: v.ipt.fc
+                color: v.ipt.fgc
               }}
             >
-              {v.ipt.bgc}<br/>
-              {v.ipt.fc}<br/>
-              {v.ipt.bdc}
+              input
             </div>
             <div
               className="box"
               style={{
                 background: v.ipt.on,
                 borderColor: v.ipt.bdc,
-                color: v.ipt.fc
+                color: v.ipt.onf
               }}
             >
-              {v.ipt.on}
+              on
             </div>
             <div
               className="box"
               style={{
                 background: v.ipt.off,
                 borderColor: v.ipt.bdc,
-                color: v.ipt.fc
+                color: v.ipt.fgc
               }}
             >
-              {v.ipt.off}
+              off
             </div>
             <div
               className="box"
               style={{
-                background: v.ipt.knob,
+                background: v.ipt.knb,
                 borderColor: v.ipt.bdc,
-                color: v.ipt.fc
+                color: v.ipt.fgc
               }}
             >
-              {v.ipt.knob}
+              knob
             </div>
             btn
             <div
@@ -97,41 +75,35 @@ const SandBoxPage: NextPage = () => {
               style={{
                 background: v.btn.base.bgc,
                 borderColor: v.btn.base.bdc,
-                color: v.btn.base.fc,
+                color: v.btn.base.fgc,
               }}
             >
-              {v.btn.base.bgc}<br/>
-              {v.btn.base.bdc}<br/>
-              {v.btn.base.fc}
+              base
             </div>
             <div
               className="box"
               style={{
                 background: v.btn.hvr.bgc,
                 borderColor: v.btn.hvr.bdc,
-                color: v.btn.hvr.fc,
+                color: v.btn.hvr.fgc,
               }}
             >
-              {v.btn.hvr.bgc}<br/>
-              {v.btn.hvr.bdc}<br/>
-              {v.btn.hvr.fc}
+              hover
             </div>
             <div
               className="box"
               style={{
                 background: v.btn.act.bgc,
                 borderColor: v.btn.act.bdc,
-                color: v.btn.act.fc,
+                color: v.btn.act.fgc,
               }}
             >
-              {v.btn.act.bgc}<br/>
-              {v.btn.act.bdc}<br/>
-              {v.btn.act.fc}
+              active
             </div>
           </FlexBox>
         );
       })}
-      <style jsx>{`
+      <style global jsx>{`
         .box {
           box-sizing: border-box;
           width: 100%;
@@ -142,7 +114,7 @@ const SandBoxPage: NextPage = () => {
           margin-bottom: 2px;
           min-height: 10px;
           max-width: 200px;
-          max-height: 54px;
+          max-height: 64px;
           white-space: nowrap;
           overflow: hidden;
           line-height: 1.6rem;

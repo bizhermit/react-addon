@@ -278,11 +278,11 @@ ${switchDesign(design, {
 c: `
 .${cn}-w > .${cn}-cell[data-week="0"] {
   background: ${CssVar.week.sun.bgc};
-  color: ${CssVar.week.sun.fc};
+  color: ${CssVar.week.sun.fgc};
 }
 .${cn}-w > .${cn}-cell[data-week="6"] {
   background: ${CssVar.week.sat.bgc};
-  color: ${CssVar.week.sat.fc};
+  color: ${CssVar.week.sat.fgc};
 }
 .${cn}-w > .${cn}-cell:first-child {
   border-top-left-radius: ${CssVar.bdr};

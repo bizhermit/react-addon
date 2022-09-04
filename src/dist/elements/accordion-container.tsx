@@ -6,7 +6,7 @@ import JsxStyle from "../styles/jsx-style";
 import { attributesWithoutChildren, ftoCn } from "../utils/attributes";
 import { pressPositiveKey } from "../utils/dom";
 import { _HookSetter } from "../utils/hook";
-import Icon, { iconCn, IconImage } from "./icon";
+import Icon, { IconImage, varIconBc, varIconFc } from "./icon";
 import Label from "./label";
 
 const cn = "bh-acd";
@@ -30,6 +30,7 @@ export type AccordionContainerAttributes = HTMLAttributes<HTMLDivElement> & {
   $toggled?: (opened: boolean) => void;
   $animationDuration?: number;
   $height?: number;
+  $headerless?: boolean;
   $borderless?: boolean;
   $color?: Color;
   $openedIconImage?: IconImage;
@@ -154,18 +155,20 @@ const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionContainerAt
       data-color={attrs.$color}
       data-opened={opened}
       data-disabled={attrs.$disabled}
-      data-borderless={attrs.$borderless}
+      data-bdl={attrs.$borderless}
     >
-      <div
-        className={`${cn}-header`}
-        tabIndex={attrs.$disabled ? null : attrs.tabIndex ?? 0}
-        onClick={() => toggle()}
-        onKeyDown={e => pressPositiveKey(e, () => toggle())}
-        data-iconpos={attrs.$iconPosition}
-      >
-        {attrs.$disabled || attrs.$iconPosition === "none" ? <></> : <Icon $image={opened ? attrs.$openedIconImage ?? "pull-up" : attrs.$closedIconImage ?? "pull-down"} $transition />}
-        {StringUtils.isString(attrs.$header) ? <Label className={`${cn}-lbl`}>{attrs.$header}</Label> : attrs.$header}
-      </div>
+      {attrs.$headerless ? <></> :
+        <div
+          className={`${cn}-header`}
+          tabIndex={attrs.$disabled ? null : attrs.tabIndex ?? 0}
+          onClick={() => toggle()}
+          onKeyDown={e => pressPositiveKey(e, () => toggle())}
+          data-iconpos={attrs.$iconPosition}
+        >
+          {attrs.$disabled || attrs.$iconPosition === "none" ? <></> : <Icon $image={opened ? attrs.$openedIconImage ?? "pull-up" : attrs.$closedIconImage ?? "pull-down"} $transition />}
+          {StringUtils.isString(attrs.$header) ? <Label className={`${cn}-lbl`}>{attrs.$header}</Label> : attrs.$header}
+        </div>
+      }
       <div
         ref={bref}
         className={`${cn}-body ${sbCn}`}
@@ -203,7 +206,6 @@ const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: flex-start;
-  flex: none;
   overflow: visible;
   background: inherit;
   color: inherit;
@@ -268,57 +270,54 @@ fm: `
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover {
   background: ${CssVar.hvrBgc};
 }
-${switchDesign(design, {
-flat: `
+${design==="flat" ? `
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover:active {
   background: ${CssVar.actBgc};
-}`})}
+}` : ""}
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-header {
   background: ${v.btn.base.bgc};
-  color: ${v.btn.base.fc};
-}
-.${cn}${qs} > .${cn}-header .${iconCn} {
-  --bh-icon-fc: ${v.btn.base.fc};
-  --bh-icon-bc: ${v.btn.base.bgc};
+  color: ${v.btn.base.fgc};
+  ${varIconFc}: ${v.btn.base.fgc};
+  ${varIconBc}: ${v.btn.base.bgc};
 }
 .${cn}${qs}:not([data-disabled="true"]) > .${cn}-header:hover {
   background: ${v.btn.hvr.bgc};
-  color: ${v.btn.hvr.fc};
+  color: ${v.btn.hvr.fgc};
   border-color: ${v.btn.hvr.bdc};
+  ${varIconFc}: ${v.btn.hvr.fgc};
+  ${varIconBc}: ${v.btn.hvr.bgc};
 }
-.${cn}${qs}:not([data-disabled="true"]) > .${cn}-header:hover .${iconCn} {
-  --bh-icon-fc: ${v.btn.hvr.fc};
-  --bh-icon-bc: ${v.btn.hvr.bgc};
-}
-${switchDesign(design, {
-flat: `
+${design==="flat" ? `
 .${cn}${qs}:not([data-disabled="true"]) > .${cn}-header:hover:active {
   background: ${v.btn.act.bgc};
-  color: ${v.btn.act.fc};
+  color: ${v.btn.act.fgc};
   border-color: ${v.btn.act.bdc};
-}
-.${cn}${qs}:not([data-disabled="true"]) > .${cn}-header:hover:active .${iconCn} {
-  --bh-icon-fc: ${v.btn.act.fc};
-  --bh-icon-bc: ${v.btn.act.bgc};
-}`})}
+  ${varIconFc}: ${v.btn.act.fgc};
+  ${varIconBc}: ${v.btn.act.bgc};
+}` : ""}
 .${cn}${qs} > .${cn}-body {
   border-color: ${v.bdc};
 }
+.${cn}-body:only-child {
+  border-top: 1px solid ${CssVar.bdc};
+  border-radius: ${CssVar.bdr};
+}
 `).join("")}
-.${cn}[data-borderless="true"] > .${cn}-body {
+.${cn}[data-bdl="true"] > .${cn}-body {
   border: unset;
   border-radius: unset;
 }
-.${cn}[data-borderless="true"] > .${cn}-header {
+.${cn}[data-bdl="true"] > .${cn}-header {
   border-radius: ${CssVar.bdr};
+  border: unset;
 }`,
 material: `
 .${cn}:not([data-disabled="true"]) > .${cn}-header {
-  box-shadow: 0px 3px 4px -2px ${CssVar.sdw.c};
+  box-shadow: ${CssPV.cvxSdBase};
 }
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover {
-  box-shadow: 0px 4px 4px -2px ${CssVar.sdw.c};
+  box-shadow: ${CssPV.cvxSdHover};
 }
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover:active {
   box-shadow: unset;
@@ -333,21 +332,21 @@ neumorphism: `
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover:active {
   box-shadow: ${CssPV.nCcvSdActive};
 }
-.${cn}[data-borderless="true"] > .${cn}-header {
+.${cn}-body:only-child {
   border-radius: ${CssVar.bdr};
 }
-.${cn}[data-borderless="true"] > .${cn}-body {
+.${cn}[data-bdl="true"] > .${cn}-header {
+  border-radius: ${CssVar.bdr};
+}
+.${cn}[data-bdl="true"] > .${cn}-body {
   box-shadow: unset;
   border-radius: unset;
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-header {
-  color: ${v.fc};
-}
-.${cn}${qs} > .${cn}-header .${iconCn} {
-  --bh-icon-fc: ${v.fc};
-}
-`).join("")}
+  color: ${v.fgc};
+  ${varIconFc}: ${v.fgc};
+}`).join("")}
 `})}
 `}</JsxStyle>;
 

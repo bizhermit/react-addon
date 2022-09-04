@@ -7,7 +7,7 @@ import { attributesWithoutChildren, ftoCn } from "../../utils/attributes";
 import { pressPositiveKey } from "../../utils/dom";
 import { _HookSetter } from "../../utils/hook";
 import { InputHook, inputMode } from "../../utils/input";
-import { iconCn } from "../icon";
+import { varIconFc } from "../icon";
 import Label from "../label";
 import Resizer from "../resizer";
 import { FileAccept } from "./file-box";
@@ -194,7 +194,6 @@ const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
   min-height: ${CssVar.size};
   min-width: ${CssVar.size};
   padding: ${CssVar.pdy} ${CssVar.pdx};
-  flex: none;
 }
 .${cn}[data-fill="true"] {
   padding: 0px;
@@ -237,11 +236,11 @@ c: `
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-drop_area {
   border-color: ${v.ipt.bdc};
-  color: ${v.fc};
+  color: ${v.fgc};
   background: ${v.ipt.bgc};
 }
-.${cn}${qs} .${iconCn} {
-  --bh-icon-fc: ${v.fc};
+.${cn}${qs} {
+  ${varIconFc}: ${v.fgc};
 }
 `).join("")}
 .${cn}[data-m="d"] > .${cn}-drop_area {

@@ -1,24 +1,23 @@
 import React, { FC, HTMLAttributes, ReactNode } from "react";
-import CssVar, { Color, colorIterator, CssPV, Size, sizeIterator, switchDesign, varFontSize } from "../styles/css-var";
+import CssVar, { Color, ColorType, CssPV, Size, sizeIterator, switchDesign, varFontSize } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
-import { attributesWithoutChildren, dropShadowCn } from "../utils/attributes";
-import { iconCn, varIconBc, varIconFc } from "./icon";
+import { attributesWithoutChildren, colorCn, dropShadowCn } from "../utils/attributes";
 
 const cn = "bh-bde";
 
 const Badge: FC<HTMLAttributes<HTMLDivElement> & {
   $position?: "left-top" | "right-top" | "left-bottom" | "right-bottom";
-  $color?: Color;
-  $colorType?: "base" | "head" | "nav";
   $fill?: boolean;
   $shape?: "circle" | "square" | "none";
   $size?: Size;
   $shadow?: boolean | number;
   $title?: string;
-  $borderless?: boolean;
+  $border?: boolean;
   $visible?: boolean;
   $fixedSize?: boolean;
   $content?: ReactNode;
+  $color?: Color;
+  $colorType?: ColorType;
   children?: ReactNode;
 }> = (attrs) => {
 
@@ -35,15 +34,13 @@ const Badge: FC<HTMLAttributes<HTMLDivElement> & {
       {attrs.children}
       {attrs.$visible === false ? <></> :
         <div
-          className={`${cn} ${dropShadowCn(attrs.$shadow)}`}
+          className={`${cn} ${dropShadowCn(attrs.$shadow)} ${colorCn(attrs.$color || "default", attrs.$colorType)}`}
           data-pos={attrs.$position || "right-top"}
-          data-color={attrs.$color}
-          data-colortype={attrs.$colorType || "nav"}
           data-fill={attrs.$fill}
           data-size={attrs.$size ?? "m"}
           data-fsize={attrs.$fixedSize}
           data-shape={attrs.$shape || "circle"}
-          data-borderless={attrs.$borderless}
+          data-border={attrs.$border}
           title={attrs.$title}
         >{contentType === "s" ? <span className={`${cn}-lbl`}>{attrs.$content}</span> : attrs.$content}</div>
       }
@@ -67,15 +64,9 @@ const BadgeStyle = <JsxStyle id={cn} depsDesign>{({ design }) => `
   justify-content: center;
   align-items: center;
   cursor: default;
-  background: ${CssVar.bgc};
-  color: ${CssVar.fc};
   overflow: hidden;
   width: fit-content;
   user-select: none;
-${switchDesign(design, {
-fm: `border: 1px solid ${CssVar.bdc}`,
-neumorphism: `box-shadow: ${CssPV.nCvxSdShallow};`
-})}
 }
 .${cn}-lbl {
   padding: 2px 3px 0px 3px;
@@ -97,6 +88,16 @@ neumorphism: `box-shadow: ${CssPV.nCvxSdShallow};`
   bottom: calc(${CssVar.pdy} * -0.8);
   right: calc(${CssVar.pdx} * -0.8);
 }
+${switchDesign(design, {
+fm: `
+.${cn}[data-border="true"] {
+  border: 1px solid ${CssVar.bdc};
+}`,
+neumorphism: `
+.${cn}[data-border="true"] {
+  box-shadow: ${CssPV.nCvxSdShallow};
+}`
+})}
 .${cn}[data-shape="circle"] {
   border-radius: 9999px;
 }
@@ -110,42 +111,38 @@ ${switchDesign(design, {
 neumorphism: `box-shadow: none !important;`
 })}
 }
-.${cn}[data-borderless="true"] {
-  border: none !important;
-}
 ${switchDesign(design, {
-material: `
+c: `
 .${cn}:not([class*="bh-dsd-"]) {
   filter: ${CssPV.dropSd(2)};
-}`,
-})}
+}`})}
 ${sizeIterator(cn, {
 xs: `
-min-height: calc(${CssVar.size} * 0.5);
+height: calc(${CssVar.size} * 0.5);
 min-width: calc(${CssVar.size} * 0.5);
 font-size: 1.0rem;
 ${varFontSize}: 1.1rem;
 `,
 s: `
-min-height: calc(${CssVar.size} * 0.6);
+height: calc(${CssVar.size} * 0.6);
 min-width: calc(${CssVar.size} * 0.6);
 font-size: 1.1rem;
 ${varFontSize}: 1.25rem;
 `,
 m: `
-min-height: calc(${CssVar.size} * 0.7);
+height: calc(${CssVar.size} * 0.7);
 min-width: calc(${CssVar.size} * 0.7);
 font-size: 1.2rem;
 ${varFontSize}: 1.4rem;
 `,
 l: `
-min-height: calc(${CssVar.size} * 0.8);
+height: calc(${CssVar.size} * 0.8);
 min-width: calc(${CssVar.size} * 0.8);
 font-size: 1.3rem;
 ${varFontSize}: 1.6rem;
 `,
 xl: `
-min-height: calc(${CssVar.size} * 0.9);
+height: calc(${CssVar.size} * 0.9);
 min-width: calc(${CssVar.size} * 0.9);
 font-size: 1.6rem;
 ${varFontSize}: 1.8rem;
@@ -173,35 +170,6 @@ height: calc(${CssVar.size} * 0.9);
 width: calc(${CssVar.size} * 0.9);
 `,
 })}
-${colorIterator((_c, v, s) => `
-.${cn}${s}[data-colortype="base"] {
-  background: ${v.bgc};
-  color: ${v.fc};
-  border-color: ${v.bdc};
-}
-.${cn}${s}[data-colortype="base"] .${iconCn} {
-  ${varIconFc}: ${v.fc};
-  ${varIconBc}: ${v.bgc};
-}
-.${cn}${s}[data-colortype="head"] {
-  background: ${v.head.bgc};
-  color: ${v.head.fc};
-  border-color: ${v.head.bdc};
-}
-.${cn}${s}[data-colortype="head"] .${iconCn} {
-  ${varIconFc}: ${v.head.fc};
-  ${varIconBc}: ${v.head.bgc};
-}
-.${cn}${s}[data-colortype="nav"] {
-  background: ${v.nav.bgc};
-  color: ${v.nav.fc};
-  border-color: ${v.nav.bdc};
-}
-.${cn}${s}[data-colortype="nav"] .${iconCn} {
-  ${varIconFc}: ${v.nav.fc};
-  ${varIconBc}: ${v.nav.bgc};
-}
-`).join("")}
 `}</JsxStyle>
 
 export default Badge;

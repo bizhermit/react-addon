@@ -666,11 +666,11 @@ ${ccn} > .${cn}-m > .${cn}-cell {
 }
 .${cn}-w > .${cn}-cell[data-week="0"] {
   background: ${CssVar.week.sun.bgc};
-  color: ${CssVar.week.sun.fc};
+  color: ${CssVar.week.sun.fgc};
 }
 .${cn}-w > .${cn}-cell[data-week="6"] {
   background: ${CssVar.week.sat.bgc};
-  color: ${CssVar.week.sat.fc};
+  color: ${CssVar.week.sat.fgc};
 }
 ${ccn} > .${cn}-y > .${cn}-cell[data-selected="false"],
 ${ccn} > .${cn}-m > .${cn}-cell[data-selected="false"] {
@@ -745,7 +745,7 @@ fm: `
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body {
-  color: ${v.ipt.fc};
+  color: ${v.ipt.fgc};
 }
 .${cn}${qs}[data-m="e"] > .${cn}-body {
   background: ${v.ipt.bgc};
@@ -759,7 +759,7 @@ ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > ${lcn} > .${cn}-m > .${cn}-cell[data-selected="true"],
 .${cn}${qs} > ${lcn} > .${cn}-d > .${cn}-cell[data-selected="true"] {
   background: ${v.ipt.on};
-  color: ${v.ipt.on_fc ?? v.ipt.fc};
+  color: ${v.ipt.onf};
 }
 `).join("")}`,
 neumorphism: `
@@ -777,7 +777,7 @@ ${lcn} > .${cn}-d > .${cn}-cell[data-selected="true"] {
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-body {
-  color: ${v.ipt.fc};
+  color: ${v.ipt.fgc};
 }
 .${cn}${qs}[data-m="e"] > .${cn}-body {
   background: ${v.ipt.bgc};
@@ -787,7 +787,7 @@ ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > ${lcn} > .${cn}-m > .${cn}-cell[data-selected="true"],
 .${cn}${qs} > ${lcn} > .${cn}-d > .${cn}-cell[data-selected="true"] {
   background: ${v.ipt.on};
-  color: ${v.ipt.on_fc ?? v.ipt.fc};
+  color: ${v.ipt.onf};
 }
 `).join("")}`})}
 `}</JsxStyle>

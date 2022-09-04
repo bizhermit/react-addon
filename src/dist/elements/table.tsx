@@ -39,7 +39,7 @@ const Style = <JsxStyle id={cn}>{() => `
 }
 .${cn}[data-oddeven="true"] > * > * > th {
   background: ${CssVar.lv.header.bgc};
-  color: ${CssVar.lv.header.fc};
+  color: ${CssVar.lv.header.fgc};
 }
 .${cn}[data-oddeven="true"] > tbody > tr:nth-child(odd) {
   background: ${CssVar.lv.cell.bg.b};
@@ -51,16 +51,16 @@ const Style = <JsxStyle id={cn}>{() => `
 }
 .${cn}[data-hover="true"] > tbody > tr:hover {
   background: ${CssVar.lv.cell.hvr.row.bgc};
-  color: ${CssVar.lv.cell.hvr.row.fc};
+  color: ${CssVar.lv.cell.hvr.row.fgc};
 }
 .${cn}[data-hover="true"] > tbody > tr > td:hover {
   background: ${CssVar.lv.cell.hvr.cell.bgc};
-  color: ${CssVar.lv.cell.hvr.cell.fc};
+  color: ${CssVar.lv.cell.hvr.cell.fgc};
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > * > * > th {
   background: ${v.head.bgc};
-  color: ${v.head.fc};
+  color: ${v.head.fgc};
   border-color: ${v.head.bdc};
 }
 .${cn}${qs} > * > * > td {

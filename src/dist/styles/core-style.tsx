@@ -1,12 +1,10 @@
 import ArrayUtils from "@bizhermit/basic-utils/dist/array-utils";
 import React from "react";
-import { iconCn, varIconBc, varIconFc } from "../elements/icon";
-import { labelCn } from "../elements/label";
-import CssVar, { colorIterator, CssDarkVar, CssPV, switchDesign } from "./css-var";
+import { varIconBc, varIconFc } from "../elements/icon";
+import CssVar, { colorIterator, CssDarkVar, CssPV, switchDesign, varAnchor } from "./css-var";
 import JsxStyle from "./jsx-style";
 
 export const sbCn = "bh-sb";
-export const colorCn = "bh-color";
 
 const CoreStyle =
 <>
@@ -17,7 +15,7 @@ ${color==="dark" ? ` :root {${CssDarkVar}}` : ""}
 <JsxStyle id="bh-d_core" depsDesign>{({ design }) => `
 html {
   background: ${CssVar.bgc};
-  color: ${CssVar.fc};
+  color: ${CssVar.fgc};
   font-size: 62.5%;
 ${switchDesign(design, {
 flat: `
@@ -63,12 +61,18 @@ ${ArrayUtils.generateArray(10, idx => `
 <JsxStyle id="bh-core">{() => `
 body {
   font-size: ${CssVar.fs};
+  ${varIconFc}: ${CssVar.fgc};
+  ${varIconBc}: ${CssVar.bgc};
 }
 a:not(:disabled),
+.bh-anchor:not(:disabled),
 .bh-anchor:not([data-disabled="true"]) {
   text-decoration: underline;
   cursor: pointer;
   color: ${CssVar.anchor} !important;
+}
+.bh-fto {
+  flex: none;
 }
 .bh-fto-f {
   height: 100%;
@@ -142,47 +146,40 @@ a:not(:disabled),
   opacity: 0.9;
 }
 }
-${colorIterator((c, v, qs) => `
-.${colorCn}${qs} {
-  background: ${v.bgc};
-  color: ${v.fc};
+${colorIterator((c, v) => `
+.bh-c_${c}_base{
+  color:${v.fgc};
+  background:${v.bgc};
+  --bh-bdc:${v.bdc};
+  ${varAnchor}:${v.anc};
+  ${varIconFc}:${v.fgc};
+  ${varIconBc}:${v.bgc};
 }
-.${colorCn}${qs}[data-border="true"] {
-  border: 1px solid ${v.bdc};
+.bh-fgc_${c}_base{color:${v.fgc};${varIconFc}:${v.fgc}}
+.bh-bgc_${c}_base{background:${v.bgc};${varAnchor}:${v.anc};${varIconBc}:${v.bgc}}
+.bh-bdc_${c}_base{--bh-bdc:${v.bdc}}
+.bh-c_${c}_head{
+  color:${v.head.fgc};
+  background:${v.head.bgc};
+  --bh-bdc:${v.head.bdc};
+  ${varAnchor}:${v.head.anc};
+  ${varIconFc}:${v.head.fgc};
+  ${varIconBc}:${v.head.bgc};
 }
-.${colorCn}${qs} .${iconCn} {
-  ${varIconBc}: ${v.bgc};
-  ${varIconFc}: ${v.fc};
+.bh-fgc_${c}_head{color:${v.head.fgc};${varIconFc}:${v.head.fgc}}
+.bh-bgc_${c}_head{background:${v.head.bgc};${varAnchor}:${v.head.anc};${varIconBc}:${v.head.bgc}}
+.bh-bdc_${c}_head{--bh-bdc:${v.head.bdc}}
+.bh-c_${c}_nav{
+  color:${v.nav.fgc};
+  background:${v.nav.bgc};
+  --bh-bdc:${v.nav.bdc};
+  ${varAnchor}:${v.nav.anc};
+  ${varIconFc}:${v.nav.fgc};
+  ${varIconBc}:${v.nav.bgc};
 }
-.${colorCn}${qs}[data-colortype="head"] {
-  background: ${v.head.bgc};
-  color: ${v.head.fc};
-}
-.${colorCn}${qs}[data-colortype="head"][data-border="true"] {
-  border-color: ${v.head.bdc};
-}
-.${colorCn}${qs}[data-colortype="head"] .${iconCn} {
-  ${varIconBc}: ${v.head.bgc};
-  ${varIconFc}: ${v.head.fc};
-}
-.${colorCn}${qs}[data-colortype="nav"] {
-  background: ${v.nav.bgc};
-  color: ${v.nav.fc};
-}
-.${colorCn}${qs}[data-colortype="nav"] .${iconCn} {
-  ${varIconBc}: ${v.nav.bgc};
-  ${varIconFc}: ${v.nav.fc};
-}
-.${colorCn}${qs}[data-colortype="nav"] .${labelCn}[data-type="a"],
-.${colorCn}${qs}[data-colortype="nav"] .bh-anchor {
-  color: ${v.nav.anchor};
-}
-.${colorCn}[data-border="${c}"] {
-  border: 1px solid ${v.bdc};
-}
-.${colorCn}[data-border="${c}"][data-colortype="head"] {
-  border: 1px solid ${v.head.bdc};
-}
+.bh-fgc_${c}_nav{color:${v.nav.fgc};${varIconFc}:${v.nav.fgc}}
+.bh-bgc_${c}_nav{background:${v.nav.bgc};${varAnchor}:${v.nav.anc};${varIconBc}:${v.nav.bgc}}
+.bh-bdc_${c}_nav{--bh-bdc:${v.nav.bdc}}
 `).join("")}
 ${ArrayUtils.generateArray(10, idx => `
 .bh-dsd-n${idx} {filter: ${CssPV.dropSd(idx)};}

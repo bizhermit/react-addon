@@ -79,8 +79,6 @@ export const IconStyle = <JsxStyle id={cn}>{() => `
   height: calc(${CssVar.fs} * 1.5);
   width: calc(${CssVar.fs} * 1.5);
   flex: none;
-  ${varIconFc}: ${CssVar.fc};
-  ${varIconBc}: ${CssVar.bgc};
 }
 .${cnc} {
   box-sizing: border-box;
@@ -119,7 +117,7 @@ export const IconStyle = <JsxStyle id={cn}>{() => `
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} {
-  ${varIconFc}: ${v.fc} !important;
+  ${varIconFc}: ${v.fgc} !important;
 }`).join("")}
 .${cn}-favicon::before {
   height: 80%;

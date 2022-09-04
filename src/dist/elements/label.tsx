@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from "react";
-import CssVar, { Color, colorIterator } from "../styles/css-var";
+import CssVar, { Color } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
-import { attributes } from "../utils/attributes";
+import { attributes, fgColorCn } from "../utils/attributes";
 
 const cn = "bh-lbl";
 export const labelCn = cn;
@@ -18,9 +18,8 @@ const Label = React.forwardRef<HTMLSpanElement, LabelAttributes>((attrs, ref) =>
   return (
     <>
       <span
-        {...attributes(attrs, cn)}
+        {...attributes(attrs, cn, fgColorCn(attrs.$color))}
         ref={ref}
-        data-color={attrs.$color}
         data-type={attrs.$type}
         data-nowrap={attrs.$nowrap}
         data-bold={attrs.$bold}
@@ -31,7 +30,7 @@ const Label = React.forwardRef<HTMLSpanElement, LabelAttributes>((attrs, ref) =>
   );
 });
 
-const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
+const Style = <JsxStyle id={cn}>{() => `
 .${cn} {
   box-sizing: border-box;
   flex: none;
@@ -82,11 +81,6 @@ const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
 .${cn}[data-fill="true"] {
   height: 100%;
   width: 100%;
-}
-${design ? `${colorIterator((_s, v, qs) => `
-.${cn}${qs} {
-  color: ${v.fc};
-}`).join("")}
-` : ""}`}</JsxStyle>;
+}`}</JsxStyle>;
 
 export default Label;

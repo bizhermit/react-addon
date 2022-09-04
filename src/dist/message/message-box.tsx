@@ -1,12 +1,12 @@
 import React, { FC, KeyboardEvent, ReactNode, useCallback, useEffect, useMemo, useRef } from "react";
 import { createRoot, Root } from "react-dom/client";
-import CssVar, { CssPV, Color, colorIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, Color, switchDesign, ColorType } from "../styles/css-var";
 import { LayoutContext, useLayout } from "../styles/layout-provider";
 import JsxStyle from "../styles/jsx-style";
 import Button, { ButtonAttributes, buttonCn, useButton } from "../elements/button";
-import { iconCn } from "../elements/icon";
 import TextBox, { TextBoxAttributes } from "../elements/inputs/text-box";
 import Label from "../elements/label";
+import { colorCn } from "../utils/attributes";
 
 const cn = "bh-mgs_box";
 
@@ -22,6 +22,7 @@ type MessageBoxProps = {
   message: ReactNode;
   buttons: Array<MessageBoxButton>;
   color?: Color;
+  colorType?: ColorType;
 };
 
 const MessageBox: FC<{ props: MessageBoxProps; resolve: (value: any) => void; }> = ({
@@ -143,10 +144,9 @@ const MessageBox: FC<{ props: MessageBoxProps; resolve: (value: any) => void; }>
         className={cn}
         ref={ref}
         onKeyDown={keydown}
-        data-color={props.color}
       >
         {props.title ? 
-          <div className={`${cn}-h`}>
+          <div className={`${cn}-h ${colorCn(props.color, props.colorType || "nav")}`}>
             <Label $bold>{props.title}</Label>
           </div> : <></>
         }
@@ -291,7 +291,7 @@ const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
   border-radius: ${CssVar.bdr};
   overflow: hidden;
   background: ${CssVar.bgc};
-  color: ${CssVar.fc};
+  color: ${CssVar.fgc};
   min-width: 180px;
 ${design ? `filter: drop-shadow(0 2px 3px ${CssVar.sdw.c});` : ""}
 }
@@ -352,22 +352,6 @@ neumorphism: `
 .${cn}-mask_d {
   background: transparent;
 }
-${switchDesign(design, {
-c: `
-${colorIterator((_s, v, qs) => `
-.${cn}${qs} > .${cn}-h {
-  background: ${v.head.bgc};
-  color: ${v.head.fc};
-}
-.${cn}${qs} > .${cn}-h .${iconCn} {
-  --bh-icon-fc: ${v.head.fc};
-  --bh-icon-bc: ${v.head.bgc};
-}
-.${cn}${qs} {
-  background: ${v.bgc};
-}
-`).join("")}
-`})}
 `}</JsxStyle>;
 
 export default useMessageBox;

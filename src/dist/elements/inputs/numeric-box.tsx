@@ -322,7 +322,7 @@ fm: `
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-btn > .${cn}-inc::before,
 .${cn}${qs} > .${cn}-btn > .${cn}-dec::before {
-  background: ${v.fc};
+  background: ${v.fgc};
 }
 .${cn}${qs} > .${cn}-btn > .${cn}-inc:hover,
 .${cn}${qs} > .${cn}-btn > .${cn}-dec:hover {
@@ -331,7 +331,7 @@ ${colorIterator((_s, v, qs) => `
 }
 .${cn}${qs} > .${cn}-btn > .${cn}-inc:hover::before,
 .${cn}${qs} > .${cn}-btn > .${cn}-dec:hover::before {
-  background: ${v.btn.hvr.fc};
+  background: ${v.btn.hvr.fgc};
 }
 ${switchDesign(design, {
 flat: `
@@ -342,7 +342,7 @@ flat: `
 }
 .${cn}${qs} > .${cn}-btn > .${cn}-inc:active::before,
 .${cn}${qs} > .${cn}-btn > .${cn}-dec:active::before {
-  background: ${v.btn.act.fc};
+  background: ${v.btn.act.fgc};
 }`,
 material: `
 .${cn}${qs} > .${cn}-btn > .${cn}-inc:active,
@@ -352,7 +352,7 @@ material: `
 }
 .${cn}${qs} > .${cn}-btn > .${cn}-inc:active::before,
 .${cn}${qs} > .${cn}-btn > .${cn}-dec:active::before {
-  background: ${v.btn.hvr.fc};
+  background: ${v.btn.hvr.fgc};
 }`})}
 `).join("")}`,
 material: `
@@ -378,7 +378,7 @@ neumorphism: `
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-btn > .${cn}-inc::before,
 .${cn}${qs} > .${cn}-btn > .${cn}-dec::before {
-  background: ${v.fc};
+  background: ${v.fgc};
 }`).join("")}
 `})}
 .${cn}[data-round="true"] > .${cn}_fld {

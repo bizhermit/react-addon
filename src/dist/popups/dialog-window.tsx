@@ -1,13 +1,14 @@
 import React, { cloneElement, Dispatch, FC, ReactNode, SetStateAction, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import CssVar, { CssPV, Color, colorIterator, switchDesign } from "../styles/css-var";
+import CssVar, { CssPV, Color, switchDesign, ColorType } from "../styles/css-var";
 import JsxStyle from "../styles/jsx-style";
-import Icon, { iconCn } from "../elements/icon";
+import Icon, { varIconBc, varIconFc } from "../elements/icon";
 import MaskContainer, { MaskHook, useMask } from "./mask";
 import { _HookSetter } from "../utils/hook";
 import { releaseCursor, setCursor } from "../utils/cursor";
-import { isReactElement } from "../utils/attributes";
+import { colorCn, isReactElement } from "../utils/attributes";
 import usePortalElement from "../hooks/portal-element";
 import { createPortal } from "react-dom";
+import Label from "../elements/label";
 
 const cn = "bh-dw";
 
@@ -49,6 +50,7 @@ type DialogWindowAttributes = {
   $height?: number | string;
   $width?: number | string;
   $color?: Color;
+  $colorType?: ColorType;
   $showed?: () => void;
   $closed?: (props?: {[key: string]: any}) => void;
   $hid?: (props?: {[key: string]: any}) => void;
@@ -405,19 +407,20 @@ const DialogWindowWrapper: FC<{
         visibility: "hidden",
         zIndex: dialogWindowBaseZIndex + zIndex * dialogWindowZIndexInterval + 2
       }}
-      data-color={attrs.$color}
       data-zindex={zIndex}
     >
       <div className={`${cn}-cont`}>
         {attrs.$hideHeader ? <></> :
           <div
-            className={`${cn}-header`}
+            className={`${cn}-header ${colorCn(attrs.$color, attrs.$colorType || "head")}`}
             onDoubleClick={dblclickHeader}
             onMouseDown={e => moveStart(e.currentTarget, e.clientX, e.clientY)}
             onTouchStart={e => moveStart(e.currentTarget, e.touches[0].clientX, e.touches[0].clientY, true)}
             data-move={attrs.$preventMove !== true}
           >
-            <div className={`${cn}-title`}>{attrs.$title}</div>
+            <div className={`${cn}-title`}>
+              {isReactElement(attrs.$title) ? attrs.$title : <Label $bold>{attrs.$title}</Label>  }
+            </div>
             {attrs.$hideMinimizeButton ? <></> : <>
               <div
                 className={`${cn}-min`}
@@ -563,7 +566,7 @@ ${design ? `filter: drop-shadow(0 2px 3px ${CssVar.sdw.c});` : ""}
   height: 100%;
   width: 100%;
   background: ${CssVar.bgc};
-  color: ${CssVar.fc};
+  color: ${CssVar.fgc};
   border-radius: ${CssVar.bdr};
   overflow: hidden;
 }
@@ -629,39 +632,31 @@ ${switchDesign(design, {
 fm: `
 .${cn}-min:hover {
   background: ${CssVar.default.btn.hvr.bgc};
-}
-.${cn}-min:hover > .${iconCn} {
-  --bh-icon-fc: ${CssVar.default.btn.hvr.fc};
-  --bh-icon-bc: ${CssVar.default.btn.hvr.bgc};
+  ${varIconFc}: ${CssVar.default.btn.hvr.fgc};
+  ${varIconBc}: ${CssVar.default.btn.hvr.bgc};
 }
 .${cn}-min:hover:active {
   background: ${CssVar.default.btn.act.bgc};
-}
-.${cn}-min:hover:active > .${iconCn} {
-  --bh-icon-fc: ${CssVar.default.btn.act.fc};
-  --bh-icon-bc: ${CssVar.default.btn.act.bgc};
+  ${varIconFc}: ${CssVar.default.btn.act.fgc};
+  ${varIconBc}: ${CssVar.default.btn.act.bgc};
 }
 .${cn}-close:hover {
   background: ${CssVar.danger.btn.hvr.bgc};
-}
-.${cn}-close:hover > .${iconCn} {
-  --bh-icon-fc: ${CssVar.danger.btn.hvr.fc};
-  --bh-icon-bc: ${CssVar.danger.btn.hvr.bgc};
+  ${varIconFc}: ${CssVar.danger.btn.hvr.fgc};
+  ${varIconBc}: ${CssVar.danger.btn.hvr.bgc};
 }
 .${cn}-close:hover:active {
   background: ${CssVar.danger.btn.act.bgc};
-}
-.${cn}-close:hover:active > .${iconCn} {
-  --bh-icon-fc: ${CssVar.danger.btn.act.fc};
-  --bh-icon-bc: ${CssVar.danger.btn.act.bgc};
+  ${varIconFc}: ${CssVar.danger.btn.act.fgc};
+  ${varIconBc}: ${CssVar.danger.btn.act.bgc};
 }`,
 neumorphism: `
 .${cn}-min:hover {
   box-shadow: ${CssPV.nCvxSdBase};
 }
-.${cn}-close > .${iconCn} {
-  --bh-icon-fc: ${CssVar.danger.fc};
-  --bh-icon-bc: ${CssVar.bgc};
+.${cn}-close {
+  ${varIconFc}: ${CssVar.danger.fgc};
+  ${varIconBc}: ${CssVar.bgc};
 }
 .${cn}-close:hover {
   box-shadow: ${CssPV.nCvxSdBase};
@@ -747,12 +742,6 @@ neumorphism: `
 .${cn}-mask_d {
   background: transparent;
 }
-${colorIterator((_s, v, qs) => `
-.${cn}${qs} > .${cn}-cont > .${cn}-header {
-  background: ${v.head.bgc};
-  color: ${v.head.fc};
-}
-`).join("")}
 `}</JsxStyle>;
 
 export default DialogWindow;

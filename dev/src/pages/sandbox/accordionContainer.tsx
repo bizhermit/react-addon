@@ -13,6 +13,7 @@ import Row from "../../../react-addon/dist/elements/row";
 
 const AccordionContainerPage: NextPage = () => {
   const [disabled, setDisabled] = useState(false);
+  const [headerless, setHeaderless] = useState(false);
   const [borderless, setBorderless] = useState(false);
   const [color, setColor] = useState<Color>();
   const acdCtrHook = useAccordionContainer();
@@ -24,6 +25,9 @@ const AccordionContainerPage: NextPage = () => {
       <Row $fill>
         <Caption $label="disabled">
           <ToggleBox $value={disabled} $dispatch={setDisabled} />
+        </Caption>
+        <Caption $label="headerless">
+          <ToggleBox $value={headerless} $dispatch={setHeaderless} />
         </Caption>
         <Caption $label="borderless">
           <ToggleBox $value={borderless} $dispatch={setBorderless} />
@@ -39,6 +43,8 @@ const AccordionContainerPage: NextPage = () => {
             ]}
           />
         </Caption>
+      </Row>
+      <Row $fill>
         <Button $click={() => {
           acdCtrHook.open();
         }}>open</Button>
@@ -83,6 +89,7 @@ const AccordionContainerPage: NextPage = () => {
               <Icon $image="heart" />
             </Row>
           }
+          $headerless={headerless}
           // $height={200}
           // $height={500}
           $borderless={borderless}

@@ -186,7 +186,7 @@ ${colorIterator((_s, v, qs) => `
 }
 .${cn}${qs} > .${cn}-body > .${cn}-switch::before {
   border-color: ${v.ipt.bdc};
-  background: ${v.ipt.knob};
+  background: ${v.ipt.knb};
 }
 .${cn}${qs} > .${cn}-body[data-checked="true"]::before {
   background: ${v.ipt.on};

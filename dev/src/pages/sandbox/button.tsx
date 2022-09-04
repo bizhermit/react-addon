@@ -133,6 +133,8 @@ const ButtonPage: NextPage = () => {
       </Caption>
       <FlexBox
         // style={{ backgroundColor: "white" }}
+        $color="danger"
+        $border
       >
         <Row>
           <Button $icon="cloud-download" $fillLabel disabled={disabled} style={btnStyle}>button</Button>

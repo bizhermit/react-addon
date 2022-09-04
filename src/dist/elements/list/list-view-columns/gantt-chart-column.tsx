@@ -866,11 +866,11 @@ ${design ? `
 }
 .${cn}-date[data-w="0"] {
   background: ${CssVar.week.sun.bgc};
-  color: ${CssVar.week.sun.fc};
+  color: ${CssVar.week.sun.fgc};
 }
 .${cn}-date[data-w="6"] {
   background: ${CssVar.week.sat.bgc};
-  color: ${CssVar.week.sat.fc};
+  color: ${CssVar.week.sat.fgc};
 }
 .${listViewCn}-row:hover .${cn}-cell {
   background: ${CssVar.lv.cell.hvr.row.bgc} !important;

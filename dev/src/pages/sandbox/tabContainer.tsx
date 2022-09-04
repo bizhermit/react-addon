@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { createRef, useState } from "react";
-import { Color, colorIterator } from "../../../react-addon/dist/styles/css-var";
+import { Color, colorIterator, ColorType } from "../../../react-addon/dist/styles/css-var";
 import Button from "../../../react-addon/dist/elements/button";
 import Caption from "../../../react-addon/dist/elements/caption";
 import FlexBox from "../../../react-addon/dist/elements/flex-box";
@@ -15,7 +15,7 @@ const TabContainerPage: NextPage = () => {
   const [count, setCount] = useState(0);
   const [calcTabWidth, setCalcTabWidth] = useState(false);
   const [color, setColor] = useState<Color>();
-  const [nav, setNav] = useState(false);
+  const [colorType, setColorType] = useState<ColorType>();
   const tabContainerHook = useTabContainer();
   const ref = createRef<HTMLDivElement>();
 
@@ -31,9 +31,6 @@ const TabContainerPage: NextPage = () => {
         <Button $click={() => {
           tabContainerHook.selectTab(4);
         }}>set tab 4</Button>
-        <Caption $label="nav">
-          <ToggleBox $value={nav} $dispatch={setNav} />
-        </Caption>
         <Button $click={() => {
           console.log(ref.current);
         }}>ref</Button>
@@ -43,6 +40,23 @@ const TabContainerPage: NextPage = () => {
         <Button $click={() => {
           tabContainerHook.closeMask();
         }}>close mask</Button>
+        <RadioButtons
+          $source={[{
+            value: null,
+            label: `unset`,
+          }, {
+            value: "base",
+            label: "base",
+          }, {
+            value: "head",
+            label: "head",
+          }, {
+            value: "nav",
+            label: "nav",
+          }]}
+          $value={colorType}
+          $dispatch={setColorType}
+        />
       </Row>
       <Row>
         <RadioButtons
@@ -66,7 +80,7 @@ const TabContainerPage: NextPage = () => {
         $hook={tabContainerHook}
         $calcTabWidth={calcTabWidth}
         $color={color}
-        $navigationBackgroundColor={nav}
+        $colorType={colorType}
       >
         <div key={1} title="タブ１">
           <Label $type="h1">Tab 1</Label>
@@ -117,38 +131,15 @@ const TabContainerPage: NextPage = () => {
             console.log("callback");
           }}
         />
-        {/* <TabContent
-          key={7}
-          title="あいうえおかきくけこ"
-        />
-        <TabContent
-          key={8}
-          title="あいうえおかきくけこ"
-        />
-        <TabContent
-          key={9}
-          title="あいうえおかきくけこ"
-        />
-        <TabContent
-          key={10}
-          title="あいうえおかきくけこ"
-        />
-        <TabContent
-          key={11}
-          title="あいうえおかきくけこ"
-        />
-        <TabContent
-          key={12}
-          title="あいうえおかきくけこ"
-        />
-        <TabContent
-          key={13}
-          title="あいうえおかきくけこ"
-        />
-        <TabContent
-          key={14}
-          title="あいうえおかきくけこ"
-        /> */}
+        <TabContentWrapper
+          key={6}
+          title="tab6"
+          $color="primary"
+        >
+          hoge
+          hoge
+          <Label>{count}</Label>
+        </TabContentWrapper>
       </TabContainer>
     </>
   );

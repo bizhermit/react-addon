@@ -1,6 +1,6 @@
 import React from "react";
 import { buttonCn } from "../elements/button";
-import { iconCn } from "../elements/icon";
+import { varIconBc, varIconFc } from "../elements/icon";
 import CssVar, { CssPV, colorIterator, switchDesign } from "./css-var";
 import JsxStyle from "./jsx-style";
 
@@ -17,6 +17,7 @@ const InputStyle = <JsxStyle id={inputCn} depsDesign>{({ design }) => `
   flex: none;
   overflow: visible;
   width: 160px;
+  max-width: 100%;
 ${switchDesign(design, {
 _: `
   padding: 0px;
@@ -133,11 +134,11 @@ c: `height: calc(100% - ${CssVar.pdy} * 2 - ${CssVar.phsize});`,
 }
 ${colorIterator((_s, v, qs) => `
 .${inputCn}${qs}::after {
-  color: ${v.fc};
+  color: ${v.fgc};
 }
 .${inputCn}${qs} input::placeholder,
 .${inputCn}${qs} textarea::placeholder {
-  color: ${v.fc};
+  color: ${v.fgc};
   opacity: 0.4;
 }`).join("")}
 ${switchDesign(design, {
@@ -159,7 +160,7 @@ ${colorIterator((_s, v, qs) => `
   border: 1px solid ${v.ipt.bdc};
 }
 .${inputCn}${qs} .${inputCn}_fld {
-  color: ${v.ipt.fc};
+  color: ${v.ipt.fgc};
 }
 .${inputCn}${qs}[data-t="f"]::before {
   background: ${v.ipt.bgc};
@@ -242,37 +243,30 @@ ${switchDesign(design, {
 fm: `
 ${colorIterator((_s, v, qs) => `
 .${inputCn}${qs} .${inputCn}_btn {
-  color: ${v.fc};
+  color: ${v.fgc};
+  ${varIconFc}: ${v.fgc};
+  ${varIconBc}: ${v.ipt.bgc};
 }
 .${inputCn}${qs} .${inputCn}_btn[data-border] {
   background: ${v.ipt.bgc};
   border-color: ${v.ipt.bdc};
 }
-.${inputCn}${qs} .${inputCn}_btn > .${iconCn} {
-  --bh-icon-fc: ${v.fc};
-  --bh-icon-bc: ${v.ipt.bgc};
-}
 .${inputCn}${qs} .${inputCn}_btn:hover {
   background: ${v.btn.hvr.bgc};
   border-color: ${v.btn.hvr.bdc};
-  color: ${v.btn.hvr.fc};
-}
-.${inputCn}${qs} .${inputCn}_btn:hover > .${iconCn} {
-  --bh-icon-fc: ${v.btn.hvr.fc};
-  --bh-icon-bc: ${v.btn.hvr.bgc};
+  color: ${v.btn.hvr.fgc};
+  ${varIconFc}: ${v.btn.hvr.fgc};
+  ${varIconBc}: ${v.btn.hvr.bgc};
 }
 ${switchDesign(design, {
 flat: `
 .${inputCn}${qs} .${inputCn}_btn:hover:active {
   background: ${v.btn.act.bgc};
   border-color: ${v.btn.act.bdc};
-  color: ${v.btn.act.fc};
-}
-.${inputCn}${qs} .${inputCn}_btn:hover:active > .${iconCn} {
-  --bh-icon-fc: ${v.btn.act.fc};
-  --bh-icon-bc: ${v.btn.act.bgc};
-}
-`})}
+  color: ${v.btn.act.fgc};
+  ${varIconFc}: ${v.btn.act.fgc};
+  ${varIconBc}: ${v.btn.act.bgc};
+}`})}
 `).join("")}`,
 material: `
 .${inputCn}_btn:hover {
@@ -291,17 +285,15 @@ neumorphism: `
 }
 ${colorIterator((_s, v, qs) => `
 .${inputCn}${qs} .${inputCn}_fld {
-  color: ${v.ipt.fc};
+  color: ${v.ipt.fgc};
 }
 .${inputCn}${qs}[data-t="f"]::before {
   background: ${v.ipt.bgc};
 }
 .${inputCn}${qs} .${inputCn}_btn {
-  color: ${v.fc};
-}
-.${inputCn}${qs} .${inputCn}_btn > .${iconCn} {
-  --bh-icon-fc: ${v.fc};
-  --bh-icon-bc: ${v.ipt.bgc};
+  color: ${v.fgc};
+  ${varIconFc}: ${v.fgc};
+  ${varIconBc}: ${v.ipt.bgc};
 }`).join("")
 }`})}
 .${inputCn}-hidden {

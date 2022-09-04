@@ -8,7 +8,7 @@ import JsxStyle from "../../styles/jsx-style";
 import { pressPositiveKey } from "../../utils/dom";
 import { _HookSetter } from "../../utils/hook";
 import { inputAttributes, InputHook, inputMode } from "../../utils/input";
-import { iconCn } from "../icon";
+import { varIconFc } from "../icon";
 import Label, { labelCn } from "../label";
 
 const cn = "bh-rdo";
@@ -215,7 +215,7 @@ const Style = <JsxStyle id={cn} depsDesign>{({ design }) => `
   min-height: calc(${CssVar.size} + ${CssVar.pdy} * 2);
   min-width: calc(${CssVar.size} + ${CssVar.pdx} * 2);
   outline-offset: -2px;
-  flex: 1 0 auto;
+  flex: none;
 }
 .${cn}[data-flow="row"]:not([data-hrb="true"]) > .${cn}-item:not(:last-child) {
   margin-right: 5px;
@@ -323,6 +323,9 @@ fm: `
   box-shadow: 4px 0 0 -2px ${CssVar.default.bdc} inset;
 }
 ${colorIterator((_s, v, qs) => `
+.${cn}-item${qs} {
+  ${varIconFc}: ${v.fgc};
+}
 .${cn}-item${qs} > .${radioButtonCn}::before {
   border-color: ${v.ipt.bdc};
 }
@@ -330,14 +333,11 @@ ${colorIterator((_s, v, qs) => `
   outline-color: ${v.ipt.bdc};
 }
 .${cn}-item${qs} > .${radioButtonCn}[data-selected="true"]::after {
-  background: ${v.fc};
+  background: ${v.fgc};
 }
 .${cn}-item${qs} .${cn}-lbl,
 .${cn}-item${qs} .${labelCn} {
-  color: ${v.fc};
-}
-.${cn}-item${qs} .${iconCn} {
-  --bh-icon-fc: ${v.fc};
+  color: ${v.fgc};
 }
 .${cn}[data-hrb="true"][data-flow="row"][data-m="e"] > .${cn}-item${qs}::before {
   box-shadow: 0 -4px 0 -2px ${v.ipt.off} inset;
@@ -424,22 +424,22 @@ neumorphism: `
   height: calc(100% - ${CssVar.pdy} * 2);
 }
 .${cn}-item > .${radioButtonCn}[data-selected="true"]::after {
-  background: ${CssVar.default.ipt.fc};
+  background: ${CssVar.default.ipt.fgc};
 }
 ${colorIterator((_s, v, qs) => `
+.${cn}-item${qs} {
+  ${varIconFc}: ${v.fgc};
+}
 .${cn}-item${qs} .${cn}-lbl,
 .${cn}-item${qs} .${labelCn} {
-  color: ${v.fc};
+  color: ${v.fgc};
 }
-.${cn}-item${qs} .${iconCn} {
-  --bh-icon-fc: ${v.fc};
+.${cn}[data-hrb="true"] > .${cn}-item${qs}[data-selected="true"] {
+  ${varIconFc}: ${v.ipt.fgc};
 }
 .${cn}[data-hrb="true"] > .${cn}-item${qs}[data-selected="true"] .${cn}-lbl,
 .${cn}[data-hrb="true"] > .${cn}-item${qs}[data-selected="true"] .${labelCn} {
-  color: ${v.ipt.fc};
-}
-.${cn}[data-hrb="true"] > .${cn}-item${qs}[data-selected="true"] .${iconCn} {
-  --bh-icon-fc: ${v.ipt.fc};
+  color: ${v.ipt.onf};
 }
 .${cn}[data-hrb="true"] > .${cn}-item${qs}[data-selected="true"]::before {
   background: ${v.ipt.on};
@@ -501,9 +501,9 @@ neumorphism: `transition: background 0.2s, box-shadow 0.2s;`
 }
 .${radioButtonCn}[data-selected="true"]::after {
 ${switchDesign(design, {
-fm: `background: ${CssVar.default.fc};`,
+fm: `background: ${CssVar.default.fgc};`,
 neumorphism: `
-  background: ${CssVar.default.fc};
+  background: ${CssVar.default.fgc};
   box-shadow: ${CssPV.nCvxSdBase};
 `})}
 }
