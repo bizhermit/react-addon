@@ -79,8 +79,6 @@ export const IconStyle = <JsxStyle id={cn}>{() => `
   height: calc(${CssVar.fs} * 1.5);
   width: calc(${CssVar.fs} * 1.5);
   flex: none;
-  ${varIconFc}: ${CssVar.fgc};
-  ${varIconBc}: ${CssVar.bgc};
 }
 .${cnc} {
   box-sizing: border-box;

@@ -1,6 +1,6 @@
 import ArrayUtils from "@bizhermit/basic-utils/dist/array-utils";
 import React from "react";
-import { iconCn, varIconBc, varIconFc } from "../elements/icon";
+import { varIconBc, varIconFc } from "../elements/icon";
 import CssVar, { colorIterator, CssDarkVar, CssPV, switchDesign, varAnchor } from "./css-var";
 import JsxStyle from "./jsx-style";
 
@@ -61,6 +61,8 @@ ${ArrayUtils.generateArray(10, idx => `
 <JsxStyle id="bh-core">{() => `
 body {
   font-size: ${CssVar.fs};
+  ${varIconFc}: ${CssVar.fgc};
+  ${varIconBc}: ${CssVar.bgc};
 }
 a:not(:disabled),
 .bh-anchor:not(:disabled),
@@ -150,45 +152,33 @@ ${colorIterator((c, v) => `
   background:${v.bgc};
   --bh-bdc:${v.bdc};
   ${varAnchor}:${v.anc};
-}
-.bh-c_${c}_base .${iconCn}{
   ${varIconFc}:${v.fgc};
   ${varIconBc}:${v.bgc};
 }
-.bh-fgc_${c}_base{color:${v.fgc}}
-.bh-fgc_${c}_base .${iconCn}{${varIconFc}:${v.fgc}}
-.bh-bgc_${c}_base{background:${v.bgc};${varAnchor}:${v.anc}}
-.bh-bgc_${c}_base .${iconCn}{${varIconBc}:${v.bgc}}
+.bh-fgc_${c}_base{color:${v.fgc};${varIconFc}:${v.fgc}}
+.bh-bgc_${c}_base{background:${v.bgc};${varAnchor}:${v.anc};${varIconBc}:${v.bgc}}
 .bh-bdc_${c}_base{--bh-bdc:${v.bdc}}
 .bh-c_${c}_head{
   color:${v.head.fgc};
   background:${v.head.bgc};
   --bh-bdc:${v.head.bdc};
   ${varAnchor}:${v.head.anc};
-}
-.bh-c_${c}_head .${iconCn}{
   ${varIconFc}:${v.head.fgc};
   ${varIconBc}:${v.head.bgc};
 }
-.bh-fgc_${c}_head{color:${v.head.fgc}}
-.bh-fgc_${c}_head .${iconCn}{${varIconFc}:${v.head.fgc}}
-.bh-bgc_${c}_head{background:${v.head.bgc};${varAnchor}:${v.head.anc}}
-.bh-bgc_${c}_head .${iconCn}{${varIconBc}:${v.head.bgc}}
+.bh-fgc_${c}_head{color:${v.head.fgc};${varIconFc}:${v.head.fgc}}
+.bh-bgc_${c}_head{background:${v.head.bgc};${varAnchor}:${v.head.anc};${varIconBc}:${v.head.bgc}}
 .bh-bdc_${c}_head{--bh-bdc:${v.head.bdc}}
 .bh-c_${c}_nav{
   color:${v.nav.fgc};
   background:${v.nav.bgc};
   --bh-bdc:${v.nav.bdc};
   ${varAnchor}:${v.nav.anc};
-}
-.bh-c_${c}_nav .${iconCn}{
   ${varIconFc}:${v.nav.fgc};
   ${varIconBc}:${v.nav.bgc};
 }
-.bh-fgc_${c}_nav{color:${v.nav.fgc}}
-.bh-fgc_${c}_nav .${iconCn}{${varIconFc}:${v.nav.fgc}}
-.bh-bgc_${c}_nav{background:${v.nav.bgc};${varAnchor}:${v.nav.anc}}
-.bh-bgc_${c}_nav .${iconCn}{${varIconBc}:${v.nav.bgc}}
+.bh-fgc_${c}_nav{color:${v.nav.fgc};${varIconFc}:${v.nav.fgc}}
+.bh-bgc_${c}_nav{background:${v.nav.bgc};${varAnchor}:${v.nav.anc};${varIconBc}:${v.nav.bgc}}
 .bh-bdc_${c}_nav{--bh-bdc:${v.nav.bdc}}
 `).join("")}
 ${ArrayUtils.generateArray(10, idx => `
