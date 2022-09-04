@@ -1,6 +1,6 @@
 import React from "react";
 import { buttonCn } from "../elements/button";
-import { iconCn, varIconBc, varIconFc } from "../elements/icon";
+import { varIconBc, varIconFc } from "../elements/icon";
 import CssVar, { CssPV, colorIterator, switchDesign } from "./css-var";
 import JsxStyle from "./jsx-style";
 
@@ -244,21 +244,17 @@ fm: `
 ${colorIterator((_s, v, qs) => `
 .${inputCn}${qs} .${inputCn}_btn {
   color: ${v.fgc};
+  ${varIconFc}: ${v.fgc};
+  ${varIconBc}: ${v.ipt.bgc};
 }
 .${inputCn}${qs} .${inputCn}_btn[data-border] {
   background: ${v.ipt.bgc};
   border-color: ${v.ipt.bdc};
 }
-.${inputCn}${qs} .${inputCn}_btn > .${iconCn} {
-  ${varIconFc}: ${v.fgc};
-  ${varIconBc}: ${v.ipt.bgc};
-}
 .${inputCn}${qs} .${inputCn}_btn:hover {
   background: ${v.btn.hvr.bgc};
   border-color: ${v.btn.hvr.bdc};
   color: ${v.btn.hvr.fgc};
-}
-.${inputCn}${qs} .${inputCn}_btn:hover > .${iconCn} {
   ${varIconFc}: ${v.btn.hvr.fgc};
   ${varIconBc}: ${v.btn.hvr.bgc};
 }
@@ -268,12 +264,9 @@ flat: `
   background: ${v.btn.act.bgc};
   border-color: ${v.btn.act.bdc};
   color: ${v.btn.act.fgc};
-}
-.${inputCn}${qs} .${inputCn}_btn:hover:active > .${iconCn} {
   ${varIconFc}: ${v.btn.act.fgc};
   ${varIconBc}: ${v.btn.act.bgc};
-}
-`})}
+}`})}
 `).join("")}`,
 material: `
 .${inputCn}_btn:hover {
@@ -299,8 +292,6 @@ ${colorIterator((_s, v, qs) => `
 }
 .${inputCn}${qs} .${inputCn}_btn {
   color: ${v.fgc};
-}
-.${inputCn}${qs} .${inputCn}_btn > .${iconCn} {
   ${varIconFc}: ${v.fgc};
   ${varIconBc}: ${v.ipt.bgc};
 }`).join("")
