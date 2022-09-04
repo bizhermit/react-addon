@@ -1,6 +1,6 @@
 import { Color } from "../../../styles/css-var";
 import { IconImage } from "../../icon";
-import { ListViewColumnFunction } from "../list-view";
+import { ListViewColumnFunction } from "../data-view";
 declare const ListViewIconColumn: ListViewColumnFunction<{
     name?: string;
     colorDataName?: string;

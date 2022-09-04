@@ -1,5 +1,5 @@
 import { ForwardedRef, FunctionComponent, ReactElement } from "react";
-import { ListViewAttributes, ListViewHook } from "./list-view";
+import { ListViewAttributes, ListViewHook } from "./data-view";
 declare type Data = {
     [key: string]: any;
 };

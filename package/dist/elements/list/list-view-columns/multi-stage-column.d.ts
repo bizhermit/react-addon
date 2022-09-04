@@ -1,4 +1,4 @@
-import { ListViewColumnFunction, ListViewMultiStageRowItemProps } from "../list-view";
+import { ListViewColumnFunction, ListViewMultiStageRowItemProps } from "../data-view";
 export declare type ListViewMultiStageColumnProps = {
     name?: string;
     fixed?: boolean;

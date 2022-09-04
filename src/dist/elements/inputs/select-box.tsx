@@ -7,7 +7,7 @@ import JsxStyle from "../../styles/jsx-style";
 import { _HookSetter } from "../../utils/hook";
 import { inputFieldAttributes, InputHook } from "../../utils/input";
 import Icon from "../icon";
-import ListView, { listViewCn, listViewDefaultRowHeight, useListView } from "../list/list-view";
+import DataView, { dataViewCn, dataViewDefaultRowHeight, useDataView } from "../list/data-view";
 import Popup, { usePopup } from "../../popups/popup";
 import Resizer from "../resizer";
 import CssVar from "../../styles/css-var";
@@ -42,9 +42,9 @@ const SelectBox: SelectBoxFC = React.forwardRef<HTMLDivElement, SelectBoxAttribu
   useImperativeHandle($ref, () => ref.current);
   const iref = useRef<HTMLInputElement>();
   const popup = usePopup();
-  const lvRef = useRef<HTMLDivElement>();
-  const rowHeight = useRef(listViewDefaultRowHeight());
-  const lvHook = useListView();
+  const dvRef = useRef<HTMLDivElement>();
+  const rowHeight = useRef(dataViewDefaultRowHeight());
+  const dvHook = useDataView();
   const { loading, source } = useSource(attrs.$source, {
     changeSource: (source) => {
       if (iref.current) {
@@ -90,11 +90,11 @@ const SelectBox: SelectBoxFC = React.forwardRef<HTMLDivElement, SelectBoxAttribu
     popup.show({
       anchor: ref.current,
       showed: () => {
-        if (lvRef.current) {
+        if (dvRef.current) {
           setTimeout(() => {
-            lvHook.select(lvHook.getFilteredItems().findIndex(item => equalValue(item.data[valueDn], buf.current)));
+            dvHook.select(dvHook.getFilteredItems().findIndex(item => equalValue(item.data[valueDn], buf.current)));
           }, 50);
-          if (showedFocus) lvHook.focus();
+          if (showedFocus) dvHook.focus();
         }
       },
       style: {
@@ -106,8 +106,8 @@ const SelectBox: SelectBoxFC = React.forwardRef<HTMLDivElement, SelectBoxAttribu
 
   const focus = (e: FocusEvent) => {
     if (e.relatedTarget) {
-      if (e.relatedTarget === iref.current || e.relatedTarget === lvRef.current) return;
-      const children = lvRef.current?.childNodes;
+      if (e.relatedTarget === iref.current || e.relatedTarget === dvRef.current) return;
+      const children = dvRef.current?.childNodes;
       if (children) {
         for (const elem of children) {
           if (elem === e.relatedTarget) return;
@@ -127,8 +127,8 @@ const SelectBox: SelectBoxFC = React.forwardRef<HTMLDivElement, SelectBoxAttribu
   }
 
   const blur = (e: FocusEvent) => {
-    if (e.relatedTarget === iref.current || e.relatedTarget === lvRef.current) return;
-    const children = lvRef.current?.childNodes;
+    if (e.relatedTarget === iref.current || e.relatedTarget === dvRef.current) return;
+    const children = dvRef.current?.childNodes;
     if (children) {
       for (const elem of children) {
         if (elem === e.relatedTarget) return;
@@ -144,7 +144,7 @@ const SelectBox: SelectBoxFC = React.forwardRef<HTMLDivElement, SelectBoxAttribu
   const keydown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "ArrowDown" || e.key === "ArrowUp") {
       if (attrs.$disabled || attrs.$readOnly) return;
-      lvHook?.focus();
+      dvHook?.focus();
       return;
     }
     if (e.key === "Escape") {
@@ -164,7 +164,7 @@ const SelectBox: SelectBoxFC = React.forwardRef<HTMLDivElement, SelectBoxAttribu
 
   useEffect(() => {
     if (popup.isShowed()) {
-      lvHook.setFilter(filter);
+      dvHook.setFilter(filter);
     }
   }, [filter]);
 
@@ -229,9 +229,9 @@ const SelectBox: SelectBoxFC = React.forwardRef<HTMLDivElement, SelectBoxAttribu
             if (elem) elem.style.height = Math.ceil(rowHeight.current * source.length) + "px";
           }}
         >
-          <ListView
-            ref={lvRef}
-            $hook={lvHook}
+          <DataView
+            ref={dvRef}
+            $hook={dvHook}
             $fto="f"
             $columns={[{
               name: labelDn,
@@ -293,7 +293,7 @@ const Style = <JsxStyle id={cn}>{() => `
 .${cn}_fld {
   flex: 1;
 }
-.${cn}-list .${listViewCn}-cell {
+.${cn}-list .${dataViewCn}-cell {
   cursor: pointer;
 }
 .${cn}[data-round="true"] > .${cn}_fld {

@@ -1,4 +1,4 @@
-import { ListViewColumnFunction, ListViewEditColumnProps } from "../list-view";
+import { ListViewColumnFunction, ListViewEditColumnProps } from "../data-view";
 declare const ListViewCheckBoxColumn: ListViewColumnFunction<ListViewEditColumnProps<{
     value: boolean | number | string;
     checked: boolean;

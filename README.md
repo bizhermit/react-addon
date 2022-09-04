@@ -12,15 +12,21 @@ React Add-on for v18.
 ## Elements
 
 - AccordionContainer
+- Badge
 - Button
 - Calendar
 - Caption
 - Code
 - FlexBox
+- Footer
 - FunctionKeyContainer
 - GroupBox
+- Header
 - Icon
 - Label
+- Line
+  - HLine
+  - VLine
 - NavigationContainer
 - Resizer
 - Row
@@ -48,12 +54,13 @@ React Add-on for v18.
 
 ### List
 
-- ListView
+- DataView
   - ButtonColumn
   - CheckBoxColumn
   - DateBoxColumn
   - GanttChartColumn
   - GroupColumn
+  - IconColumn
   - MultiStageColumn
   - NumericBoxColumn
   - RadioButtonColumn
@@ -62,7 +69,7 @@ React Add-on for v18.
   - SliderColumn
   - TextBoxColumn
   - TimeBoxColumn
-- PageableListView
+- PageableDataView
 - TreeView
 
 ## Popups

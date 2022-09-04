@@ -698,44 +698,44 @@ const CssVar = {
       bdc: `var(--bh-week_sat-${bdc}, #4682b4)`,
     },
   },
-  lv: { // listview
+  dataview: { // dataview
     header: {
-      fgc: `var(--bh-lv_header-${fgc}, ${lFc})`,
-      bgc: `var(--bh-lv_header-${bgc}, #e3e5ee)`,
-      bdc: `var(--bh-lv_header-${bdc}, #cccccf)`,
-      sort: `var(--bh-lv_header-sort, #aaaaaf)`,
+      fgc: `var(--bh-dv_header-${fgc}, ${lFc})`,
+      bgc: `var(--bh-dv_header-${bgc}, #e3e5ee)`,
+      bdc: `var(--bh-dv_header-${bdc}, #cccccf)`,
+      sort: `var(--bh-dv_header-sort, #aaaaaf)`,
     },
     cell: {
       ft: {
-        b: `var(--bh-lv_cell-ft_b, ${lFc})`,
-        d: `var(--bh-lv_cell-ft_d, ${lFc})`,
+        b: `var(--bh-dv_cell-ft_b, ${lFc})`,
+        d: `var(--bh-dv_cell-ft_d, ${lFc})`,
       },
       bg: {
-        b: `var(--bh-lv_cell-bg_b, #fafaff)`,
-        d: `var(--bh-lv_cell-bg_d, #f2f2f6)`,
+        b: `var(--bh-dv_cell-bg_b, #fafaff)`,
+        d: `var(--bh-dv_cell-bg_d, #f2f2f6)`,
       },
       bd: {
-        b: `var(--bh-lv_cell-bd_b, #dfdfdf)`,
-        d: `var(--bh-lv_cell-bd_d, #dfdfdf)`,
+        b: `var(--bh-dv_cell-bd_b, #dfdfdf)`,
+        d: `var(--bh-dv_cell-bd_d, #dfdfdf)`,
       },
       hvr: {
         row: {
-          fgc: `var(--bh-lv_cell-hvr-row-${fgc}, ${lFc})`,
-          bgc: `var(--bh-lv_cell-hvr-row-${bgc}, #efefff)`,
-          bdc: `var(--bh-lv_cell-hvr-row-${bdc}, #d7d7d7)`,
+          fgc: `var(--bh-dv_cell-hvr-row-${fgc}, ${lFc})`,
+          bgc: `var(--bh-dv_cell-hvr-row-${bgc}, #efefff)`,
+          bdc: `var(--bh-dv_cell-hvr-row-${bdc}, #d7d7d7)`,
         },
         cell: {
-          fgc: `var(--bh-lv_cell-hvr-cell-${fgc}, ${lFc})`,
-          bgc: `var(--bh-lv_cell-hvr-cell-${bgc}, #e3e3ff)`,
-          bdc: `var(--bh-lv_cell-hvr-cell-${bdc}, #d3d3d7)`,
+          fgc: `var(--bh-dv_cell-hvr-cell-${fgc}, ${lFc})`,
+          bgc: `var(--bh-dv_cell-hvr-cell-${bgc}, #e3e3ff)`,
+          bdc: `var(--bh-dv_cell-hvr-cell-${bdc}, #d3d3d7)`,
         }
       },
       act: {
-        fgc: `var(--bh-lv_cell-act-${fgc}, ${lFc})`,
-        bgc: `var(--bh-lv_cell-act-${bgc}, #ffff9c)`,
+        fgc: `var(--bh-dv_cell-act-${fgc}, ${lFc})`,
+        bgc: `var(--bh-dv_cell-act-${bgc}, #ffff9c)`,
         hvr: {
-          fgc: `var(--bh-lv_cell-act_hvr-${fgc}, ${lFc})`,
-          bgc: `var(--bh-lv_cell-act_hvr-${bgc}, #efef80)`,
+          fgc: `var(--bh-dv_cell-act_hvr-${fgc}, ${lFc})`,
+          bgc: `var(--bh-dv_cell-act_hvr-${bgc}, #efef80)`,
         },
       },
     },
@@ -1123,26 +1123,26 @@ ${prt}-${btnA}-${bdc}: #cf4fcf;
 --bh-week_sat-${fgc}: #d0d0ff;
 --bh-week_sat-${bgc}: #32323b;
 --bh-week_sat-${bdc}: #474767;
---bh-lv_header-${fgc}: ${dFc};
---bh-lv_header-${bgc}: #303030;
---bh-lv_header-${bdc}: #787878;
---bh-lv_header-sort: #888888;
---bh-lv_cell-ft_b: ${dFc};
---bh-lv_cell-ft_d: ${dFc};
---bh-lv_cell-bg_b: #404040;
---bh-lv_cell-bg_d: #3c3c3c;
---bh-lv_cell-bd_b: #616161;
---bh-lv_cell-bd_d: #5c5c5c;
---bh-lv_cell-hvr-row-${fgc}: ${dFc};
---bh-lv_cell-hvr-row-${bgc}: #333336;
---bh-lv_cell-hvr-row-${bdc}: #575757;
---bh-lv_cell-hvr-cell-${fgc}: ${dFc};
---bh-lv_cell-hvr-cell-${bgc}: #28282a;
---bh-lv_cell-hvr-cell-${bdc}: #505050;
---bh-lv_cell-act-${fgc}: ${dFc};
---bh-lv_cell-act-${bgc}: #202022;
---bh-lv_cell-act_hvr-${fgc}: ${dFc};
---bh-lv_cell-act_hvr-${bgc}: #101011;
+--bh-dv_header-${fgc}: ${dFc};
+--bh-dv_header-${bgc}: #303030;
+--bh-dv_header-${bdc}: #787878;
+--bh-dv_header-sort: #888888;
+--bh-dv_cell-ft_b: ${dFc};
+--bh-dv_cell-ft_d: ${dFc};
+--bh-dv_cell-bg_b: #404040;
+--bh-dv_cell-bg_d: #3c3c3c;
+--bh-dv_cell-bd_b: #616161;
+--bh-dv_cell-bd_d: #5c5c5c;
+--bh-dv_cell-hvr-row-${fgc}: ${dFc};
+--bh-dv_cell-hvr-row-${bgc}: #333336;
+--bh-dv_cell-hvr-row-${bdc}: #575757;
+--bh-dv_cell-hvr-cell-${fgc}: ${dFc};
+--bh-dv_cell-hvr-cell-${bgc}: #28282a;
+--bh-dv_cell-hvr-cell-${bdc}: #505050;
+--bh-dv_cell-act-${fgc}: ${dFc};
+--bh-dv_cell-act-${bgc}: #202022;
+--bh-dv_cell-act_hvr-${fgc}: ${dFc};
+--bh-dv_cell-act_hvr-${bgc}: #101011;
 `;
 
 export const cssParamsSize = () => typeof document === "undefined" ? 30 : Number((getComputedStyle(document.documentElement).getPropertyValue("--bh-size") || "30px").replace("px", ""));
