@@ -56,11 +56,11 @@ const MessageBoxPage: NextPage = () => {
         unlock();
       }}>show</Button>
       <Button $click={async (unlock) => {
-        await msgBox.alert("alert");
+        await msgBox.alert("alert", { color });
         unlock();
       }}>alert</Button>
       <Button $click={async (unlock) => {
-        const ret = await msgBox.confirm(<>登録します<br/>よろしいですか？</>, "確認");
+        const ret = await msgBox.confirm(<>登録します<br/>よろしいですか？</>, { title: "確認", color });
         console.log(ret);
         unlock();
       }}>confirm</Button>

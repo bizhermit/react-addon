@@ -217,21 +217,24 @@ const useMessageBox = () => {
 
   return {
     show,
-    alert: useCallback((message: ReactNode, title?: string) => {
+    alert: useCallback((message: ReactNode, options?: { title?: string; color?: Color; }) => {
       return show<void>({
-        title,
+        title: options?.title,
         message,
+        color: options?.color,
         buttons: [{
           children: "OK",
+          $color: options?.color,
           $transparent: true,
           $escapeButton: true,
         }],
       });
     }, []),
-    confirm: useCallback((message: ReactNode, title?: string) => {
+    confirm: useCallback((message: ReactNode, options?: { title?: string; color?: Color; }) => {
       return show<boolean>({
-        title,
+        title: options?.title,
         message,
+        color: options?.color,
         buttons: [{
           children: "キャンセル",
           $transparent: true,
@@ -241,7 +244,7 @@ const useMessageBox = () => {
           }
         }, {
           children: "OK",
-          $color: "primary",
+          $color: options?.color,
           $transparent: true,
           $click: (resolve) => {
             resolve(true);
