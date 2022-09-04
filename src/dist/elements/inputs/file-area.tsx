@@ -7,7 +7,7 @@ import { attributesWithoutChildren, ftoCn } from "../../utils/attributes";
 import { pressPositiveKey } from "../../utils/dom";
 import { _HookSetter } from "../../utils/hook";
 import { InputHook, inputMode } from "../../utils/input";
-import { iconCn, varIconFc } from "../icon";
+import { varIconFc } from "../icon";
 import Label from "../label";
 import Resizer from "../resizer";
 import { FileAccept } from "./file-box";
@@ -239,7 +239,7 @@ ${colorIterator((_s, v, qs) => `
   color: ${v.fgc};
   background: ${v.ipt.bgc};
 }
-.${cn}${qs} .${iconCn} {
+.${cn}${qs} {
   ${varIconFc}: ${v.fgc};
 }
 `).join("")}
