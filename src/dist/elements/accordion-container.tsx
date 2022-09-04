@@ -30,6 +30,7 @@ export type AccordionContainerAttributes = HTMLAttributes<HTMLDivElement> & {
   $toggled?: (opened: boolean) => void;
   $animationDuration?: number;
   $height?: number;
+  $headerless?: boolean;
   $borderless?: boolean;
   $color?: Color;
   $openedIconImage?: IconImage;
@@ -156,16 +157,18 @@ const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionContainerAt
       data-disabled={attrs.$disabled}
       data-bdl={attrs.$borderless}
     >
-      <div
-        className={`${cn}-header`}
-        tabIndex={attrs.$disabled ? null : attrs.tabIndex ?? 0}
-        onClick={() => toggle()}
-        onKeyDown={e => pressPositiveKey(e, () => toggle())}
-        data-iconpos={attrs.$iconPosition}
-      >
-        {attrs.$disabled || attrs.$iconPosition === "none" ? <></> : <Icon $image={opened ? attrs.$openedIconImage ?? "pull-up" : attrs.$closedIconImage ?? "pull-down"} $transition />}
-        {StringUtils.isString(attrs.$header) ? <Label className={`${cn}-lbl`}>{attrs.$header}</Label> : attrs.$header}
-      </div>
+      {attrs.$headerless ? <></> :
+        <div
+          className={`${cn}-header`}
+          tabIndex={attrs.$disabled ? null : attrs.tabIndex ?? 0}
+          onClick={() => toggle()}
+          onKeyDown={e => pressPositiveKey(e, () => toggle())}
+          data-iconpos={attrs.$iconPosition}
+        >
+          {attrs.$disabled || attrs.$iconPosition === "none" ? <></> : <Icon $image={opened ? attrs.$openedIconImage ?? "pull-up" : attrs.$closedIconImage ?? "pull-down"} $transition />}
+          {StringUtils.isString(attrs.$header) ? <Label className={`${cn}-lbl`}>{attrs.$header}</Label> : attrs.$header}
+        </div>
+      }
       <div
         ref={bref}
         className={`${cn}-body ${sbCn}`}
@@ -296,6 +299,10 @@ ${design==="flat" ? `
 .${cn}${qs} > .${cn}-body {
   border-color: ${v.bdc};
 }
+.${cn}-body:only-child {
+  border-top: 1px solid ${CssVar.bdc};
+  border-radius: ${CssVar.bdr};
+}
 `).join("")}
 .${cn}[data-bdl="true"] > .${cn}-body {
   border: unset;
@@ -324,6 +331,9 @@ neumorphism: `
 }
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover:active {
   box-shadow: ${CssPV.nCcvSdActive};
+}
+.${cn}-body:only-child {
+  border-radius: ${CssVar.bdr};
 }
 .${cn}[data-bdl="true"] > .${cn}-header {
   border-radius: ${CssVar.bdr};
