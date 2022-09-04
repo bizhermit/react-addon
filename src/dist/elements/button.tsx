@@ -195,13 +195,14 @@ neumorphism: `
   max-width: calc(${btnSize}  - 4px);
 }
 ${switchDesign(design, {
-flat: `
+fm: `
 .${cn}:hover > .${cn}-body {
   background: ${CssVar.hvrBgc};
 }
+${design==="flat" ? `
 .${cn}:hover:active > .${cn}-body {
   background: ${CssVar.actBgc};
-}
+}` : ""}
 ${colorIterator((_s, v, qs) => `
 .${cn}-body${qs}:not([data-trp="true"]) {
   background: ${v.btn.base.bgc};
@@ -225,59 +226,25 @@ ${colorIterator((_s, v, qs) => `
   ${varIconFc}: ${v.btn.hvr.fgc};
   ${varIconBc}: ${v.btn.hvr.bgc};
 }
+${design==="flat" ? `
 .${cn}:hover:active > .${cn}-body${qs} {
   background: ${v.btn.act.bgc};
   color: ${v.btn.act.fgc};
   border-color: ${v.btn.act.bdc};
   ${varIconFc}: ${v.btn.act.fgc};
   ${varIconBc}: ${v.btn.act.bgc};
-}
+}` : ""}
 `).join("")}
 .${cn}-body[data-bdl="true"] {
   border-color: transparent;
 }`,
 material: `
-.${cn}:hover > .${cn}-body {
-  background: ${CssVar.hvrBgc};
-}
 .${cn}-body[data-trp="true"] {
   box-shadow: 0px 1px 2px ${CssVar.sdw.d}, 1px 1px 2px ${CssVar.sdw.d} inset;
 }
-${colorIterator((_s, v, qs) => `
-.${cn}-body${qs} {
-  background: ${v.btn.base.bgc};
-  color: ${v.btn.base.fgc};
-  border-color: ${v.btn.base.bdc};
-}
-.${cn}-body[data-trp="true"]${qs} {
-  background: transparent;
-  color: ${v.fgc};
-}
-.${cn}-body[data-trp="true"]${qs}:not([data-bdl="true"]) {
-  border-color: ${v.btn.base.bdc};
-}
-.${cn}-body${qs} .${iconCn} {
-  ${varIconFc}: ${v.btn.base.fgc};
-  ${varIconBc}: ${v.btn.base.bgc};
-}
-.${cn}-body[data-trp="true"]${qs} .${iconCn} {
-  ${varIconFc}: ${v.fgc};
-}
-.${cn}:hover > .${cn}-body${qs} {
-  background: ${v.btn.hvr.bgc};
-  color: ${v.btn.hvr.fgc};
-  border-color: ${v.btn.hvr.bdc};
-}
-.${cn}:hover > .${cn}-body${qs} .${iconCn} {
-  ${varIconFc}: ${v.btn.hvr.fgc};
-  ${varIconBc}: ${v.btn.hvr.bgc};
-}`).join("")}
 .${cn}:hover:active > .${cn}-body,
 .${cn}:disabled > .${cn}-body {
   box-shadow: none;
-}
-.${cn}-body[data-bdl="true"] {
-  border-color: transparent;
 }
 .${cn}-body[data-bdl="true"][data-trp="true"] {
   box-shadow: none;
