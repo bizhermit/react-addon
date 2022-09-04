@@ -154,7 +154,7 @@ const AccordionContainer = React.forwardRef<HTMLDivElement, AccordionContainerAt
       data-color={attrs.$color}
       data-opened={opened}
       data-disabled={attrs.$disabled}
-      data-borderless={attrs.$borderless}
+      data-bdl={attrs.$borderless}
     >
       <div
         className={`${cn}-header`}
@@ -267,11 +267,10 @@ fm: `
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover {
   background: ${CssVar.hvrBgc};
 }
-${switchDesign(design, {
-flat: `
+${design==="flat" ? `
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover:active {
   background: ${CssVar.actBgc};
-}`})}
+}` : ""}
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-header {
   background: ${v.btn.base.bgc};
@@ -286,32 +285,32 @@ ${colorIterator((_s, v, qs) => `
   ${varIconFc}: ${v.btn.hvr.fgc};
   ${varIconBc}: ${v.btn.hvr.bgc};
 }
-${switchDesign(design, {
-flat: `
+${design==="flat" ? `
 .${cn}${qs}:not([data-disabled="true"]) > .${cn}-header:hover:active {
   background: ${v.btn.act.bgc};
   color: ${v.btn.act.fgc};
   border-color: ${v.btn.act.bdc};
   ${varIconFc}: ${v.btn.act.fgc};
   ${varIconBc}: ${v.btn.act.bgc};
-}`})}
+}` : ""}
 .${cn}${qs} > .${cn}-body {
   border-color: ${v.bdc};
 }
 `).join("")}
-.${cn}[data-borderless="true"] > .${cn}-body {
+.${cn}[data-bdl="true"] > .${cn}-body {
   border: unset;
   border-radius: unset;
 }
-.${cn}[data-borderless="true"] > .${cn}-header {
+.${cn}[data-bdl="true"] > .${cn}-header {
   border-radius: ${CssVar.bdr};
+  border: unset;
 }`,
 material: `
 .${cn}:not([data-disabled="true"]) > .${cn}-header {
-  box-shadow: ${CssPV.cvxSd(1)};
+  box-shadow: ${CssPV.cvxSdBase};
 }
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover {
-  box-shadow: ${CssPV.cvxSd(2)};
+  box-shadow: ${CssPV.cvxSdHover};
 }
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover:active {
   box-shadow: unset;
@@ -326,10 +325,10 @@ neumorphism: `
 .${cn}:not([data-disabled="true"]) > .${cn}-header:hover:active {
   box-shadow: ${CssPV.nCcvSdActive};
 }
-.${cn}[data-borderless="true"] > .${cn}-header {
+.${cn}[data-bdl="true"] > .${cn}-header {
   border-radius: ${CssVar.bdr};
 }
-.${cn}[data-borderless="true"] > .${cn}-body {
+.${cn}[data-bdl="true"] > .${cn}-body {
   box-shadow: unset;
   border-radius: unset;
 }
