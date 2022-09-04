@@ -1,5 +1,6 @@
 import React, { HTMLAttributes } from "react";
-import { FitToOuter, Color, ColorType } from "../styles/css-var";
+import { FitToOuter } from "../styles/css-var";
+import { ColorAttributes } from "../utils/attributes";
 export declare const flexBoxCn = "bh-fbx";
 export declare type FlexBoxAttributes = HTMLAttributes<HTMLDivElement> & {
     $fto?: FitToOuter;
@@ -16,10 +17,8 @@ export declare type FlexBoxAttributes = HTMLAttributes<HTMLDivElement> & {
     $radius?: boolean;
     $scroll?: boolean;
     $padding?: boolean | number;
-    $border?: boolean | Color;
-    $color?: Color;
-    $colorType?: ColorType;
-};
+    $border?: boolean;
+} & ColorAttributes;
 declare const FlexBox: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & {
     $fto?: FitToOuter;
     $row?: boolean;
@@ -35,8 +34,6 @@ declare const FlexBox: React.ForwardRefExoticComponent<React.HTMLAttributes<HTML
     $radius?: boolean;
     $scroll?: boolean;
     $padding?: boolean | number;
-    $border?: boolean | Color;
-    $color?: Color;
-    $colorType?: ColorType;
-} & React.RefAttributes<HTMLDivElement>>;
+    $border?: boolean;
+} & ColorAttributes & React.RefAttributes<HTMLDivElement>>;
 export default FlexBox;

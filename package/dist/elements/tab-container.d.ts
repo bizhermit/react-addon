@@ -1,5 +1,5 @@
 import React, { FC, HTMLAttributes, ReactElement, ReactNode } from "react";
-import { FitToOuter, Color } from "../styles/css-var";
+import { FitToOuter, Color, ColorType } from "../styles/css-var";
 import { MaskHook, MaskProps } from "../popups/mask";
 declare type TabKey = string | number;
 export declare type TabContainerHook = {
@@ -12,6 +12,7 @@ export declare type TabContentAttributes = {
     title: string | ReactNode;
     $selected?: () => void;
     $color?: Color;
+    $colorType?: ColorType;
     children?: ReactNode;
 };
 export declare type TabContentWrapperFC<P = {}> = FC<P & TabContentAttributes>;
@@ -26,7 +27,7 @@ export declare type TabContainerAttributes = HTMLAttributes<HTMLDivElement> & {
     $selected?: (key: TabKey) => void;
     $calcTabWidth?: boolean;
     $color?: Color;
-    $navigationBackgroundColor?: boolean;
+    $colorType?: ColorType;
     children: ReactElement<TabContentAttributes> | Array<ReactElement<TabContentAttributes>>;
 };
 declare const TabContainer: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & {
@@ -36,7 +37,7 @@ declare const TabContainer: React.ForwardRefExoticComponent<React.HTMLAttributes
     $selected?: (key: TabKey) => void;
     $calcTabWidth?: boolean;
     $color?: Color;
-    $navigationBackgroundColor?: boolean;
+    $colorType?: ColorType;
     children: ReactElement<TabContentAttributes> | Array<ReactElement<TabContentAttributes>>;
 } & React.RefAttributes<HTMLDivElement>>;
 export declare const useTabContainer: () => TabContainerHook;

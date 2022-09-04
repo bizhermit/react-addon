@@ -16,6 +16,7 @@ export declare type AccordionContainerAttributes = HTMLAttributes<HTMLDivElement
     $toggled?: (opened: boolean) => void;
     $animationDuration?: number;
     $height?: number;
+    $headerless?: boolean;
     $borderless?: boolean;
     $color?: Color;
     $openedIconImage?: IconImage;
@@ -32,6 +33,7 @@ declare const AccordionContainer: React.ForwardRefExoticComponent<React.HTMLAttr
     $toggled?: (opened: boolean) => void;
     $animationDuration?: number;
     $height?: number;
+    $headerless?: boolean;
     $borderless?: boolean;
     $color?: Color;
     $openedIconImage?: IconImage;

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Color } from "../styles/css-var";
+import { Color, ColorType } from "../styles/css-var";
 import { ButtonAttributes } from "../elements/button";
 import { TextBoxAttributes } from "../elements/inputs/text-box";
 declare type MessageBoxButton = Omit<ButtonAttributes, "$click" | "$hook"> & {
@@ -13,11 +13,18 @@ declare type MessageBoxProps = {
     message: ReactNode;
     buttons: Array<MessageBoxButton>;
     color?: Color;
+    colorType?: ColorType;
 };
 declare const useMessageBox: () => {
     show: <T>(props: MessageBoxProps) => Promise<T>;
-    alert: (message: ReactNode, title?: string) => Promise<void>;
-    confirm: (message: ReactNode, title?: string) => Promise<boolean>;
+    alert: (message: ReactNode, options?: {
+        title?: string;
+        color?: Color;
+    }) => Promise<void>;
+    confirm: (message: ReactNode, options?: {
+        title?: string;
+        color?: Color;
+    }) => Promise<boolean>;
     text: (props: {
         message?: ReactNode;
         textBoxAttributes?: TextBoxAttributes;

@@ -12,15 +12,21 @@ React Add-on for v18.
 ## Elements
 
 - AccordionContainer
+- Badge
 - Button
 - Calendar
 - Caption
 - Code
 - FlexBox
+- Footer
 - FunctionKeyContainer
 - GroupBox
+- Header
 - Icon
 - Label
+- Line
+  - HLine
+  - VLine
 - NavigationContainer
 - Resizer
 - Row
@@ -54,6 +60,7 @@ React Add-on for v18.
   - DateBoxColumn
   - GanttChartColumn
   - GroupColumn
+  - IconColumn
   - MultiStageColumn
   - NumericBoxColumn
   - RadioButtonColumn

@@ -43,6 +43,11 @@ declare module "@bizhermit/react-addon/dist/elements/flex-box" {
   // tslint:disable-next-line:export-just-namespace
   export = FlexBox;
 }
+declare module "@bizhermit/react-addon/dist/elements/footer" {
+  const Footer: typeof import("./dist/elements/footer");
+  // tslint:disable-next-line:export-just-namespace
+  export = Footer;
+}
 declare module "@bizhermit/react-addon/dist/elements/function-key-container" {
   const FunctionKeyContainer: typeof import("./dist/elements/function-key-container");
   // tslint:disable-next-line:export-just-namespace
@@ -52,6 +57,11 @@ declare module "@bizhermit/react-addon/dist/elements/group-box" {
   const GroupBox: typeof import("./dist/elements/group-box");
   // tslint:disable-next-line:export-just-namespace
   export = GroupBox;
+}
+declare module "@bizhermit/react-addon/dist/elements/header" {
+  const Header: typeof import("./dist/elements/header");
+  // tslint:disable-next-line:export-just-namespace
+  export = Header;
 }
 declare module "@bizhermit/react-addon/dist/elements/icon" {
   const Icon: typeof import("./dist/elements/icon");
@@ -133,85 +143,90 @@ declare module "@bizhermit/react-addon/dist/elements/label" {
   // tslint:disable-next-line:export-just-namespace
   export = Label;
 }
-declare module "@bizhermit/react-addon/dist/elements/list/data-view-columns/button-column" {
-  const ListViewButtonColumn: typeof import("./dist/elements/list/data-view-columns/button-column");
+declare module "@bizhermit/react-addon/dist/elements/line" {
+  const HLine: typeof import("./dist/elements/line");
   // tslint:disable-next-line:export-just-namespace
-  export = ListViewButtonColumn;
+  export = HLine;
+}
+declare module "@bizhermit/react-addon/dist/elements/list/data-view-columns/button-column" {
+  const DataViewButtonColumn: typeof import("./dist/elements/list/data-view-columns/button-column");
+  // tslint:disable-next-line:export-just-namespace
+  export = DataViewButtonColumn;
 }
 declare module "@bizhermit/react-addon/dist/elements/list/data-view-columns/check-box-column" {
-  const ListViewCheckBoxColumn: typeof import("./dist/elements/list/data-view-columns/check-box-column");
+  const DataViewCheckBoxColumn: typeof import("./dist/elements/list/data-view-columns/check-box-column");
   // tslint:disable-next-line:export-just-namespace
-  export = ListViewCheckBoxColumn;
+  export = DataViewCheckBoxColumn;
 }
 declare module "@bizhermit/react-addon/dist/elements/list/data-view-columns/date-box-column" {
-  const ListViewDateBoxColumn: typeof import("./dist/elements/list/data-view-columns/date-box-column");
+  const DataViewDateBoxColumn: typeof import("./dist/elements/list/data-view-columns/date-box-column");
   // tslint:disable-next-line:export-just-namespace
-  export = ListViewDateBoxColumn;
+  export = DataViewDateBoxColumn;
 }
 declare module "@bizhermit/react-addon/dist/elements/list/data-view-columns/gantt-chart-column" {
-  const ListViewGanttChartColumn: typeof import("./dist/elements/list/data-view-columns/gantt-chart-column");
+  const DataViewGanttChartColumn: typeof import("./dist/elements/list/data-view-columns/gantt-chart-column");
   // tslint:disable-next-line:export-just-namespace
-  export = ListViewGanttChartColumn;
+  export = DataViewGanttChartColumn;
 }
 declare module "@bizhermit/react-addon/dist/elements/list/data-view-columns/group-column" {
-  const ListViewGroupColumn: typeof import("./dist/elements/list/data-view-columns/group-column");
+  const DataViewGroupColumn: typeof import("./dist/elements/list/data-view-columns/group-column");
   // tslint:disable-next-line:export-just-namespace
-  export = ListViewGroupColumn;
+  export = DataViewGroupColumn;
 }
 declare module "@bizhermit/react-addon/dist/elements/list/data-view-columns/icon-column" {
-  const ListViewIconColumn: typeof import("./dist/elements/list/data-view-columns/icon-column");
+  const DataViewIconColumn: typeof import("./dist/elements/list/data-view-columns/icon-column");
   // tslint:disable-next-line:export-just-namespace
-  export = ListViewIconColumn;
+  export = DataViewIconColumn;
 }
 declare module "@bizhermit/react-addon/dist/elements/list/data-view-columns/multi-stage-column" {
-  const ListViewMultiStageColumn: typeof import("./dist/elements/list/data-view-columns/multi-stage-column");
+  const DataViewMultiStageColumn: typeof import("./dist/elements/list/data-view-columns/multi-stage-column");
   // tslint:disable-next-line:export-just-namespace
-  export = ListViewMultiStageColumn;
+  export = DataViewMultiStageColumn;
 }
 declare module "@bizhermit/react-addon/dist/elements/list/data-view-columns/numeric-box-column" {
-  const ListViewNumericBoxColumn: typeof import("./dist/elements/list/data-view-columns/numeric-box-column");
+  const DataViewNumericBoxColumn: typeof import("./dist/elements/list/data-view-columns/numeric-box-column");
   // tslint:disable-next-line:export-just-namespace
-  export = ListViewNumericBoxColumn;
+  export = DataViewNumericBoxColumn;
 }
 declare module "@bizhermit/react-addon/dist/elements/list/data-view-columns/radio-button-column" {
-  const ListViewRadioButtonColumn: typeof import("./dist/elements/list/data-view-columns/radio-button-column");
+  const DataViewRadioButtonColumn: typeof import("./dist/elements/list/data-view-columns/radio-button-column");
   // tslint:disable-next-line:export-just-namespace
-  export = ListViewRadioButtonColumn;
+  export = DataViewRadioButtonColumn;
 }
 declare module "@bizhermit/react-addon/dist/elements/list/data-view-columns/reorder-column" {
-  const ListViewReorderColumn: typeof import("./dist/elements/list/data-view-columns/reorder-column");
+  const DataViewReorderColumn: typeof import("./dist/elements/list/data-view-columns/reorder-column");
   // tslint:disable-next-line:export-just-namespace
-  export = ListViewReorderColumn;
+  export = DataViewReorderColumn;
 }
 declare module "@bizhermit/react-addon/dist/elements/list/data-view-columns/select-box-column" {
-  const ListViewSelectBox: typeof import("./dist/elements/list/data-view-columns/select-box-column");
+  const DataViewSelectBox: typeof import("./dist/elements/list/data-view-columns/select-box-column");
   // tslint:disable-next-line:export-just-namespace
-  export = ListViewSelectBox;
+  export = DataViewSelectBox;
 }
 declare module "@bizhermit/react-addon/dist/elements/list/data-view-columns/slider-column" {
-  const ListViewSliderColumn: typeof import("./dist/elements/list/data-view-columns/slider-column");
+  const DataViewSliderColumn: typeof import("./dist/elements/list/data-view-columns/slider-column");
   // tslint:disable-next-line:export-just-namespace
-  export = ListViewSliderColumn;
+  export = DataViewSliderColumn;
 }
 declare module "@bizhermit/react-addon/dist/elements/list/data-view-columns/text-box-column" {
-  const ListViewTextBoxColumn: typeof import("./dist/elements/list/data-view-columns/text-box-column");
+  const DataViewTextBoxColumn: typeof import("./dist/elements/list/data-view-columns/text-box-column");
   // tslint:disable-next-line:export-just-namespace
-  export = ListViewTextBoxColumn;
+  export = DataViewTextBoxColumn;
 }
 declare module "@bizhermit/react-addon/dist/elements/list/data-view-columns/time-box-column" {
-  const ListViewTimeBoxColumn: typeof import("./dist/elements/list/data-view-columns/time-box-column");
+  const DataViewTimeBoxColumn: typeof import("./dist/elements/list/data-view-columns/time-box-column");
   // tslint:disable-next-line:export-just-namespace
-  export = ListViewTimeBoxColumn;
+  export = DataViewTimeBoxColumn;
 }
 declare module "@bizhermit/react-addon/dist/elements/list/data-view" {
-  const ListView: typeof import("./dist/elements/list/data-view");
+  const DataView: typeof import("./dist/elements/list/data-view");
   // tslint:disable-next-line:export-just-namespace
-  export = ListView;
+  export = DataView;
 }
 declare module "@bizhermit/react-addon/dist/elements/list/pageable-data-view" {
-  const PageableListView: typeof import("./dist/elements/list/pageable-data-view");
+  const PageableDataView: typeof import("./dist/elements/list/pageable-data-view");
   // tslint:disable-next-line:export-just-namespace
-  export = PageableListView;
+  export = PageableDataView;
 }
 declare module "@bizhermit/react-addon/dist/elements/list/tree-view" {
   const TreeView: typeof import("./dist/elements/list/tree-view");

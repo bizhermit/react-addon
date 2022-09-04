@@ -1,5 +1,5 @@
 import React, { FunctionComponent, HTMLAttributes, ReactElement, ReactNode } from "react";
-import { FitToOuter, Color } from "../styles/css-var";
+import { FitToOuter, Color, ColorType } from "../styles/css-var";
 export declare type NavigationContainerHook = {
     openNavigation: () => void;
     closeNavigation: () => void;
@@ -10,6 +10,7 @@ declare type NavigationAttributes = HTMLAttributes<HTMLDivElement> & {
     $position?: "left" | "top" | "right" | "bottom";
     $mode?: "visible" | "edge" | "manual";
     $color?: Color;
+    $colorType?: ColorType;
     $toggled?: (opened: boolean) => void;
     $edgeSize?: number | string;
     $preventClickClose?: boolean;

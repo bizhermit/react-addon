@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import { Color } from "../styles/css-var";
+import { Color, ColorType } from "../styles/css-var";
 import { MaskHook } from "./mask";
 import { _HookSetter } from "../utils/hook";
 export declare type DialogWindowProps = {
@@ -41,6 +41,7 @@ declare type DialogWindowAttributes = {
     $height?: number | string;
     $width?: number | string;
     $color?: Color;
+    $colorType?: ColorType;
     $showed?: () => void;
     $closed?: (props?: {
         [key: string]: any;
