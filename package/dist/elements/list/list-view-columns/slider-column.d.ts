@@ -1,6 +1,6 @@
 import { Color } from "../../../styles/css-var";
 import { SliderAttributes } from "../../inputs/slider";
-import { ListViewColumnFunction, ListViewEditColumnProps, ListViewEditInputAttributes } from "../list-view";
+import { ListViewColumnFunction, ListViewEditColumnProps, ListViewEditInputAttributes } from "../data-view";
 declare const ListViewSliderColumn: ListViewColumnFunction<ListViewEditColumnProps<number> & {
     sliderAttributes?: ListViewEditInputAttributes<SliderAttributes>;
     labelDataName?: string;

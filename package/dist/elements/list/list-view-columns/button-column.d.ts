@@ -1,6 +1,6 @@
 import { Color } from "../../../styles/css-var";
 import { IconImage } from "../../icon";
-import { ListViewColumnFunction, ListViewColumnProps } from "../list-view";
+import { ListViewColumnFunction, ListViewColumnProps } from "../data-view";
 declare const ListViewButtonColumn: ListViewColumnFunction<ListViewColumnProps & {
     buttonLabel?: string;
     icon?: IconImage | {

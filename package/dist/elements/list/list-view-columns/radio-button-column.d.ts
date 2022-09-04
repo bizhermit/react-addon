@@ -1,4 +1,4 @@
-import { ListViewColumnFunction, ListViewEditColumnProps } from "../list-view";
+import { ListViewColumnFunction, ListViewEditColumnProps } from "../data-view";
 declare const ListViewRadioButtonColumn: ListViewColumnFunction<ListViewEditColumnProps<{
     [key: string]: any;
 }> & {

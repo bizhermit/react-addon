@@ -1,4 +1,4 @@
-import { ListViewColumnFunction, ListViewColumnProps, ListViewHeaderOrFooterCellClicked } from "../list-view";
+import { ListViewColumnFunction, ListViewColumnProps, ListViewHeaderOrFooterCellClicked } from "../data-view";
 export declare type ListViewGroupColumnProps = {
     groupName?: string;
     name?: string;

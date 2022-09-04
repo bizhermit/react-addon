@@ -1,5 +1,5 @@
 import { Color } from "../../../styles/css-var";
-import { ListViewColumnFunction } from "../list-view";
+import { ListViewColumnFunction } from "../data-view";
 declare type GanttChartColumnData = {
     dataName: string;
     fromDataName: string;

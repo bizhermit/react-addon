@@ -38,24 +38,24 @@ const Style = <JsxStyle id={cn}>{() => `
   border: 1px solid ${CssVar.bdc};
 }
 .${cn}[data-oddeven="true"] > * > * > th {
-  background: ${CssVar.lv.header.bgc};
-  color: ${CssVar.lv.header.fgc};
+  background: ${CssVar.dataview.header.bgc};
+  color: ${CssVar.dataview.header.fgc};
 }
 .${cn}[data-oddeven="true"] > tbody > tr:nth-child(odd) {
-  background: ${CssVar.lv.cell.bg.b};
-  color: ${CssVar.lv.cell.ft.b};
+  background: ${CssVar.dataview.cell.bg.b};
+  color: ${CssVar.dataview.cell.ft.b};
 }
 .${cn}[data-oddeven="true"] > tbody > tr:nth-child(even) {
-  background: ${CssVar.lv.cell.bg.d};
-  color: ${CssVar.lv.cell.ft.d};
+  background: ${CssVar.dataview.cell.bg.d};
+  color: ${CssVar.dataview.cell.ft.d};
 }
 .${cn}[data-hover="true"] > tbody > tr:hover {
-  background: ${CssVar.lv.cell.hvr.row.bgc};
-  color: ${CssVar.lv.cell.hvr.row.fgc};
+  background: ${CssVar.dataview.cell.hvr.row.bgc};
+  color: ${CssVar.dataview.cell.hvr.row.fgc};
 }
 .${cn}[data-hover="true"] > tbody > tr > td:hover {
-  background: ${CssVar.lv.cell.hvr.cell.bgc};
-  color: ${CssVar.lv.cell.hvr.cell.fgc};
+  background: ${CssVar.dataview.cell.hvr.cell.bgc};
+  color: ${CssVar.dataview.cell.hvr.cell.fgc};
 }
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > * > * > th {

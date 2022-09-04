@@ -106,7 +106,7 @@ fm: `
   border-radius: 0 0 ${CssVar.bdr} ${CssVar.bdr};
 `,
 neumorphism: `
-  box-shadow: ${CssPV.nCcvSdDisabled};
+  box-shadow: ${CssPV.nCcvSd(2)};
   border-radius: 0 0 ${CssVar.bdr} ${CssVar.bdr};
 `})}
 }

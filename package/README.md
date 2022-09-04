@@ -48,7 +48,7 @@ React Add-on for v18.
 
 ### List
 
-- ListView
+- DataView
   - ButtonColumn
   - CheckBoxColumn
   - DateBoxColumn
@@ -62,7 +62,7 @@ React Add-on for v18.
   - SliderColumn
   - TextBoxColumn
   - TimeBoxColumn
-- PageableListView
+- PageableDataView
 - TreeView
 
 ## Popups

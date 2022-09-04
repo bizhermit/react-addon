@@ -1,4 +1,4 @@
-import { ListViewColumnProps } from "../list-view";
+import { ListViewColumnProps } from "../data-view";
 declare type Props = {
     name?: string;
     width?: number;
