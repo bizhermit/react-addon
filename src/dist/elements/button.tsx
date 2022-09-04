@@ -257,9 +257,6 @@ neumorphism: `
   background: transparent;
   box-shadow: 0 0 0px 1px ${CssVar.bdc} inset, 0.5px 0.5px 2px ${CssVar.sdw.d}, -0.5px -0.5px 2px ${CssVar.sdw.b}, 1px 1px 2px ${CssVar.sdw.d} inset, -1px -1px 2px ${CssVar.sdw.b} inset;
 }
-.${cn}-body .${iconCn} {
-  ${varIconBc}: ${CssVar.bgc};
-}
 .${cn}:hover > .${cn}-body,
 .${cn}:hover > .${cn}-body[data-trp="true"] {
   background: inherit;
@@ -275,31 +272,23 @@ neumorphism: `
   box-shadow: 0 0 0px 1px ${CssVar.bdc} inset, ${CssPV.nCcvSdDisabled};
 }
 ${colorIterator((_s, v, qs) => `
-.${cn}-body${qs}[data-bdl="true"]:not([data-trp="true"]) {
-  background: ${v.btn.base.bgc};
-  color: ${v.btn.base.fgc};
-}
 .${cn}-body${qs}:not([data-trp="true"]) {
-  background: ${v.bgc};
   color: ${v.fgc};
-}
-.${cn}:hover > .${cn}-body${qs},
-.${cn}:hover > .${cn}-body${qs}[data-trp="true"] {
   background: ${v.bgc};
-  color: ${v.fgc};
+  ${varIconFc}: ${v.fgc};
+  ${varIconBc}: ${v.bgc};
 }
 .${cn}-body[data-trp="true"]${qs} {
-  box-shadow: 0 0 0px 1px ${v.btn.base.bdc} inset, 0.5px 0.5px 2px ${CssVar.sdw.d}, -0.5px -0.5px 2px ${CssVar.sdw.b}, 1px 1px 2px ${CssVar.sdw.d} inset, -1px -1px 2px ${CssVar.sdw.b} inset;
+  background: transparent;
   color: ${v.fgc};
-}
-.${cn}-body${qs} .${iconCn} {
   ${varIconFc}: ${v.fgc};
+  box-shadow: 0 0 0px 1px ${v.btn.base.bdc} inset, 0.5px 0.5px 2px ${CssVar.sdw.d}, -0.5px -0.5px 2px ${CssVar.sdw.b}, 1px 1px 2px ${CssVar.sdw.d} inset, -1px -1px 2px ${CssVar.sdw.b} inset;
 }
-.${cn}-body${qs}[data-bdl="true"]:not([data-trp="true"]):not(:hover) .${iconCn} {
-  ${varIconFc}: ${v.btn.base.fgc};
-  ${varIconBc}: ${v.btn.base.bgc};
+.${cn}-body[data-trp="true"]${qs}:not([data-bdl="true"]) {
+  border-color: ${v.btn.base.bdc};
 }
-.${cn}-body${qs}:not([data-trp="true"]) .${iconCn} {
+.${cn}:hover > .${cn}-body${qs}[data-trp="true"] {
+  background: ${v.bgc};
   ${varIconBc}: ${v.bgc};
 }
 .${cn}:disabled > .${cn}-body[data-trp="true"]${qs} {
