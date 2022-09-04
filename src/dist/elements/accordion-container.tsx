@@ -6,7 +6,7 @@ import JsxStyle from "../styles/jsx-style";
 import { attributesWithoutChildren, ftoCn } from "../utils/attributes";
 import { pressPositiveKey } from "../utils/dom";
 import { _HookSetter } from "../utils/hook";
-import Icon, { iconCn, IconImage, varIconBc, varIconFc } from "./icon";
+import Icon, { IconImage, varIconBc, varIconFc } from "./icon";
 import Label from "./label";
 
 const cn = "bh-acd";
@@ -276,8 +276,6 @@ ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-header {
   background: ${v.btn.base.bgc};
   color: ${v.btn.base.fgc};
-}
-.${cn}${qs} > .${cn}-header .${iconCn} {
   ${varIconFc}: ${v.btn.base.fgc};
   ${varIconBc}: ${v.btn.base.bgc};
 }
@@ -285,8 +283,6 @@ ${colorIterator((_s, v, qs) => `
   background: ${v.btn.hvr.bgc};
   color: ${v.btn.hvr.fgc};
   border-color: ${v.btn.hvr.bdc};
-}
-.${cn}${qs}:not([data-disabled="true"]) > .${cn}-header:hover .${iconCn} {
   ${varIconFc}: ${v.btn.hvr.fgc};
   ${varIconBc}: ${v.btn.hvr.bgc};
 }
@@ -296,8 +292,6 @@ flat: `
   background: ${v.btn.act.bgc};
   color: ${v.btn.act.fgc};
   border-color: ${v.btn.act.bdc};
-}
-.${cn}${qs}:not([data-disabled="true"]) > .${cn}-header:hover:active .${iconCn} {
   ${varIconFc}: ${v.btn.act.fgc};
   ${varIconBc}: ${v.btn.act.bgc};
 }`})}
@@ -342,11 +336,8 @@ neumorphism: `
 ${colorIterator((_s, v, qs) => `
 .${cn}${qs} > .${cn}-header {
   color: ${v.fgc};
-}
-.${cn}${qs} > .${cn}-header .${iconCn} {
   ${varIconFc}: ${v.fgc};
-}
-`).join("")}
+}`).join("")}
 `})}
 `}</JsxStyle>;
 
