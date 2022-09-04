@@ -4,6 +4,7 @@ import { createRef, CSSProperties, useState } from "react";
 import Button from "../../../react-addon/dist/elements/button";
 import FlexBox from "../../../react-addon/dist/elements/flex-box";
 import Label from "../../../react-addon/dist/elements/label";
+import HLine from "../../../react-addon/dist/elements/line";
 import Row from "../../../react-addon/dist/elements/row";
 import { colorIterator } from "../../../react-addon/dist/styles/css-var";
 
@@ -162,6 +163,20 @@ const FlexBoxPage: NextPage = () => {
         <FlexBox style={commonStyle} $border $padding $wrap $scroll>
           {ArrayUtils.generateArray(100, "X ").join("")}
         </FlexBox>
+        <FlexBox $color="primary" $border $padding>
+          <Label>inner</Label>
+          <FlexBox $color="secondary" $border $padding>
+            <Label>inner</Label>
+            <HLine $margin />
+            <Label>inner</Label>
+          </FlexBox>
+          <HLine $margin />
+          <FlexBox $color="danger" $border $padding>
+            <Label>inner</Label>
+            <HLine $margin />
+            <Label>inner</Label>
+          </FlexBox>
+        </FlexBox>
       </FlexBox>
       <FlexBox style={{ marginLeft: 5 }}>
         <Label $type="h2">Color</Label>
@@ -173,7 +188,7 @@ const FlexBoxPage: NextPage = () => {
                 <FlexBox style={{...commonStyle, marginLeft: 5 }} $color={s}>{s}</FlexBox>
                 <FlexBox style={{...commonStyle, marginLeft: 5 }} $color={s} $colorType="head">{s} head</FlexBox>
                 <FlexBox style={{...commonStyle, marginLeft: 5 }} $color={s} $colorType="nav">{s} nav</FlexBox>
-                <FlexBox style={{...commonStyle, marginLeft: 5 }} $border={s}>{s}</FlexBox>
+                <FlexBox style={{...commonStyle, marginLeft: 5 }} $color={s} $border>{s}</FlexBox>
               </Row>
             </FlexBox>
           );

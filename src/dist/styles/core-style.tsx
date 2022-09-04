@@ -148,8 +148,8 @@ ${colorIterator((c, v) => `
 .bh-c_${c}_base{
   color:${v.fgc};
   background:${v.bgc};
-  ${varAnchor}:${v.anc};
   --bh-bdc:${v.bdc};
+  ${varAnchor}:${v.anc};
 }
 .bh-c_${c}_base .${iconCn}{
   ${varIconFc}:${v.fgc};
@@ -163,8 +163,8 @@ ${colorIterator((c, v) => `
 .bh-c_${c}_head{
   color:${v.head.fgc};
   background:${v.head.bgc};
-  ${varAnchor}:${v.head.anc};
   --bh-bdc:${v.head.bdc};
+  ${varAnchor}:${v.head.anc};
 }
 .bh-c_${c}_head .${iconCn}{
   ${varIconFc}:${v.head.fgc};
@@ -178,8 +178,8 @@ ${colorIterator((c, v) => `
 .bh-c_${c}_nav{
   color:${v.nav.fgc};
   background:${v.nav.bgc};
-  ${varAnchor}:${v.nav.anc};
   --bh-bdc:${v.nav.bdc};
+  ${varAnchor}:${v.nav.anc};
 }
 .bh-c_${c}_nav .${iconCn}{
   ${varIconFc}:${v.nav.fgc};
