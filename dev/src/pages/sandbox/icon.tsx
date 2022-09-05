@@ -8,6 +8,7 @@ import Icon, { IconImage } from "../../../react-addon/dist/elements/icon";
 import Label from "../../../react-addon/dist/elements/label";
 import Row from "../../../react-addon/dist/elements/row";
 import NumericBox from "../../../react-addon/dist/elements/inputs/numeric-box";
+import ToggleBox from "../../../react-addon/dist/elements/inputs/toggle-box";
 
 const icons: Array<IconImage> = [
   "favicon",
@@ -123,10 +124,12 @@ const icons: Array<IconImage> = [
   "warning",
   "error",
   "question",
+  "bell",
 ];
 
 const IconPage: NextPage = () => {
   const [size, setSize] = useState(1.6);
+  const [all, setAll] = useState(false);
 
   const elem = createRef<HTMLDivElement>();
   useEffect(() => {
@@ -146,22 +149,30 @@ const IconPage: NextPage = () => {
           style={{ width: 80 }}
         />
       </Caption>
+      <Caption $label="show all">
+        <ToggleBox $value={all} $dispatch={setAll} />
+      </Caption>
     </Row>
     <FlexBox $fto="fy" $scroll ref={elem} className="icon-container">
       {useMemo(() => {
-        return icons.map(icon => {
+        return icons.filter((v, idx) => {
+          if (all) return true;
+          return icons.length - idx < 10;
+        }).map(icon => {
           return (
             <Caption key={icon} $label={icon} $width={150}>
               <Icon $image={icon} />
-              {colorIterator(s => {
+              {/* {colorIterator(s => {
                 return <Icon key={s} $image={icon} $color={s} />;
-              })}
+              })} */}
               <Button $icon={{ $image: icon }} />
-              <Button $transparent $icon={{ $image: icon }} />
-              <Button $transparent $icon={{ $image: icon }} $color="primary" />
-              <Button $icon={{ $image: icon, $color: "danger" }} $fillLabel style={{ width: 200 }}>ボタン</Button>
-              <Icon $image={icon} $spinR />
-              <Icon $image={icon} $spinL />
+              <Button $icon={{ $image: icon }} $color="default" />
+              <Button $icon={{ $image: icon }} $color="default" $transparent />
+              {/* <Button $transparent $icon={{ $image: icon }} /> */}
+              {/* <Button $transparent $icon={{ $image: icon }} $color="primary" /> */}
+              <Button $icon={{ $image: icon, $color: "danger" }} $fillLabel>ボタン</Button>
+              {/* <Icon $image={icon} $spinR />
+              <Icon $image={icon} $spinL /> */}
             </Caption>
           );
         })

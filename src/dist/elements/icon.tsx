@@ -24,7 +24,7 @@ export type IconImage = "" | "favicon"
   | "home" | "pen" | "gear" | "save" | "save-as" | "delete"
   | "reload" | "revert" | "sync"
   | "search" | "filter" | "graph-bar" | "graph-border" | "history" | "code"
-  | "list" | "clock" | "calendar" | "mail" | "tel" | "location" | "flag" | "clip" | "share"
+  | "list" | "clock" | "calendar" | "mail" | "tel" | "location" | "flag" | "clip" | "share" | "bell"
   | "star" | "star-border" | "star-half" | "heart" | "message" | "message-ellipse"
   | "key" | "lock" | "unlock" | "guard"
   | "folder" | "folder-check" | "folder-add" | "document" | "note"
@@ -42,7 +42,7 @@ export type IconAttributes = HTMLAttributes<HTMLDivElement> & {
   $transition?: boolean;
 };
 
-const singleDivImages = ["users", "save-as", "sync", "graph-border", "history", "code", "calendar", "location", "clip", "lock", "unlock", "folder-check", "folder-add", "guard", "c-cross", "c-add", "document"];
+const singleDivImages = ["users", "save-as", "sync", "graph-border", "history", "code", "calendar", "location", "clip", "lock", "unlock", "folder-check", "folder-add", "guard", "c-cross", "c-add", "document", "bell"];
 const doubleDivImages = ["post", "cloud", "cloud-check", "cloud-download", "cloud-upload", "gear", "list", "share", "note"];
 
 export const iconChildCount = (image: IconImage) => {
@@ -1280,6 +1280,38 @@ ${colorIterator((_s, v, qs) => `
 .${cn}-share > .${cnc}:nth-child(2)::after {
   transform: rotate(25deg);
   bottom: 34%;
+}
+.${cn}-bell::before {
+  background-color: ${iconFc};
+  height: 60%;
+  width: 50%;
+  top: 20%;
+  left: 25%;
+  border-radius: 9999px 9999px 0 0;
+}
+.${cn}-bell::after {
+  background-color: ${iconFc};
+  height: 40%;
+  width: 70%;
+  left: 15%;
+  bottom: 20%;
+  clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+}
+.${cn}-bell > .${cnc}::before {
+  background-color: ${iconFc};
+  width: 16%;
+  left: 42%;
+  height: 15%;
+  top: 10%;
+  border-radius: 9999px 9999px 0 0;
+}
+.${cn}-bell > .${cnc}::after {
+  background-color: ${iconFc};
+  width: 16%;
+  left: 42%;
+  height: 10%;
+  bottom: calc(10% - 1.5px);
+  border-radius: 0 0 9999px 9999px;
 }
 .${cn}-star::before,
 .${cn}-star-border::before,
