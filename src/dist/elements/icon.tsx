@@ -42,8 +42,37 @@ export type IconAttributes = HTMLAttributes<HTMLDivElement> & {
   $transition?: boolean;
 };
 
-const singleDivImages = ["users", "save-as", "sync", "graph-border", "history", "code", "calendar", "location", "clip", "lock", "unlock", "folder-check", "folder-add", "guard", "c-cross", "c-add", "document", "bell"];
-const doubleDivImages = ["post", "cloud", "cloud-check", "cloud-download", "cloud-upload", "gear", "list", "share", "note"];
+const singleDivImages = [
+  "users",
+  "save-as",
+  "sync",
+  "graph-border",
+  "history",
+  "code",
+  "calendar",
+  "location",
+  "clip",
+  "lock",
+  "unlock",
+  "folder-check",
+  "folder-add",
+  "guard",
+  "c-cross",
+  "c-add",
+  "document",
+  "bell",
+];
+const doubleDivImages = [
+  "post",
+  "cloud",
+  "cloud-check",
+  "cloud-download",
+  "cloud-upload",
+  "gear",
+  "list",
+  "share",
+  "note",
+];
 
 export const iconChildCount = (image: IconImage) => {
   if (singleDivImages.includes(image)) return 1;
