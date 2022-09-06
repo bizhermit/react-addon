@@ -123,6 +123,7 @@ c: `height: calc(100% - ${CssVar.pdy} * 2 - ${CssVar.phsize});`,
 .${inputCn} textarea {
   padding-top: 8px;
   padding-bottom: 3px;
+  width: 100%;
 }
 .${inputCn} input[data-align="center"],
 .${inputCn} textarea[data-align="center"] {
