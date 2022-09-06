@@ -176,7 +176,7 @@ const IconPage: NextPage = () => {
             </Caption>
           );
         })
-      }, []) }
+      }, [all]) }
       {/* <style global jsx>{`
         .bh-icon:hover {
           background: #d8d8d8;
