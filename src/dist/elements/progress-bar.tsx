@@ -22,7 +22,7 @@ const ProgressBar = React.forwardRef<HTMLDivElement, ProgressBarAttributes>((att
     >
       <div
         className={`${cn}-linear`}
-        data-mode={attrs.$mode}
+        data-mode={attrs.$mode || "flow"}
       />
       {Style}  
     </div>

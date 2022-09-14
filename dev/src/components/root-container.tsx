@@ -46,6 +46,7 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
       toMenuItem("label", "Label", "el"),
       toMenuItem("badge", "Badge", "el"),
       toMenuItem("button", "Button", "el"),
+      toMenuItem("progress", "Progress", "el"),
       toMenuItem("flexBox", "FlexBox", "el"),
       toMenuItem("groupBox", "GroupBox", "el"),
       toMenuItem("splitContainer", "SplitContainer", "el"),

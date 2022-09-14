@@ -47,7 +47,7 @@ const LabelPage: NextPage = () => {
       <Label $type="h6">H6</Label>
       <Label style={{ maxWidth: 200 }} $nowrap>{ArrayUtils.generateArray(100, "x").join(" ")}</Label>
       <Label style={{ maxWidth: 200 }}>{ArrayUtils.generateArray(100, "x").join(" ")}</Label>
-      </>
+    </>
   );
 };
 
