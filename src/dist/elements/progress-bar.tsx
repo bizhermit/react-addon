@@ -11,6 +11,7 @@ export type ProgressBarAttributes = HTMLAttributes<HTMLDivElement> & {
   $color?: Color;
   $colorType?: ColorType;
   $overlay?: boolean;
+  $disabled?: boolean;
 };
 
 const ProgressBar = React.forwardRef<HTMLDivElement, ProgressBarAttributes>((attrs, ref) => {
@@ -22,10 +23,12 @@ const ProgressBar = React.forwardRef<HTMLDivElement, ProgressBarAttributes>((att
       data-colortype={attrs.$colorType || "base"}
       data-overlay={attrs.$overlay}
     >
-      <div
-        className={`${cn}-linear`}
-        data-mode={attrs.$mode || "flow"}
-      />
+      {attrs.$disabled ? <></> :
+        <div
+          className={`${cn}-linear`}
+          data-mode={attrs.$mode || "flow"}
+        />
+      }
       {Style}  
     </div>
   );
