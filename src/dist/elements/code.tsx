@@ -123,7 +123,7 @@ export const Style = <JsxStyle id={codeCn}>{() => `
   ${CssPV.flex}
   flex-flow: row nowrap;
   justify-content: flex-end;
-  align-items: flex-start;
+  align-items: center;
   flex: none;
   width: 100%;
   margin: 0px;
