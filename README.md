@@ -28,6 +28,7 @@ React Add-on for v18.
   - HLine
   - VLine
 - NavigationContainer
+- ProgressBar
 - Resizer
 - Row
 - SplitContainer
