@@ -2210,7 +2210,7 @@ export class DataViewClass<T = Data> extends DomComponentClass {
   }
 
   protected beginEditLastSelectedCell(lastScrollTop?: number): void {
-    if (this.lastSelectedCell.column == null) return;
+    if (this.lastSelectedCell?.column == null) return;
     let lst = lastScrollTop;
     if (lst == null) {
       lst = this.element.scrollTop;
