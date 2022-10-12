@@ -71,6 +71,7 @@ const RootContainer: FC<{ children?: ReactNode; }> = ({ children }) => {
       toMenuItem("selectBox", "SelectBox", "ipt"),
       toMenuItem("fileBox", "FileBox", "ipt"),
       toMenuItem("fileArea", "FileArea", "ipt"),
+      toMenuItem("electronicSignature", "ElectronicSignature", "ipt"),
       { id: "lst", label: "List", defaultOpened: true, pid: "el" },
       toMenuItem("dataView", "DataView", "lst"),
       toMenuItem("pageableDataView", "PageableDataView", "lst"),
