@@ -9,6 +9,7 @@ import FlexBox from "../../../react-addon/dist/elements/flex-box";
 import { InputBorder } from "../../../react-addon/dist/styles/input-style";
 import RadioButtons from "../../../react-addon/dist/elements/inputs/radio-buttons";
 import NumericBox from "../../../react-addon/dist/elements/inputs/numeric-box";
+import Label from "../../../react-addon/dist/elements/label";
 
 const ElectronicSignaturePage: NextPage = () => {
   const ref = createRef<HTMLDivElement>();
@@ -19,6 +20,8 @@ const ElectronicSignaturePage: NextPage = () => {
   const [border, setBorder] = useState<InputBorder>();
   const [lineWidth, setLineWidth] = useState(2);
   const [lineColor, setLineColor] = useState<string>("black");
+  const [undoable, setUndoable] = useState(false);
+  const [redoable, setRedoable] = useState(false);
   const hook = useElectronicSignature();
   
   return (
@@ -98,16 +101,34 @@ const ElectronicSignaturePage: NextPage = () => {
         $border={border}
         $lineWidth={lineWidth}
         $lineColor={lineColor}
+        $height={150}
+        $width={600}
+        $changing={(ctx) => {
+          // console.log(ctx);
+          setUndoable(hook.canUndo());
+          setRedoable(hook.canRedo());
+        }}
       />
+      <Row>
+        <Button $icon="delete" $click={() => {
+          hook.clearHistory();
+          setUndoable(hook.canUndo());
+          setRedoable(hook.canRedo());
+        }}>clear history</Button>
+        <Button $icon="save" $click={() => {
+          hook.save();
+        }}>save</Button>
+        <Button $icon="cross" $click={() => {
+          hook.clear();
+        }}>clear</Button>
+        <Button $icon="pull-left" disabled={!undoable} $click={(() => {
+          hook.undo();
+        })}>undo</Button>
+        <Button $icon="pull-right" disabled={!redoable} $iconRight $click={() => {
+          hook.redo();
+        }}>redo</Button>
+      </Row>
     </FlexBox>
-    <Row>
-      <Button $click={() => {
-        hook.clear();
-      }}>clear</Button>
-      <Button $click={() => {
-        hook.save();
-      }}>save</Button>
-    </Row>
     <FlexBox $fto="fy" $padding style={{ overflowWrap: "anywhere" }}>
       {value}
     </FlexBox>
