@@ -40,6 +40,7 @@ React Add-on for v18.
 - CheckBox
 - DateBox
 - DatePicker
+- ElectronicSignature
 - FileArea
 - FileBox
 - NumericBox
