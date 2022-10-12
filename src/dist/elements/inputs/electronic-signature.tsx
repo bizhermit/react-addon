@@ -170,6 +170,7 @@ const Style = <JsxStyle id={cn}>{() => `
   box-sizing: border-box;
   position: relative;
   flex: none;
+  touch-action: none;
 }`}</JsxStyle>;
 
 export default ElectronicSignature;
