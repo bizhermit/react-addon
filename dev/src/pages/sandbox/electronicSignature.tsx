@@ -17,17 +17,10 @@ const ElectronicSignaturePage: NextPage = () => {
   const [disabled, setDisabled] = useState(false);
   const [readOnly, setReadOnly] = useState(false);
   const [border, setBorder] = useState<InputBorder>();
-  const [resize, setResize] = useState<"t" | "f" | "x" | "y" | "xy">();
   const [lineWidth, setLineWidth] = useState(2);
   const [lineColor, setLineColor] = useState<string>("black");
   const hook = useElectronicSignature();
   
-  const r = (() => {
-    if (resize === "t") return true;
-    if (resize === "f") return false;
-    return resize;
-  })();
-
   return (
     <>
     <Row $fill>
@@ -49,20 +42,8 @@ const ElectronicSignaturePage: NextPage = () => {
           ]}
         />
       </Caption>
-      <Caption $label="resize">
-          <RadioButtons
-            $source={[
-              { value: null, label: "unset" },
-              { value: "t", label: "True" },
-              { value: "f", label: "False" },
-              { value: "x", label: "X" },
-              { value: "y", label: "Y" },
-              { value: "xy", label: "XY" },
-            ]}
-            $value={resize}
-            $dispatch={setResize}
-          />
-      </Caption>
+    </Row>
+    <Row>
       <Caption $label="lineWidth">
         <NumericBox
           $value={lineWidth}
@@ -115,7 +96,6 @@ const ElectronicSignaturePage: NextPage = () => {
         $disabled={disabled}
         $readOnly={readOnly}
         $border={border}
-        $resize={r}
         $lineWidth={lineWidth}
         $lineColor={lineColor}
       />

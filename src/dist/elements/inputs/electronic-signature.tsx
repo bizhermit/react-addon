@@ -7,7 +7,6 @@ import { ftoCn } from "../../utils/attributes";
 import { releaseCursor, setCursor } from "../../utils/cursor";
 import { _HookSetter } from "../../utils/hook";
 import { inputFieldAttributes, InputHook } from "../../utils/input";
-import Resizer from "../resizer";
 
 const cn = "bh-esi";
 
@@ -21,7 +20,6 @@ export type ElectronicSignatureAttributes = HTMLAttributes<HTMLDivElement> & Inp
   $hook?: ElectronicSignatureHook;
   $fto?: FitToOuter;
   $border?: InputBorder;
-  $resize?: boolean | "x" | "y" | "xy";
   $height?: number | string | undefined;
   $width?: number | string | undefined;
   $lineWidth?: number;
@@ -128,9 +126,7 @@ const ElectronicSignature = React.forwardRef<HTMLDivElement, ElectronicSignature
         onTouchStart={touchStart}
         width={attrs.$width}
         height={attrs.$height}
-      >
-        {attrs.$resize ? <Resizer direction={typeof attrs.$resize === "boolean" ? "xy" : attrs.$resize} /> : <></>}
-      </canvas>
+      />
       {InputStyle}
       {Style}
     </div>
