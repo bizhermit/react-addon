@@ -111,7 +111,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderAttributes>((attrs, ref) =
       getValue: () => buf.current,
       setValue: (v) => set.current(v),
     })
-  }, [(attrs.$hook as Hook)?._set])
+  }, [(attrs.$hook as Hook)?._set]);
 
   return (
     <div
