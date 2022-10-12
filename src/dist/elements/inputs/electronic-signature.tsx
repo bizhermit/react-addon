@@ -11,7 +11,7 @@ import { inputFieldAttributes, InputHook } from "../../utils/input";
 const cn = "bh-esi";
 
 export type ElectronicSignatureHook = InputHook<string> & {
-  clear: (preventSave?: boolean) => void;
+  clear: (save?: boolean) => void;
   save: () => void;
 };
 type Hook = _HookSetter<ElectronicSignatureHook>;
@@ -91,17 +91,16 @@ const ElectronicSignature = React.forwardRef<HTMLDivElement, ElectronicSignature
     drawStart(touch.clientX, touch.clientY, true);
   };
   
-  const save = () => {
+  const saveImpl = () => {
     if (cref.current == null) return;
     set.current(cref.current.toDataURL());
   };
-  const clear = (preventSave?: boolean) => {
+  const clearImpl = (save?: boolean) => {
     if (cref.current == null) return;
     cref.current
       .getContext("2d")
       .clearRect(0, 0, cref.current.width, cref.current.height);
-    if (preventSave) return;
-    save();
+    if (save) saveImpl();
   };
 
   useEffect(() => {
@@ -109,8 +108,8 @@ const ElectronicSignature = React.forwardRef<HTMLDivElement, ElectronicSignature
       focus: () => cref.current?.focus(),
       getValue: () => buf.current,
       setValue: (v) => set.current(v),
-      clear,
-      save,
+      clear: clearImpl,
+      save: saveImpl,
     })
   }, [(attrs.$hook as Hook)?._set]);
 
@@ -145,8 +144,8 @@ export const useElectronicSignature = (): ElectronicSignatureHook => {
     setValue: useCallback((v) => {
       dispatch.current.setValue?.(v);
     }, []),
-    clear: useCallback((ps) => {
-      dispatch.current.clear?.(ps);
+    clear: useCallback((s) => {
+      dispatch.current.clear?.(s);
     }, []),
     save: useCallback(() => {
       dispatch.current.save?.();
